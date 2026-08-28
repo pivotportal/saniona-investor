@@ -257,18 +257,37 @@
   .watch-src:hover{border-bottom-color:currentColor}
   .watch-src.no{color:var(--ink-faint);pointer-events:none}
 
-  /* report box */
-  .reportbox{background:var(--shell);border:1px solid var(--shell-line);border-radius:14px;padding:18px 22px;margin-bottom:22px}
-  .reportbox-lbl{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
-  .reportbox-cols{display:flex;align-items:center;gap:20px}
-  .reportbox-col{flex:1;min-width:0}
-  .reportbox-arrow{flex:0 0 auto;font-size:20px;color:var(--ink-faint);opacity:.5}
-  .rb-k{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
-  .rb-v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.02em;line-height:1}
-  .rb-date{font-size:12px;color:var(--ink-soft);margin-top:3px}
-  .rb-link{display:inline-block;margin-top:9px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--accent,#3E5C8C);text-decoration:none}
-  .rb-link:hover{text-decoration:underline}
-  .rb-link.muted{color:var(--ink-faint)}
+  /* report box — redesigned */
+  .reportbox{margin-bottom:24px}
+  .reportbox-lbl{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .reportbox-lbl::before{content:"";width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,var(--accent),#5a7bb0);flex:0 0 auto}
+  .reportbox-cols{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:0}
+  .rb-card{position:relative;border-radius:16px;padding:20px 22px;overflow:hidden;display:flex;flex-direction:column}
+  /* latest — solid accent, primary */
+  .rb-card.latest{background:linear-gradient(135deg,#3E5C8C 0%,#33507d 100%);color:#fff;box-shadow:0 12px 28px -14px rgba(62,92,140,.55)}
+  .rb-card.latest::after{content:"";position:absolute;right:-30px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);pointer-events:none}
+  .rb-card.latest .rb-k{color:rgba(255,255,255,.7)}
+  .rb-card.latest .rb-v{color:#fff}
+  .rb-card.latest .rb-date{color:rgba(255,255,255,.82)}
+  /* next — light, upcoming */
+  .rb-card.next{background:var(--card);border:1px solid var(--shell-line)}
+  .rb-card.next .rb-v{color:var(--ink)}
+  .rb-k{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;position:relative}
+  .rb-v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em;line-height:1;position:relative}
+  .rb-date{font-size:12.5px;color:var(--ink-soft);margin-top:5px;position:relative}
+  .rb-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em;text-decoration:none;position:relative;transition:gap .2s ease}
+  .rb-link:hover{gap:9px}
+  .rb-card.latest .rb-link{color:#fff;background:rgba(255,255,255,.16);padding:7px 13px;border-radius:20px;align-self:flex-start}
+  .rb-card.latest .rb-link:hover{background:rgba(255,255,255,.26)}
+  .rb-card.next .rb-link{color:var(--accent)}
+  .rb-card.next .rb-link.muted{color:var(--ink-faint)}
+  .rb-badge{position:absolute;top:16px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+  .rb-card.latest .rb-badge{background:rgba(255,255,255,.2);color:#fff}
+  .rb-card.next .rb-badge{background:var(--shell);color:var(--ink-faint)}
+  /* connector */
+  .rb-connector{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 16px;gap:6px}
+  .rb-connector-line{width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--shell-line))}
+  .rb-connector-dot{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-faint);letter-spacing:.05em;white-space:nowrap}
   .crit{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:3px;padding:1px 6px}
   .watch-t{font-weight:600;font-size:14px;margin-top:4px;line-height:1.35}
   .watch-d{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
@@ -336,8 +355,10 @@
     .deal-compact-grid{grid-template-columns:1fr}
     .co-mgmt-grid{grid-template-columns:1fr}
     .watch-grid{grid-template-columns:1fr}
-    .reportbox-cols{flex-direction:column;align-items:stretch;gap:14px}
-    .reportbox-arrow{transform:rotate(90deg);align-self:center}
+    .reportbox-cols{grid-template-columns:1fr;gap:12px}
+    .rb-connector{padding:2px 0}
+    .rb-connector-line{width:2px;height:20px;background:linear-gradient(180deg,var(--accent),var(--shell-line))}
+    .rb-v{font-size:24px}
     .thesis-p{font-size:14px}
     .focus-grid{grid-template-columns:1fr 1fr;gap:14px}
     .deal-num-up,.deal-num-tot{font-size:20px}
@@ -470,7 +491,7 @@ const DATA = {
     dealUpLbl:{sv:'Upfront erhållet', en:'Upfront received'},
     dealTotLbl:{sv:'Total potential', en:'Total potential'},
     dealBarLbl:{sv:'Andel utbetalt av potentialen', en:'Share paid of the potential'},
-    dealFoot:{sv:'Total potential avser summan av upfront, utvecklings-, regulatoriska och kommersiella milstolpar per avtal och förutsätter att alla milstolpar nås — royalty tillkommer. En liten andel har hittills betalats ut; merparten är villkorad uppsida. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; officiellt avtalsbelopp i originalvaluta anges inom parentes.', en:'Total potential is the sum of upfront plus development, regulatory and commercial milestones per deal and assumes all milestones are met — royalties come on top. Only a small share has been paid so far; the majority is contingent upside. Amounts are converted to SEK at USD 1 = SEK 9.65 and EUR 1 = SEK 11; the official deal amount in original currency is shown in brackets.'},
+    dealFoot:{sv:'Total potential avser summan av upfront, utvecklings-, regulatoriska och kommersiella milstolpar per avtal och förutsätter att alla milstolpar nås — royalty tillkommer. En liten andel har hittills betalats ut; merparten är villkorad uppsida. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; officiellt avtalsbelopp i originalvaluta anges inom parentes.', en:'Total potential is the sum of upfront plus development, regulatory and commercial milestones per deal and assumes all milestones are met — royalties come on top. Only a small share has been paid so far; the majority is contingent upside. Figures are shown in each deal\u2019s original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11.'},
     plHead:{sv:'Pipeline', en:'Pipeline'},
     plSub:{sv:'Åtta program över fyra spår — från preklinik till marknad', en:'Eight programs across four tracks — from preclinical to market'},
     yHead:{sv:'Katalysatorer', en:'Catalysts'},
@@ -520,9 +541,9 @@ const DATA = {
   },
 
   kpis:[
-    {v:{sv:'486 MSEK', en:'SEK 486M'}, u:{sv:'likvida medel', en:'cash & equivalents'}, note:{sv:'Per 30 juni 2026 (Q2-rapport). Prioriteringen av SAN2668 och SAN2465 förlänger kassan in i 2029 och möjliggör PoC-studier för SAN2668 under 2028.', en:'As of 30 Jun 2026 (Q2 report). Prioritising SAN2668 and SAN2465 extends the cash runway into 2029 and enables PoC studies for SAN2668 in 2028.'}},
+    {v:{sv:'486 MSEK', en:'SEK 486M'}, u:{sv:'likvida medel', en:'cash & equivalents'}, note:{sv:'Per 30 juni 2026 (Q2-rapport). Prioriteringen av SAN2668 och SAN2465 förlänger kassan in i 2029 och möjliggör PoC-studier för SAN2668 under 2028.', en:'As of 30 Jun 2026 (Q2 report; ~USD 50M). Prioritising SAN2668 and SAN2465 extends the cash runway into 2029 and enables PoC studies for SAN2668 in 2028.'}},
     {v:{sv:'7', en:'7'}, u:{sv:'aktiva partners & samarbeten', en:'active partners & collaborations'}, note:{sv:'Jazz · Acadia · Boehringer Ingelheim · Medix · AstronauTx · Cephagenix · Initiator Pharma', en:'Jazz · Acadia · Boehringer Ingelheim · Medix · AstronauTx · Cephagenix · Initiator Pharma'}},
-    {v:{sv:'~18 mdr SEK', en:'~SEK 18bn'}, u:{sv:'total milstolpspotential', en:'total milestone potential'}, note:{sv:'Beräknad summa av de fyra avtalen med takbelopp (~1,9 mdr USD), plus royalty. Omräknat till SEK. Cadent (realiserat) och Initiator Pharma (andel utan tak) ingår ej. Se Ekonomi & avtal.', en:'Calculated sum of the four capped deals (~USD 1.9bn), plus royalties. Converted to SEK. Cadent (realized) and Initiator Pharma (uncapped share) are not included. See Economics & deals.'}},
+    {v:{sv:'~18 mdr SEK', en:'~USD 1.9bn'}, u:{sv:'total milstolpspotential', en:'total milestone potential'}, note:{sv:'Beräknad summa av de fyra avtalen med takbelopp (~1,9 mdr USD), plus royalty. Omräknat till SEK. Cadent (realiserat) och Initiator Pharma (andel utan tak) ingår ej. Se Ekonomi & avtal.', en:'Calculated sum of the four capped deals (~USD 1.9bn ≈ SEK 18bn), plus royalties. Cadent (realized) and Initiator Pharma (uncapped share) are not included. See Economics & deals.'}},
     {v:'8', u:{sv:'läkemedelsprogram i pipeline', en:'drug programs in the pipeline'}, note:{sv:'3 interna (2 ledande mot klinik, SAN2219 pausat) · 3 utlicensierade · 2 för partnering', en:'3 internal (2 leading toward clinic, SAN2219 paused) · 3 licensed · 2 for partnering'}},
     {v:'2', u:{sv:'fas 1-starter kring årsskiftet 2026–Q1 2027', en:'Phase 1 starts around year-end 2026–Q1 2027'}, note:{sv:'Ledande interna program: SAN2465 (dosering kring årsskiftet 2026) & SAN2668 (dosering Q1 2027). SAN2219 pausat. Prioriteringen förlänger kassan in i 2029.', en:'Lead internal programs: SAN2465 (dosing around year-end 2026) & SAN2668 (dosing Q1 2027). SAN2219 paused. The prioritisation extends the cash runway into 2029.'}}
   ],
@@ -531,31 +552,31 @@ const DATA = {
      up/tot i MUSD för stapelberäkning; disp = visad text (kan ha annan valuta). */
   deals:[
     {key:'san2355', partner:'Jazz Pharmaceuticals', prog:'SAN2355',
-     upDisp:{sv:'410 MSEK', en:'SEK 410M'}, totDisp:{sv:'9,58 mdr SEK', en:'SEK 9.58bn'},
+     upDisp:{sv:'410 MSEK', en:'USD 42.5M'}, totDisp:{sv:'9,58 mdr SEK', en:'USD 992.5M'},
      up:42.5, tot:992.5, src:'https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355',
-     note:{sv:'Upfront 410 MSEK (42,5 MUSD) erhållet aug 2025. Härnäst: +72 MSEK (7,5 MUSD) när Jazz startar fas 1. Därtill upp till 7,72 mdr SEK (800 MUSD) i kommersiella milstolpar samt royalty. Totalpotential 9,58 mdr SEK (992,5 MUSD).', en:'Upfront SEK 410M (USD 42.5M) received Aug 2025. Next: +SEK 72M (USD 7.5M) when Jazz starts Phase 1. Plus up to SEK 7.72bn (USD 800M) in commercial milestones and royalties. Total potential SEK 9.58bn (USD 992.5M).'}},
+     note:{sv:'Upfront 410 MSEK (42,5 MUSD) erhållet aug 2025. Härnäst: +72 MSEK (7,5 MUSD) när Jazz startar fas 1. Därtill upp till 7,72 mdr SEK (800 MUSD) i kommersiella milstolpar samt royalty. Totalpotential 9,58 mdr SEK (992,5 MUSD).', en:'Upfront USD 42.5M (SEK 410M) received Aug 2025. Next: +USD 7.5M (SEK 72M) when Jazz starts Phase 1. Plus up to USD 800M (SEK 7.72bn) in commercial milestones and royalties. Total potential USD 992.5M (SEK 9.58bn).'}},
     {key:'san711', partner:'Acadia Pharmaceuticals', prog:'SAN711 / ACP-711',
-     upDisp:{sv:'270 MSEK', en:'SEK 270M'}, totDisp:{sv:'5,89 mdr SEK', en:'SEK 5.89bn'},
+     upDisp:{sv:'270 MSEK', en:'USD 28M'}, totDisp:{sv:'5,89 mdr SEK', en:'USD 610M'},
      up:28, tot:610, src:'https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf',
-     note:{sv:'Upfront 270 MSEK (28 MUSD) erhållet nov 2024. Härnäst: +96 MSEK (10 MUSD) när Acadia startar fas 2 (planerat 2026). Därtill royalty. Totalpotential 5,89 mdr SEK (610 MUSD). Källa: årsredovisning 2024.', en:'Upfront SEK 270M (USD 28M) received Nov 2024. Next: +SEK 96M (USD 10M) when Acadia starts Phase 2 (planned 2026). Plus royalties. Total potential SEK 5.89bn (USD 610M). Source: Annual Report 2024.'}},
+     note:{sv:'Upfront 270 MSEK (28 MUSD) erhållet nov 2024. Härnäst: +96 MSEK (10 MUSD) när Acadia startar fas 2 (väntas 2027). Därtill royalty. Totalpotential 5,89 mdr SEK (610 MUSD). Källa: årsredovisning 2024.', en:'Upfront USD 28M (SEK 270M) received Nov 2024. Next: +USD 10M (SEK 96M) when Acadia starts Phase 2 (expected 2027). Plus royalties. Total potential USD 610M (SEK 5.89bn). Source: Annual Report 2024.'}},
     {key:'platform', partner:'Boehringer Ingelheim', prog:{sv:'Schizofreni', en:'Schizophrenia'},
-     upDisp:{sv:'Ej offentligt', en:'Undisclosed'}, totDisp:{sv:'842 MSEK', en:'SEK 842M'},
+     upDisp:{sv:'Ej offentligt', en:'Undisclosed'}, totDisp:{sv:'842 MSEK', en:'\u20ac76.5M'},
      up:0, tot:82.6, src:'https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar',
-     note:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty på nettoförsäljning. Saniona får även löpande forskningsfinansiering under forskningsperioden (beloppet varierar per år). Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025).', en:'Milestone potential up to SEK 842M (\u20ac76.5M) plus royalties on net sales. Saniona also receives ongoing research funding during the research period (the amount varies year to year). Collaboration since 2020; the research term was extended by one year (March 2025).'}},
+     note:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty på nettoförsäljning. Saniona får även löpande forskningsfinansiering under forskningsperioden (beloppet varierar per år). Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025).', en:'Milestone potential up to \u20ac76.5M (SEK 842M) plus royalties on net sales. Saniona also receives ongoing research funding during the research period (the amount varies year to year). Collaboration since 2020; the research term was extended by one year (March 2025).'}},
     {key:'platform', partner:'AstronauTx', prog:{sv:'Neurologisk sjukdom (ATX0926)', en:'Neurological disease (ATX0926)'},
-     upDisp:{sv:'48 MSEK i aktier', en:'SEK 48M in shares'}, totDisp:{sv:'1,66 mdr SEK', en:'SEK 1.66bn'},
+     upDisp:{sv:'48 MSEK i aktier', en:'USD 5M in shares'}, totDisp:{sv:'1,66 mdr SEK', en:'USD 172M'},
      up:5, tot:177, src:'https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration',
-     note:{sv:'Optionen utnyttjad aug 2026: AstronauTx förvärvade exklusiva globala rättigheter och Saniona fick aktier i AstronauTx värda 48 MSEK (5 MUSD). Därtill upp till 1,66 mdr SEK (172 MUSD) i milstolpar: 936 MSEK (97 MUSD) utv-/reg + 724 MSEK (75 MUSD) kommersiella, plus tiered royalty. Kandidaten ATX0926 går in i IND-enabling-studier.', en:'Option exercised Aug 2026: AstronauTx acquired exclusive worldwide rights and Saniona received AstronauTx shares worth SEK 48M (USD 5M). Plus up to SEK 1.66bn (USD 172M) in milestones: SEK 936M (USD 97M) dev/reg + SEK 724M (USD 75M) commercial, plus tiered royalties. Candidate ATX0926 enters IND-enabling studies.'}},
+     note:{sv:'Optionen utnyttjad aug 2026: AstronauTx förvärvade exklusiva globala rättigheter och Saniona fick aktier i AstronauTx värda 48 MSEK (5 MUSD). Därtill upp till 1,66 mdr SEK (172 MUSD) i milstolpar: 936 MSEK (97 MUSD) utv-/reg + 724 MSEK (75 MUSD) kommersiella, plus tiered royalty. Kandidaten ATX0926 går in i IND-enabling-studier.', en:'Option exercised Aug 2026: AstronauTx acquired exclusive worldwide rights and Saniona received AstronauTx shares worth USD 5M (SEK 48M). Plus up to USD 172M (SEK 1.66bn) in milestones: USD 97M (SEK 936M) dev/reg + USD 75M (SEK 724M) commercial, plus tiered royalties. Candidate ATX0926 enters IND-enabling studies.'}},
     {key:'teso', partner:'Medix', prog:{sv:'Tesofensin · fetma', en:'Tesofensine · obesity'},
-     upDisp:{sv:'12 MSEK', en:'SEK 12M'}, totDisp:{sv:'+ royalties', en:'+ royalties'},
+     upDisp:{sv:'12 MSEK', en:'USD 1.25M'}, totDisp:{sv:'+ royalties', en:'+ royalties'},
      up:1.25, tot:3.25, src:'https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621',
-     note:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet vid avtalet 2016. Medix bekostar kliniska studier och regulatoriska ansökningar. Vid marknadsgodkännande utlöses ytterligare 19 MSEK (2,0 MUSD), plus låga tvåsiffriga royalties på försäljning — den stora, återkommande uppsidan. Regulatorisk granskning pågår i Mexiko.', en:'Upfront SEK 12M (USD 1.25M) received at signing in 2016. Medix funds clinical studies and regulatory filings. Upon market approval, a further SEK 19M (USD 2.0M) is triggered, plus low double-digit royalties on sales — the main, recurring upside. Regulatory review underway in Mexico.'}}
+     note:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet vid avtalet 2016. Medix bekostar kliniska studier och regulatoriska ansökningar. Vid marknadsgodkännande utlöses ytterligare 19 MSEK (2,0 MUSD), plus låga tvåsiffriga royalties på försäljning — den stora, återkommande uppsidan. Regulatorisk granskning pågår i Mexiko.', en:'Upfront USD 1.25M (SEK 12M) received at signing in 2016. Medix funds clinical studies and regulatory filings. Upon market approval, a further USD 2.0M (SEK 19M) is triggered, plus low double-digit royalties on sales — the main, recurring upside. Regulatory review underway in Mexico.'}}
   ],
 
   /* Kompakta kort — realiserade eller övriga samarbeten (mindre utrymme) */
   dealsCompact:[
     {key:'platform', partner:{sv:'Cadent / Novartis', en:'Cadent / Novartis'}, tag:{sv:'Realiserad exit · 2021', en:'Realized exit · 2021'},
-     value:{sv:'~31,5 MSEK erhållet', en:'~SEK 31.5M received'},
+     value:{sv:'~31,5 MSEK erhållet', en:'~USD 3.7M received'},
      desc:{sv:'Saniona ägde ~3% av avknoppningen Cadent; löstes ut kontant när Novartis förvärvade bolaget 2021.', en:'Saniona owned ~3% of the Cadent spin-out; paid out in cash when Novartis acquired the company in 2021.'},
      src:'https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html'},
     {key:'platform', partner:{sv:'Initiator Pharma (IP2018)', en:'Initiator Pharma (IP2018)'}, tag:{sv:'Avknoppning · aktiv (fas IIa)', en:'Spin-out · active (Phase IIa)'},
@@ -623,32 +644,32 @@ const DATA = {
        href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'}
     ],
     licensed:[
-      {key:'san711', code:'SAN711 / ACP-711', status:'phase2', metricV:{sv:'+96 MSEK', en:'+SEK 96M'}, metricL:{sv:'milstolpe vid fas 2-start (10 MUSD)', en:'milestone at Phase 2 start (USD 10M)'},
+      {key:'san711', code:'SAN711 / ACP-711', status:'phase2', metricV:{sv:'+96 MSEK', en:'+USD 10M'}, metricL:{sv:'milstolpe vid fas 2-start (10 MUSD)', en:'milestone at Phase 2 start (SEK 96M)'},
        ind:{sv:'Essentiell tremor', en:'Essential tremor'},
        mech:{sv:'Positiv allosterisk modulator av GABAA α3', en:'Positive allosteric modulator of GABAA α3'},
        partner:{sv:'Acadia Pharmaceuticals — globala rättigheter', en:'Acadia Pharmaceuticals — global rights'},
-       patent:{sv:'Del av Acadia-avtal (2024) — upp till 5,89 mdr SEK (610 MUSD) i totalt värde', en:'Part of the Acadia deal (2024) — up to SEK 5.89bn (USD 610M) total value'},
+       patent:{sv:'Del av Acadia-avtal (2024) — upp till 5,89 mdr SEK (610 MUSD) i totalt värde', en:'Part of the Acadia deal (2024) — up to USD 610M (SEK 5.89bn) total value'},
        summary:{sv:'Utlicensierat till Acadia som finansierar all vidareutveckling. Fas 2-start i essentiell tremor väntas 2027 och utlöser milstolpe.', en:'Out-licensed to Acadia, which funds all further development. A Phase 2 start in essential tremor is expected in 2027 and triggers a milestone.'},
        latest:{sv:'Acadia väntas inleda fas 2-studie i essentiell tremor 2027 (per Q2 2026).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027 (as of Q2 2026).'},
-       next:{sv:'Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona', en:'Phase 2 start 2027 → +SEK 96M (USD 10M) to Saniona'},
+       next:{sv:'Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona', en:'Phase 2 start 2027 → +USD 10M (SEK 96M) to Saniona'},
        href:'https://mfn.se/a/saniona/saniona-highlights-acadia-pharmaceuticals-upcoming-randd-day'},
-      {key:'san2355', code:'SAN2355', status:'phase1', metricV:{sv:'+410 MSEK', en:'+SEK 410M'}, metricL:{sv:'upfront erhållet (42,5 MUSD) · upp till 9,58 mdr SEK totalt', en:'upfront received (USD 42.5M) · up to SEK 9.58bn total'},
+      {key:'san2355', code:'SAN2355', status:'phase1', metricV:{sv:'+410 MSEK', en:'+USD 42.5M'}, metricL:{sv:'upfront erhållet (42,5 MUSD) · upp till 9,58 mdr SEK totalt', en:'upfront received (SEK 410M) · up to USD 992.5M total'},
        ind:{sv:'Epilepsi och andra neurologiska tillstånd', en:'Epilepsy and other neurological conditions'},
        mech:{sv:'Subtypsselektiv Kv7.2/Kv7.3-aktivator — validerad mekanism för att hämma anfall', en:'Subtype-selective Kv7.2/Kv7.3 activator — validated seizure-inhibiting mechanism'},
        partner:{sv:'Jazz Pharmaceuticals — exklusiva globala rättigheter', en:'Jazz Pharmaceuticals — exclusive global rights'},
-       patent:{sv:'Jazz-avtal (aug 2025): 410 MSEK (42,5 MUSD) upfront, upp till 1,86 mdr SEK (192,5 MUSD) i utv-/reg-milstolpar, upp till 7,72 mdr SEK (800 MUSD) kommersiella, samt royalty', en:'Jazz deal (Aug 2025): SEK 410M (USD 42.5M) upfront, up to SEK 1.86bn (USD 192.5M) dev/reg milestones, up to SEK 7.72bn (USD 800M) commercial, plus royalties'},
+       patent:{sv:'Jazz-avtal (aug 2025): 410 MSEK (42,5 MUSD) upfront, upp till 1,86 mdr SEK (192,5 MUSD) i utv-/reg-milstolpar, upp till 7,72 mdr SEK (800 MUSD) kommersiella, samt royalty', en:'Jazz deal (Aug 2025): USD 42.5M (SEK 410M) upfront, up to USD 192.5M (SEK 1.86bn) dev/reg milestones, up to USD 800M (SEK 7.72bn) commercial, plus royalties'},
        summary:{sv:'Bolagets största enskilda värdehändelse. Jazz leder och finansierar all utveckling; aktien steg 46 % på beskedet.', en:'The company\u2019s single largest value event. Jazz leads and funds all development; the share rose 46% on the news.'},
        latest:{sv:'Jazz förbereder den första fas 1-studien.', en:'Jazz is preparing the first Phase 1 study.'},
-       next:{sv:'Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona', en:'Phase 1 start → +SEK 72M (USD 7.5M) to Saniona'},
+       next:{sv:'Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona', en:'Phase 1 start → +USD 7.5M (SEK 72M) to Saniona'},
        href:'https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355'},
       {key:'teso', code:'Tesofensin', status:'review', metricV:{sv:'Granskning', en:'Under review'}, metricL:{sv:'marknadsgodkännande Mexiko', en:'market authorization Mexico'},
        ind:{sv:'Fetma', en:'Obesity'},
        mech:{sv:'Monoaminåterupptagshämmare (dopamin, serotonin, noradrenalin)', en:'Monoamine reuptake inhibitor (dopamine, serotonin, noradrenaline)'},
        partner:{sv:'Medix — rättigheter i Mexiko och Argentina', en:'Medix — rights in Mexico and Argentina'},
-       patent:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet 2016. Vid godkännande utlöses ytterligare 19 MSEK (2,0 MUSD) samt låga tvåsiffriga royalties på försäljning', en:'Upfront SEK 12M (USD 1.25M) received 2016. On approval, a further SEK 19M (USD 2.0M) is triggered plus low double-digit royalties on sales'},
-       summary:{sv:'Regulatorisk granskning pågår i Mexiko via partnern Medix, som bekostat fas III-studierna. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD), men den stora uppsidan är låga tvåsiffriga, icke-utspädande royalties på den faktiska försäljningen när produkten når marknaden.', en:'Regulatory review underway in Mexico via partner Medix, which funded the Phase III studies. Approval triggers a SEK 19M (USD 2.0M) milestone, but the main upside is low double-digit, non-dilutive royalties on actual sales once the product reaches the market.'},
+       patent:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet 2016. Vid godkännande utlöses ytterligare 19 MSEK (2,0 MUSD) samt låga tvåsiffriga royalties på försäljning', en:'Upfront USD 1.25M (SEK 12M) received 2016. On approval, a further USD 2.0M (SEK 19M) is triggered plus low double-digit royalties on sales'},
+       summary:{sv:'Regulatorisk granskning pågår i Mexiko via partnern Medix, som bekostat fas III-studierna. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD), men den stora uppsidan är låga tvåsiffriga, icke-utspädande royalties på den faktiska försäljningen när produkten når marknaden.', en:'Regulatory review underway in Mexico via partner Medix, which funded the Phase III studies. Approval triggers a USD 2.0M (SEK 19M) milestone, but the main upside is low double-digit, non-dilutive royalties on actual sales once the product reaches the market.'},
        latest:{sv:'Ansökan om marknadsgodkännande under granskning i Mexiko (COFEPRIS).', en:'Market-authorization application under review in Mexico (COFEPRIS).'},
-       next:{sv:'Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning', en:'Approval → +SEK 19M (USD 2.0M) + low double-digit royalties on sales'},
+       next:{sv:'Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning', en:'Approval → +USD 2.0M (SEK 19M) + low double-digit royalties on sales'},
        href:'https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621'}
     ],
     partnering:[
@@ -681,20 +702,20 @@ const DATA = {
        latest:{sv:'Fortsatta samarbeten; plattformen ska ge nya kliniska kandidater.', en:'Ongoing collaborations; the platform is expected to yield new clinical candidates.'},
        next:{sv:'Nya kandidater och partnerskap', en:'New candidates and partnerships'},
        href:'https://saniona.com/science/partnerships-spinouts/'},
-      {key:'platform', code:'Boehringer Ingelheim', status:'research', metricV:{sv:'842 MSEK', en:'SEK 842M'}, metricL:{sv:'milstolpspotential (76,5 M€) + royalty', en:'milestone potential (\u20ac76.5M) + royalties'},
+      {key:'platform', code:'Boehringer Ingelheim', status:'research', metricV:{sv:'842 MSEK', en:'\u20ac76.5M'}, metricL:{sv:'milstolpspotential (76,5 M€) + royalty', en:'milestone potential (SEK 842M) + royalties'},
        ind:{sv:'Schizofreni', en:'Schizophrenia'},
        mech:{sv:'Ej offentliggjord CNS-jonkanal — ny klass av terapeutika', en:'Undisclosed CNS ion channel — a new class of therapeutics'},
        partner:{sv:'Boehringer Ingelheim — exklusiva globala rättigheter', en:'Boehringer Ingelheim — exclusive global rights'},
-       patent:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty. Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025)', en:'Milestone potential up to SEK 842M (\u20ac76.5M) plus royalties. Collaboration since 2020; the research term was extended by one year (March 2025)'},
+       patent:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty. Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025)', en:'Milestone potential up to \u20ac76.5M (SEK 842M) plus royalties. Collaboration since 2020; the research term was extended by one year (March 2025)'},
        summary:{sv:'Ett av Sanionas mest långvariga samarbeten. Bolaget får löpande forskningsfinansiering plus milstolpar och royalty om programmet når marknad.', en:'One of Saniona\u2019s most enduring collaborations. The company receives ongoing research funding plus milestones and royalties if the program reaches market.'},
        latest:{sv:'Nådde en forskningsmilstolpe i okt 2024 (lead optimization). Forskningsperioden förlängdes med ett år i mars 2025.', en:'Reached a research milestone in Oct 2024 (lead optimization). The research term was extended by one year in March 2025.'},
        next:{sv:'Forskningsmilstolpar → utvecklingsmilstolpar', en:'Research milestones → development milestones'},
        href:'https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar'},
-      {key:'platform', code:'AstronauTx', status:'research', metricV:{sv:'1,66 mdr SEK', en:'SEK 1.66bn'}, metricL:{sv:'milstolpspotential + royalty · 48 MSEK i aktier erhållet', en:'milestone potential + royalties · SEK 48M in shares received'},
+      {key:'platform', code:'AstronauTx', status:'research', metricV:{sv:'1,66 mdr SEK', en:'USD 172M'}, metricL:{sv:'milstolpspotential + royalty · 48 MSEK i aktier erhållet', en:'milestone potential + royalties · USD 5M in shares received'},
        ind:{sv:'Neurologisk sjukdom / Alzheimers (ATX0926)', en:'Neurological disease / Alzheimer\u2019s (ATX0926)'},
        mech:{sv:'Ej offentliggjort jonkanalsmål kopplat till sömnbiologi/glymfatiskt flöde, via Sanionas plattform', en:'Undisclosed ion-channel target linked to sleep biology/glymphatic flow, via Saniona\u2019s platform'},
        partner:{sv:'AstronauTx Ltd — äger nu exklusiva globala rättigheter (option utnyttjad aug 2026)', en:'AstronauTx Ltd — now holds exclusive worldwide rights (option exercised Aug 2026)'},
-       patent:{sv:'Saniona fick aktier värda 48 MSEK (5 MUSD) vid optionsutnyttjandet. Därtill upp till 1,66 mdr SEK (172 MUSD): 936 MSEK utv-/reg + 724 MSEK kommersiella, plus tiered royalty', en:'Saniona received shares worth SEK 48M (USD 5M) on option exercise. Plus up to SEK 1.66bn (USD 172M): SEK 936M dev/reg + SEK 724M commercial, plus tiered royalties'},
+       patent:{sv:'Saniona fick aktier värda 48 MSEK (5 MUSD) vid optionsutnyttjandet. Därtill upp till 1,66 mdr SEK (172 MUSD): 936 MSEK utv-/reg + 724 MSEK kommersiella, plus tiered royalty', en:'Saniona received shares worth USD 5M (SEK 48M) on option exercise. Plus up to USD 172M (SEK 1.66bn): USD 97M (SEK 936M) dev/reg + USD 75M (SEK 724M) commercial, plus tiered royalties'},
        summary:{sv:'Ett starkt kvitto på plattformen: efter flera års samarbete utnyttjade AstronauTx sin option och förvärvade de globala rättigheterna. Saniona blir aktieägare i AstronauTx och behåller milstolpar och royalty.', en:'A strong validation of the platform: after several years of collaboration, AstronauTx exercised its option and acquired the worldwide rights. Saniona becomes an AstronauTx shareholder and retains milestones and royalties.'},
        latest:{sv:'Optionen utnyttjad aug 2026. Kandidaten ATX0926 går in i IND-enabling-studier inom kort.', en:'Option exercised Aug 2026. Candidate ATX0926 enters IND-enabling studies shortly.'},
        next:{sv:'IND-enabling-studier → klinisk fas 1 hos AstronauTx', en:'IND-enabling studies → Phase 1 at AstronauTx'},
@@ -703,18 +724,18 @@ const DATA = {
        ind:{sv:'Migrän', en:'Migraine'},
        mech:{sv:'Subtypsselektiva KATP-kanalhämmare (vaskulära)', en:'Subtype-selective (vascular) KATP channel inhibitors'},
        partner:{sv:'Avknoppning med prof. Jes Olesen; Saniona äger 25,8%', en:'Spin-out with Prof. Jes Olesen; Saniona owns 25.8%'},
-       patent:{sv:'Seed-runda om upp till 99 MSEK (€9M) ledd av AdBio Partners & AbbVie Ventures (2025)', en:'Seed round of up to SEK 99M (\u20ac9M) led by AdBio Partners & AbbVie Ventures (2025)'},
+       patent:{sv:'Seed-runda om upp till 99 MSEK (€9M) ledd av AdBio Partners & AbbVie Ventures (2025)', en:'Seed round of up to \u20ac9M (SEK 99M) led by AdBio Partners & AbbVie Ventures (2025)'},
        summary:{sv:'Saniona äger 25,8 % av detta migrän-JV (per senaste årsredovisningen). Att välrenommerade investerare som AbbVie Ventures gick in validerar programmet och ger Saniona uppsida via ägarandelen — utan att bolaget själv står för kostnaden.', en:'Saniona owns 25.8% of this migraine JV (per the latest annual report). Reputable investors such as AbbVie Ventures joining validates the program and gives Saniona upside through its equity stake — without the company bearing the cost itself.'},
-       latest:{sv:'Seed-finansiering säkrad (upp till 99 MSEK / €9M); driver programmet mot kandidatval.', en:'Seed financing secured (up to SEK 99M / \u20ac9M); advancing the program toward candidate selection.'},
+       latest:{sv:'Seed-finansiering säkrad (upp till 99 MSEK / €9M); driver programmet mot kandidatval.', en:'Seed financing secured (up to \u20ac9M / SEK 99M); advancing the program toward candidate selection.'},
        next:{sv:'Val av utvecklingskandidat i KATP-programmet', en:'Candidate selection in the KATP program'},
        href:'https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf'},
-      {key:'platform', code:{sv:'Cadent / Novartis', en:'Cadent / Novartis'}, status:'realized', metricV:{sv:'~31,5 MSEK', en:'~SEK 31.5M'}, metricL:{sv:'kontant erhållet 2021 (3,7 MUSD)', en:'cash received 2021 (USD 3.7M)'},
+      {key:'platform', code:{sv:'Cadent / Novartis', en:'Cadent / Novartis'}, status:'realized', metricV:{sv:'~31,5 MSEK', en:'~USD 3.7M'}, metricL:{sv:'kontant erhållet 2021 (3,7 MUSD)', en:'cash received 2021 (SEK 31.5M)'},
        ind:{sv:'Rörelsestörningar (CAD-1883)', en:'Movement disorders (CAD-1883)'},
        mech:{sv:'Selektiv positiv modulator av SK-jonkanaler, från avknoppningen Ataxion', en:'Selective positive modulator of SK ion channels, from the Ataxion spin-out'},
        partner:{sv:'Novartis förvärvade Cadent i jan 2021; Saniona ägde ~3%', en:'Novartis acquired Cadent in Jan 2021; Saniona owned ~3%'},
-       patent:{sv:'~31,5 MSEK (3,7 MUSD) i upfront erhållet 2021', en:'~SEK 31.5M (USD 3.7M) upfront received in 2021'},
+       patent:{sv:'~31,5 MSEK (3,7 MUSD) i upfront erhållet 2021', en:'~USD 3.7M (SEK 31.5M) upfront received in 2021'},
        summary:{sv:'Ett realiserat bevis på att plattformen genererar kontanter: Sanionas ägarandel i avknoppningen Cadent löstes ut kontant när Novartis köpte bolaget 2021.', en:'A realized proof that the platform generates cash: Saniona\u2019s stake in the Cadent spin-out was paid out in cash when Novartis acquired the company in 2021.'},
-       latest:{sv:'~31,5 MSEK (3,7 MUSD) erhållet 2021.', en:'~SEK 31.5M (USD 3.7M) received in 2021.'},
+       latest:{sv:'~31,5 MSEK (3,7 MUSD) erhållet 2021.', en:'~USD 3.7M (SEK 31.5M) received in 2021.'},
        next:{sv:'—', en:'—'},
        href:'https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html'},
       {key:'platform', code:{sv:'Initiator Pharma (IP2018)', en:'Initiator Pharma (IP2018)'}, status:'research', metricV:{sv:'≤ 20%', en:'\u2264 20%'}, metricL:{sv:'av framtida AN788-betalningar + ensiffrig royalty', en:'of future AN788 payments + single-digit royalty'},
@@ -738,7 +759,7 @@ const DATA = {
      title:{sv:'Q2 2026-rapport: 486 MSEK i kassa, internt fokus skärpt till SAN2668 och SAN2465 (fas 1 kring årsskiftet)', en:'Q2 2026 report: SEK 486M cash, internal focus sharpened to SAN2668 and SAN2465 (Phase 1 around year-end)'},
      href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
     {date:{sv:'10 aug 2026', en:'10 Aug 2026'}, key:'platform', react:'',
-     title:{sv:'AstronauTx utnyttjar sin option — förvärvar globala rättigheter; Saniona får aktier värda 48 MSEK (5 MUSD)', en:'AstronauTx exercises its option — acquires worldwide rights; Saniona receives shares worth SEK 48M (USD 5M)'},
+     title:{sv:'AstronauTx utnyttjar sin option — förvärvar globala rättigheter; Saniona får aktier värda 48 MSEK (5 MUSD)', en:'AstronauTx exercises its option — acquires worldwide rights; Saniona receives shares worth USD 5M (SEK 48M)'},
      href:'https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration'},
     {date:{sv:'4 jun 2026', en:'4 Jun 2026'}, key:'san2668', react:'-1,5%',
      title:{sv:'Investerarwebbinarie om SAN2668 för svåra pediatriska epilepsier', en:'Investor webinar on SAN2668 for severe paediatric epilepsies'},
@@ -786,21 +807,21 @@ const DATA = {
      t:{sv:'SAN2668 — CTA-ansökan och dosering', en:'SAN2668 — CTA submission and dosing'},
      d:{sv:'CTA-ansökan kring årsskiftet 2026, first-in-human-dosering Q1 2027. Huvudkandidat för svåra pediatriska epilepsier (DEE). Potential för Orphan Drug- och Rare Pediatric Disease-designation.', en:'CTA submission around year-end 2026, first-in-human dosing Q1 2027. Lead candidate for severe paediatric epilepsies (DEE). Potential for Orphan Drug and Rare Pediatric Disease designation.'},
      src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
-    {when:{sv:'2026', en:'2026'}, key:'san2355', tag:'partner', mile:'+72 MSEK',
+    {when:{sv:'2026', en:'2026'}, key:'san2355', tag:'partner', mile:{sv:'+72 MSEK',en:'+USD 7.5M'},
      t:{sv:'SAN2355 — fas 1-start (Jazz)', en:'SAN2355 — Phase 1 start (Jazz)'},
-     d:{sv:'Jazz förbereder första fas 1-studien med SAN2355. Studiestart utlöser en milstolpe om 72 MSEK (7,5 MUSD) till Saniona.', en:'Jazz is preparing the first Phase 1 study of SAN2355. Study start triggers a SEK 72M (USD 7.5M) milestone to Saniona.'},
+     d:{sv:'Jazz förbereder första fas 1-studien med SAN2355. Studiestart utlöser en milstolpe om 72 MSEK (7,5 MUSD) till Saniona.', en:'Jazz is preparing the first Phase 1 study of SAN2355. Study start triggers a USD 7.5M (SEK 72M) milestone to Saniona.'},
      src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
-    {when:{sv:'2027', en:'2027'}, key:'san711', tag:'partner', mile:'+96 MSEK',
+    {when:{sv:'2027', en:'2027'}, key:'san711', tag:'partner', mile:{sv:'+96 MSEK',en:'+USD 10M'},
      t:{sv:'ACP-711 — fas 2-start (Acadia)', en:'ACP-711 — Phase 2 start (Acadia)'},
-     d:{sv:'Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027. Study start triggers a SEK 96M (USD 10M) milestone.'},
+     d:{sv:'Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027. Study start triggers a USD 10M (SEK 96M) milestone.'},
      src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
     {when:{sv:'2028', en:'2028'}, key:'san2668', tag:'internal',
      t:{sv:'SAN2668 — PoC-studier möjliggjorda', en:'SAN2668 — PoC studies enabled'},
      d:{sv:'Prioriteringen och kassan in i 2029 möjliggör proof-of-concept-studier för SAN2668 under 2028.', en:'The prioritisation and runway into 2029 enable proof-of-concept studies for SAN2668 during 2028.'},
      src:{sv:'Q2-presentation aug 2026', en:'Q2 presentation Aug 2026'}},
-    {when:{sv:'Tidpunkt styrs av myndighet', en:'Timing set by the authority'}, key:'teso', tag:'partner', mile:'+19 MSEK',
+    {when:{sv:'Tidpunkt styrs av myndighet', en:'Timing set by the authority'}, key:'teso', tag:'partner', mile:{sv:'+19 MSEK',en:'+USD 2.0M'},
      t:{sv:'Tesofensin — godkännande i Mexiko', en:'Tesofensine — approval in Mexico'},
-     d:{sv:'Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD) och — den stora uppsidan — låga tvåsiffriga royalties på faktisk försäljning.', en:'Regulatory review ongoing at COFEPRIS. Approval triggers a SEK 19M (USD 2.0M) milestone and — the main upside — low double-digit royalties on actual sales.'},
+     d:{sv:'Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD) och — den stora uppsidan — låga tvåsiffriga royalties på faktisk försäljning.', en:'Regulatory review ongoing at COFEPRIS. Approval triggers a USD 2.0M (SEK 19M) milestone and — the main upside — low double-digit royalties on actual sales.'},
      src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
     {when:{sv:'Kort–medellång sikt · ambition', en:'Short–medium term · ambition'}, key:'platform', tag:'internal',
      t:{sv:'Utlicensiering av intern tillgång', en:'Out-licensing of an internal asset'},
@@ -810,7 +831,7 @@ const DATA = {
 
   footer:{
     sv:'Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.',
-    en:'Sources: MFN, Cision, and Saniona\u2019s Q2 2026 report, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company\u2019s public communications. Amounts are converted to SEK at USD 1 = SEK 9.65 and EUR 1 = SEK 11; original currency is shown in brackets.'
+    en:'Sources: MFN, Cision, and Saniona\u2019s Q2 2026 report, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company\u2019s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11.'
   },
   disclaimer:{sv:'Ej investeringsrådgivning. Sammanställd som investerarvy.', en:'Not investment advice. Compiled as an investor view.'}
 };
@@ -953,15 +974,17 @@ function render(){
   secDeal += `<div class="reportbox">
       <div class="reportbox-lbl">${esc(tr(U.repHead))}</div>
       <div class="reportbox-cols">
-        <div class="reportbox-col">
-          <div class="rb-k">${esc(tr(U.repLatest))}</div>
+        <div class="rb-card latest">
+          <span class="rb-badge">${esc(tr(U.repLatest))}</span>
           <div class="rb-v">${esc(tr(rp.latest.label))}</div>
           <div class="rb-date">${esc(tr(rp.latest.date))}</div>
           <a class="rb-link" href="${rp.latest.href}" target="_blank" rel="noopener">${esc(tr(U.repRead))} →</a>
         </div>
-        <div class="reportbox-arrow" aria-hidden="true">→</div>
-        <div class="reportbox-col next">
-          <div class="rb-k">${esc(tr(U.repNext))}</div>
+        <div class="rb-connector" aria-hidden="true">
+          <div class="rb-connector-line"></div>
+        </div>
+        <div class="rb-card next">
+          <span class="rb-badge">${esc(tr(U.repNext))}</span>
           <div class="rb-v">${esc(tr(rp.next.label))}</div>
           <div class="rb-date">${esc(tr(rp.next.date))}</div>
           <a class="rb-link muted" href="${rp.next.href}" target="_blank" rel="noopener">${esc(tr(U.repCal))} →</a>
@@ -1157,7 +1180,7 @@ function render(){
         <div class="watch-when-row"><span class="watch-when">${esc(tr(ct.when))}</span>
         <span class="watch-tag ${ct.tag}">${esc(tagLbl)}</span>
         ${ct.crit?`<span class="crit">${esc(tr(U.critLbl))}</span>`:''}
-        ${ct.mile?`<span class="watch-mile">${esc(ct.mile)}</span>`:''}</div>
+        ${ct.mile?`<span class="watch-mile">${esc(tr(ct.mile))}</span>`:''}</div>
         <div class="watch-t">${esc(tr(ct.t))}</div>
         <div class="watch-d">${esc(tr(ct.d))}</div>
         ${srcHtml}
