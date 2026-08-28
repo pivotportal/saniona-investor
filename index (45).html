@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saniona Investor</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YLZTC4LT7P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YLZTC4LT7P');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F8FA;          /* sval off-white sidbakgrund */
+    --card:#FFFFFF;        /* vita kort */
+    --ink:#1A1D21;         /* grafit brödtext */
+    --ink-soft:#4B5158;    /* dämpad text */
+    --ink-faint:#8A9199;   /* captions / mono-etiketter */
+    --line:#E4E8EE;        /* hårlinjer */
+    --line-soft:#EEF1F5;
+    --accent:#3E5C8C;      /* neutral bolagsblå för icke-programsektioner */
+    --shell:#EDF0F4;       /* lätt panel (t.ex. sticky katalysatorer) */
+    --shell-line:#DEE3EA;
+    --pos:#1E9E5A;         /* positiv kursreaktion */
+    --neg:#D0524B;         /* negativ kursreaktion */
+    --radius:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Hanken Grotesk',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .display{font-family:'Space Grotesk',sans-serif}
+
+  .topbar{height:3px;background:var(--accent)}
+
+  /* ---------- STICKY NAV ---------- */
+  .navbar{position:sticky;top:0;z-index:50;background:rgba(247,248,250,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);box-shadow:0 1px 8px rgba(30,40,60,.04);margin-left:-48px;margin-right:-48px}
+  .navbar-scroll{position:relative;max-width:1180px;margin:0 auto}
+  /* Toning i högerkanten som antyder att menyn fortsätter */
+  .navbar-scroll::after{content:"";position:absolute;top:0;right:0;bottom:0;width:40px;background:linear-gradient(to right,rgba(247,248,250,0),rgba(247,248,250,.95));pointer-events:none;z-index:2}
+  .navbar-inner{padding:12px 48px;display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}
+  .navbar-inner::-webkit-scrollbar{display:none}
+  .navlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:9px 17px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);transition:.15s;white-space:nowrap}
+  .navlink .navnum{font-size:9px;opacity:.55;font-weight:700}
+  .navlink:hover{color:var(--accent);border-color:var(--accent)}
+  .navlink.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(62,92,140,.28)}
+  .navlink-all{border-style:solid;border-color:var(--ink-faint)}
+  .navlink-all::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:1px;opacity:.55}
+  .sec-hidden{display:none !important}
+  .navlink.active .navnum{opacity:.7}
+  /* Offset så ankarhopp inte hamnar under den klistrade menyn */
+  .section,[id]{scroll-margin-top:70px}
+  .page{max-width:1180px;margin:0 auto;padding:0 48px 72px}
+
+  /* ---------- HEADER ---------- */
+  .head{padding:44px 0 34px;border-bottom:1px solid var(--line)}
+  .head-row{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .brand{min-width:0;flex:1 1 auto}
+  .brand-mesh{position:relative;width:100%;max-width:560px;height:64px;margin-bottom:2px;margin-left:-14px;user-select:none;cursor:default}
+  .brand-mesh canvas{display:block;width:100%;height:100%}
+  .brand-mesh .brand-fallback{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;letter-spacing:-.02em;color:var(--accent);line-height:1.1;position:absolute;inset:0;display:flex;align-items:center;white-space:nowrap;padding-left:14px}
+  .brand-mesh.gl-on .brand-fallback{opacity:0;pointer-events:none}
+  .brand-sub{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:5px}
+  .ticker{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--line);transition:.15s}
+  .ticker:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .head-meta{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint)}
+  .langtog{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+  .langtog button{border:none;padding:6px 14px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;letter-spacing:.05em;background:transparent;color:var(--ink-faint);transition:.15s}
+  .langtog button.on{background:var(--accent);color:#fff}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:46px;line-height:1.07;letter-spacing:-.02em;margin-top:26px;max-width:920px}
+  .sub{font-size:16.5px;line-height:1.6;color:var(--ink-soft);margin-top:16px;max-width:680px}
+
+  .section{padding:38px 0;border-bottom:1px solid var(--line)}
+  .sec-tint{position:relative}
+  .sec-tint-inner{display:contents}
+  .sec-label{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px}
+  .sec-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:23px;line-height:1.15}
+  .sec-title-sub{font-size:12.5px;color:var(--ink-faint);margin-top:5px}
+  .sec-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:24px}
+
+  /* ---------- KPI ---------- */
+  .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+  .kpi{border-top:2px solid var(--accent);padding-top:15px}
+  .kpi-v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;line-height:1.05;color:var(--accent);letter-spacing:-.02em;overflow-wrap:break-word}
+  .kpi-u{font-weight:600;font-size:13px;line-height:1.3;margin-top:10px}
+  .kpi-note{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);margin-top:7px;line-height:1.5}
+
+  /* ---------- THESIS / ABOUT ---------- */
+  .thesis-body{max-width:760px}
+  .thesis-p{font-size:15px;line-height:1.65;color:var(--ink);margin-bottom:14px}
+  .thesis-p:last-of-type{margin-bottom:0}
+  .thesis-src{display:inline-block;margin-top:14px}
+  .focus-head{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:30px;margin-bottom:16px}
+  .focus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .focus-item{border-top:2px solid var(--accent);padding-top:13px}
+  .focus-t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--ink)}
+  .focus-d{font-size:12.5px;line-height:1.55;color:var(--ink-soft);margin-top:7px}
+
+  /* ---------- BOLAGET & TEAMET ---------- */
+  .co-top{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start;margin-bottom:34px}
+  .co-growth{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .co-growth-label{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
+  .co-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+  .co-bar-row{display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:center}
+  .co-bar-yr{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft)}
+  .co-bar-track{background:var(--bg);border-radius:6px;height:30px;overflow:hidden}
+  .co-bar-fill{height:100%;background:#B9C4D4;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:11px;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;min-width:34px;transition:width .6s ease}
+  .co-bar-fill.now{background:var(--accent)}
+  .co-growth-note{font-size:12px;line-height:1.6;color:var(--ink-soft)}
+  .co-facts{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .co-facts-head{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+  .co-facts-list{margin:0}
+  .co-fact{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+  .co-fact:first-child{border-top:none}
+  .co-fact dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);padding-top:2px}
+  .co-fact dd{margin:0;font-size:13px;line-height:1.5;color:var(--ink)}
+  .co-mgmt-head{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
+  .co-mgmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px}
+  .co-person{border-left:3px solid var(--accent);padding:2px 0 2px 15px}
+  .co-person-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--ink)}
+  .co-person-role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:3px 0 7px}
+  .co-person-bio{font-size:12px;line-height:1.55;color:var(--ink-soft)}
+  .co-bv{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px}
+  .co-bv-text{font-size:13.5px;line-height:1.65;color:var(--ink-soft);margin:0}
+  .co-src{font-size:11px;color:var(--ink-faint);line-height:1.55;border-top:1px solid var(--line);padding-top:14px}
+
+  /* ---------- DEAL ECONOMICS ---------- */
+  .deal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .deal-card{border:1px solid var(--line);border-left:5px solid var(--dot,var(--accent));border-radius:10px;background:var(--card);padding:20px 22px;box-shadow:0 1px 2px rgba(30,40,60,.04)}
+  .deal-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .deal-partner{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px}
+  .deal-prog{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.03em;color:var(--ink-faint);margin-top:3px}
+  .deal-nums{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap}
+  .deal-num{flex:0 1 auto;min-width:0}
+  .deal-num-k{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .deal-num-up{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;line-height:1.1;margin-top:5px;color:var(--ink);word-break:break-word}
+  .deal-num-tot{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;line-height:1.1;margin-top:5px;color:var(--dot,var(--accent));word-break:break-word}
+  /* Textbaserade värden (t.ex. "Royaltybaserat") får mindre grad så de inte spiller */
+  .deal-num-up.txt,.deal-num-tot.txt{font-size:14px;line-height:1.35}
+  .deal-arrow{font-size:15px;color:var(--ink-faint);padding-bottom:3px;flex:0 0 auto}
+  .deal-bar-wrap{margin-top:16px}
+  .deal-bar-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+  .deal-bar-lbl{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+  .deal-bar-pct{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;color:var(--dot,var(--accent))}
+  .deal-bar{position:relative;height:7px;border-radius:4px;background:var(--line-soft);overflow:hidden}
+  .deal-bar-fill{position:absolute;left:0;top:0;height:100%;border-radius:4px;background:var(--dot,var(--accent));min-width:3px}
+  .deal-note{font-size:11.5px;line-height:1.55;color:var(--ink-soft);margin-top:14px}
+  .deal-foot{font-size:11px;color:var(--ink-faint);line-height:1.55;margin-top:18px;max-width:820px}
+  .deal-compact-head{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:30px;margin-bottom:14px}
+  .deal-compact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .deal-compact{border:1px solid var(--line);border-left:4px solid var(--dot,var(--accent));border-radius:9px;background:var(--card);padding:15px 18px;box-shadow:0 1px 2px rgba(30,40,60,.04)}
+  .dc-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+  .dc-partner{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px}
+  .dc-tag{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+  .dc-value{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--dot,var(--accent));margin-bottom:6px}
+  .dc-desc{font-size:11.5px;line-height:1.5;color:var(--ink-soft);margin-bottom:10px}
+
+  .pl-legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+  .pl-leg-item{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-soft)}
+  .pl-leg-fill{width:22px;height:9px;border-radius:3px;background:var(--ink-faint);opacity:.85}
+  .pl-leg-arrow{position:relative;width:22px;height:2px;background:var(--ink-faint);opacity:.55}
+  .pl-leg-arrow::after{content:"";position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid var(--ink-faint);opacity:.9}
+  .pl-phasehdr{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;margin-bottom:10px}
+  .pl-phasecols{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .pl-phasecol{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);text-align:center;padding:4px 2px;border-bottom:1px solid var(--line-soft)}
+  .pl-row{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;padding:7px 0}
+  .pl-name{display:flex;align-items:center;gap:9px;min-width:0}
+  .pl-dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .pl-code{font-weight:600;font-size:13.5px;white-space:nowrap}
+  .pl-ind{font-size:11px;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pl-track{position:relative;height:24px;border-radius:6px;background:var(--line-soft);overflow:hidden}
+  .pl-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr)}
+  .pl-grid span{border-right:1px solid var(--bg)}
+  .pl-grid span:last-child{border-right:none}
+  .pl-fill{position:absolute;top:0;left:0;height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+  .pl-fill-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap}
+  .pl-fill-label-m{display:none;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-top:6px}
+  .pl-target{position:absolute;top:0;height:100%;display:flex;align-items:center}
+  .pl-target-line{position:absolute;left:0;right:6px;top:50%;height:2px;transform:translateY(-50%);opacity:.5;background-image:none}
+  .pl-target-arrow{position:absolute;right:0;top:50%;transform:translateY(-50%);width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:7px solid;opacity:.7}
+  .pl-caption{font-size:11px;color:var(--ink-faint);margin-top:14px;line-height:1.55}
+  .pl-phasescale-m{display:none}
+
+  /* ---------- 2026 TWO COLUMN ---------- */
+  .y-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .y-col{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .y-col-head{padding:18px 22px;border-bottom:1px solid var(--line-soft)}
+  .y-col-tag{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+  .y-col-tag.internal{color:var(--accent)}
+  .y-col-tag.partner{color:#8A6D3B}
+  .y-col-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;margin-top:5px}
+  .y-col-desc{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
+  .y-item{padding:15px 22px;border-top:1px solid var(--line-soft);display:flex;gap:13px}
+  .y-bar{flex:0 0 4px;border-radius:2px}
+  .y-body{flex:1;min-width:0}
+  .y-when{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+  .y-h{font-weight:600;font-size:14px;margin-top:3px;line-height:1.35}
+  .y-d{font-size:12.5px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
+  .y-mile{display:inline-block;margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#8A6D3B;background:#F5EFE3;border-radius:5px;padding:2px 8px}
+  .y-foot{font-size:11px;color:var(--ink-faint);margin-top:16px;line-height:1.55;padding-left:2px}
+
+  /* ---------- TRACKS / PROGRAM CARDS ---------- */
+  /* Full-bleed tonad bakgrund: bandet går kant-till-kant, innehållet håller sidbredden */
+  .track{position:relative;width:100vw;left:50%;transform:translateX(-50%);padding:32px 0;margin-top:0}
+  .track:first-of-type{margin-top:8px}
+  .track-inner{max-width:1180px;margin:0 auto;padding:0 48px}
+  .track-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .track-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px}
+  .track-sub{font-size:12px;color:var(--ink-faint)}
+  .cards{display:flex;flex-direction:column;gap:12px}
+  .card{border:1px solid var(--line);border-left:5px solid var(--dot,var(--accent));border-radius:10px;background:var(--card);overflow:hidden;box-shadow:0 1px 2px rgba(30,40,60,.04)}
+  .card-top{display:flex;align-items:flex-start;gap:18px;padding:17px 22px}
+  .card-main{flex:1;min-width:0}
+  .card-titlerow{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+  .card-code{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+  .badge span{width:5px;height:5px;border-radius:50%}
+  .card-meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin-top:6px;letter-spacing:.01em}
+  .card-summary{font-size:13px;line-height:1.55;color:var(--ink-soft);margin-top:10px;max-width:660px}
+  .card-metric{text-align:right;flex:0 0 auto}
+  .card-metric-v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:23px;line-height:1;color:var(--dot,var(--accent))}
+  .card-metric-l{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-faint);max-width:150px;margin-top:5px;line-height:1.4}
+  .card-detail{padding:0 22px 18px;border-top:1px solid var(--line-soft)}
+  .fieldgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin-top:15px}
+  .field-k{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+  .field-v{font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:4px}
+  .field-v.next{color:var(--accent);font-weight:500}
+  .src{display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none}
+  .src:hover{color:var(--accent)}
+
+  /* ---------- TIMELINE + WATCH ---------- */
+  .tl-item{display:flex;gap:16px}
+  .tl-date{flex:0 0 82px;text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;line-height:1.5;color:var(--ink-faint);padding-top:1px}
+  .tl-mid{flex:0 0 14px;display:flex;flex-direction:column;align-items:center}
+  .tl-dot{width:11px;height:11px;border-radius:50%;margin-top:4px;box-shadow:0 0 0 3px var(--bg)}
+  .tl-dot.now{width:13px;height:13px;margin-top:3px;background:var(--accent);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(62,92,140,.4)}50%{box-shadow:0 0 0 6px rgba(62,92,140,0)}}
+  .tl-line{width:1.5px;flex:1;background:var(--line);margin:4px 0}
+  .tl-body{flex:1;padding-bottom:22px}
+  .tl-titlerow{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .nowtag{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:3px;padding:2px 7px}
+  .tl-title{font-weight:500;font-size:14.5px;line-height:1.45}
+  .tl-react{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;padding:1px 7px;border-radius:4px}
+  .tl-react.pos{color:var(--pos);background:rgba(30,158,90,.1)}
+  .tl-react.neg{color:var(--neg);background:rgba(208,82,75,.1)}
+  .tl-src{display:inline-block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none}
+  .tl-src:hover{color:var(--accent)}
+
+  .watch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .watch-item{display:flex;gap:12px;padding:16px 18px;background:var(--shell);border:1px solid var(--shell-line);border-radius:12px}
+  .watch-bar{flex:0 0 4px;border-radius:2px}
+  .watch-body{flex:1;min-width:0}
+  .watch-when-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .watch-when{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+  .crit{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:3px;padding:1px 6px}
+  .watch-t{font-weight:600;font-size:14px;margin-top:4px;line-height:1.35}
+  .watch-d{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
+
+  /* ---------- FOOTER ---------- */
+  .foot{padding-top:30px;position:relative}
+  .foot-watermark{position:absolute;right:0;bottom:8px;width:64px;height:auto;opacity:.14;pointer-events:none;user-select:none}
+  .foot-note{font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:760px}
+  .disclaimer{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);margin-top:12px;letter-spacing:.02em}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .page{padding:0 24px 56px}
+    .track-inner{padding:0 24px}
+    .navbar{margin-left:-24px;margin-right:-24px}
+    .navbar-inner{padding:10px 24px;flex-wrap:wrap;overflow-x:visible}
+    .navbar-scroll::after{display:none}
+    h1{font-size:33px}
+    .brand-mesh{height:52px;max-width:100%}
+    .brand-mesh .brand-fallback{font-size:34px}
+    .kpi-grid{grid-template-columns:repeat(3,1fr);gap:22px}
+    .y-cols{grid-template-columns:1fr}
+    .deal-grid{grid-template-columns:1fr}
+    .co-top{grid-template-columns:1fr;gap:18px}
+    .co-mgmt-grid{grid-template-columns:1fr 1fr}
+    .co-bv{grid-template-columns:1fr;gap:22px}
+    .watch-grid{grid-template-columns:1fr 1fr}
+    .pl-row,.pl-phasehdr{grid-template-columns:120px 1fr;gap:10px}
+    .card-top{flex-direction:column;gap:12px}
+    .card-metric{text-align:left}
+    .fieldgrid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){
+    .page{padding:0 18px 48px}
+    .track-inner{padding:0 18px}
+    .track{padding:24px 0}
+    .navbar{margin-left:-18px;margin-right:-18px}
+    .navbar-inner{padding:8px 18px;gap:7px;flex-wrap:nowrap;overflow-x:auto}
+    .navlink{font-size:10px;padding:6px 13px;letter-spacing:.03em}
+    h1{font-size:28px;margin-top:20px}
+    .brand-mesh{height:42px;max-width:100%}
+    .brand-mesh .brand-fallback{font-size:27px}
+    .sub{font-size:15px}
+    .section{padding:30px 0}
+    .head-row{flex-direction:column;align-items:flex-start;gap:14px}
+    .kpi-grid{grid-template-columns:1fr 1fr;gap:18px}
+    .kpi-v{font-size:26px;overflow-wrap:break-word}
+    .sec-title{font-size:20px}
+    /* Pipeline: stack namn ovanför stapeln så full bredd finns till faserna */
+    .pl-phasehdr{display:none}
+    .pl-phasescale-m{display:block;margin-bottom:12px}
+    .pl-phasescale-m .pl-phasecol{font-size:7.5px;letter-spacing:.02em;padding:3px 1px}
+    .pl-row{grid-template-columns:1fr;gap:7px;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+    .pl-name{gap:8px}
+    .pl-code{font-size:13px;white-space:normal}
+    .pl-track{height:26px}
+    .pl-fill-label{display:none}
+    .pl-fill-label-m{display:block}
+    /* Tidslinje: smalare datumkolumn */
+    .tl-date{flex:0 0 62px;font-size:10px}
+    .tl-item{gap:11px}
+    .tl-title{font-size:13.5px}
+    .card-code{font-size:16px}
+    .card-metric-v{font-size:20px}
+    .y-item,.y-col-head{padding-left:18px;padding-right:18px}
+    .deal-card{padding:18px 18px}
+    .deal-compact-grid{grid-template-columns:1fr}
+    .co-mgmt-grid{grid-template-columns:1fr}
+    .watch-grid{grid-template-columns:1fr}
+    .thesis-p{font-size:14px}
+    .focus-grid{grid-template-columns:1fr 1fr;gap:14px}
+    .deal-num-up,.deal-num-tot{font-size:20px}
+    .deal-nums{gap:16px}
+    .foot{padding-bottom:52px}
+    .foot-watermark{width:48px;bottom:0;opacity:.12}
+  }
+  @media(max-width:380px){
+    .kpi-grid{grid-template-columns:1fr}
+    .badge{font-size:8px;padding:3px 8px}
+  }
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="page" id="app"></div>
+
+<script>
+/* ============================================================
+   SANIONA INVESTOR — DATALAGER
+   Uppdatera siffror/datum här. All text finns på sv + en.
+   Källor: MFN, Cision, Saniona Q1 2026, bokslut 2025, årsredovisning 2025.
+   ============================================================ */
+
+/* Dämpade temafärger per program (naturligt urval, klinisk palett) */
+const COLORS = {
+  san2668:'#3E7C7B',   // teal – pediatrisk epilepsi
+  san2465:'#4A5B8C',   // indigo – depression
+  san2219:'#6B8E6B',   // salvia – fokala anfall
+  san711 :'#7D5A7B',   // plommon – Acadia / tremor
+  san2355:'#9C7A5B',   // lerbrun – Jazz / epilepsi
+  teso   :'#A06B5C',   // terrakotta – tesofensin / fetma
+  tesomet:'#5B7080',   // skiffer – ätstörningar
+  san903 :'#7A8B5C',   // mossgrön – IBD
+  platform:'#54585C',  // grafit – plattform
+  context:'#8A9199'    // neutral – marknad/kontext
+};
+
+const STATUS = {
+  preclin:{c:'#7A8087', sv:'Preklinisk', en:'Preclinical'},
+  filing :{c:'#C08A2E', sv:'Mot Fas 1', en:'Toward Phase 1'},
+  phase1 :{c:'#2F73C8', sv:'Fas 1', en:'Phase 1'},
+  phase2 :{c:'#2F73C8', sv:'Mot Fas 2', en:'Toward Phase 2'},
+  review :{c:'#1E9E5A', sv:'Regulatorisk granskning', en:'Regulatory review'},
+  ready  :{c:'#8A6D3B', sv:'Redo för partner', en:'Ready to partner'},
+  research:{c:'#6E7681', sv:'Forskningssamarbete', en:'Research collaboration'},
+  realized:{c:'#1E9E5A', sv:'Realiserad (2021)', en:'Realized (2021)'}
+};
+
+/* Fas-position: [startfas, slutfas] på skala 0–5
+   0=Upptäckt 1=Preklinisk 2=Fas1 3=Fas2 4=Fas3 5=Marknad
+   'to' = hur långt stapeln fyllts (nuvarande front) */
+const DATA = {
+  ui:{
+    brandName:{sv:'Saniona Investor', en:'Saniona Investor'},
+    title:{sv:'Från validering till klinik', en:'From validation to the clinic'},
+    sub:{sv:'Sju aktiva partners och samarbeten har validerat Sanionas jonkanalsplattform — som dessutom gett en realiserad exit och flera avknoppningar — och gjort bolaget i praktiken självfinansierat. Kring årsskiftet 2026 går de två ledande egna programmen (SAN2668 och SAN2465) in i klinisk fas, parallellt med milstolpar från partners.', en:'Seven active partners and collaborations have validated Saniona\u2019s ion-channel platform — which has also produced a realized exit and several spin-outs — and made the company effectively self-funded. Around year-end 2026 the two lead in-house programs (SAN2668 and SAN2465) enter the clinic, alongside milestones from partners.'},
+    /* ⚠️ UPPDATERA DETTA DATUM VID VARJE NY VERSION AV SIDAN ⚠️ */
+    updated:{sv:'Uppdaterad 27 augusti 2026', en:'Updated 27 August 2026'},
+    kpiHead:{sv:'I korthet', en:'At a glance'},
+    nav:{
+      sv:[['bolaget','Bolaget & teamet'],['pipeline','Pipeline'],['program','Programmen'],['ekonomi','Ekonomi & avtal'],['ar2026','2026'],['bevaka','Att bevaka'],['proof','Pressmeddelanden']],
+      en:[['bolaget','Company & team'],['pipeline','Pipeline'],['program','Programs'],['ekonomi','Economics & deals'],['ar2026','2026'],['bevaka','What to watch'],['proof','Press releases']]
+    },
+    thesisHead:{sv:'Om Saniona', en:'About Saniona'},
+    thesisSub:{sv:'Bolaget och dess fokusområden', en:'The company and its focus areas'},
+    thesisBody:{
+      sv:['Saniona är ett danskt biotechbolag med huvudkontor utanför Köpenhamn, noterat på Nasdaq Stockholm. Bolaget utvecklar läkemedel som verkar på jonkanaler — proteiner i cellernas yta som styr nervsignaler. Genom att rikta in sig på specifika jonkanaler försöker Saniona behandla sjukdomar där dagens läkemedel inte räcker till.',
+          'Kärnan i bolaget är en egen forskningsplattform som byggts upp under mer än 20 år vid forskningsorganisationen i Köpenhamn. I dess databas, IONBASE, finns struktur- och aktivitetsdata för fler än 120 000 föreningar, varav omkring 20 000 är Sanionas egna, patentskyddade jonkanalsmodulerande molekyler. Det ger en ovanligt bred bas att utveckla nya kandidater ur — särskilt eftersom uppskattningsvis 80 % av alla jonkanaler ännu inte utnyttjats som läkemedelsmål — och det är samma plattform som gett upphov till hela pipelinen samt bolagets avknoppningar och partnerskap.',
+          'Strategin är att delvis finansiera verksamheten genom utlicensiering. Bolaget har uttalat en ambition att partnera ut minst en av sina interna tillgångar på kort till medellång sikt, vilket skulle stärka kassan och bidra till att finansiera de kvarvarande egna programmen. Det är en ambition, inte ett fattat beslut, och tidpunkten är inte fastställd.',
+          'Ägarbasen är bred och kombinerar ledande svenska institutioner och pensionsförvaltare med internationella kapitalförvaltare — däribland amerikanska American Century Investment Management — samt bolagets grundare och styrelse. Totalt har Saniona runt 15 000 aktieägare. Aktuell och fullständig ägarlista finns på Sanionas egen sida.'],
+      en:['Saniona is a Danish biotech company headquartered outside Copenhagen and listed on Nasdaq Stockholm. It develops medicines that act on ion channels — proteins on the cell surface that control nerve signalling. By targeting specific ion channels, Saniona aims to treat diseases where today\u2019s medicines fall short.',
+          'At the core of the company is a proprietary research platform built over more than 20 years at its research organisation in Copenhagen. Its database, IONBASE, holds structure and activity data on more than 120,000 compounds, of which around 20,000 are Saniona\u2019s own patented ion-channel-modulating molecules. That gives an unusually broad base from which to develop new candidates — especially as an estimated 80% of all ion channels remain untapped as drug targets — and it is the same platform that has produced the entire pipeline as well as the company\u2019s spin-outs and partnerships.',
+          'The strategy is to partly fund operations through out-licensing. The company has stated an ambition to partner out at least one of its internal assets in the short to medium term, which would strengthen the cash position and help fund the remaining in-house programs. This is an ambition, not a decision taken, and the timing is not set.',
+          'The ownership base is broad, combining leading Swedish institutions and pension managers with international asset managers — including the US-based American Century Investment Management — alongside the company\u2019s founders and board. Saniona has around 15,000 shareholders in total. The current, full shareholder list is available on Saniona\u2019s own page.']
+    },
+    thesisFocusHead:{sv:'Fokusområden', en:'Focus areas'},
+    ownerLink:{sv:'Se ägarstruktur på saniona.com', en:'See ownership structure on saniona.com'},
+    navShowAll:{sv:'Översikt', en:'Overview'},
+    thesisFocus:{
+      sv:[
+        {t:'Epilepsi', d:'Bolagets största område, med flera program mot svårbehandlade och pediatriska former av epilepsi.'},
+        {t:'Depression & CNS', d:'Program mot svår depression och andra sjukdomar i det centrala nervsystemet.'},
+        {t:'Sällsynta sjukdomar', d:'Kandidater mot sällsynta ätstörningar och metabola tillstånd, ofta med särläkemedelspotential.'},
+        {t:'Utanför CNS', d:'Enstaka program mot bl.a. inflammation, som breddar plattformen bortom nervsystemet.'}
+      ],
+      en:[
+        {t:'Epilepsy', d:'The company\u2019s largest area, with several programs targeting hard-to-treat and paediatric forms of epilepsy.'},
+        {t:'Depression & CNS', d:'Programs targeting major depression and other central nervous system diseases.'},
+        {t:'Rare diseases', d:'Candidates for rare eating disorders and metabolic conditions, often with orphan-drug potential.'},
+        {t:'Beyond CNS', d:'Selected programs in areas such as inflammation, broadening the platform beyond the nervous system.'}
+      ]
+    },
+    coHead:{sv:'Bolaget & teamet', en:'Company & team'},
+    coSub:{sv:'Storlek, tillväxt, ledning och styrelse', en:'Size, growth, management and board'},
+    coGrowthLabel:{sv:'Antal anställda', en:'Employees'},
+    coGrowthNote:{sv:'Antalet anställda växte från 23 till 43 mellan Q1 2025 och Q1 2026 — nästan en fördubbling. Bolaget har byggt ut organisationen kraftigt inför att flera egna program går in i klinisk fas. Källa: Q1 2026-rapporten (per 31 mars 2026).', en:'Headcount grew from 23 to 43 between Q1 2025 and Q1 2026 — nearly doubling. The company has expanded its organisation substantially ahead of several in-house programs entering the clinic. Source: Q1 2026 report (as of 31 March 2026).'},
+    coFactsHead:{sv:'Snabbfakta', en:'Key facts'},
+    coFacts:{
+      sv:[['Grundat','2011'],['Anställda','~43 (varav 15 disputerade, 34 i FoU)'],['Huvudkontor','Glostrup / Köpenhamn, Danmark'],['Notering','Nasdaq Stockholm (SANION)'],['Affärsmodell','Utveckling + utlicensiering till större läkemedelsbolag']],
+      en:[['Founded','2011'],['Employees','~43 (15 with PhDs, 34 in R&D)'],['Headquarters','Glostrup / Copenhagen, Denmark'],['Listing','Nasdaq Stockholm (SANION)'],['Business model','Development + out-licensing to larger pharma']]
+    },
+    coMgmtHead:{sv:'Ledning', en:'Management'},
+    coMgmt:{
+      sv:[
+        {n:'Thomas Feldthus', r:'Medgrundare & VD', b:'VD sedan 2020, tidigare vice VD/CFO. Medgrundare av bl.a. Initiator Pharma och Scandion Oncology.'},
+        {n:'Johnny Stilou', r:'CFO', b:'Finanschef sedan 2025. Tidigare CFO på Nuevolution (förvärvat av Amgen) och Veloxis.'},
+        {n:'Karin Sandager Nielsen', r:'CSO', b:'Forskningschef, med i bolaget sedan grundandet 2011.'},
+        {n:'Pierandrea Muglia', r:'CMO', b:'Chief Medical Officer sedan 2025 (tidigare styrelseledamot). Lång erfarenhet av CNS-läkemedelsutveckling.'},
+        {n:'Janus Schreiber Larsen', r:'COO', b:'Chief Operating / Development Officer, leder den operativa utvecklingen.'},
+        {n:'Palle Christophersen', r:'SVP Research', b:'Forskningsveteran inom jonkanaler, central i plattformens uppbyggnad.'}
+      ],
+      en:[
+        {n:'Thomas Feldthus', r:'Co-founder & CEO', b:'CEO since 2020, previously deputy CEO/CFO. Co-founder of Initiator Pharma and Scandion Oncology, among others.'},
+        {n:'Johnny Stilou', r:'CFO', b:'CFO since 2025. Previously CFO at Nuevolution (acquired by Amgen) and Veloxis.'},
+        {n:'Karin Sandager Nielsen', r:'CSO', b:'Chief Scientific Officer, with the company since its founding in 2011.'},
+        {n:'Pierandrea Muglia', r:'CMO', b:'Chief Medical Officer since 2025 (previously a board member). Extensive CNS drug-development experience.'},
+        {n:'Janus Schreiber Larsen', r:'COO', b:'Chief Operating / Development Officer, leading operational development.'},
+        {n:'Palle Christophersen', r:'SVP Research', b:'Ion-channel research veteran, central to building the platform.'}
+      ]
+    },
+    coBoardHead:{sv:'Styrelse', en:'Board of directors'},
+    coBoard:{sv:'Styrelsen har fem ledamöter. Ordförande är sedan 2025 John Haurum, med bred operativ och affärsmässig biotech-erfarenhet (tidigare VD för F-star och medgrundare av Symphogen). Grundaren Jørgen Drejer är vice ordförande. Övriga ledamöter är Anna Ljung (VD för Moberg Pharma) och Carl Johan Sundberg (professor vid Karolinska Institutet).', en:'The board has five members. Since 2025 the chairman is John Haurum, who brings broad operational and commercial biotech experience (former CEO of F-star and co-founder of Symphogen). Founder Jørgen Drejer serves as deputy chairman. The other members are Anna Ljung (CEO of Moberg Pharma) and Carl Johan Sundberg (professor at Karolinska Institutet).'},
+    coVisionHead:{sv:'Vision', en:'Vision'},
+    coVision:{sv:'”Att förbättra livet för epilepsipatienter runt om i världen genom vetenskaplig innovation.” Missionen är att nyttja bolagets expertis inom jonkanaler för att upptäcka, utveckla och leverera innovativa behandlingar.', en:'\u201cTo improve the lives of epilepsy patients around the world through scientific innovation.\u201d Its mission is to leverage the company\u2019s ion-channel expertise to discover, develop and deliver innovative treatments.'},
+    coSrc:{sv:'Källa: Sanionas Q1 2026-rapport, bolagets lednings- och styrelsesidor samt årsstämman 2025.', en:'Source: Saniona\u2019s Q1 2026 report, the company\u2019s management and board pages, and the 2025 AGM.'},
+    dealHead:{sv:'Avtalsekonomi', en:'Deal economics'},
+    dealSub:{sv:'Vad som betalats i upfront kontra total potential per avtal', en:'Upfront paid versus total potential per deal'},
+    dealCompactHead:{sv:'Realiserade & övriga samarbeten', en:'Realized & other collaborations'},
+    dealUpLbl:{sv:'Upfront erhållet', en:'Upfront received'},
+    dealTotLbl:{sv:'Total potential', en:'Total potential'},
+    dealBarLbl:{sv:'Andel utbetalt av potentialen', en:'Share paid of the potential'},
+    dealFoot:{sv:'Total potential avser summan av upfront, utvecklings-, regulatoriska och kommersiella milstolpar per avtal och förutsätter att alla milstolpar nås — royalty tillkommer. En liten andel har hittills betalats ut; merparten är villkorad uppsida. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; officiellt avtalsbelopp i originalvaluta anges inom parentes.', en:'Total potential is the sum of upfront plus development, regulatory and commercial milestones per deal and assumes all milestones are met — royalties come on top. Only a small share has been paid so far; the majority is contingent upside. Amounts are converted to SEK at USD 1 = SEK 9.65 and EUR 1 = SEK 11; the official deal amount in original currency is shown in brackets.'},
+    plHead:{sv:'Pipeline', en:'Pipeline'},
+    plSub:{sv:'Åtta program över fyra spår — från preklinik till marknad', en:'Eight programs across four tracks — from preclinical to market'},
+    yHead:{sv:'2026 i fokus', en:'2026 in focus'},
+    ySub:{sv:'Vad som är på gång under året — internt och partnerdrivet', en:'What is underway this year — internal and partner-driven'},
+    trackHead:{sv:'Programmen', en:'The programs'},
+    trackSub:{sv:'Fyra spår med olika risk- och finansieringsprofil', en:'Four tracks with different risk and funding profiles'},
+    tlHead:{sv:'Pressmeddelanden', en:'Press releases'},
+    tlSub:{sv:'Bolagets pressmeddelanden · senaste först', en:'The company\u2019s press releases · latest first'},
+    watchHead:{sv:'Att bevaka', en:'What to watch'},
+    watchSub:{sv:'Kommande katalysatorer', en:'Upcoming catalysts'},
+    nowLbl:{sv:'Nu', en:'Now'},
+    critLbl:{sv:'Kritisk', en:'Critical'},
+    source:{sv:'Källa', en:'Source'},
+    reactLbl:{sv:'Kursreaktion på publiceringsdagen', en:'Share reaction on publication day'},
+    fLatest:{sv:'Senaste', en:'Latest'},
+    fNext:{sv:'Nästa milstolpe', en:'Next milestone'},
+    fMech:{sv:'Mekanism', en:'Mechanism'},
+    fPartner:{sv:'Partner', en:'Partner'},
+    fPatent:{sv:'Patent', en:'Patent'},
+    fInd:{sv:'Indikation', en:'Indication'},
+    phases:{
+      sv:['Upptäckt','Preklinisk','Fas 1','Fas 2','Fas 3','Marknad'],
+      en:['Discovery','Preclinical','Phase 1','Phase 2','Phase 3','Market']
+    },
+    plCaption:{sv:'Den fyllda stapeln visar var varje program befinner sig idag. Den tunnare pilen visar målindikationen — dit programmet är på väg. Interna program är prekliniska på väg in i klinik 2026–2027; utlicensierade program drivs vidare och finansieras av partnern.', en:'The filled bar shows where each program stands today. The thinner arrow shows the target — where the program is heading. Internal programs are preclinical, entering the clinic in 2026–2027; out-licensed programs are advanced and funded by the partner.'},
+    plLegNow:{sv:'Nuvarande status', en:'Current status'},
+    plLegTarget:{sv:'Mål / riktning', en:'Target / direction'},
+    yInternalTag:{sv:'Internt · styrs av Saniona', en:'Internal · Saniona-controlled'},
+    yPartnerTag:{sv:'Partnerdrivet · milstolpar', en:'Partner-driven · milestones'},
+    yInternalTitle:{sv:'Två ledande program mot klinik', en:'Two lead programs to the clinic'},
+    yPartnerTitle:{sv:'Milstolpar från partners', en:'Milestones from partners'},
+    yInternalDesc:{sv:'Saniona för sina två ledande helägda kandidater in i de första studierna på människa kring årsskiftet 2026–Q1 2027.', en:'Saniona takes its two lead wholly-owned candidates into first-in-human studies around year-end 2026–Q1 2027.'},
+    yPartnerDesc:{sv:'När partners startar sina studier faller milstolpsbetalningar ut till Saniona.', en:'When partners start their studies, milestone payments fall due to Saniona.'},
+    yPartnerFoot:{sv:'Tidpunkten för partnernas studiestarter styrs av Jazz och Acadia, inte av Saniona. Milstolparna är sannolika men inte tidssatta av bolaget självt.', en:'The timing of partner study starts is controlled by Jazz and Acadia, not by Saniona. The milestones are likely but not scheduled by the company itself.'},
+    trackNames:{
+      internal:{sv:'Interna helägda program', en:'Internal wholly-owned programs'},
+      internalSub:{sv:'Full uppsida — Saniona bär kostnad och risk', en:'Full upside — Saniona carries cost and risk'},
+      licensed:{sv:'Utlicensierade program', en:'Out-licensed programs'},
+      licensedSub:{sv:'Partnerfinansierade — milstolpar och royalty till Saniona', en:'Partner-funded — milestones and royalties to Saniona'},
+      partnering:{sv:'Tillgängliga för partnering', en:'Available for partnering'},
+      partneringSub:{sv:'Kliniska tillgångar redo för nästa steg', en:'Clinical assets ready for the next step'},
+      platform:{sv:'Plattform, partnerskap & joint ventures', en:'Platform, partnerships & joint ventures'},
+      platformSub:{sv:'Validerad genom Boehringer, AstronauTx, JV:t Cephagenix, exiten Cadent och avknoppningen Initiator Pharma', en:'Validated through Boehringer, AstronauTx, the Cephagenix JV, the Cadent exit and the Initiator Pharma spin-out'}
+    }
+  },
+
+  kpis:[
+    {v:{sv:'486 MSEK', en:'SEK 486M'}, u:{sv:'likvida medel', en:'cash & equivalents'}, note:{sv:'Per 30 juni 2026 (Q2-rapport). Prioriteringen av SAN2668 och SAN2465 förlänger kassan in i 2029 och möjliggör PoC-studier för SAN2668 under 2028.', en:'As of 30 Jun 2026 (Q2 report). Prioritising SAN2668 and SAN2465 extends the cash runway into 2029 and enables PoC studies for SAN2668 in 2028.'}},
+    {v:{sv:'7', en:'7'}, u:{sv:'aktiva partners & samarbeten', en:'active partners & collaborations'}, note:{sv:'Jazz · Acadia · Boehringer Ingelheim · Medix · AstronauTx · Cephagenix · Initiator Pharma', en:'Jazz · Acadia · Boehringer Ingelheim · Medix · AstronauTx · Cephagenix · Initiator Pharma'}},
+    {v:{sv:'~18 mdr SEK', en:'~SEK 18bn'}, u:{sv:'total milstolpspotential', en:'total milestone potential'}, note:{sv:'Beräknad summa av de fyra avtalen med takbelopp (~1,9 mdr USD), plus royalty. Omräknat till SEK. Cadent (realiserat) och Initiator Pharma (andel utan tak) ingår ej. Se Ekonomi & avtal.', en:'Calculated sum of the four capped deals (~USD 1.9bn), plus royalties. Converted to SEK. Cadent (realized) and Initiator Pharma (uncapped share) are not included. See Economics & deals.'}},
+    {v:'8', u:{sv:'läkemedelsprogram i pipeline', en:'drug programs in the pipeline'}, note:{sv:'3 interna (2 ledande mot klinik, SAN2219 pausat) · 3 utlicensierade · 2 för partnering', en:'3 internal (2 leading toward clinic, SAN2219 paused) · 3 licensed · 2 for partnering'}},
+    {v:'2', u:{sv:'fas 1-starter kring årsskiftet 2026–Q1 2027', en:'Phase 1 starts around year-end 2026–Q1 2027'}, note:{sv:'Ledande interna program: SAN2465 (dosering kring årsskiftet 2026) & SAN2668 (dosering Q1 2027). SAN2219 pausat. Prioriteringen förlänger kassan in i 2029.', en:'Lead internal programs: SAN2465 (dosing around year-end 2026) & SAN2668 (dosing Q1 2027). SAN2219 paused. The prioritisation extends the cash runway into 2029.'}}
+  ],
+
+  /* Avtalsekonomi — upfront (erhållet) vs total potential per avtal.
+     up/tot i MUSD för stapelberäkning; disp = visad text (kan ha annan valuta). */
+  deals:[
+    {key:'san2355', partner:'Jazz Pharmaceuticals', prog:'SAN2355',
+     upDisp:{sv:'410 MSEK', en:'SEK 410M'}, totDisp:{sv:'9,58 mdr SEK', en:'SEK 9.58bn'},
+     up:42.5, tot:992.5, src:'https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355',
+     note:{sv:'Upfront 410 MSEK (42,5 MUSD) erhållet aug 2025. Härnäst: +72 MSEK (7,5 MUSD) när Jazz startar fas 1. Därtill upp till 7,72 mdr SEK (800 MUSD) i kommersiella milstolpar samt royalty. Totalpotential 9,58 mdr SEK (992,5 MUSD).', en:'Upfront SEK 410M (USD 42.5M) received Aug 2025. Next: +SEK 72M (USD 7.5M) when Jazz starts Phase 1. Plus up to SEK 7.72bn (USD 800M) in commercial milestones and royalties. Total potential SEK 9.58bn (USD 992.5M).'}},
+    {key:'san711', partner:'Acadia Pharmaceuticals', prog:'SAN711 / ACP-711',
+     upDisp:{sv:'270 MSEK', en:'SEK 270M'}, totDisp:{sv:'5,89 mdr SEK', en:'SEK 5.89bn'},
+     up:28, tot:610, src:'https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf',
+     note:{sv:'Upfront 270 MSEK (28 MUSD) erhållet nov 2024. Härnäst: +96 MSEK (10 MUSD) när Acadia startar fas 2 (planerat 2026). Därtill royalty. Totalpotential 5,89 mdr SEK (610 MUSD). Källa: årsredovisning 2024.', en:'Upfront SEK 270M (USD 28M) received Nov 2024. Next: +SEK 96M (USD 10M) when Acadia starts Phase 2 (planned 2026). Plus royalties. Total potential SEK 5.89bn (USD 610M). Source: Annual Report 2024.'}},
+    {key:'platform', partner:'Boehringer Ingelheim', prog:{sv:'Schizofreni', en:'Schizophrenia'},
+     upDisp:{sv:'Ej offentligt', en:'Undisclosed'}, totDisp:{sv:'842 MSEK', en:'SEK 842M'},
+     up:0, tot:82.6, src:'https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar',
+     note:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty på nettoförsäljning. Saniona får även löpande forskningsfinansiering under forskningsperioden (beloppet varierar per år). Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025).', en:'Milestone potential up to SEK 842M (\u20ac76.5M) plus royalties on net sales. Saniona also receives ongoing research funding during the research period (the amount varies year to year). Collaboration since 2020; the research term was extended by one year (March 2025).'}},
+    {key:'platform', partner:'AstronauTx', prog:{sv:'Neurologisk sjukdom (ATX0926)', en:'Neurological disease (ATX0926)'},
+     upDisp:{sv:'48 MSEK i aktier', en:'SEK 48M in shares'}, totDisp:{sv:'1,66 mdr SEK', en:'SEK 1.66bn'},
+     up:5, tot:177, src:'https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration',
+     note:{sv:'Optionen utnyttjad aug 2026: AstronauTx förvärvade exklusiva globala rättigheter och Saniona fick aktier i AstronauTx värda 48 MSEK (5 MUSD). Därtill upp till 1,66 mdr SEK (172 MUSD) i milstolpar: 936 MSEK (97 MUSD) utv-/reg + 724 MSEK (75 MUSD) kommersiella, plus tiered royalty. Kandidaten ATX0926 går in i IND-enabling-studier.', en:'Option exercised Aug 2026: AstronauTx acquired exclusive worldwide rights and Saniona received AstronauTx shares worth SEK 48M (USD 5M). Plus up to SEK 1.66bn (USD 172M) in milestones: SEK 936M (USD 97M) dev/reg + SEK 724M (USD 75M) commercial, plus tiered royalties. Candidate ATX0926 enters IND-enabling studies.'}},
+    {key:'teso', partner:'Medix', prog:{sv:'Tesofensin · fetma', en:'Tesofensine · obesity'},
+     upDisp:{sv:'12 MSEK', en:'SEK 12M'}, totDisp:{sv:'+ royalties', en:'+ royalties'},
+     up:1.25, tot:3.25, src:'https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621',
+     note:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet vid avtalet 2016. Medix bekostar kliniska studier och regulatoriska ansökningar. Vid marknadsgodkännande utlöses ytterligare 19 MSEK (2,0 MUSD), plus låga tvåsiffriga royalties på försäljning — den stora, återkommande uppsidan. Regulatorisk granskning pågår i Mexiko.', en:'Upfront SEK 12M (USD 1.25M) received at signing in 2016. Medix funds clinical studies and regulatory filings. Upon market approval, a further SEK 19M (USD 2.0M) is triggered, plus low double-digit royalties on sales — the main, recurring upside. Regulatory review underway in Mexico.'}}
+  ],
+
+  /* Kompakta kort — realiserade eller övriga samarbeten (mindre utrymme) */
+  dealsCompact:[
+    {key:'platform', partner:{sv:'Cadent / Novartis', en:'Cadent / Novartis'}, tag:{sv:'Realiserad exit · 2021', en:'Realized exit · 2021'},
+     value:{sv:'~31,5 MSEK erhållet', en:'~SEK 31.5M received'},
+     desc:{sv:'Saniona ägde ~3% av avknoppningen Cadent; löstes ut kontant när Novartis förvärvade bolaget 2021.', en:'Saniona owned ~3% of the Cadent spin-out; paid out in cash when Novartis acquired the company in 2021.'},
+     src:'https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html'},
+    {key:'platform', partner:{sv:'Initiator Pharma (IP2018)', en:'Initiator Pharma (IP2018)'}, tag:{sv:'Avknoppning · aktiv (fas IIa)', en:'Spin-out · active (Phase IIa)'},
+     value:{sv:'≤ 20% + ensiffrig royalty', en:'\u2264 20% + single-digit royalty'},
+     desc:{sv:'Upp till 20% av framtida AN788-betalningar till Initiator Pharma plus ensiffriga royalties. Både bolaget och tillgången kommer från Sanionas forskning.', en:'Up to 20% of future AN788 payments to Initiator Pharma plus single-digit royalties. Both the company and the asset come from Saniona\u2019s research.'},
+     src:'https://www.globenewswire.com/news-release/2018/11/08/1647641/0/en/Saniona-signs-option-agreement-with-Initiator-Pharma.html'}
+  ],
+
+  /* Pipeline-staplar. to = faktisk status, target = mål/riktning (dit pilen pekar).
+     Skala 1=Preklinisk 2=Fas1 3=Fas2 4=Fas3 5=Marknad. Baserat på Sanionas officiella pipeline. */
+  pipeline:[
+    {key:'san2668', code:'SAN2668', ind:{sv:'Pediatrisk epilepsi', en:'Paediatric epilepsy'}, to:1.5, target:3.3, front:{sv:'Mot Fas 1', en:'Toward Phase 1'}},
+    {key:'san2465', code:'SAN2465', ind:{sv:'Svår depression', en:'Major depression'}, to:1.5, target:3.3, front:{sv:'Mot Fas 1', en:'Toward Phase 1'}},
+    {key:'san2219', code:'SAN2219', ind:{sv:'Fokala anfall', en:'Focal seizures'}, to:1.5, front:{sv:'Pausat', en:'Paused'}},
+    {key:'san711', code:'SAN711 / ACP-711', ind:{sv:'Essentiell tremor · Acadia', en:'Essential tremor · Acadia'}, to:2.0, front:{sv:'Fas 2 väntas 2027', en:'Phase 2 expected 2027'}},
+    {key:'san2355', code:'SAN2355', ind:{sv:'Epilepsi · Jazz', en:'Epilepsy · Jazz'}, to:1.6, target:2.0, front:{sv:'Fas 1 förbereds', en:'Phase 1 in prep'}},
+    {key:'teso', code:'Tesofensin', ind:{sv:'Fetma · Medix', en:'Obesity · Medix'}, to:4.0, front:{sv:'Granskning Mexiko', en:'Review Mexico'}},
+    {key:'tesomet', code:'Tesomet', ind:{sv:'Sällsynta ätstörningar', en:'Rare eating disorders'}, to:2.7, front:{sv:'Redo för partnering', en:'Ready for partnering'}},
+    {key:'san903', code:'SAN903', ind:{sv:'IBD · fibrotisk/inflammatorisk', en:'IBD · fibrotic/inflammatory'}, to:1.5, front:{sv:'Redo för partnering', en:'Ready for partnering'}}
+  ],
+
+  /* 2026 tvåkolumn */
+  year2026:{
+    internal:[
+      {key:'san2465', when:{sv:'Kring årsskiftet 2026', en:'Around year-end 2026'}, h:{sv:'SAN2465 — first-in-human-dosering', en:'SAN2465 — first-in-human dosing'},
+       d:{sv:'Doserar först av de interna programmen. In-life-fasen för IND-förberedande toxikologi klar. Först-i-klassen NAM av GABAA α5 för svår depression.', en:'First of the internal programs to dose. In-life phase completed for IND-enabling tox studies. First-in-class GABAA α5 NAM for major depression.'}},
+      {key:'san2668', when:{sv:'Årsskiftet 2026 → Q1 2027', en:'Year-end 2026 → Q1 2027'}, h:{sv:'SAN2668 — CTA-ansökan och dosering', en:'SAN2668 — CTA submission and dosing'},
+       d:{sv:'CTA-ansökan väntas kring årsskiftet 2026, med first-in-human-dosering i Q1 2027. Huvudkandidaten för svåra pediatriska epilepsier (DEE).', en:'CTA submission expected around year-end 2026, with first-in-human dosing in Q1 2027. Lead candidate for severe paediatric epilepsies (DEE).'}},
+      {key:'platform', when:{sv:'2028', en:'2028'}, h:{sv:'SAN2668 — PoC-studier möjliggjorda', en:'SAN2668 — PoC studies enabled'},
+       d:{sv:'Prioriteringen och kassan in i 2029 möjliggör proof-of-concept-studier för SAN2668 under 2028.', en:'The prioritisation and runway into 2029 enable proof-of-concept studies for SAN2668 during 2028.'}}
+    ],
+    partner:[
+      {key:'san2355', when:{sv:'När Jazz startar fas 1', en:'When Jazz starts Phase 1'}, h:{sv:'SAN2355 — fas 1-milstolpe', en:'SAN2355 — Phase 1 milestone'},
+       mile:'+72 MSEK', d:{sv:'Jazz förbereder den första fas 1-studien med SAN2355. Studiestart utlöser en milstolpsbetalning om 72 MSEK (7,5 MUSD) till Saniona.', en:'Jazz is preparing the first Phase 1 study of SAN2355. Study start triggers a SEK 72M (USD 7.5M) milestone payment to Saniona.'}},
+      {key:'san711', when:{sv:'2027', en:'2027'}, h:{sv:'ACP-711 — fas 2-milstolpe', en:'ACP-711 — Phase 2 milestone'},
+       mile:'+96 MSEK', d:{sv:'Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027. Study start triggers a SEK 96M (USD 10M) milestone.'}},
+      {key:'teso', when:{sv:'Pågår', en:'Ongoing'}, h:{sv:'Tesofensin — beslut i Mexiko', en:'Tesofensine — decision in Mexico'},
+       d:{sv:'Medix ansökan om marknadsgodkännande för fetma i Mexiko är under granskning. Ett godkännande ger royaltyintäkter till Saniona.', en:'Medix\u2019s market-authorization application for obesity in Mexico is under review. Approval would generate royalty income to Saniona.'}}
+    ]
+  },
+
+  /* Programkort per spår */
+  tracks:{
+    internal:[
+      {key:'san2668', code:'SAN2668', status:'filing', metricV:{sv:'Q1 2027', en:'Q1 2027'}, metricL:{sv:'first-in-human-dosering', en:'first-in-human dosing'},
+       ind:{sv:'Svåra pediatriska epilepsier (DEE)', en:'Severe paediatric epilepsies (DEE)'},
+       mech:{sv:'Selektiv GABAA-modulator — anfallskontroll utan bensodiazepiners sedering', en:'Selective GABAA modulator — seizure control without benzodiazepine sedation'},
+       partner:{sv:'Helägt av Saniona', en:'Wholly owned by Saniona'},
+       patent:{sv:'Substanspatent in på 2040-talet', en:'Compound patent into the 2040s'},
+       summary:{sv:'Huvudkandidaten och ett av de två program som ligger närmast klinik. Först-i-klassen för barn med svårbehandlad, ofta läkemedelsresistent epilepsi.', en:'The lead candidate and one of the two programs closest to the clinic. First-in-class for children with hard-to-treat, often drug-resistant epilepsy.'},
+       latest:{sv:'GLP-toxikologi klar; CTA-ansökan väntas kring årsskiftet 2026. Egen investerarwebbinarie hölls 17 juni 2026.', en:'GLP toxicology complete; CTA submission expected around year-end 2026. A dedicated investor webinar was held on 17 June 2026.'},
+       next:{sv:'CTA-ansökan kring årsskiftet 2026 → first-in-human-dosering Q1 2027', en:'CTA submission around year-end 2026 → first-in-human dosing Q1 2027'},
+       href:'https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi'},
+      {key:'san2465', code:'SAN2465', status:'filing', metricV:{sv:'Kring årsskiftet 2026', en:'Around year-end 2026'}, metricL:{sv:'first-in-human-dosering', en:'first-in-human dosing'},
+       ind:{sv:'Svår depression (MDD)', en:'Major depressive disorder (MDD)'},
+       mech:{sv:'Negativ allosterisk modulator (NAM) av GABAA α5 — ny mekanism, skild från antidepressiva, NMDA-antagonister och psykedelika', en:'Negative allosteric modulator (NAM) of GABAA α5 — a novel mechanism, distinct from antidepressants, NMDA antagonists and psychedelics'},
+       partner:{sv:'Helägt av Saniona', en:'Wholly owned by Saniona'},
+       patent:{sv:'Substanspatent in på 2040-talet', en:'Compound patent into the 2040s'},
+       summary:{sv:'Potentiell först-i-klassen-behandling med snabb och långvarig antidepressiv effekt i prekliniska modeller. Doserar först av de interna programmen.', en:'Potential first-in-class treatment with rapid, durable antidepressant effect in preclinical models. First of the internal programs to dose.'},
+       latest:{sv:'In-life-fasen för IND-förberedande toxikologi klar; GMP-batch förbereds för första studierna på människa i USA.', en:'In-life phase completed for IND-enabling tox studies; GMP batch in preparation for first-in-human studies in the US.'},
+       next:{sv:'First-in-human-dosering kring årsskiftet 2026', en:'First-in-human dosing around year-end 2026'},
+       href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+      {key:'san2219', code:'SAN2219', status:'preclin', metricV:{sv:'Pausat', en:'Paused'}, metricL:{sv:'behålls för framtida utveckling/partnerskap', en:'retained for future development/partnering'},
+       ind:{sv:'Refraktära fokala anfall', en:'Refractory focal seizures'},
+       mech:{sv:'Subtypsselektiv positiv allosterisk modulator av GABAA — bredspektrum mot behandlingsresistenta anfall', en:'Subtype-selective positive allosteric modulator of GABAA — broad-spectrum for treatment-resistant seizures'},
+       partner:{sv:'Helägt av Saniona', en:'Wholly owned by Saniona'},
+       patent:{sv:'Substanspatent in på 2040-talet', en:'Compound patent into the 2040s'},
+       summary:{sv:'Utvecklingen pausad (Q2 2026) för att koncentrera resurserna till de två ledande programmen. Har en attraktiv preklinisk profil och behålls för potentiell framtida utveckling eller partnerskap.', en:'Development paused (Q2 2026) to concentrate resources on the two lead programs. Has an attractive preclinical profile and is retained for potential future development or partnering.'},
+       latest:{sv:'Utvecklingen pausad enligt Q2 2026-rapporten. Programmet parkeras med bevarad preklinisk profil.', en:'Development paused per the Q2 2026 report. The program is parked with its preclinical profile preserved.'},
+       next:{sv:'Framtida utveckling eller partnerskap', en:'Future development or partnering'},
+       href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'}
+    ],
+    licensed:[
+      {key:'san711', code:'SAN711 / ACP-711', status:'phase2', metricV:{sv:'+96 MSEK', en:'+SEK 96M'}, metricL:{sv:'milstolpe vid fas 2-start (10 MUSD)', en:'milestone at Phase 2 start (USD 10M)'},
+       ind:{sv:'Essentiell tremor', en:'Essential tremor'},
+       mech:{sv:'Positiv allosterisk modulator av GABAA α3', en:'Positive allosteric modulator of GABAA α3'},
+       partner:{sv:'Acadia Pharmaceuticals — globala rättigheter', en:'Acadia Pharmaceuticals — global rights'},
+       patent:{sv:'Del av Acadia-avtal (2024) — upp till 5,89 mdr SEK (610 MUSD) i totalt värde', en:'Part of the Acadia deal (2024) — up to SEK 5.89bn (USD 610M) total value'},
+       summary:{sv:'Utlicensierat till Acadia som finansierar all vidareutveckling. Fas 2-start i essentiell tremor väntas 2027 och utlöser milstolpe.', en:'Out-licensed to Acadia, which funds all further development. A Phase 2 start in essential tremor is expected in 2027 and triggers a milestone.'},
+       latest:{sv:'Acadia väntas inleda fas 2-studie i essentiell tremor 2027 (per Q2 2026).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027 (as of Q2 2026).'},
+       next:{sv:'Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona', en:'Phase 2 start 2027 → +SEK 96M (USD 10M) to Saniona'},
+       href:'https://mfn.se/a/saniona/saniona-highlights-acadia-pharmaceuticals-upcoming-randd-day'},
+      {key:'san2355', code:'SAN2355', status:'phase1', metricV:{sv:'+410 MSEK', en:'+SEK 410M'}, metricL:{sv:'upfront erhållet (42,5 MUSD) · upp till 9,58 mdr SEK totalt', en:'upfront received (USD 42.5M) · up to SEK 9.58bn total'},
+       ind:{sv:'Epilepsi och andra neurologiska tillstånd', en:'Epilepsy and other neurological conditions'},
+       mech:{sv:'Subtypsselektiv Kv7.2/Kv7.3-aktivator — validerad mekanism för att hämma anfall', en:'Subtype-selective Kv7.2/Kv7.3 activator — validated seizure-inhibiting mechanism'},
+       partner:{sv:'Jazz Pharmaceuticals — exklusiva globala rättigheter', en:'Jazz Pharmaceuticals — exclusive global rights'},
+       patent:{sv:'Jazz-avtal (aug 2025): 410 MSEK (42,5 MUSD) upfront, upp till 1,86 mdr SEK (192,5 MUSD) i utv-/reg-milstolpar, upp till 7,72 mdr SEK (800 MUSD) kommersiella, samt royalty', en:'Jazz deal (Aug 2025): SEK 410M (USD 42.5M) upfront, up to SEK 1.86bn (USD 192.5M) dev/reg milestones, up to SEK 7.72bn (USD 800M) commercial, plus royalties'},
+       summary:{sv:'Bolagets största enskilda värdehändelse. Jazz leder och finansierar all utveckling; aktien steg 46 % på beskedet.', en:'The company\u2019s single largest value event. Jazz leads and funds all development; the share rose 46% on the news.'},
+       latest:{sv:'Jazz förbereder den första fas 1-studien.', en:'Jazz is preparing the first Phase 1 study.'},
+       next:{sv:'Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona', en:'Phase 1 start → +SEK 72M (USD 7.5M) to Saniona'},
+       href:'https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355'},
+      {key:'teso', code:'Tesofensin', status:'review', metricV:{sv:'Granskning', en:'Under review'}, metricL:{sv:'marknadsgodkännande Mexiko', en:'market authorization Mexico'},
+       ind:{sv:'Fetma', en:'Obesity'},
+       mech:{sv:'Monoaminåterupptagshämmare (dopamin, serotonin, noradrenalin)', en:'Monoamine reuptake inhibitor (dopamine, serotonin, noradrenaline)'},
+       partner:{sv:'Medix — rättigheter i Mexiko och Argentina', en:'Medix — rights in Mexico and Argentina'},
+       patent:{sv:'Upfront 12 MSEK (1,25 MUSD) erhållet 2016. Vid godkännande utlöses ytterligare 19 MSEK (2,0 MUSD) samt låga tvåsiffriga royalties på försäljning', en:'Upfront SEK 12M (USD 1.25M) received 2016. On approval, a further SEK 19M (USD 2.0M) is triggered plus low double-digit royalties on sales'},
+       summary:{sv:'Regulatorisk granskning pågår i Mexiko via partnern Medix, som bekostat fas III-studierna. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD), men den stora uppsidan är låga tvåsiffriga, icke-utspädande royalties på den faktiska försäljningen när produkten når marknaden.', en:'Regulatory review underway in Mexico via partner Medix, which funded the Phase III studies. Approval triggers a SEK 19M (USD 2.0M) milestone, but the main upside is low double-digit, non-dilutive royalties on actual sales once the product reaches the market.'},
+       latest:{sv:'Ansökan om marknadsgodkännande under granskning i Mexiko (COFEPRIS).', en:'Market-authorization application under review in Mexico (COFEPRIS).'},
+       next:{sv:'Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning', en:'Approval → +SEK 19M (USD 2.0M) + low double-digit royalties on sales'},
+       href:'https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621'}
+    ],
+    partnering:[
+      {key:'tesomet', code:'Tesomet', status:'ready', metricV:{sv:'Fas 2b', en:'Phase 2b'}, metricL:{sv:'redo att inledas', en:'ready to start'},
+       ind:{sv:'Sällsynta ätstörningar (HO, PWS)', en:'Rare eating disorders (HO, PWS)'},
+       mech:{sv:'Tesofensin + metoprolol i kombination', en:'Tesofensine + metoprolol combination'},
+       partner:{sv:'Tillgängligt för partnering', en:'Available for partnering'},
+       patent:{sv:'Tidigare Orphan Drug-designation (FDA)', en:'Prior Orphan Drug designation (FDA)'},
+       summary:{sv:'Kliniskt moget program redo att gå vidare till fas 2b i sällsynta ätstörningar — söker partner för nästa steg.', en:'Clinically mature program ready to advance to Phase 2b in rare eating disorders — seeking a partner for the next step.'},
+       latest:{sv:'Redo för fas 2b; utvecklas vidare vid partnerskap.', en:'Ready for Phase 2b; to advance under a partnership.'},
+       next:{sv:'Partneravtal för fas 2b', en:'Partnership for Phase 2b'},
+       href:'https://saniona.com/investors/'},
+      {key:'san903', code:'SAN903', status:'ready', metricV:{sv:'Fas 1', en:'Phase 1'}, metricL:{sv:'redo att inledas', en:'ready to start'},
+       ind:{sv:'Inflammatorisk tarmsjukdom (IBD)', en:'Inflammatory bowel disease (IBD)'},
+       mech:{sv:'Hämning av kalciumaktiverad kaliumjonkanal', en:'Inhibition of the calcium-activated potassium ion channel'},
+       partner:{sv:'Tillgängligt för partnering', en:'Available for partnering'},
+       patent:{sv:'Preklinisk utveckling slutförd', en:'Preclinical development completed'},
+       summary:{sv:'Ett program utanför CNS som breddar plattformen mot inflammation — redo för fas 1 vid partnerskap.', en:'A non-CNS program that broadens the platform toward inflammation — ready for Phase 1 under a partnership.'},
+       latest:{sv:'Preklinik klar; redo att gå in i fas 1.', en:'Preclinical complete; ready to enter Phase 1.'},
+       next:{sv:'Partneravtal för fas 1', en:'Partnership for Phase 1'},
+       href:'https://saniona.com/investors/'}
+    ],
+    platform:[
+      {key:'platform', code:{sv:'Jonkanalsplattform (IONBASE)', en:'Ion-channel platform (IONBASE)'}, status:'research', metricV:'6', metricL:{sv:'partners & JV byggda på plattformen', en:'partners & JVs built on the platform'},
+       ind:{sv:'Motorn bakom hela pipelinen', en:'The engine behind the entire pipeline'},
+       mech:{sv:'Proprietärt jonkanalsbibliotek och databas (IONBASE)', en:'Proprietary ion-channel library and database (IONBASE)'},
+       partner:{sv:'Grunden för avtalen med Jazz, Acadia, Boehringer, AstronauTx m.fl.', en:'The basis for the deals with Jazz, Acadia, Boehringer, AstronauTx and others'},
+       patent:{sv:'Har genererat samtliga interna kandidater och avknoppningar', en:'Has generated every internal candidate and spin-out'},
+       summary:{sv:'Plattformen är själva värdemotorn: den har validerats genom avtal med Jazz, Acadia, Boehringer Ingelheim och AstronauTx samt avknoppningar som Cephagenix, och fortsätter generera nya kandidater.', en:'The platform is the core value engine: validated through deals with Jazz, Acadia, Boehringer Ingelheim and AstronauTx plus spin-outs like Cephagenix, and it keeps generating new candidates.'},
+       latest:{sv:'Fortsatta samarbeten; plattformen ska ge nya kliniska kandidater.', en:'Ongoing collaborations; the platform is expected to yield new clinical candidates.'},
+       next:{sv:'Nya kandidater och partnerskap', en:'New candidates and partnerships'},
+       href:'https://saniona.com/science/partnerships-spinouts/'},
+      {key:'platform', code:'Boehringer Ingelheim', status:'research', metricV:{sv:'842 MSEK', en:'SEK 842M'}, metricL:{sv:'milstolpspotential (76,5 M€) + royalty', en:'milestone potential (\u20ac76.5M) + royalties'},
+       ind:{sv:'Schizofreni', en:'Schizophrenia'},
+       mech:{sv:'Ej offentliggjord CNS-jonkanal — ny klass av terapeutika', en:'Undisclosed CNS ion channel — a new class of therapeutics'},
+       partner:{sv:'Boehringer Ingelheim — exklusiva globala rättigheter', en:'Boehringer Ingelheim — exclusive global rights'},
+       patent:{sv:'Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty. Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025)', en:'Milestone potential up to SEK 842M (\u20ac76.5M) plus royalties. Collaboration since 2020; the research term was extended by one year (March 2025)'},
+       summary:{sv:'Ett av Sanionas mest långvariga samarbeten. Bolaget får löpande forskningsfinansiering plus milstolpar och royalty om programmet når marknad.', en:'One of Saniona\u2019s most enduring collaborations. The company receives ongoing research funding plus milestones and royalties if the program reaches market.'},
+       latest:{sv:'Nådde en forskningsmilstolpe i okt 2024 (lead optimization). Forskningsperioden förlängdes med ett år i mars 2025.', en:'Reached a research milestone in Oct 2024 (lead optimization). The research term was extended by one year in March 2025.'},
+       next:{sv:'Forskningsmilstolpar → utvecklingsmilstolpar', en:'Research milestones → development milestones'},
+       href:'https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar'},
+      {key:'platform', code:'AstronauTx', status:'research', metricV:{sv:'1,66 mdr SEK', en:'SEK 1.66bn'}, metricL:{sv:'milstolpspotential + royalty · 48 MSEK i aktier erhållet', en:'milestone potential + royalties · SEK 48M in shares received'},
+       ind:{sv:'Neurologisk sjukdom / Alzheimers (ATX0926)', en:'Neurological disease / Alzheimer\u2019s (ATX0926)'},
+       mech:{sv:'Ej offentliggjort jonkanalsmål kopplat till sömnbiologi/glymfatiskt flöde, via Sanionas plattform', en:'Undisclosed ion-channel target linked to sleep biology/glymphatic flow, via Saniona\u2019s platform'},
+       partner:{sv:'AstronauTx Ltd — äger nu exklusiva globala rättigheter (option utnyttjad aug 2026)', en:'AstronauTx Ltd — now holds exclusive worldwide rights (option exercised Aug 2026)'},
+       patent:{sv:'Saniona fick aktier värda 48 MSEK (5 MUSD) vid optionsutnyttjandet. Därtill upp till 1,66 mdr SEK (172 MUSD): 936 MSEK utv-/reg + 724 MSEK kommersiella, plus tiered royalty', en:'Saniona received shares worth SEK 48M (USD 5M) on option exercise. Plus up to SEK 1.66bn (USD 172M): SEK 936M dev/reg + SEK 724M commercial, plus tiered royalties'},
+       summary:{sv:'Ett starkt kvitto på plattformen: efter flera års samarbete utnyttjade AstronauTx sin option och förvärvade de globala rättigheterna. Saniona blir aktieägare i AstronauTx och behåller milstolpar och royalty.', en:'A strong validation of the platform: after several years of collaboration, AstronauTx exercised its option and acquired the worldwide rights. Saniona becomes an AstronauTx shareholder and retains milestones and royalties.'},
+       latest:{sv:'Optionen utnyttjad aug 2026. Kandidaten ATX0926 går in i IND-enabling-studier inom kort.', en:'Option exercised Aug 2026. Candidate ATX0926 enters IND-enabling studies shortly.'},
+       next:{sv:'IND-enabling-studier → klinisk fas 1 hos AstronauTx', en:'IND-enabling studies → Phase 1 at AstronauTx'},
+       href:'https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration'},
+      {key:'platform', code:{sv:'Cephagenix (JV)', en:'Cephagenix (JV)'}, status:'research', metricV:{sv:'25,8% ägande', en:'25.8% owned'}, metricL:{sv:'joint venture · finansierat av AbbVie Ventures & AdBio', en:'joint venture · backed by AbbVie Ventures & AdBio'},
+       ind:{sv:'Migrän', en:'Migraine'},
+       mech:{sv:'Subtypsselektiva KATP-kanalhämmare (vaskulära)', en:'Subtype-selective (vascular) KATP channel inhibitors'},
+       partner:{sv:'Avknoppning med prof. Jes Olesen; Saniona äger 25,8%', en:'Spin-out with Prof. Jes Olesen; Saniona owns 25.8%'},
+       patent:{sv:'Seed-runda om upp till 99 MSEK (€9M) ledd av AdBio Partners & AbbVie Ventures (2025)', en:'Seed round of up to SEK 99M (\u20ac9M) led by AdBio Partners & AbbVie Ventures (2025)'},
+       summary:{sv:'Saniona äger 25,8 % av detta migrän-JV (per senaste årsredovisningen). Att välrenommerade investerare som AbbVie Ventures gick in validerar programmet och ger Saniona uppsida via ägarandelen — utan att bolaget själv står för kostnaden.', en:'Saniona owns 25.8% of this migraine JV (per the latest annual report). Reputable investors such as AbbVie Ventures joining validates the program and gives Saniona upside through its equity stake — without the company bearing the cost itself.'},
+       latest:{sv:'Seed-finansiering säkrad (upp till 99 MSEK / €9M); driver programmet mot kandidatval.', en:'Seed financing secured (up to SEK 99M / \u20ac9M); advancing the program toward candidate selection.'},
+       next:{sv:'Val av utvecklingskandidat i KATP-programmet', en:'Candidate selection in the KATP program'},
+       href:'https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf'},
+      {key:'platform', code:{sv:'Cadent / Novartis', en:'Cadent / Novartis'}, status:'realized', metricV:{sv:'~31,5 MSEK', en:'~SEK 31.5M'}, metricL:{sv:'kontant erhållet 2021 (3,7 MUSD)', en:'cash received 2021 (USD 3.7M)'},
+       ind:{sv:'Rörelsestörningar (CAD-1883)', en:'Movement disorders (CAD-1883)'},
+       mech:{sv:'Selektiv positiv modulator av SK-jonkanaler, från avknoppningen Ataxion', en:'Selective positive modulator of SK ion channels, from the Ataxion spin-out'},
+       partner:{sv:'Novartis förvärvade Cadent i jan 2021; Saniona ägde ~3%', en:'Novartis acquired Cadent in Jan 2021; Saniona owned ~3%'},
+       patent:{sv:'~31,5 MSEK (3,7 MUSD) i upfront erhållet 2021', en:'~SEK 31.5M (USD 3.7M) upfront received in 2021'},
+       summary:{sv:'Ett realiserat bevis på att plattformen genererar kontanter: Sanionas ägarandel i avknoppningen Cadent löstes ut kontant när Novartis köpte bolaget 2021.', en:'A realized proof that the platform generates cash: Saniona\u2019s stake in the Cadent spin-out was paid out in cash when Novartis acquired the company in 2021.'},
+       latest:{sv:'~31,5 MSEK (3,7 MUSD) erhållet 2021.', en:'~SEK 31.5M (USD 3.7M) received in 2021.'},
+       next:{sv:'—', en:'—'},
+       href:'https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html'},
+      {key:'platform', code:{sv:'Initiator Pharma (IP2018)', en:'Initiator Pharma (IP2018)'}, status:'research', metricV:{sv:'≤ 20%', en:'\u2264 20%'}, metricL:{sv:'av framtida AN788-betalningar + ensiffrig royalty', en:'of future AN788 payments + single-digit royalty'},
+       ind:{sv:'Erektil dysfunktion (psykogen) · fas IIa', en:'Erectile dysfunction (psychogenic) · Phase IIa'},
+       mech:{sv:'Monoaminåterupptagshämmare (AN788, från Sanionas portfölj via NeuroSearch)', en:'Monoamine reuptake inhibitor (AN788, from Saniona\u2019s portfolio via NeuroSearch)'},
+       partner:{sv:'Initiator Pharma A/S — själv en Saniona-avknoppning (Nasdaq First North: INIT)', en:'Initiator Pharma A/S — itself a Saniona spin-out (Nasdaq First North: INIT)'},
+       patent:{sv:'Upp till 20% av framtida betalningar till Initiator Pharma kopplade till AN788, plus ensiffriga royalties på försäljning. Inga upfront-/milstolpsbetalningar i optionsavtalet', en:'Up to 20% of future payments to Initiator Pharma related to AN788, plus single-digit royalties on sales. No upfront/milestone payments in the option agreement'},
+       summary:{sv:'Dubbel plattformskoppling: både bolaget och tillgången kommer från Sanionas forskning. AN788 (nu IP2018) utvecklas vidare av Initiator Pharma och har visat positiva, statistiskt signifikanta resultat i en klinisk fas IIa-studie.', en:'A double platform link: both the company and the asset come from Saniona\u2019s research. AN788 (now IP2018) is being advanced by Initiator Pharma and has shown positive, statistically significant results in a Phase IIa clinical study.'},
+       latest:{sv:'IP2018 är ett av Initiator Pharmas kliniska huvudprogram (per Q4 2025).', en:'IP2018 is one of Initiator Pharma\u2019s core clinical programs (as of Q4 2025).'},
+       next:{sv:'Fortsatt klinisk utveckling hos Initiator Pharma', en:'Continued clinical development at Initiator Pharma'},
+       href:'https://www.globenewswire.com/news-release/2018/11/08/1647641/0/en/Saniona-signs-option-agreement-with-Initiator-Pharma.html'}
+    ]
+  },
+
+  /* Proof points — pressmeddelanden med kursreaktion (MFN, publiceringsdag) */
+  timeline:[
+    {date:{sv:'27 aug 2026', en:'27 Aug 2026'}, key:'platform', react:'',
+     title:{sv:'Q2 2026-rapport: 486 MSEK i kassa, internt fokus skärpt till SAN2668 och SAN2465 (fas 1 kring årsskiftet)', en:'Q2 2026 report: SEK 486M cash, internal focus sharpened to SAN2668 and SAN2465 (Phase 1 around year-end)'},
+     href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {date:{sv:'10 aug 2026', en:'10 Aug 2026'}, key:'platform', react:'',
+     title:{sv:'AstronauTx utnyttjar sin option — förvärvar globala rättigheter; Saniona får aktier värda 48 MSEK (5 MUSD)', en:'AstronauTx exercises its option — acquires worldwide rights; Saniona receives shares worth SEK 48M (USD 5M)'},
+     href:'https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration'},
+    {date:{sv:'4 jun 2026', en:'4 Jun 2026'}, key:'san2668', react:'-1,5%',
+     title:{sv:'Investerarwebbinarie om SAN2668 för svåra pediatriska epilepsier', en:'Investor webinar on SAN2668 for severe paediatric epilepsies'},
+     href:'https://mfn.se/all/a/saniona'},
+    {date:{sv:'27 maj 2026', en:'27 May 2026'}, key:'context', react:'+4,9%',
+     title:{sv:'Årsstämma 2026 genomförd', en:'Annual general meeting 2026 held'},
+     href:'https://mfn.se/a/saniona/kommunike-fran-arsstamma-den-27-maj-2026-i-saniona-ab'},
+    {date:{sv:'26 maj 2026', en:'26 May 2026'}, key:'context', react:'+0,9%',
+     title:{sv:'Q1-rapport: GLP-toxikologi klar för alla tre interna program', en:'Q1 report: GLP toxicology complete for all three internal programs'},
+     href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-forsta-kvartalet-2026'},
+    {date:{sv:'30 apr 2026', en:'30 Apr 2026'}, key:'context', react:'-0,6%',
+     title:{sv:'Årsredovisning 2025 publicerad', en:'Annual Report 2025 published'},
+     href:'https://mfn.se/a/saniona/saniona-publicerar-arsredovisningen-for-2025'},
+    {date:{sv:'26 feb 2026', en:'26 Feb 2026'}, key:'context', react:'-14,5%',
+     title:{sv:'Bokslutskommuniké 2025 — plan bekräftad, men kursen föll', en:'Year-end report 2025 — plan confirmed, but the share fell'},
+     href:'https://mfn.se/a/saniona/saniona-publicerar-bokslutskommunike-for-2025'},
+    {date:{sv:'17 dec 2025', en:'17 Dec 2025'}, key:'context', react:'-3,6%',
+     title:{sv:'Ledningsteamet stärks för att accelerera CNS-programmen', en:'Leadership team bolstered to accelerate CNS programs'},
+     href:'https://mfn.se/a/saniona/saniona-starker-ledningsteamet-for-att-accelerera-utvecklingen-av-centrala-cns-program'},
+    {date:{sv:'27 nov 2025', en:'27 Nov 2025'}, key:'context', react:'+14,5%',
+     title:{sv:'Q3-rapport — positiv överraskning', en:'Q3 report — positive surprise'},
+     href:'https://mfn.se/a/saniona/saniona-publicerar-sin-delarsrapport-for-det-tredje-kvartalet-2025'},
+    {date:{sv:'4 sep 2025', en:'4 Sep 2025'}, key:'san2668', react:'+6,5%',
+     title:{sv:'SAN2668 väljs som först-i-klassen klinisk kandidat', en:'SAN2668 selected as first-in-class clinical candidate'},
+     href:'https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi'},
+    {date:{sv:'20 aug 2025', en:'20 Aug 2025'}, key:'san2355', react:'+45,8%',
+     title:{sv:'Jazz-avtal för SAN2355: 42,5 MUSD upfront, upp till 992,5 MUSD totalt', en:'Jazz deal for SAN2355: USD 42.5M upfront, up to USD 992.5M total'},
+     href:'https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355'},
+    {date:{sv:'19 jun 2025', en:'19 Jun 2025'}, key:'context', react:'-14,3%',
+     title:{sv:'Förvärv av huvudkontor — marknaden ogillade bundet kapital', en:'Headquarters acquisition — market disliked capital tied up'},
+     href:'https://mfn.se/a/saniona/saniona-forvarvar-huvudkontoret-for-att-sakra-langsiktig-stabilitet'}
+  ],
+
+  /* Katalysatorer att bevaka */
+  catalysts:[
+    {when:{sv:'Kring årsskiftet 2026 → Q1 2027', en:'Year-end 2026 → Q1 2027'}, key:'san2668', crit:true,
+     t:{sv:'SAN2465 & SAN2668 — first-in-human-dosering', en:'SAN2465 & SAN2668 — first-in-human dosing'},
+     d:{sv:'Bolagets viktigaste katalysator: SAN2465 doserar först kring årsskiftet 2026, SAN2668 i Q1 2027 (CTA kring årsskiftet).', en:'The key catalyst: SAN2465 doses first around year-end 2026, SAN2668 in Q1 2027 (CTA around year-end).'}},
+    {when:{sv:'2027', en:'2027'}, key:'san711',
+     t:{sv:'ACP-711 — fas 2-start (Acadia)', en:'ACP-711 — Phase 2 start (Acadia)'},
+     d:{sv:'Fas 2 i essentiell tremor väntas 2027. Utlöser milstolpe om 96 MSEK (10 MUSD) till Saniona.', en:'Phase 2 in essential tremor expected 2027. Triggers a SEK 96M (USD 10M) milestone to Saniona.'}},
+    {when:{sv:'2026', en:'2026'}, key:'san2355',
+     t:{sv:'SAN2355 — fas 1-start (Jazz)', en:'SAN2355 — Phase 1 start (Jazz)'},
+     d:{sv:'Utlöser milstolpe om 72 MSEK (7,5 MUSD) till Saniona.', en:'Triggers a SEK 72M (USD 7.5M) milestone to Saniona.'}},
+    {when:{sv:'Okänd tidpunkt', en:'Timing unknown'}, key:'teso',
+     t:{sv:'Tesofensin — godkännande i Mexiko', en:'Tesofensine — approval in Mexico'},
+     d:{sv:'Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD) och — den stora uppsidan — låga tvåsiffriga royalties på faktisk försäljning. Tidpunkten styrs av myndigheten.', en:'Regulatory review ongoing at COFEPRIS. An approval triggers a SEK 19M (USD 2.0M) milestone and — the main upside — low double-digit royalties on actual sales. Timing is set by the authority.'}},
+    {when:{sv:'Kort–medellång sikt', en:'Short–medium term'}, key:'platform',
+     t:{sv:'Utlicensiering av intern tillgång', en:'Out-licensing of an internal asset'},
+     d:{sv:'Uttalad ambition att partnera ut minst en intern tillgång för att stärka kassan. Ambition, ej fastställt.', en:'Stated ambition to partner out at least one internal asset to strengthen the cash position. An ambition, not confirmed.'}},
+    {when:{sv:'27 aug 2026', en:'27 Aug 2026'}, key:'context',
+     t:{sv:'Q2-rapport', en:'Q2 report'},
+     d:{sv:'Uppdatering om klinikförberedelser och partnerprogram.', en:'Update on clinical preparations and partner programs.'}},
+    {when:{sv:'26 nov 2026', en:'26 Nov 2026'}, key:'context',
+     t:{sv:'Q3-rapport', en:'Q3 report'},
+     d:{sv:'Sista rapporten före väntad fas 1-start.', en:'Last report before the expected Phase 1 start.'}}
+  ],
+
+  footer:{
+    sv:'Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.',
+    en:'Sources: MFN, Cision, and Saniona\u2019s Q2 2026 report, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company\u2019s public communications. Amounts are converted to SEK at USD 1 = SEK 9.65 and EUR 1 = SEK 11; original currency is shown in brackets.'
+  },
+  disclaimer:{sv:'Ej investeringsrådgivning. Sammanställd som investerarvy.', en:'Not investment advice. Compiled as an investor view.'}
+};
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+let LANG = 'sv';
+const tr = o => (o && typeof o==='object' && ('sv' in o)) ? o[LANG] : o;
+const col = k => COLORS[k] || COLORS.context;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function reactClass(r){ return String(r).trim().startsWith('-') ? 'neg' : 'pos'; }
+
+function render(){
+  const U = DATA.ui;
+  const P = DATA.ui.phases[LANG];
+  document.documentElement.lang = LANG;
+
+/* HEADER */
+  let secHeader = "";
+  secHeader += `<header class="head">
+    <div class="head-row">
+      <div class="brand">
+        <div class="brand-mesh" id="brandMesh">
+          <canvas id="brandCanvas" aria-hidden="true"></canvas>
+          <div class="brand-fallback">${esc(tr(U.brandName))}</div>
+        </div>
+        <div class="brand-sub">Saniona AB · <a class="ticker" href="https://finance.yahoo.com/quote/SANION.ST/" target="_blank" rel="noopener">SANION ↗</a></div>
+      </div>
+      <div class="head-meta">
+        <div class="updated">${esc(tr(U.updated))}</div>
+        <div class="langtog">
+          <button class="${LANG==='sv'?'on':''}" onclick="setLang('sv')">SV</button>
+          <button class="${LANG==='en'?'on':''}" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </div>
+    <h1 class="display">${esc(tr(U.title))}</h1>
+    <p class="sub">${esc(tr(U.sub))}</p>
+  </header>`;
+
+  /* STICKY NAV */
+  let secNav = "";
+  secNav += `<nav class="navbar" id="navbar"><div class="navbar-scroll"><div class="navbar-inner">`;
+  secNav += `<a class="navlink navlink-all active" href="#" data-target="__all">${esc(tr(U.navShowAll))}</a>`;
+  const navItems = tr(U.nav);
+  navItems.forEach(([id,label],i)=>{
+    secNav += `<a class="navlink" href="#${id}" data-target="${id}">${esc(label)}</a>`;
+  });
+  secNav += `</div></div></nav>`;
+
+  /* BOLAGET & TEAMET */
+  let secCompany = "";
+  secCompany += `<section class="section sec-tint tint-company" id="bolaget"><div class="sec-tint-inner">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.coHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.coSub))}</div></div>`;
+  // Tillväxt + snabbfakta i två kolumner
+  secCompany += `<div class="co-top">`;
+  // Growth panel
+  const g25=23, g26=43, gmax=43;
+  secCompany += `<div class="co-growth">
+      <div class="co-growth-label">${esc(tr(U.coGrowthLabel))}</div>
+      <div class="co-bars">
+        <div class="co-bar-row"><div class="co-bar-yr">Q1 2025</div><div class="co-bar-track"><div class="co-bar-fill" style="width:${g25/gmax*100}%">${g25}</div></div></div>
+        <div class="co-bar-row"><div class="co-bar-yr">Q1 2026</div><div class="co-bar-track"><div class="co-bar-fill now" style="width:${g26/gmax*100}%">${g26}</div></div></div>
+      </div>
+      <div class="co-growth-note">${esc(tr(U.coGrowthNote))}</div>
+    </div>`;
+  // Facts panel
+  secCompany += `<div class="co-facts">
+      <div class="co-facts-head">${esc(tr(U.coFactsHead))}</div>
+      <dl class="co-facts-list">`;
+  tr(U.coFacts).forEach(([k,v])=>{
+    secCompany += `<div class="co-fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`;
+  });
+  secCompany += `</dl></div></div>`;
+  // Ledning
+  secCompany += `<div class="co-mgmt-head">${esc(tr(U.coMgmtHead))}</div>
+    <div class="co-mgmt-grid">`;
+  tr(U.coMgmt).forEach(p=>{
+    secCompany += `<div class="co-person">
+      <div class="co-person-name">${esc(p.n)}</div>
+      <div class="co-person-role">${esc(p.r)}</div>
+      <div class="co-person-bio">${esc(p.b)}</div>
+    </div>`;
+  });
+  secCompany += `</div>`;
+  // Styrelse + Vision i två kolumner
+  secCompany += `<div class="co-bv">
+      <div class="co-bv-col">
+        <div class="co-mgmt-head">${esc(tr(U.coBoardHead))}</div>
+        <p class="co-bv-text">${esc(tr(U.coBoard))}</p>
+      </div>
+      <div class="co-bv-col">
+        <div class="co-mgmt-head">${esc(tr(U.coVisionHead))}</div>
+        <p class="co-bv-text">${esc(tr(U.coVision))}</p>
+      </div>
+    </div>`;
+  secCompany += `<div class="co-src">${esc(tr(U.coSrc))}</div>
+  </div></section>`;
+
+  /* KPI */
+  let secKpi = "";
+  secKpi += `<section class="section"><div class="sec-label">${esc(tr(U.kpiHead))}</div>
+    <div class="kpi-grid">`;
+  DATA.kpis.forEach(k=>{
+    secKpi += `<div class="kpi"><div class="kpi-v display">${esc(tr(k.v))}</div>
+      <div class="kpi-u">${esc(tr(k.u))}</div>
+      <div class="kpi-note">${esc(tr(k.note))}</div></div>`;
+  });
+  secKpi += `</div></section>`;
+
+  /* THESIS */
+  let secThesis = "";
+  secThesis += `<section class="section" id="om">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.thesisHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.thesisSub))}</div></div>
+    <div class="thesis-body">`;
+  tr(U.thesisBody).forEach(p=>{ secThesis += `<p class="thesis-p">${esc(p)}</p>`; });
+  secThesis += `<a class="src thesis-src" href="https://saniona.com/sv/investerare/agarstruktur/" target="_blank" rel="noopener">↗ ${esc(tr(U.ownerLink))}</a>`;
+  secThesis += `</div>
+    <div class="focus-head">${esc(tr(U.thesisFocusHead))}</div>
+    <div class="focus-grid">`;
+  tr(U.thesisFocus).forEach(f=>{
+    secThesis += `<div class="focus-item">
+      <div class="focus-t">${esc(f.t)}</div>
+      <div class="focus-d">${esc(f.d)}</div>
+    </div>`;
+  });
+  secThesis += `</div></section>`;
+
+  /* DEAL ECONOMICS */
+  let secDeal = "";
+  secDeal += `<section class="section" id="ekonomi">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.dealHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.dealSub))}</div></div>
+    <div class="deal-grid">`;
+  DATA.deals.forEach((d,i)=>{
+    const c = col(d.key);
+    const pct = d.tot>0 ? Math.round((d.up/d.tot)*100) : 0;
+    const hasBar = d.tot>0;
+    // Text-baserade värden (saknar siffror, t.ex. "Royaltybaserat") får .txt så de renderas mindre
+    const upTxt = /\d/.test(tr(d.upDisp)) ? '' : ' txt';
+    const totTxt = /\d/.test(tr(d.totDisp)) ? '' : ' txt';
+    // Sista kortet spänner över hela raden om antalet är udda
+    const span = (i===DATA.deals.length-1 && DATA.deals.length%2===1) ? ' style="grid-column:1/-1;--dot:'+c+'"' : ' style="--dot:'+c+'"';
+    secDeal += `<div class="deal-card"${span}>
+      <div class="deal-head">
+        <div><div class="deal-partner">${esc(tr(d.partner))}</div>
+        <div class="deal-prog">${esc(tr(d.prog))}</div></div>
+      </div>
+      <div class="deal-nums">
+        <div class="deal-num"><div class="deal-num-k">${esc(tr(U.dealUpLbl))}</div>
+          <div class="deal-num-up display${upTxt}">${esc(tr(d.upDisp))}</div></div>
+        <div class="deal-arrow">→</div>
+        <div class="deal-num"><div class="deal-num-k">${esc(tr(U.dealTotLbl))}</div>
+          <div class="deal-num-tot display${totTxt}">${esc(tr(d.totDisp))}</div></div>
+      </div>`;
+    if(hasBar){
+      secDeal += `<div class="deal-bar-wrap">
+        <div class="deal-bar-row"><span class="deal-bar-lbl">${esc(tr(U.dealBarLbl))}</span>
+        <span class="deal-bar-pct">${pct}%</span></div>
+        <div class="deal-bar"><div class="deal-bar-fill" style="width:${Math.max(2,pct)}%"></div></div>
+      </div>`;
+    }
+    secDeal += `<div class="deal-note">${esc(tr(d.note))}</div>
+      ${d.src?`<a class="src" href="${d.src}" target="_blank" rel="noopener">↗ ${esc(tr(U.source))}</a>`:''}
+    </div>`;
+  });
+  secDeal += `</div>`;
+  // Kompakta kort för realiserade/övriga samarbeten
+  secDeal += `<div class="deal-compact-head">${esc(tr(U.dealCompactHead))}</div>
+    <div class="deal-compact-grid">`;
+  DATA.dealsCompact.forEach(d=>{
+    const c = col(d.key);
+    secDeal += `<div class="deal-compact" style="--dot:${c}">
+      <div class="dc-top">
+        <div class="dc-partner">${esc(tr(d.partner))}</div>
+        <div class="dc-tag">${esc(tr(d.tag))}</div>
+      </div>
+      <div class="dc-value">${esc(tr(d.value))}</div>
+      <div class="dc-desc">${esc(tr(d.desc))}</div>
+      <a class="src" href="${d.src}" target="_blank" rel="noopener">↗ ${esc(tr(U.source))}</a>
+    </div>`;
+  });
+  secDeal += `</div>
+    <div class="deal-foot">${esc(tr(U.dealFoot))}</div>
+  </section>`;
+
+  /* PIPELINE */
+  let secPipeline = "";
+  secPipeline += `<section class="section sec-tint tint-pipeline" id="pipeline"><div class="sec-tint-inner">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.plHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.plSub))}</div></div>
+    <div class="pl-legend">
+      <span class="pl-leg-item"><span class="pl-leg-fill"></span>${esc(tr(U.plLegNow))}</span>
+      <span class="pl-leg-item"><span class="pl-leg-arrow"></span>${esc(tr(U.plLegTarget))}</span>
+    </div>`;
+  // phase header (desktop/tablet)
+  secPipeline += `<div class="pl-phasehdr"><div></div><div class="pl-phasecols">`;
+  P.slice(1).forEach(ph=> secPipeline += `<div class="pl-phasecol">${esc(ph)}</div>`);
+  secPipeline += `</div></div>`;
+  // compact phase scale (mobile only)
+  secPipeline += `<div class="pl-phasescale-m"><div class="pl-phasecols">`;
+  P.slice(1).forEach(ph=> secPipeline += `<div class="pl-phasecol">${esc(ph)}</div>`);
+  secPipeline += `</div></div>`;
+  DATA.pipeline.forEach(p=>{
+    const c = col(p.key);
+    // Rutnätet visar 5 kolumner: Preklinisk(1) Fas1(2) Fas2(3) Fas3(4) Marknad(5).
+    // to = faktisk status, target = mål (dit pilen pekar).
+    const posPct = v => Math.max(6,Math.min(100, ((v-0.5)/5)*100));
+    const pct = posPct(p.to);
+    const hasTarget = p.target && p.target > p.to;
+    const tgtPct = hasTarget ? posPct(p.target) : pct;
+    // Målförlängning: från slutet av fylld stapel till målpositionen
+    let targetSeg = '';
+    if(hasTarget){
+      targetSeg = `<div class="pl-target" style="left:${pct}%;width:${tgtPct-pct}%;color:${c}">
+        <span class="pl-target-line" style="background:${c}"></span>
+        <span class="pl-target-arrow" style="border-left-color:${c}"></span></div>`;
+    }
+    secPipeline += `<div class="pl-row">
+      <div class="pl-name"><span class="pl-dot" style="background:${c}"></span>
+        <div style="min-width:0"><div class="pl-code">${esc(tr(p.code))}</div>
+        <div class="pl-ind">${esc(tr(p.ind))}</div></div></div>
+      <div class="pl-trackwrap">
+        <div class="pl-track"><div class="pl-grid"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="pl-fill" style="width:${pct}%;background:${c}">
+            <span class="pl-fill-label">${esc(tr(p.front))}</span></div>
+          ${targetSeg}
+        </div>
+        <div class="pl-fill-label-m" style="color:${c}">${esc(tr(p.front))}</div>
+      </div>
+    </div>`;
+  });
+  secPipeline += `<div class="pl-caption">${esc(tr(U.plCaption))}</div></div></section>`;
+
+  /* 2026 TWO COLUMN */
+  let secYear = "";
+  secYear += `<section class="section" id="ar2026">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.yHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.ySub))}</div></div>
+    <div class="y-cols">`;
+  // internal
+  secYear += `<div class="y-col"><div class="y-col-head">
+      <div class="y-col-tag internal">${esc(tr(U.yInternalTag))}</div>
+      <div class="y-col-title display">${esc(tr(U.yInternalTitle))}</div>
+      <div class="y-col-desc">${esc(tr(U.yInternalDesc))}</div></div>`;
+  DATA.year2026.internal.forEach(it=>{
+    secYear += `<div class="y-item"><div class="y-bar" style="background:${col(it.key)}"></div>
+      <div class="y-body"><div class="y-when">${esc(tr(it.when))}</div>
+      <div class="y-h">${esc(tr(it.h))}</div>
+      <div class="y-d">${esc(tr(it.d))}</div></div></div>`;
+  });
+  secYear += `</div>`;
+  // partner
+  secYear += `<div class="y-col"><div class="y-col-head">
+      <div class="y-col-tag partner">${esc(tr(U.yPartnerTag))}</div>
+      <div class="y-col-title display">${esc(tr(U.yPartnerTitle))}</div>
+      <div class="y-col-desc">${esc(tr(U.yPartnerDesc))}</div></div>`;
+  DATA.year2026.partner.forEach(it=>{
+    secYear += `<div class="y-item"><div class="y-bar" style="background:${col(it.key)}"></div>
+      <div class="y-body"><div class="y-when">${esc(tr(it.when))}</div>
+      <div class="y-h">${esc(tr(it.h))}</div>
+      <div class="y-d">${esc(tr(it.d))}</div>
+      ${it.mile?`<span class="y-mile">${esc(it.mile)}</span>`:''}</div></div>`;
+  });
+  secYear += `<div class="y-foot">${esc(tr(U.yPartnerFoot))}</div>`;
+  secYear += `</div></div></section>`;
+
+  /* TRACKS */
+  let secTracks = "";
+  secTracks += `<section class="section" id="program">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.trackHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.trackSub))}</div></div>`;
+  const order = [['internal',U.trackNames.internal,U.trackNames.internalSub,'#F2F5F9'],
+                 ['licensed',U.trackNames.licensed,U.trackNames.licensedSub,'#FAF6EF'],
+                 ['partnering',U.trackNames.partnering,U.trackNames.partneringSub,'#F2F7F2'],
+                 ['platform',U.trackNames.platform,U.trackNames.platformSub,'#F6F4F0']];
+  order.forEach(([tk,nm,sub,tint])=>{
+    secTracks += `<div class="track" style="background:${tint}"><div class="track-inner"><div class="track-head">
+      <div class="track-title display">${esc(tr(nm))}</div>
+      <div class="track-sub">${esc(tr(sub))}</div></div>
+      <div class="cards">`;
+    DATA.tracks[tk].forEach(p=>{
+      const c = col(p.key); const st = STATUS[p.status];
+      secTracks += `<div class="card" style="--dot:${c}">
+        <div class="card-top">
+          <div class="card-main">
+            <div class="card-titlerow">
+              <span class="card-code">${esc(tr(p.code))}</span>
+              <span class="badge" style="background:${hexa(st.c,.13)};color:${st.c}">
+                <span style="background:${st.c}"></span>${esc(LANG==='sv'?st.sv:st.en)}</span>
+            </div>
+            <div class="card-meta">${esc(tr(p.partner))}</div>
+            <div class="card-summary">${esc(tr(p.summary))}</div>
+          </div>
+          <div class="card-metric">
+            <div class="card-metric-v">${esc(tr(p.metricV))}</div>
+            <div class="card-metric-l">${esc(tr(p.metricL))}</div>
+          </div>
+        </div>
+        <div class="card-detail">
+          <div class="fieldgrid">
+            <div><div class="field-k">${esc(tr(U.fInd))}</div><div class="field-v">${esc(tr(p.ind))}</div></div>
+            <div><div class="field-k">${esc(tr(U.fMech))}</div><div class="field-v">${esc(tr(p.mech))}</div></div>
+            <div><div class="field-k">${esc(tr(U.fPatent))}</div><div class="field-v">${esc(tr(p.patent))}</div></div>
+            <div><div class="field-k">${esc(tr(U.fNext))}</div><div class="field-v next">${esc(tr(p.next))}</div></div>
+          </div>
+          <a class="src" href="${p.href}" target="_blank" rel="noopener">↗ ${esc(tr(U.source))}</a>
+        </div>
+      </div>`;
+    });
+    secTracks += `</div></div></div>`;
+  });
+  secTracks += `</section>`;
+
+  /* TIMELINE (Pressmeddelanden) */
+  let secTimeline = "";
+  secTimeline += `<section class="section" id="proof">
+      <div class="sec-head"><div class="sec-title display">${esc(tr(U.tlHead))}</div>
+      <div class="sec-title-sub">${esc(tr(U.tlSub))}</div></div>
+      <div class="tl-list">`;
+  DATA.timeline.forEach((m,i)=>{
+    const c = col(m.key); const isNow = i===0;
+    secTimeline += `<div class="tl-item">
+      <div class="tl-date">${esc(tr(m.date))}</div>
+      <div class="tl-mid">
+        ${isNow?`<div class="tl-dot now"></div>`:`<div class="tl-dot" style="background:${c}"></div>`}
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-titlerow">
+          ${isNow?`<span class="nowtag">${esc(tr(U.nowLbl))}</span>`:''}
+          <span class="tl-title">${esc(tr(m.title))}</span>
+        </div>
+        <a class="tl-src" href="${m.href}" target="_blank" rel="noopener">↗ ${esc(tr(U.source))}</a>
+      </div>
+    </div>`;
+  });
+  secTimeline += `</div></section>`;
+
+  /* WATCH (Att bevaka) — egen sektion */
+  let secWatch = "";
+  secWatch += `<section class="section" id="bevaka">
+    <div class="sec-head"><div class="sec-title display">${esc(tr(U.watchHead))}</div>
+    <div class="sec-title-sub">${esc(tr(U.watchSub))}</div></div>
+    <div class="watch-grid">`;
+  DATA.catalysts.forEach(ct=>{
+    secWatch += `<div class="watch-item"><div class="watch-bar" style="background:${col(ct.key)}"></div>
+      <div class="watch-body">
+        <div class="watch-when-row"><span class="watch-when">${esc(tr(ct.when))}</span>
+        ${ct.crit?`<span class="crit">${esc(tr(U.critLbl))}</span>`:''}</div>
+        <div class="watch-t">${esc(tr(ct.t))}</div>
+        <div class="watch-d">${esc(tr(ct.d))}</div>
+      </div></div>`;
+  });
+  secWatch += `</div></section>`;
+
+  /* FOOTER */
+  let secFooter = "";
+  secFooter += `<footer class="foot">
+    <img class="foot-watermark" src="data:image/png;base64,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" alt="">
+    <div class="foot-note">${esc(tr(DATA.footer))}</div>
+    <div class="disclaimer">${esc(tr(DATA.disclaimer))}</div>
+  </footer>`;
+
+
+  // ---- Sammansättning i vald ordning ----
+  let h = secHeader + secKpi + secThesis + secNav + secCompany + secPipeline + secTracks + secDeal + secYear + secWatch + secTimeline + secFooter;
+  document.getElementById('app').innerHTML = h;
+  setupNav();
+  setupBrandMesh();
+}
+
+function setupNav(){
+  const links = Array.from(document.querySelectorAll('.navlink'));
+  if(!links.length) return;
+  const inner = document.querySelector('.navbar-inner');
+  const navbar = document.getElementById('navbar');
+  // Sektioner med en menyflik (exkl. Översikt)
+  const sectionIds = links.map(l=>l.dataset.target).filter(t=>t && t!=='__all');
+  const sections = sectionIds.map(id=>document.getElementById(id)).filter(Boolean);
+
+  // Se till att inget är dolt (scroll-spy-läge: allt synligt)
+  document.querySelectorAll('.sec-hidden').forEach(s=>s.classList.remove('sec-hidden'));
+
+  // Höjd på sticky-menyn (för offset vid ankarhopp)
+  const navH = ()=> (navbar ? navbar.offsetHeight : 0);
+
+  // Centrera den aktiva pillen horisontellt i menyraden
+  const centerPill = (link)=>{
+    if(!link || !inner) return;
+    const target = link.offsetLeft - (inner.clientWidth/2) + (link.offsetWidth/2);
+    const max = inner.scrollWidth - inner.clientWidth;
+    inner.scrollTo({left: Math.max(0, Math.min(max, target)), behavior:'smooth'});
+  };
+
+  let activeTarget = null;
+  const setActive = (target, doCenter)=>{
+    if(target===activeTarget && !doCenter) return;
+    activeTarget = target;
+    let activeLink = null;
+    links.forEach(l=>{
+      const on = l.dataset.target===target;
+      l.classList.toggle('active', on);
+      if(on) activeLink = l;
+    });
+    if(doCenter) centerPill(activeLink);
+  };
+
+  // Klick → mjukt hopp till sektionens topp (strax under sticky-menyn)
+  links.forEach(link=>{
+    link.addEventListener('click', e=>{
+      e.preventDefault();
+      const t = link.dataset.target;
+      if(t==='__all'){
+        window.scrollTo({top:0, behavior:'smooth'});
+      } else {
+        const sec = document.getElementById(t);
+        if(sec){
+          const y = sec.getBoundingClientRect().top + window.pageYOffset - navH() + 2;
+          window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
+        }
+      }
+      setActive(t, true);
+    });
+  });
+
+  // Scroll-spy: markera sektionen man är i, och centrera dess pill i menyraden
+  const spy = ()=>{
+    const probe = window.pageYOffset + navH() + 12; // punkten strax under menyn
+    let current = '__all';
+    for(const s of sections){ if(s.offsetTop <= probe) current = s.id; }
+    // nära toppen → Översikt
+    const firstTop = sections[0] ? sections[0].offsetTop - navH() - 40 : Infinity;
+    if(window.pageYOffset < firstTop) current = '__all';
+    // nära botten → sista sektionen (så sista pillen alltid kan bli aktiv)
+    if((window.innerHeight + window.pageYOffset) >= (document.body.scrollHeight - 4) && sections.length){
+      current = sections[sections.length-1].id;
+    }
+    if(current !== activeTarget){
+      setActive(current, true); // true = auto-centrera pillen när sektionen byts
+    }
+  };
+
+  window.removeEventListener('scroll', window.__navSpy || (()=>{}));
+  window.__navSpy = spy;
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('resize', spy, {passive:true});
+  spy();
+}
+
+function hexa(hex,a){const n=parseInt(hex.slice(1),16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;}
+
+/* ============================================================
+   MESH-EFFEKT för varumärkestexten i headern.
+   WebGL2: texten ritas till en textur som läggs på ett rutnät
+   vars punkter dras med muspekaren (drag + fjäder + dämpning).
+   Ingen färgsplittring — bara deformationen.
+   Faller tillbaka till vanlig text om WebGL2 saknas.
+   ============================================================ */
+const MESH = {
+  GRID_W:80, GRID_H:24,
+  DRAG:1.5,        // dragstyrka (lägre = subtilare)
+  SPRING_K:0.08,   // fjäder tillbaka till vila
+  DAMPING:0.9,
+  DT:0.1,
+  raf:0, cleanup:null
+};
+
+function setupBrandMesh(){
+  // Städa upp ev. tidigare instans (sker vid språkbyte → render())
+  if(MESH.cleanup){ try{ MESH.cleanup(); }catch(e){} MESH.cleanup=null; }
+
+  const wrap = document.getElementById('brandMesh');
+  const canvas = document.getElementById('brandCanvas');
+  if(!wrap || !canvas) return;
+
+  const gl = canvas.getContext('webgl2', {alpha:true, premultipliedAlpha:true, antialias:true});
+  if(!gl) return; // fallback-texten syns kvar
+
+  const VERT = `#version 300 es
+  in vec2 aPos; in vec2 aUv; in vec2 aDisp;
+  out vec2 vUv;
+  void main(){ gl_Position = vec4(aPos + aDisp, 0.0, 1.0); vUv = aUv; }`;
+  const FRAG = `#version 300 es
+  precision highp float;
+  in vec2 vUv; out vec4 outColor;
+  uniform sampler2D uTex;
+  void main(){ outColor = texture(uTex, vUv); }`;
+
+  const compile=(type,src)=>{
+    const sh=gl.createShader(type); gl.shaderSource(sh,src); gl.compileShader(sh);
+    if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)){ gl.deleteShader(sh); return null; }
+    return sh;
+  };
+  const vs=compile(gl.VERTEX_SHADER,VERT), fs=compile(gl.FRAGMENT_SHADER,FRAG);
+  if(!vs||!fs) return;
+  const prog=gl.createProgram();
+  gl.attachShader(prog,vs); gl.attachShader(prog,fs); gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog,gl.LINK_STATUS)) return;
+
+  const GW=MESH.GRID_W, GH=MESH.GRID_H;
+  const vertCount=(GW+1)*(GH+1);
+  const positions=new Float32Array(vertCount*2), uvs=new Float32Array(vertCount*2);
+  for(let y=0;y<=GH;y++) for(let x=0;x<=GW;x++){
+    const i=y*(GW+1)+x, u=x/GW, v=y/GH;
+    positions[i*2]=u*2-1; positions[i*2+1]=1-v*2;
+    uvs[i*2]=u; uvs[i*2+1]=v;
+  }
+  const indices=new Uint32Array(GW*GH*6);
+  let k=0;
+  for(let y=0;y<GH;y++) for(let x=0;x<GW;x++){
+    const a=y*(GW+1)+x, b=a+1, c=a+(GW+1), d=c+1;
+    indices[k++]=a; indices[k++]=c; indices[k++]=b;
+    indices[k++]=b; indices[k++]=c; indices[k++]=d;
+  }
+  const disp=new Float32Array(vertCount*2), vel=new Float32Array(vertCount*2);
+
+  const aPos=gl.getAttribLocation(prog,'aPos'), aUv=gl.getAttribLocation(prog,'aUv'), aDisp=gl.getAttribLocation(prog,'aDisp');
+  const uTex=gl.getUniformLocation(prog,'uTex');
+  const vao=gl.createVertexArray(); gl.bindVertexArray(vao);
+  const pb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,pb); gl.bufferData(gl.ARRAY_BUFFER,positions,gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos,2,gl.FLOAT,false,0,0);
+  const ub=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,ub); gl.bufferData(gl.ARRAY_BUFFER,uvs,gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(aUv); gl.vertexAttribPointer(aUv,2,gl.FLOAT,false,0,0);
+  const db=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,db); gl.bufferData(gl.ARRAY_BUFFER,disp,gl.DYNAMIC_DRAW);
+  gl.enableVertexAttribArray(aDisp); gl.vertexAttribPointer(aDisp,2,gl.FLOAT,false,0,0);
+  const ib=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);
+
+  const tex=gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,tex);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+
+  const label = (DATA.ui.brandName && DATA.ui.brandName[LANG]) || 'Saniona Investor';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#3E5C8C';
+
+  const buildTex = async ()=>{
+    const w=Math.max(2,canvas.width), h=Math.max(2,canvas.height);
+    const dpr=window.devicePixelRatio||1;
+    const cssH = h/dpr;
+    // Utgå från boxens höjd, men krymp tills texten säkert ryms i bredd.
+    let size=Math.round((cssH*0.68)*dpr);
+    try{ if(document.fonts){ await document.fonts.load(`700 ${size}px 'Space Grotesk'`); await document.fonts.ready; } }catch(e){}
+    const c=document.createElement('canvas'); c.width=w; c.height=h;
+    const ctx=c.getContext('2d');
+    const padX = 14*dpr;
+    const maxW = w - padX*2;
+    // Mät och skala ner om texten är bredare än canvasen
+    ctx.font=`700 ${size}px 'Space Grotesk', sans-serif`;
+    let tw = ctx.measureText(label).width;
+    if(tw > maxW && tw > 0){
+      size = Math.max(8, Math.floor(size * (maxW / tw)));
+      ctx.font=`700 ${size}px 'Space Grotesk', sans-serif`;
+      tw = ctx.measureText(label).width;
+    }
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle=accent;
+    ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.font=`700 ${size}px 'Space Grotesk', sans-serif`;
+    ctx.fillText(label, padX, h/2);
+    gl.bindTexture(gl.TEXTURE_2D,tex);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,c);
+    wrap.classList.add('gl-on');
+  };
+
+  const resize=()=>{
+    const dpr=window.devicePixelRatio||1;
+    const r=wrap.getBoundingClientRect();
+    const w=Math.max(2,Math.round(r.width*dpr)), h=Math.max(2,Math.round(r.height*dpr));
+    if(canvas.width!==w||canvas.height!==h){ canvas.width=w; canvas.height=h; gl.viewport(0,0,w,h); buildTex(); }
+  };
+  const ro=new ResizeObserver(resize); ro.observe(wrap);
+  resize(); buildTex();
+
+  const cur={x:99,y:99,px:99,py:99,vx:0,vy:0,inside:false};
+  const onMove=e=>{
+    const r=canvas.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width)*2-1, y=1-((e.clientY-r.top)/r.height)*2;
+    if(!cur.inside){ cur.px=x; cur.py=y; cur.inside=true; }
+    cur.x=x; cur.y=y;
+  };
+  const onLeave=()=>{ cur.inside=false; cur.x=99; cur.y=99; cur.vx=0; cur.vy=0; };
+  wrap.addEventListener('pointermove',onMove);
+  wrap.addEventListener('pointerleave',onLeave);
+
+  const tick=()=>{
+    cur.vx=cur.x-cur.px; cur.vy=cur.y-cur.py;
+    if(Math.hypot(cur.vx,cur.vy)>0.3){ cur.vx=0; cur.vy=0; }
+    cur.px=cur.x; cur.py=cur.y;
+    for(let i=0;i<vertCount;i++){
+      const i2=i*2, px=positions[i2], py=positions[i2+1], dx=disp[i2], dy=disp[i2+1];
+      const cd=Math.hypot(cur.x-(px+dx), cur.y-(py+dy));
+      const prox=Math.max(0, 1/(1+cd/0.05)-0.1);
+      let vx=vel[i2], vy=vel[i2+1];
+      vx+=cur.vx*MESH.DRAG*prox; vy+=cur.vy*MESH.DRAG*prox;
+      vx-=dx*MESH.SPRING_K; vy-=dy*MESH.SPRING_K;
+      vx*=MESH.DAMPING; vy*=MESH.DAMPING;
+      vel[i2]=vx; vel[i2+1]=vy;
+      disp[i2]=Math.max(-1,Math.min(1, dx+vx*MESH.DT));
+      disp[i2+1]=Math.max(-1,Math.min(1, dy+vy*MESH.DT));
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER,db); gl.bufferSubData(gl.ARRAY_BUFFER,0,disp);
+    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(prog);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D,tex); gl.uniform1i(uTex,0);
+    gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.bindVertexArray(vao);
+    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_INT, 0);
+    MESH.raf=requestAnimationFrame(tick);
+  };
+  MESH.raf=requestAnimationFrame(tick);
+
+  MESH.cleanup=()=>{
+    cancelAnimationFrame(MESH.raf); ro.disconnect();
+    wrap.removeEventListener('pointermove',onMove);
+    wrap.removeEventListener('pointerleave',onLeave);
+    gl.deleteBuffer(pb); gl.deleteBuffer(ub); gl.deleteBuffer(db); gl.deleteBuffer(ib);
+    gl.deleteTexture(tex); gl.deleteVertexArray(vao); gl.deleteProgram(prog);
+    gl.deleteShader(vs); gl.deleteShader(fs);
+  };
+}
+function setLang(l){LANG=l;render();}
+render();
+</script>
+</body>
+</html>
