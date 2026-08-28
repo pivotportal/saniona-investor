@@ -194,23 +194,7 @@
   .pl-caption{font-size:11px;color:var(--ink-faint);margin-top:14px;line-height:1.55}
   .pl-phasescale-m{display:none}
 
-  /* ---------- 2026 TWO COLUMN ---------- */
-  .y-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .y-col{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .y-col-head{padding:18px 22px;border-bottom:1px solid var(--line-soft)}
-  .y-col-tag{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
-  .y-col-tag.internal{color:var(--accent)}
-  .y-col-tag.partner{color:#8A6D3B}
-  .y-col-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;margin-top:5px}
-  .y-col-desc{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
-  .y-item{padding:15px 22px;border-top:1px solid var(--line-soft);display:flex;gap:13px}
-  .y-bar{flex:0 0 4px;border-radius:2px}
-  .y-body{flex:1;min-width:0}
-  .y-when{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
-  .y-h{font-weight:600;font-size:14px;margin-top:3px;line-height:1.35}
-  .y-d{font-size:12.5px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
-  .y-mile{display:inline-block;margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#8A6D3B;background:#F5EFE3;border-radius:5px;padding:2px 8px}
-  .y-foot{font-size:11px;color:var(--ink-faint);margin-top:16px;line-height:1.55;padding-left:2px}
+  /* ---------- (2026-tvåkolumn borttagen — ersatt av sammanslagen katalysatorsektion) ---------- */
 
   /* ---------- TRACKS / PROGRAM CARDS ---------- */
   /* Full-bleed tonad bakgrund: bandet går kant-till-kant, innehållet håller sidbredden */
@@ -265,6 +249,26 @@
   .watch-body{flex:1;min-width:0}
   .watch-when-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
   .watch-when{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+  .watch-tag{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+  .watch-tag.internal{background:#E7EEF6;color:#2C6E8F}
+  .watch-tag.partner{background:#EDE8F3;color:#6A4E8C}
+  .watch-mile{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;color:var(--green,#3B7850);background:#E7F1EC;padding:2px 7px;border-radius:20px;letter-spacing:.02em}
+  .watch-src{display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.03em;color:var(--accent,#3E5C8C);text-decoration:none;border-bottom:1px solid transparent}
+  .watch-src:hover{border-bottom-color:currentColor}
+  .watch-src.no{color:var(--ink-faint);pointer-events:none}
+
+  /* report box */
+  .reportbox{background:var(--shell);border:1px solid var(--shell-line);border-radius:14px;padding:18px 22px;margin-bottom:22px}
+  .reportbox-lbl{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+  .reportbox-cols{display:flex;align-items:center;gap:20px}
+  .reportbox-col{flex:1;min-width:0}
+  .reportbox-arrow{flex:0 0 auto;font-size:20px;color:var(--ink-faint);opacity:.5}
+  .rb-k{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .rb-v{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+  .rb-date{font-size:12px;color:var(--ink-soft);margin-top:3px}
+  .rb-link{display:inline-block;margin-top:9px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--accent,#3E5C8C);text-decoration:none}
+  .rb-link:hover{text-decoration:underline}
+  .rb-link.muted{color:var(--ink-faint)}
   .crit{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:3px;padding:1px 6px}
   .watch-t{font-weight:600;font-size:14px;margin-top:4px;line-height:1.35}
   .watch-d{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.5}
@@ -286,7 +290,6 @@
     .brand-mesh{height:52px;max-width:100%}
     .brand-mesh .brand-fallback{font-size:34px}
     .kpi-grid{grid-template-columns:repeat(3,1fr);gap:22px}
-    .y-cols{grid-template-columns:1fr}
     .deal-grid{grid-template-columns:1fr}
     .co-top{grid-template-columns:1fr;gap:18px}
     .co-mgmt-grid{grid-template-columns:1fr 1fr}
@@ -329,11 +332,12 @@
     .tl-title{font-size:13.5px}
     .card-code{font-size:16px}
     .card-metric-v{font-size:20px}
-    .y-item,.y-col-head{padding-left:18px;padding-right:18px}
     .deal-card{padding:18px 18px}
     .deal-compact-grid{grid-template-columns:1fr}
     .co-mgmt-grid{grid-template-columns:1fr}
     .watch-grid{grid-template-columns:1fr}
+    .reportbox-cols{flex-direction:column;align-items:stretch;gap:14px}
+    .reportbox-arrow{transform:rotate(90deg);align-self:center}
     .thesis-p{font-size:14px}
     .focus-grid{grid-template-columns:1fr 1fr;gap:14px}
     .deal-num-up,.deal-num-tot{font-size:20px}
@@ -395,8 +399,8 @@ const DATA = {
     updated:{sv:'Uppdaterad 27 augusti 2026', en:'Updated 27 August 2026'},
     kpiHead:{sv:'I korthet', en:'At a glance'},
     nav:{
-      sv:[['bolaget','Bolaget & teamet'],['pipeline','Pipeline'],['program','Programmen'],['ekonomi','Ekonomi & avtal'],['ar2026','2026'],['bevaka','Att bevaka'],['proof','Pressmeddelanden']],
-      en:[['bolaget','Company & team'],['pipeline','Pipeline'],['program','Programs'],['ekonomi','Economics & deals'],['ar2026','2026'],['bevaka','What to watch'],['proof','Press releases']]
+      sv:[['bolaget','Bolaget & teamet'],['pipeline','Pipeline'],['program','Programmen'],['ekonomi','Ekonomi & avtal'],['bevaka','Katalysatorer'],['proof','Pressmeddelanden']],
+      en:[['bolaget','Company & team'],['pipeline','Pipeline'],['program','Programs'],['ekonomi','Economics & deals'],['bevaka','Catalysts'],['proof','Press releases']]
     },
     thesisHead:{sv:'Om Saniona', en:'About Saniona'},
     thesisSub:{sv:'Bolaget och dess fokusområden', en:'The company and its focus areas'},
@@ -469,14 +473,21 @@ const DATA = {
     dealFoot:{sv:'Total potential avser summan av upfront, utvecklings-, regulatoriska och kommersiella milstolpar per avtal och förutsätter att alla milstolpar nås — royalty tillkommer. En liten andel har hittills betalats ut; merparten är villkorad uppsida. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; officiellt avtalsbelopp i originalvaluta anges inom parentes.', en:'Total potential is the sum of upfront plus development, regulatory and commercial milestones per deal and assumes all milestones are met — royalties come on top. Only a small share has been paid so far; the majority is contingent upside. Amounts are converted to SEK at USD 1 = SEK 9.65 and EUR 1 = SEK 11; the official deal amount in original currency is shown in brackets.'},
     plHead:{sv:'Pipeline', en:'Pipeline'},
     plSub:{sv:'Åtta program över fyra spår — från preklinik till marknad', en:'Eight programs across four tracks — from preclinical to market'},
-    yHead:{sv:'2026 i fokus', en:'2026 in focus'},
-    ySub:{sv:'Vad som är på gång under året — internt och partnerdrivet', en:'What is underway this year — internal and partner-driven'},
+    yHead:{sv:'Katalysatorer', en:'Catalysts'},
+    ySub:{sv:'Kommande värdehändelser — internt och partnerdrivet, i kronologisk ordning', en:'Upcoming value events — internal and partner-driven, in chronological order'},
     trackHead:{sv:'Programmen', en:'The programs'},
     trackSub:{sv:'Fyra spår med olika risk- och finansieringsprofil', en:'Four tracks with different risk and funding profiles'},
     tlHead:{sv:'Pressmeddelanden', en:'Press releases'},
     tlSub:{sv:'Bolagets pressmeddelanden · senaste först', en:'The company\u2019s press releases · latest first'},
-    watchHead:{sv:'Att bevaka', en:'What to watch'},
-    watchSub:{sv:'Kommande katalysatorer', en:'Upcoming catalysts'},
+    watchHead:{sv:'Katalysatorer', en:'Catalysts'},
+    watchSub:{sv:'Kommande värdehändelser — internt och partnerdrivet, i kronologisk ordning', en:'Upcoming value events — internal and partner-driven, in chronological order'},
+    repHead:{sv:'Finansiella rapporter', en:'Financial reports'},
+    repLatest:{sv:'Senaste', en:'Latest'},
+    repNext:{sv:'Nästa', en:'Next'},
+    repRead:{sv:'Läs rapporten', en:'Read the report'},
+    repCal:{sv:'Finansiell kalender', en:'Financial calendar'},
+    catInternal:{sv:'Internt', en:'Internal'},
+    catPartner:{sv:'Partner', en:'Partner'},
     nowLbl:{sv:'Nu', en:'Now'},
     critLbl:{sv:'Kritisk', en:'Critical'},
     source:{sv:'Källa', en:'Source'},
@@ -496,11 +507,6 @@ const DATA = {
     plLegTarget:{sv:'Mål / riktning', en:'Target / direction'},
     yInternalTag:{sv:'Internt · styrs av Saniona', en:'Internal · Saniona-controlled'},
     yPartnerTag:{sv:'Partnerdrivet · milstolpar', en:'Partner-driven · milestones'},
-    yInternalTitle:{sv:'Två ledande program mot klinik', en:'Two lead programs to the clinic'},
-    yPartnerTitle:{sv:'Milstolpar från partners', en:'Milestones from partners'},
-    yInternalDesc:{sv:'Saniona för sina två ledande helägda kandidater in i de första studierna på människa kring årsskiftet 2026–Q1 2027.', en:'Saniona takes its two lead wholly-owned candidates into first-in-human studies around year-end 2026–Q1 2027.'},
-    yPartnerDesc:{sv:'När partners startar sina studier faller milstolpsbetalningar ut till Saniona.', en:'When partners start their studies, milestone payments fall due to Saniona.'},
-    yPartnerFoot:{sv:'Tidpunkten för partnernas studiestarter styrs av Jazz och Acadia, inte av Saniona. Milstolparna är sannolika men inte tidssatta av bolaget självt.', en:'The timing of partner study starts is controlled by Jazz and Acadia, not by Saniona. The milestones are likely but not scheduled by the company itself.'},
     trackNames:{
       internal:{sv:'Interna helägda program', en:'Internal wholly-owned programs'},
       internalSub:{sv:'Full uppsida — Saniona bär kostnad och risk', en:'Full upside — Saniona carries cost and risk'},
@@ -572,25 +578,17 @@ const DATA = {
   ],
 
   /* 2026 tvåkolumn */
-  year2026:{
-    internal:[
-      {key:'san2465', when:{sv:'Q4 2026', en:'Q4 2026'}, h:{sv:'SAN2465 — R&D Day kring CTA-ansökan', en:'SAN2465 — R&D Day around CTA submission'},
-       d:{sv:'Bolaget planerar en R&D Day för SAN2465 under Q4 2026, i anslutning till CTA-ansökan — tillfälle att fördjupa sig i programmet inför klinik.', en:'The company plans an R&D Day for SAN2465 in Q4 2026, around the CTA submission — an opportunity to dive deeper into the program ahead of the clinic.'}},
-      {key:'san2465', when:{sv:'Kring årsskiftet 2026', en:'Around year-end 2026'}, h:{sv:'SAN2465 — first-in-human-dosering', en:'SAN2465 — first-in-human dosing'},
-       d:{sv:'Doserar först av de interna programmen. In-life-fasen för IND-förberedande toxikologi klar. Först-i-klassen NAM av GABAA α5 för svår depression.', en:'First of the internal programs to dose. In-life phase completed for IND-enabling tox studies. First-in-class GABAA α5 NAM for major depression.'}},
-      {key:'san2668', when:{sv:'Årsskiftet 2026 → Q1 2027', en:'Year-end 2026 → Q1 2027'}, h:{sv:'SAN2668 — CTA-ansökan och dosering', en:'SAN2668 — CTA submission and dosing'},
-       d:{sv:'CTA-ansökan väntas kring årsskiftet 2026, med first-in-human-dosering i Q1 2027. Huvudkandidaten för svåra pediatriska epilepsier (DEE). Potential för Orphan Drug- och Rare Pediatric Disease-designation.', en:'CTA submission expected around year-end 2026, with first-in-human dosing in Q1 2027. Lead candidate for severe paediatric epilepsies (DEE). Potential for Orphan Drug and Rare Pediatric Disease designation.'}},
-      {key:'platform', when:{sv:'2028', en:'2028'}, h:{sv:'SAN2668 — PoC-studier möjliggjorda', en:'SAN2668 — PoC studies enabled'},
-       d:{sv:'Prioriteringen och kassan in i 2029 möjliggör proof-of-concept-studier för SAN2668 under 2028.', en:'The prioritisation and runway into 2029 enable proof-of-concept studies for SAN2668 during 2028.'}}
-    ],
-    partner:[
-      {key:'san2355', when:{sv:'När Jazz startar fas 1', en:'When Jazz starts Phase 1'}, h:{sv:'SAN2355 — fas 1-milstolpe', en:'SAN2355 — Phase 1 milestone'},
-       mile:'+72 MSEK', d:{sv:'Jazz förbereder den första fas 1-studien med SAN2355. Studiestart utlöser en milstolpsbetalning om 72 MSEK (7,5 MUSD) till Saniona.', en:'Jazz is preparing the first Phase 1 study of SAN2355. Study start triggers a SEK 72M (USD 7.5M) milestone payment to Saniona.'}},
-      {key:'san711', when:{sv:'2027', en:'2027'}, h:{sv:'ACP-711 — fas 2-milstolpe', en:'ACP-711 — Phase 2 milestone'},
-       mile:'+96 MSEK', d:{sv:'Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027. Study start triggers a SEK 96M (USD 10M) milestone.'}},
-      {key:'teso', when:{sv:'Pågår', en:'Ongoing'}, h:{sv:'Tesofensin — beslut i Mexiko', en:'Tesofensine — decision in Mexico'},
-       d:{sv:'Medix ansökan om marknadsgodkännande för fetma i Mexiko är under granskning. Ett godkännande ger royaltyintäkter till Saniona.', en:'Medix\u2019s market-authorization application for obesity in Mexico is under review. Approval would generate royalty income to Saniona.'}}
-    ]
+  reports:{
+    latest:{
+      label:{sv:'Q2 2026', en:'Q2 2026'},
+      date:{sv:'27 aug 2026', en:'27 Aug 2026'},
+      href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'
+    },
+    next:{
+      label:{sv:'Q3 2026', en:'Q3 2026'},
+      date:{sv:'26 nov 2026', en:'26 Nov 2026'},
+      href:'https://saniona.com/investors/financial-calendar/'
+    }
   },
 
   /* Programkort per spår */
@@ -776,27 +774,38 @@ const DATA = {
 
   /* Katalysatorer att bevaka */
   catalysts:[
-    {when:{sv:'Kring årsskiftet 2026 → Q1 2027', en:'Year-end 2026 → Q1 2027'}, key:'san2668', crit:true,
-     t:{sv:'SAN2465 & SAN2668 — first-in-human-dosering', en:'SAN2465 & SAN2668 — first-in-human dosing'},
-     d:{sv:'Bolagets viktigaste katalysator: SAN2465 doserar först kring årsskiftet 2026, SAN2668 i Q1 2027 (CTA kring årsskiftet).', en:'The key catalyst: SAN2465 doses first around year-end 2026, SAN2668 in Q1 2027 (CTA around year-end).'}},
-    {when:{sv:'2027', en:'2027'}, key:'san711',
-     t:{sv:'ACP-711 — fas 2-start (Acadia)', en:'ACP-711 — Phase 2 start (Acadia)'},
-     d:{sv:'Fas 2 i essentiell tremor väntas 2027. Utlöser milstolpe om 96 MSEK (10 MUSD) till Saniona.', en:'Phase 2 in essential tremor expected 2027. Triggers a SEK 96M (USD 10M) milestone to Saniona.'}},
-    {when:{sv:'2026', en:'2026'}, key:'san2355',
+    {when:{sv:'Q4 2026', en:'Q4 2026'}, key:'san2465', tag:'internal',
+     t:{sv:'SAN2465 — R&D Day kring CTA-ansökan', en:'SAN2465 — R&D Day around CTA submission'},
+     d:{sv:'Bolaget planerar en R&D Day för SAN2465 i anslutning till CTA-ansökan — tillfälle att fördjupa sig i programmet inför klinik.', en:'An R&D Day for SAN2465 is planned around the CTA submission — an opportunity to dive deeper into the program ahead of the clinic.'},
+     src:{sv:'Q2-presentation aug 2026', en:'Q2 presentation Aug 2026'}},
+    {when:{sv:'Kring årsskiftet 2026', en:'Around year-end 2026'}, key:'san2465', tag:'internal', crit:true,
+     t:{sv:'SAN2465 — first-in-human-dosering', en:'SAN2465 — first-in-human dosing'},
+     d:{sv:'Doserar först av de interna programmen. In-life-fasen för IND-förberedande toxikologi klar. Först-i-klassen NAM av GABAA α5 för svår depression.', en:'First of the internal programs to dose. In-life phase completed for IND-enabling tox studies. First-in-class GABAA α5 NAM for major depression.'},
+     src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {when:{sv:'Årsskiftet 2026 → Q1 2027', en:'Year-end 2026 → Q1 2027'}, key:'san2668', tag:'internal', crit:true,
+     t:{sv:'SAN2668 — CTA-ansökan och dosering', en:'SAN2668 — CTA submission and dosing'},
+     d:{sv:'CTA-ansökan kring årsskiftet 2026, first-in-human-dosering Q1 2027. Huvudkandidat för svåra pediatriska epilepsier (DEE). Potential för Orphan Drug- och Rare Pediatric Disease-designation.', en:'CTA submission around year-end 2026, first-in-human dosing Q1 2027. Lead candidate for severe paediatric epilepsies (DEE). Potential for Orphan Drug and Rare Pediatric Disease designation.'},
+     src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {when:{sv:'2026', en:'2026'}, key:'san2355', tag:'partner', mile:'+72 MSEK',
      t:{sv:'SAN2355 — fas 1-start (Jazz)', en:'SAN2355 — Phase 1 start (Jazz)'},
-     d:{sv:'Utlöser milstolpe om 72 MSEK (7,5 MUSD) till Saniona.', en:'Triggers a SEK 72M (USD 7.5M) milestone to Saniona.'}},
-    {when:{sv:'Okänd tidpunkt', en:'Timing unknown'}, key:'teso',
+     d:{sv:'Jazz förbereder första fas 1-studien med SAN2355. Studiestart utlöser en milstolpe om 72 MSEK (7,5 MUSD) till Saniona.', en:'Jazz is preparing the first Phase 1 study of SAN2355. Study start triggers a SEK 72M (USD 7.5M) milestone to Saniona.'},
+     src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {when:{sv:'2027', en:'2027'}, key:'san711', tag:'partner', mile:'+96 MSEK',
+     t:{sv:'ACP-711 — fas 2-start (Acadia)', en:'ACP-711 — Phase 2 start (Acadia)'},
+     d:{sv:'Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).', en:'Acadia is expected to start a Phase 2 study in essential tremor in 2027. Study start triggers a SEK 96M (USD 10M) milestone.'},
+     src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {when:{sv:'2028', en:'2028'}, key:'san2668', tag:'internal',
+     t:{sv:'SAN2668 — PoC-studier möjliggjorda', en:'SAN2668 — PoC studies enabled'},
+     d:{sv:'Prioriteringen och kassan in i 2029 möjliggör proof-of-concept-studier för SAN2668 under 2028.', en:'The prioritisation and runway into 2029 enable proof-of-concept studies for SAN2668 during 2028.'},
+     src:{sv:'Q2-presentation aug 2026', en:'Q2 presentation Aug 2026'}},
+    {when:{sv:'Tidpunkt styrs av myndighet', en:'Timing set by the authority'}, key:'teso', tag:'partner', mile:'+19 MSEK',
      t:{sv:'Tesofensin — godkännande i Mexiko', en:'Tesofensine — approval in Mexico'},
-     d:{sv:'Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD) och — den stora uppsidan — låga tvåsiffriga royalties på faktisk försäljning. Tidpunkten styrs av myndigheten.', en:'Regulatory review ongoing at COFEPRIS. An approval triggers a SEK 19M (USD 2.0M) milestone and — the main upside — low double-digit royalties on actual sales. Timing is set by the authority.'}},
-    {when:{sv:'Kort–medellång sikt', en:'Short–medium term'}, key:'platform',
+     d:{sv:'Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD) och — den stora uppsidan — låga tvåsiffriga royalties på faktisk försäljning.', en:'Regulatory review ongoing at COFEPRIS. Approval triggers a SEK 19M (USD 2.0M) milestone and — the main upside — low double-digit royalties on actual sales.'},
+     src:{sv:'Q2-rapport 2026', en:'Q2 report 2026'}, srcHref:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+    {when:{sv:'Kort–medellång sikt · ambition', en:'Short–medium term · ambition'}, key:'platform', tag:'internal',
      t:{sv:'Utlicensiering av intern tillgång', en:'Out-licensing of an internal asset'},
-     d:{sv:'Uttalad ambition att partnera ut minst en intern tillgång för att stärka kassan. Ambition, ej fastställt.', en:'Stated ambition to partner out at least one internal asset to strengthen the cash position. An ambition, not confirmed.'}},
-    {when:{sv:'27 aug 2026', en:'27 Aug 2026'}, key:'context',
-     t:{sv:'Q2-rapport', en:'Q2 report'},
-     d:{sv:'Uppdatering om klinikförberedelser och partnerprogram.', en:'Update on clinical preparations and partner programs.'}},
-    {when:{sv:'26 nov 2026', en:'26 Nov 2026'}, key:'context',
-     t:{sv:'Q3-rapport', en:'Q3 report'},
-     d:{sv:'Sista rapporten före väntad fas 1-start.', en:'Last report before the expected Phase 1 start.'}}
+     d:{sv:'Uttalad ambition att partnera ut minst en intern tillgång för att stärka kassan. Ambition, ej fastställt.', en:'Stated ambition to partner out at least one internal asset to strengthen the cash position. An ambition, not confirmed.'},
+     src:{sv:'Ledningens uttalanden', en:'Management statements'}}
   ],
 
   footer:{
@@ -938,8 +947,28 @@ function render(){
   let secDeal = "";
   secDeal += `<section class="section" id="ekonomi">
     <div class="sec-head"><div class="sec-title display">${esc(tr(U.dealHead))}</div>
-    <div class="sec-title-sub">${esc(tr(U.dealSub))}</div></div>
-    <div class="deal-grid">`;
+    <div class="sec-title-sub">${esc(tr(U.dealSub))}</div></div>`;
+  // report box
+  const rp = DATA.reports;
+  secDeal += `<div class="reportbox">
+      <div class="reportbox-lbl">${esc(tr(U.repHead))}</div>
+      <div class="reportbox-cols">
+        <div class="reportbox-col">
+          <div class="rb-k">${esc(tr(U.repLatest))}</div>
+          <div class="rb-v">${esc(tr(rp.latest.label))}</div>
+          <div class="rb-date">${esc(tr(rp.latest.date))}</div>
+          <a class="rb-link" href="${rp.latest.href}" target="_blank" rel="noopener">${esc(tr(U.repRead))} →</a>
+        </div>
+        <div class="reportbox-arrow" aria-hidden="true">→</div>
+        <div class="reportbox-col next">
+          <div class="rb-k">${esc(tr(U.repNext))}</div>
+          <div class="rb-v">${esc(tr(rp.next.label))}</div>
+          <div class="rb-date">${esc(tr(rp.next.date))}</div>
+          <a class="rb-link muted" href="${rp.next.href}" target="_blank" rel="noopener">${esc(tr(U.repCal))} →</a>
+        </div>
+      </div>
+    </div>`;
+  secDeal += `<div class="deal-grid">`;
   DATA.deals.forEach((d,i)=>{
     const c = col(d.key);
     const pct = d.tot>0 ? Math.round((d.up/d.tot)*100) : 0;
@@ -1040,39 +1069,6 @@ function render(){
   });
   secPipeline += `<div class="pl-caption">${esc(tr(U.plCaption))}</div></div></section>`;
 
-  /* 2026 TWO COLUMN */
-  let secYear = "";
-  secYear += `<section class="section" id="ar2026">
-    <div class="sec-head"><div class="sec-title display">${esc(tr(U.yHead))}</div>
-    <div class="sec-title-sub">${esc(tr(U.ySub))}</div></div>
-    <div class="y-cols">`;
-  // internal
-  secYear += `<div class="y-col"><div class="y-col-head">
-      <div class="y-col-tag internal">${esc(tr(U.yInternalTag))}</div>
-      <div class="y-col-title display">${esc(tr(U.yInternalTitle))}</div>
-      <div class="y-col-desc">${esc(tr(U.yInternalDesc))}</div></div>`;
-  DATA.year2026.internal.forEach(it=>{
-    secYear += `<div class="y-item"><div class="y-bar" style="background:${col(it.key)}"></div>
-      <div class="y-body"><div class="y-when">${esc(tr(it.when))}</div>
-      <div class="y-h">${esc(tr(it.h))}</div>
-      <div class="y-d">${esc(tr(it.d))}</div></div></div>`;
-  });
-  secYear += `</div>`;
-  // partner
-  secYear += `<div class="y-col"><div class="y-col-head">
-      <div class="y-col-tag partner">${esc(tr(U.yPartnerTag))}</div>
-      <div class="y-col-title display">${esc(tr(U.yPartnerTitle))}</div>
-      <div class="y-col-desc">${esc(tr(U.yPartnerDesc))}</div></div>`;
-  DATA.year2026.partner.forEach(it=>{
-    secYear += `<div class="y-item"><div class="y-bar" style="background:${col(it.key)}"></div>
-      <div class="y-body"><div class="y-when">${esc(tr(it.when))}</div>
-      <div class="y-h">${esc(tr(it.h))}</div>
-      <div class="y-d">${esc(tr(it.d))}</div>
-      ${it.mile?`<span class="y-mile">${esc(it.mile)}</span>`:''}</div></div>`;
-  });
-  secYear += `<div class="y-foot">${esc(tr(U.yPartnerFoot))}</div>`;
-  secYear += `</div></div></section>`;
-
   /* TRACKS */
   let secTracks = "";
   secTracks += `<section class="section" id="program">
@@ -1145,19 +1141,26 @@ function render(){
   });
   secTimeline += `</div></section>`;
 
-  /* WATCH (Att bevaka) — egen sektion */
+  /* CATALYSTS (merged) — egen sektion */
   let secWatch = "";
   secWatch += `<section class="section" id="bevaka">
     <div class="sec-head"><div class="sec-title display">${esc(tr(U.watchHead))}</div>
     <div class="sec-title-sub">${esc(tr(U.watchSub))}</div></div>
     <div class="watch-grid">`;
   DATA.catalysts.forEach(ct=>{
+    const tagLbl = ct.tag==='partner'?tr(U.catPartner):tr(U.catInternal);
+    const srcHtml = ct.src ? (ct.srcHref
+        ? `<a class="watch-src" href="${ct.srcHref}" target="_blank" rel="noopener">${esc(tr(U.source))}: ${esc(tr(ct.src))}</a>`
+        : `<span class="watch-src no">${esc(tr(U.source))}: ${esc(tr(ct.src))}</span>`) : '';
     secWatch += `<div class="watch-item"><div class="watch-bar" style="background:${col(ct.key)}"></div>
       <div class="watch-body">
         <div class="watch-when-row"><span class="watch-when">${esc(tr(ct.when))}</span>
-        ${ct.crit?`<span class="crit">${esc(tr(U.critLbl))}</span>`:''}</div>
+        <span class="watch-tag ${ct.tag}">${esc(tagLbl)}</span>
+        ${ct.crit?`<span class="crit">${esc(tr(U.critLbl))}</span>`:''}
+        ${ct.mile?`<span class="watch-mile">${esc(ct.mile)}</span>`:''}</div>
         <div class="watch-t">${esc(tr(ct.t))}</div>
         <div class="watch-d">${esc(tr(ct.d))}</div>
+        ${srcHtml}
       </div></div>`;
   });
   secWatch += `</div></section>`;
@@ -1172,7 +1175,7 @@ function render(){
 
 
   // ---- Sammansättning i vald ordning ----
-  let h = secHeader + secKpi + secThesis + secNav + secCompany + secPipeline + secTracks + secDeal + secYear + secWatch + secTimeline + secFooter;
+  let h = secHeader + secKpi + secThesis + secNav + secCompany + secPipeline + secTracks + secDeal + secWatch + secTimeline + secFooter;
   document.getElementById('app').innerHTML = h;
   setupNav();
   setupBrandMesh();
