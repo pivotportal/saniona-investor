@@ -422,14 +422,14 @@
   .risk-d{font-size:var(--fs-xs);line-height:var(--lh-relaxed);color:var(--color-text-muted)}
 
   /* ---- Discord community CTA (discreet, on-brand, stacked) ---- */
-  .discord-cta{margin-top:var(--space-7);border-radius:var(--nm-radius);padding:var(--space-5);scroll-margin-top:72px;
-    display:flex;flex-direction:column;align-items:flex-start;
+  .discord-cta{margin:var(--space-7) auto 0;max-width:440px;border-radius:var(--nm-radius);padding:var(--space-5);scroll-margin-top:72px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
     box-shadow:var(--nm-distance) var(--nm-distance) var(--nm-blur) var(--nm-shadow-dark),
                calc(var(--nm-distance) * -1) calc(var(--nm-distance) * -1) var(--nm-blur) var(--nm-shadow-light);
     background:var(--nm-bg)}
   .discord-cta .dc-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-2)}
-  .discord-cta .dc-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-base);line-height:var(--lh-snug);letter-spacing:-.01em;text-transform:none;color:var(--color-text);margin-bottom:var(--space-1)}
-  .discord-cta .dc-line{font-size:var(--fs-sm);color:var(--color-text-muted);line-height:var(--lh-relaxed);margin-bottom:var(--space-4);max-width:52ch}
+  .discord-cta .dc-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-base);line-height:var(--lh-snug);letter-spacing:-.01em;text-transform:none;text-wrap:balance;color:var(--color-text);margin-bottom:var(--space-1)}
+  .discord-cta .dc-line{font-size:var(--fs-sm);color:var(--color-text-muted);line-height:var(--lh-relaxed);margin-bottom:var(--space-4);text-wrap:balance}
   .discord-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:var(--space-2);
     font-family:'IBM Plex Mono',monospace;font-size:var(--fs-xs);font-weight:600;letter-spacing:.04em;
     color:#fff;background:var(--nm-accent-2);border:none;cursor:pointer;text-decoration:none;
