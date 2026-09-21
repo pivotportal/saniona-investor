@@ -9,7 +9,19 @@
 <meta property="og:description" content="Oberoende sammanställning av Saniona AB från offentliga källor: pipeline, avtal, katalysatorer och nyckeltal.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2332496F'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk,sans-serif' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<!-- Google Analytics 4 -->
+
+<!-- PWA: installable app on desktop + mobile -->
+<meta name="theme-color" content="#ECF0F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#24262B" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Saniona Investor">
+<!-- Apple touch icon (iOS home-screen). Solid rounded square with S. -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%2332496F'/%3E%3Ctext x='90' y='122' font-family='sans-serif' font-size='108' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<!-- Web App Manifest, inlined as a data URI so the page stays a single self-contained file -->
+<link rel="manifest" href='data:application/manifest+json,{"name":"Saniona Investor","short_name":"Saniona","description":"Oberoende investeraröversikt för Saniona AB (SANION).","start_url":".","scope":".","display":"standalone","orientation":"portrait-primary","background_color":"%23ECF0F3","theme_color":"%23ECF0F3","icons":[{"src":"data:image/svg%2Bxml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect width=%27512%27 height=%27512%27 fill=%27%2332496F%27/%3E%3Ctext x=%27256%27 y=%27348%27 font-family=%27sans-serif%27 font-size=%27300%27 font-weight=%27700%27 fill=%27white%27 text-anchor=%27middle%27%3ES%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}'>
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YLZTC4LT7P"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -422,14 +434,18 @@
   .risk-d{font-size:var(--fs-xs);line-height:var(--lh-relaxed);color:var(--color-text-muted)}
 
   /* ---- Discord community CTA (discreet, on-brand, stacked) ---- */
-  .discord-cta{margin:var(--space-7) auto 0;max-width:440px;border-radius:var(--nm-radius);padding:var(--space-5);scroll-margin-top:72px;
+  /* ---- CTA row: two equal cards side by side (Discord + Install app) ---- */
+  .cta-row{margin:var(--space-7) auto 0;max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+  @media(max-width:640px){ .cta-row{grid-template-columns:1fr;max-width:440px} }
+  .cta-card{border-radius:var(--nm-radius);padding:var(--space-5);scroll-margin-top:72px;
     display:flex;flex-direction:column;align-items:center;text-align:center;
     box-shadow:var(--nm-distance) var(--nm-distance) var(--nm-blur) var(--nm-shadow-dark),
                calc(var(--nm-distance) * -1) calc(var(--nm-distance) * -1) var(--nm-blur) var(--nm-shadow-light);
     background:var(--nm-bg)}
-  .discord-cta .dc-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-2)}
-  .discord-cta .dc-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-base);line-height:var(--lh-snug);letter-spacing:-.01em;text-transform:none;text-wrap:balance;color:var(--color-text);margin-bottom:var(--space-1)}
-  .discord-cta .dc-line{font-size:var(--fs-sm);color:var(--color-text-muted);line-height:var(--lh-relaxed);margin-bottom:var(--space-4);text-wrap:balance}
+  .cta-card .dc-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+  .cta-card .dc-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-base);line-height:var(--lh-snug);letter-spacing:-.01em;text-transform:none;text-wrap:balance;color:var(--color-text);margin-bottom:var(--space-1)}
+  .cta-card .dc-line{font-size:var(--fs-sm);color:var(--color-text-muted);line-height:var(--lh-relaxed);margin-bottom:var(--space-4);text-wrap:balance;flex:1 0 auto}
+  .cta-card .dc-hint{font-size:var(--fs-xs);color:var(--color-text-muted);margin-top:var(--space-3);line-height:var(--lh-relaxed);text-wrap:balance}
   .discord-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:var(--space-2);
     font-family:'IBM Plex Mono',monospace;font-size:var(--fs-xs);font-weight:600;letter-spacing:.04em;
     color:#fff;background:var(--nm-accent-2);border:none;cursor:pointer;text-decoration:none;
@@ -560,14 +576,26 @@
       <div class="risk-list" id="riskList"></div>
     </section>
 
-    <div class="discord-cta" id="community">
-      <div class="dc-lbl" id="dcLbl">Community</div>
-      <div class="dc-head" id="dcHead"></div>
-      <div class="dc-line" id="dcLine"></div>
-      <a class="discord-btn" id="dcBtn" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.4 2.9a.07.07 0 0 0-.08.03c-.2.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.46 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.03c-1.7.3-3.35.8-4.92 1.47a.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.05 19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-2a.08.08 0 0 0-.04-.11c-.65-.25-1.27-.55-1.87-.9a.08.08 0 0 1-.01-.13l.37-.29a.07.07 0 0 1 .08-.01c3.92 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08 0l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.12c.36.7.78 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.01-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.54-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>
-        <span id="dcBtnTxt"></span>
-      </a>
+    <div class="cta-row" id="community">
+      <div class="cta-card discord-card">
+        <div class="dc-lbl" id="dcLbl">Community</div>
+        <div class="dc-head" id="dcHead"></div>
+        <div class="dc-line" id="dcLine"></div>
+        <a class="discord-btn" id="dcBtn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.4 2.9a.07.07 0 0 0-.08.03c-.2.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.46 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.03c-1.7.3-3.35.8-4.92 1.47a.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.05 19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-2a.08.08 0 0 0-.04-.11c-.65-.25-1.27-.55-1.87-.9a.08.08 0 0 1-.01-.13l.37-.29a.07.07 0 0 1 .08-.01c3.92 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08 0l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.12c.36.7.78 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6.01-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.54-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>
+          <span id="dcBtnTxt"></span>
+        </a>
+      </div>
+      <div class="cta-card install-card">
+        <div class="dc-lbl" id="inLbl">App</div>
+        <div class="dc-head" id="inHead"></div>
+        <div class="dc-line" id="inLine"></div>
+        <button class="discord-btn" id="inBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          <span id="inBtnTxt"></span>
+        </button>
+        <div class="dc-hint" id="inHint" hidden></div>
+      </div>
     </div>
 
     <footer class="site-foot">
@@ -676,6 +704,15 @@
       btn:{sv:'Gå med i Discord servern', en:'Join the Discord server'},
       href:'https://discord.gg/3D74CGuCYj'
     },
+    install:{
+      lbl:{sv:'App', en:'App'},
+      head:{sv:'Installera som app', en:'Install as an app'},
+      line:{sv:'Lägg till sidan på hemskärmen eller skrivbordet och öppna den som en app.', en:'Add the page to your home screen or desktop and open it as an app.'},
+      btn:{sv:'Installera appen', en:'Install the app'},
+      hintIos:{sv:'På iPhone/iPad: tryck på Dela-ikonen och välj ”Lägg till på hemskärmen”.', en:'On iPhone/iPad: tap the Share icon and choose “Add to Home Screen”.'},
+      hintOther:{sv:'Öppna webbläsarens meny och välj ”Installera” eller ”Lägg till på hemskärmen”.', en:'Open your browser menu and choose “Install” or “Add to Home Screen”.'},
+      installed:{sv:'Appen är installerad ✓', en:'App installed ✓'}
+    },
     foot:{"footer":{"sv":"Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, företagspresentation september 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.","en":"Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11."},"disclaimer":{"sv":"Oberoende sammanställning av en privat investerare, baserad enbart på Sanionas offentliga kommunikation. Detta är inte bolagets officiella investerarinformation och utgör inte investeringsrådgivning. Verifiera alltid mot primärkällorna innan beslut.","en":"Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions."},"presLink":{"sv":"Sanionas företagspresentation, september 2026 (PDF)","en":"Saniona company presentation, September 2026 (PDF)"},"presHref":"https://saniona.com/wp-content/uploads/2026/09/Saniona-Offline-Investor-Deck-September-2026-2.pdf","updated":{"sv":"Uppdaterad 21 september 2026","en":"Updated 21 September 2026"},"coverage":{"sv":{"pre":"Bolaget följs av oberoende analyshus, till exempel ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". Se deras publikationer för värdering och analys, som inte återges här."},"en":{"pre":"The company is covered by independent research firms, for example ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". See their publications for valuation and analysis, not reproduced here."}}},
     kpis:[
       {v:{sv:'486 MSEK',en:'~USD 50M'}, u:{sv:'likvida medel',en:'cash & equivalents'},
@@ -742,6 +779,13 @@
       document.getElementById('dcLine').textContent=tr(dc.line);
       document.getElementById('dcBtnTxt').textContent=tr(dc.btn);
       const b=document.getElementById('dcBtn'); b.href=dc.href;
+    }
+    const inz=DATA.install;
+    if(inz){
+      document.getElementById('inLbl').textContent=tr(inz.lbl);
+      document.getElementById('inHead').textContent=tr(inz.head);
+      document.getElementById('inLine').textContent=tr(inz.line);
+      document.getElementById('inBtnTxt').textContent=tr(inz.btn);
     }
     document.getElementById('footSources').textContent=tr(f.footer);
     const pl=document.getElementById('footPresLink');
@@ -1095,6 +1139,68 @@
     requestAnimationFrame(tick);
   }
   initBrandMesh('brandMesh','brandCanvas');
+
+  /* ---- PWA: register an inline service worker (network-first = always fresh) ----
+     Kept inline via a Blob so the page stays a single self-contained file.
+     Strategy: try the network first; only fall back to cache when offline.
+     This makes the site installable as an app on desktop + mobile while never
+     showing stale investor data when a connection is available. */
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE = 'saniona-investor-v1';
+      self.addEventListener('install', e => self.skipWaiting());
+      self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+      self.addEventListener('fetch', e => {
+        if (e.request.method !== 'GET') return;
+        e.respondWith(
+          fetch(e.request)
+            .then(res => {
+              const copy = res.clone();
+              caches.open(CACHE).then(c => c.put(e.request, copy)).catch(()=>{});
+              return res;
+            })
+            .catch(() => caches.match(e.request))
+        );
+      });
+    `;
+    try {
+      const blob = new Blob([swCode], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(url).catch(()=>{});
+    } catch(e) {}
+  }
+
+  /* ---- Install-app button: one-click on Chrome/Edge/Android, guidance on iOS ---- */
+  (function(){
+    const btn=document.getElementById('inBtn'), hint=document.getElementById('inHint');
+    if(!btn) return;
+    const inz=DATA.install;
+    let deferredPrompt=null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    if(isStandalone){
+      // already running as an installed app — reflect that, disable the button
+      btn.textContent=''; btn.disabled=true; btn.style.opacity='.6'; btn.style.cursor='default';
+      const span=document.createElement('span'); span.textContent=tr(inz.installed); btn.appendChild(span);
+      return;
+    }
+
+    // Chrome/Edge/Android fire this when the app is installable — capture it for one-click install
+    window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); deferredPrompt=e; });
+
+    btn.addEventListener('click', async ()=>{
+      if(deferredPrompt){
+        deferredPrompt.prompt();
+        try{ await deferredPrompt.userChoice; }catch(e){}
+        deferredPrompt=null;
+        return;
+      }
+      // No native prompt (iOS Safari, or already dismissed) — show short instructions
+      hint.textContent = isIos ? tr(inz.hintIos) : tr(inz.hintOther);
+      hint.hidden=false;
+    });
+  })();
 </script>
 </body>
 </html>
