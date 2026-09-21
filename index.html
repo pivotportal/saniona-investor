@@ -629,7 +629,7 @@
         ]
       },
       boardLbl:{sv:'Styrelse', en:'Board of directors'},
-      board:{sv:'Styrelsen har fem ledamöter. Ordförande är sedan 2025 John Haurum, med bred operativ och affärsmässig biotech-erfarenhet (tidigare VD för F-star och medgrundare av Symphogen). Grundaren Jørgen Drejer är vice ordförande. Övriga ledamöter är Anna Ljung (VD för Moberg Pharma) och Carl Johan Sundberg (professor vid Karolinska Institutet).', en:'The board has five members. Since 2025 the chairman is John Haurum, who brings broad operational and commercial biotech experience (former CEO of F-star and co-founder of Symphogen). Founder Jørgen Drejer serves as deputy chairman. The other members are Anna Ljung (CEO of Moberg Pharma) and Carl Johan Sundberg (professor at Karolinska Institutet).'},
+      board:{sv:'Styrelsen har fyra ledamöter. Ordförande är sedan 2025 John Haurum, med bred operativ och affärsmässig biotech-erfarenhet (tidigare VD för F-star och medgrundare av Symphogen). Grundaren Jørgen Drejer är vice ordförande. Övriga ledamöter är Anna Ljung (VD för Moberg Pharma) och Carl Johan Sundberg (professor vid Karolinska Institutet).', en:'The board has four members. Since 2025 the chairman is John Haurum, who brings broad operational and commercial biotech experience (former CEO of F-star and co-founder of Symphogen). Founder Jørgen Drejer serves as deputy chairman. The other members are Anna Ljung (CEO of Moberg Pharma) and Carl Johan Sundberg (professor at Karolinska Institutet).'},
       visionLbl:{sv:'Vision', en:'Vision'},
       vision:{sv:'”Att förbättra livet för epilepsipatienter runt om i världen genom vetenskaplig innovation.” Missionen är att nyttja bolagets expertis inom jonkanaler för att upptäcka, utveckla och leverera innovativa behandlingar.', en:'\u201cTo improve the lives of epilepsy patients around the world through scientific innovation.\u201d Its mission is to leverage the company\u2019s ion-channel expertise to discover, develop and deliver innovative treatments.'},
       src:{sv:'Källa: Sanionas rapporter, bolagets lednings- och styrelsesidor samt årsstämman 2025.', en:'Source: Saniona\u2019s reports, the company\u2019s management and board pages, and the 2025 AGM.'}
@@ -1026,11 +1026,9 @@
     btn.textContent = dark ? '☾' : '☀';
     setTimeout(renderPipeline,0); // recompute category colors against the new background
   });
-  // respektera systemets färgläge vid start
-  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    document.documentElement.setAttribute('data-theme','dark');
-    btn.textContent='☀';
-  }
+  // starta alltid i ljust läge (växlas manuellt till mörkt via knappen)
+  document.documentElement.setAttribute('data-theme','light');
+  btn.textContent='☾';
 
   // ---- brand mesh logo (WebGL2, pointer-deformable; falls back to text) ----
   function initBrandMesh(wrapId,canvasId){
