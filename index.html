@@ -3,11 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Saniona — Investeraröversikt</title>
-<meta name="description" content="Oberoende investeraröversikt för Saniona AB (Nasdaq Stockholm: SANION) — pipeline, avtal, katalysatorer och pressmeddelanden, sammanställt från offentliga källor.">
-<meta property="og:title" content="Saniona — Investeraröversikt">
+<title>Saniona Investor — översikt av Saniona AB (SANION)</title>
+<meta name="description" content="Oberoende investeraröversikt av Saniona AB (Nasdaq Stockholm: SANION): pipeline, avtal, katalysatorer och pressmeddelanden från offentliga källor.">
+<link rel="canonical" href="https://sanionainvestor.vercel.app/">
+<meta property="og:title" content="Saniona Investor — översikt av Saniona AB (SANION)">
 <meta property="og:description" content="Oberoende sammanställning av Saniona AB från offentliga källor: pipeline, avtal, katalysatorer och nyckeltal.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sanionainvestor.vercel.app/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Saniona AB",
+  "tickerSymbol": "SANION",
+  "description": "Läkemedelsutvecklingsbolag med en forskningsplattform inriktad på jonkanaler, för neurologiska och psykiatriska sjukdomar.",
+  "url": "https://saniona.com/",
+  "foundingDate": "2011",
+  "location": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Glostrup", "addressCountry": "DK" } },
+  "subjectOf": {
+    "@type": "WebSite",
+    "name": "Saniona Investor",
+    "url": "https://sanionainvestor.vercel.app/",
+    "description": "Oberoende investeraröversikt av Saniona AB, sammanställd från offentliga källor. Ej officiell investerarinformation."
+  }
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2332496F'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk,sans-serif' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 
 <!-- PWA: installable app on desktop + mobile -->
@@ -239,7 +260,9 @@
   .content-sec > .toolbar:first-child{margin-top:0}
 
   /* ---- Bolaget & teamet ---- */
-  .co-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-lg);line-height:var(--lh-snug);letter-spacing:-.01em;color:var(--color-text);margin-bottom:var(--space-1)}
+  .co-head{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:var(--fs-lg);line-height:var(--lh-snug);letter-spacing:-.01em;color:var(--color-text);margin:0 0 var(--space-1)}
+  h1.brand-fallback{margin:0}
+  h3.risk-h,h3.cat-t,h3.deal-partner,h3.pr-group-lbl,h3.p-n{margin-top:0}
   .co-sub{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-5)}
   /* snabbfakta as metadata-list in a pressed well */
   .co-facts{border-radius:16px;padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5);
@@ -496,7 +519,7 @@
     <div class="brand">
       <div class="brand-mesh" id="brandMesh" role="img" aria-label="Saniona Investor">
         <canvas id="brandCanvas" aria-hidden="true"></canvas>
-        <div class="brand-fallback">Saniona Investor</div>
+        <h1 class="brand-fallback">Saniona Investor</h1>
       </div>
       <div class="brand-sub">Saniona AB · <a class="ticker" href="https://finance.yahoo.com/quote/SANION.ST/" target="_blank" rel="noopener">SANION ↗</a></div>
       <div class="brand-updated" id="brandUpdated"></div>
@@ -518,7 +541,7 @@
     </nav>
 
     <section class="content-sec" id="bolaget">
-      <div class="co-head" id="coHead"></div>
+      <h2 class="co-head" id="coHead"></h2>
       <div class="co-sub" id="coSub"></div>
       <div class="co-facts"><dl id="coFacts"></dl></div>
       <div class="co-sec-lbl" id="coMgmtLbl"></div>
@@ -530,7 +553,7 @@
       <div class="co-src" id="coSrc"></div>
     </section>
     <section class="content-sec" id="pipeline">
-      <div class="co-head" id="plHead"></div>
+      <h2 class="co-head" id="plHead"></h2>
       <div class="co-sub" id="plSub"></div>
       <div class="pl-phasehead" id="plPhaseHead"></div>
       <div id="plList"></div>
@@ -541,13 +564,13 @@
     </section>
     <section class="content-sec" id="program">
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="prEyebrow"></span></div>
-      <div class="co-head" id="prHead"></div>
+      <h2 class="co-head" id="prHead"></h2>
       <div class="co-sub" id="prSub"></div>
       <div id="prGroups"></div>
     </section>
     <section class="content-sec" id="ekonomi">
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="ecEyebrow"></span></div>
-      <div class="co-head" id="ecHead"></div>
+      <h2 class="co-head" id="ecHead"></h2>
       <div class="co-sub" id="ecSub"></div>
       <div class="dc-head" id="ecRepHead" style="margin-top:var(--space-3)"></div>
       <div class="rep-box" id="ecRepBox"></div>
@@ -558,20 +581,20 @@
     </section>
     <section class="content-sec" id="bevaka">
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="catEyebrow"></span></div>
-      <div class="co-head" id="catHead"></div>
+      <h2 class="co-head" id="catHead"></h2>
       <div class="co-sub" id="catSub"></div>
       <div class="cat-list" id="catList"></div>
     </section>
     <section class="content-sec" id="proof">
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="tlEyebrow"></span></div>
-      <div class="co-head" id="tlHead"></div>
+      <h2 class="co-head" id="tlHead"></h2>
       <div class="co-sub" id="tlSub"></div>
       <div class="tl-list" id="tlList"></div>
     </section>
 
     <section class="content-sec" id="risker">
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="riskEyebrow"></span></div>
-      <div class="co-head" id="riskHead"></div>
+      <h2 class="co-head" id="riskHead"></h2>
       <div class="co-sub" id="riskSub"></div>
       <div class="risk-list" id="riskList"></div>
     </section>
@@ -745,7 +768,7 @@
     document.getElementById('coSub').textContent=tr(co.sub);
     document.getElementById('coFacts').innerHTML=tr(co.facts).map(([k,v])=>`<div class="co-fact"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
     document.getElementById('coMgmtLbl').textContent=tr(co.mgmtLbl);
-    document.getElementById('mgmtGrid').innerHTML=tr(co.mgmt).map(p=>`<div class="person"><div class="p-n">${p.n}</div><div class="p-r">${p.r}</div><div class="p-b">${p.b}</div></div>`).join('');
+    document.getElementById('mgmtGrid').innerHTML=tr(co.mgmt).map(p=>`<div class="person"><h3 class="p-n">${p.n}</h3><div class="p-r">${p.r}</div><div class="p-b">${p.b}</div></div>`).join('');
     document.getElementById('coBoardLbl').textContent=tr(co.boardLbl);
     document.getElementById('coBoard').innerHTML=`<p>${tr(co.board)}</p>`;
     document.getElementById('coVisionLbl').textContent=tr(co.visionLbl);
@@ -767,7 +790,7 @@
     document.getElementById('riskHead').textContent=tr(r.head);
     document.getElementById('riskSub').textContent=tr(r.sub);
     document.getElementById('riskList').innerHTML=tr(r.items).map(x=>
-      `<div class="risk-item"><div class="risk-h">${x.h}</div><div class="risk-d">${x.d}</div></div>`).join('');
+      `<div class="risk-item"><h3 class="risk-h">${x.h}</h3><div class="risk-d">${x.d}</div></div>`).join('');
   }
 
   function renderFooter(){
@@ -831,7 +854,7 @@
         : `<span class="cat-src no">${tr(L.source)}: ${tr(c.src)}</span>`) : '';
       return `<div class="cat-item" style="--cat-c:${col}">
         <div class="cat-top"><span class="cat-when">${tr(c.when)}</span>${chips.join('')}</div>
-        <div class="cat-t">${tr(c.t)}</div>
+        <h3 class="cat-t">${tr(c.t)}</h3>
         <div class="cat-d">${tr(c.d)}</div>
         ${src}
       </div>`;
@@ -888,7 +911,7 @@
         body = '';
       }
       return `<div class="deal-card">
-        <div class="deal-partner">${partner}</div>
+        <h3 class="deal-partner">${partner}</h3>
         <div class="deal-prog">${prog}</div>
         ${flow}
         ${body}
@@ -934,7 +957,7 @@
         </div>`;
       }).join('');
       return `<div class="pr-group">
-        <div class="pr-group-lbl">${tr(g.name)}</div>
+        <h3 class="pr-group-lbl">${tr(g.name)}</h3>
         <div class="pr-group-sub">${tr(g.sub)}</div>
         <div class="pr-grid">${cards}</div>
       </div>`;
