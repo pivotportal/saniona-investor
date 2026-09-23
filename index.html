@@ -733,6 +733,21 @@
     .ek-tile .v{font-size:18px}
     .ek-tile{padding:var(--space-3)}
   }
+
+  /* ===== pipeline steps carry their own phase label ===== */
+  .pl-phasehead[hidden]{display:none}
+  .pl-track{gap:5px}
+  .pl-cell{height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;min-width:0;box-sizing:border-box;position:relative}
+  .pl-cl{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0;color:var(--color-text-muted);white-space:nowrap;overflow:hidden;position:relative;z-index:1}
+  .pl-cell.filled .pl-cl{color:var(--on,#fff)}
+  .pl-cell.next{border:1.5px dashed var(--c)}
+  .pl-cell.next .pl-cl{color:var(--c)}
+  .pl-cell.part::before{content:none}
+  .pl-cell.part{background:color-mix(in srgb,var(--c) 18%,var(--nm-bg))}
+  .pl-cell.part .pl-cl{color:var(--c)}
+  .pl-lg-next{width:22px;height:12px;border-radius:4px;border:1.5px dashed var(--nm-accent-2);box-sizing:border-box}
+  .pl-lg-part{background:color-mix(in srgb,var(--nm-accent-2) 18%,var(--nm-bg))!important;box-shadow:none!important}
+  @media(min-width:700px){.pl-cell{height:28px}.pl-cl{font-size:12px}}
 </style>
 </head>
 <body>
@@ -811,11 +826,11 @@
     <section class="content-sec" id="pipeline">
       <h2 class="co-head" id="plHead">Pipeline &amp; program</h2>
       <div class="co-sub" id="plSub">8 program och 3 forskningssamarbeten. Tryck på en rad för att läsa mer.</div>
-      <div class="pl-phasehead" id="plPhaseHead" style="grid-template-columns: repeat(5,1fr);"><span>Preklinisk</span><span>Fas 1</span><span>Fas 2</span><span>Fas 3</span><span>Marknad</span></div>
-      <div id="plList"><div class="pl-group"><h3 class="pr-group-lbl">Interna helägda program</h3><div class="pr-group-sub">Full uppsida, men Saniona bär kostnad och risk</div></div><div class="pl-item" data-key="san2668" style="--c:#227762">
+      <div class="pl-phasehead" id="plPhaseHead" style="grid-template-columns: repeat(5,1fr);" hidden=""></div>
+      <div id="plList"><div class="pl-group"><h3 class="pr-group-lbl">Interna helägda program</h3><div class="pr-group-sub">Full uppsida, men Saniona bär kostnad och risk</div></div><div class="pl-item" data-key="san2668" style="--c:#227762;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2668" aria-expanded="false" aria-controls="plp-san2668">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN2668</span> <span class="pl-ind">Pediatrisk epilepsi (DEE)</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell next"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Fas 1-dosering Q1 2027</span>
         </button></h4>
         <div class="pl-panel" id="plp-san2668" role="region" aria-labelledby="plb-san2668"><div class="pl-panel-in"><div class="pl-well">
@@ -824,10 +839,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">CTA-ansökan kring årsskiftet 2026 → first-in-human-dosering Q1 2027</dd></div><div><dt>Indikation</dt><dd>Svåra pediatriska epilepsier (DEE)</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>GABAA α2/α3-selektiv positiv allosterisk modulator (PAM) med balanserad α1. Tanken är att behålla bensodiazepinernas effekt mot anfall men med mindre sedering, kognitiv påverkan och beroende</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
           <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Bättre anfallskontroll än klobazam vid kliniskt jämförbar exponering, utan påverkan på motorik och utan sedering. Minskar spike-wave-urladdningar (SWD) i tre genetiska DEE-modeller: helt i SYNGAP1 och STXBP1, ungefär till hälften i CHD2. En kraftig minskning syns även i råttmodellen GAERS. Förbättrar också symtom utöver anfallen, som kognition, aggression och social interaktion. Ger extra effekt tillsammans med lamotrigin, levetiracetam och valproat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="san2465" style="--c:#ab35b6">
+      </div><div class="pl-item" data-key="san2465" style="--c:#ab35b6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2465" aria-expanded="false" aria-controls="plp-san2465">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN2465</span> <span class="pl-ind">Svår depression</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell next"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Fas 1-dosering kring årsskiftet 2026</span>
         </button></h4>
         <div class="pl-panel" id="plp-san2465" role="region" aria-labelledby="plb-san2465"><div class="pl-panel-in"><div class="pl-well">
@@ -836,10 +851,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">First-in-human-dosering kring årsskiftet 2026</dd></div><div><dt>Indikation</dt><dd>Svår depression (MDD)</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>Negativ allosterisk modulator (NAM) av GABAA α5. En ny mekanism som skiljer sig från vanliga antidepressiva, NMDA-antagonister och psykedelika</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
           <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Anhedoni normaliserad inom 24 timmar och kvarstående i minst 48 timmar efter en enda oral dos; ångestbeteende fullt reverserat. Effektstorlek jämförbar med ketamin, där konventionella antidepressiva kräver 3–5 veckors daglig dosering. Återställer kognition i två domäner och två oberoende modeller (jämförbart med ketamin/donepezil) utan påverkan på motorik. Anatomiskt begränsad målverkan (hippocampus) bekräftad med PET i primat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="san2219" style="--c:#8e6129">
+      </div><div class="pl-item" data-key="san2219" style="--c:#8e6129;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2219" aria-expanded="false" aria-controls="plp-san2219">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN2219</span> <span class="pl-ind">Fokala anfall</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Pausat</span>
         </button></h4>
         <div class="pl-panel" id="plp-san2219" role="region" aria-labelledby="plb-san2219"><div class="pl-panel-in"><div class="pl-well">
@@ -848,10 +863,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Framtida utveckling eller partnerskap</dd></div><div><dt>Indikation</dt><dd>Refraktära fokala anfall</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>Subtypsselektiv positiv allosterisk modulator av GABAA, med bred effekt mot behandlingsresistenta anfall</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
           <a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-group"><h3 class="pr-group-lbl">Utlicensierade program</h3><div class="pr-group-sub">Partnern betalar utvecklingen, Saniona får milstolpar och royalty</div></div><div class="pl-item" data-key="san711" style="--c:#3953c6">
+      </div><div class="pl-group"><h3 class="pr-group-lbl">Utlicensierade program</h3><div class="pr-group-sub">Partnern betalar utvecklingen, Saniona får milstolpar och royalty</div></div><div class="pl-item" data-key="san711" style="--c:#3953c6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san711" aria-expanded="false" aria-controls="plp-san711">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN711 / ACP-711</span> <span class="pl-ind">Essentiell tremor · Acadia</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 1</span></span><span class="pl-cell next"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Fas 2 väntas 2027</span>
         </button></h4>
         <div class="pl-panel" id="plp-san711" role="region" aria-labelledby="plb-san711"><div class="pl-panel-in"><div class="pl-well">
@@ -860,10 +875,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona</dd></div><div><dt>Indikation</dt><dd>Essentiell tremor</dd></div><div><dt>Ägande</dt><dd>Acadia Pharmaceuticals, globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Positiv allosterisk modulator av GABAA α3</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Del av Acadia-avtalet från 2024, värt upp till 5,89 mdr SEK (610 MUSD) totalt</dd></div></dl>
           <a class="pr-src" href="https://mfn.se/a/saniona/saniona-highlights-acadia-pharmaceuticals-upcoming-randd-day" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="san2355" style="--c:#c23838">
+      </div><div class="pl-item" data-key="san2355" style="--c:#c23838;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2355" aria-expanded="false" aria-controls="plp-san2355">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN2355</span> <span class="pl-ind">Epilepsi · Jazz</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell next"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Fas 1 förbereds (Jazz)</span>
         </button></h4>
         <div class="pl-panel" id="plp-san2355" role="region" aria-labelledby="plb-san2355"><div class="pl-panel-in"><div class="pl-well">
@@ -872,10 +887,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona</dd></div><div><dt>Indikation</dt><dd>Epilepsi och andra neurologiska tillstånd</dd></div><div><dt>Ägande</dt><dd>Jazz Pharmaceuticals, exklusiva globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Subtypsselektiv Kv7.2/Kv7.3-aktivator. Mekanismen är etablerad för att dämpa anfall</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Jazz-avtal (aug 2025): 410 MSEK (42,5 MUSD) upfront, upp till 1,86 mdr SEK (192,5 MUSD) i utv-/reg-milstolpar, upp till 7,72 mdr SEK (800 MUSD) kommersiella, samt royalty</dd></div></dl>
           <a class="pr-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="teso" style="--c:#247b34">
+      </div><div class="pl-item" data-key="teso" style="--c:#247b34;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-teso" aria-expanded="false" aria-controls="plp-teso">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">Tesofensin</span> <span class="pl-ind">Fetma · Medix</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 1</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 2</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 3</span></span><span class="pl-cell next"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Regulatorisk granskning i Mexiko</span>
         </button></h4>
         <div class="pl-panel" id="plp-teso" role="region" aria-labelledby="plb-teso"><div class="pl-panel-in"><div class="pl-well">
@@ -884,10 +899,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning</dd></div><div><dt>Indikation</dt><dd>Fetma</dd></div><div><dt>Ägande</dt><dd>Medix, rättigheter i Mexiko och Argentina</dd></div><div class="wide"><dt>Mekanism</dt><dd>Monoaminåterupptagshämmare (dopamin, serotonin, noradrenalin)</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Upfront 12 MSEK (1,25 MUSD) erhållet 2016. Vid godkännande utlöses ytterligare 19 MSEK (2,0 MUSD) samt låga tvåsiffriga royalties på försäljning</dd></div></dl>
           <a class="pr-src" href="https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-group"><h3 class="pr-group-lbl">Tillgängliga för partnering</h3><div class="pr-group-sub">Kliniska tillgångar redo för nästa steg</div></div><div class="pl-item" data-key="tesomet" style="--c:#6d39c6">
+      </div><div class="pl-group"><h3 class="pr-group-lbl">Tillgängliga för partnering</h3><div class="pr-group-sub">Kliniska tillgångar redo för nästa steg</div></div><div class="pl-item" data-key="tesomet" style="--c:#6d39c6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-tesomet" aria-expanded="false" aria-controls="plp-tesomet">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">Tesomet</span> <span class="pl-ind">Sällsynta ätstörningar</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 1</span></span><span class="pl-cell filled"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Redo för partnering</span>
         </button></h4>
         <div class="pl-panel" id="plp-tesomet" role="region" aria-labelledby="plb-tesomet"><div class="pl-panel-in"><div class="pl-well">
@@ -896,10 +911,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Partneravtal för fas 2b</dd></div><div><dt>Indikation</dt><dd>Sällsynta ätstörningar (HO, PWS)</dd></div><div><dt>Ägande</dt><dd>Tillgängligt för partnering</dd></div><div class="wide"><dt>Mekanism</dt><dd>Tesofensin + metoprolol i kombination</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Tidigare Orphan Drug-designation (FDA)</dd></div></dl>
           <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="san903" style="--c:#686f20">
+      </div><div class="pl-item" data-key="san903" style="--c:#686f20;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san903" aria-expanded="false" aria-controls="plp-san903">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">SAN903</span> <span class="pl-ind">IBD · fibrotisk/inflammatorisk</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Redo för partnering</span>
         </button></h4>
         <div class="pl-panel" id="plp-san903" role="region" aria-labelledby="plb-san903"><div class="pl-panel-in"><div class="pl-well">
@@ -908,10 +923,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Partneravtal för fas 1</dd></div><div><dt>Indikation</dt><dd>Inflammatorisk tarmsjukdom (IBD)</dd></div><div><dt>Ägande</dt><dd>Tillgängligt för partnering</dd></div><div class="wide"><dt>Mekanism</dt><dd>Hämning av kalciumaktiverad kaliumjonkanal</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Preklinisk utveckling slutförd</dd></div></dl>
           <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-group"><h3 class="pr-group-lbl">Forskningssamarbeten</h3><div class="pr-group-sub">Tidiga program hos partners, byggda på Sanionas plattform</div></div><div class="pl-item" data-key="boehringer" style="--c:#29738e">
+      </div><div class="pl-group"><h3 class="pr-group-lbl">Forskningssamarbeten</h3><div class="pr-group-sub">Tidiga program hos partners, byggda på Sanionas plattform</div></div><div class="pl-item" data-key="boehringer" style="--c:#29738e;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-boehringer" aria-expanded="false" aria-controls="plp-boehringer">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">Boehringer Ingelheim</span> <span class="pl-ind">Schizofreni</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell part"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell part"><span class="pl-cl">Forskn.</span></span><span class="pl-cell"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Leadoptimering</span>
         </button></h4>
         <div class="pl-panel" id="plp-boehringer" role="region" aria-labelledby="plb-boehringer"><div class="pl-panel-in"><div class="pl-well">
@@ -920,10 +935,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Forskningsmilstolpar → utvecklingsmilstolpar</dd></div><div><dt>Indikation</dt><dd>Schizofreni</dd></div><div><dt>Ägande</dt><dd>Boehringer Ingelheim, exklusiva globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Ej offentliggjord jonkanal i CNS, en ny klass av läkemedel</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty. Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025)</dd></div></dl>
           <a class="pr-src" href="https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="astronautx" style="--c:#ba367e">
+      </div><div class="pl-item" data-key="astronautx" style="--c:#ba367e;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-astronautx" aria-expanded="false" aria-controls="plp-astronautx">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">ATX0926</span> <span class="pl-ind">Alzheimers · AstronauTx</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell filled"><span class="pl-cl">Prekl.</span></span><span class="pl-cell next"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">IND-förberedande studier</span>
         </button></h4>
         <div class="pl-panel" id="plp-astronautx" role="region" aria-labelledby="plb-astronautx"><div class="pl-panel-in"><div class="pl-well">
@@ -932,10 +947,10 @@
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">IND-enabling-studier → klinisk fas 1 hos AstronauTx</dd></div><div><dt>Indikation</dt><dd>Neurologisk sjukdom / Alzheimers (ATX0926)</dd></div><div><dt>Ägande</dt><dd>AstronauTx Ltd, som äger exklusiva globala rättigheter sedan optionen utnyttjades i aug 2026</dd></div><div class="wide"><dt>Mekanism</dt><dd>Ej offentliggjort jonkanalsmål kopplat till sömnbiologi/glymfatiskt flöde, via Sanionas plattform</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Saniona fick aktier värda 48 MSEK (5 MUSD) vid optionsutnyttjandet. Därtill upp till 1,66 mdr SEK (172 MUSD): 936 MSEK utv-/reg + 724 MSEK kommersiella, plus tiered royalty</dd></div></dl>
           <a class="pr-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener">Källa ↗</a>
         </div></div></div>
-      </div><div class="pl-item" data-key="cephagenix" style="--c:#417722">
+      </div><div class="pl-item" data-key="cephagenix" style="--c:#417722;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-cephagenix" aria-expanded="false" aria-controls="plp-cephagenix">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">Cephagenix</span> <span class="pl-ind">Migrän · joint venture</span></span><span class="pl-chev" aria-hidden="true"></span></span>
-          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell part"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span><span class="pl-cell"></span></span>
+          <span class="pl-track" style="grid-template-columns:repeat(5,1fr)"><span class="pl-cell part"><span class="pl-cl">Forskn.</span></span><span class="pl-cell"><span class="pl-cl">Fas 1</span></span><span class="pl-cell"><span class="pl-cl">Fas 2</span></span><span class="pl-cell"><span class="pl-cl">Fas 3</span></span><span class="pl-cell"><span class="pl-cl">Marknad</span></span></span>
           <span class="pl-status">Leadoptimering</span>
         </button></h4>
         <div class="pl-panel" id="plp-cephagenix" role="region" aria-labelledby="plb-cephagenix"><div class="pl-panel-in"><div class="pl-well">
@@ -946,8 +961,8 @@
         </div></div></div>
       </div></div>
       <div class="pl-legend">
-        <span class="li"><span class="pl-lg-fill"></span><span id="plLegFill">Nuvarande status</span></span>
-        <span class="li"><span class="pl-lg-arrow"><span class="l"></span><span class="h"></span></span><span id="plLegArrow">Mål · riktning</span></span>
+        <span class="li"><span class="pl-lg-fill"></span><span id="plLegFill">Avklarad fas</span></span>
+        <span class="li"><span class="pl-lg-next"></span><span id="plLegArrow">Nästa steg</span></span>
         <span class="li"><span class="pl-lg-part"></span><span id="plLegPart">Forskningsfas</span></span>
       </div>
     </section>
@@ -1308,8 +1323,8 @@
       head:{sv:'Pipeline & program', en:'Pipeline & programs'},
       sub:{sv:'', en:''}, // computed from counts
       phases:{sv:['Preklinisk','Fas 1','Fas 2','Fas 3','Marknad'], en:['Preclinical','Phase 1','Phase 2','Phase 3','Market']},
-      legendFill:{sv:'Nuvarande status', en:'Current status'},
-      legendArrow:{sv:'Mål · riktning', en:'Target · direction'},
+      legendFill:{sv:'Avklarad fas', en:'Phase reached'},
+      legendArrow:{sv:'Nästa steg', en:'Next step'},
       legendPart:{sv:'Forskningsfas', en:'Research stage'},
       hint:{sv:(n,r)=>`${n} program och ${r} forskningssamarbeten. Tryck på en rad för att läsa mer.`, en:(n,r)=>`${n} programs and ${r} research collaborations. Tap a row to read more.`},
       subTpl:{sv:(n,m)=>`${n} program i ${m} faser, från preklinik till marknad`, en:(n,m)=>`${n} programs across ${m} phases, from preclinical to market`},
@@ -1742,17 +1757,20 @@
     document.getElementById('plLegArrow').textContent=tr(pl.legendArrow);
     const lp=document.getElementById('plLegPart'); if(lp) lp.textContent=tr(pl.legendPart);
     const ph=document.getElementById('plPhaseHead');
-    ph.style.gridTemplateColumns=`repeat(${phases.length},1fr)`;
-    ph.innerHTML=phases.map(p=>`<span>${p}</span>`).join('');
+    ph.innerHTML=''; ph.hidden=true; // phase names now live inside each step
     const list=document.getElementById('plList');
     let html='', lastGroup=-1;
+    const onC=relLum(hexRgb(bg))>0.4?'#FFFFFF':bg; // label colour on filled steps: light on light theme, dark on dark theme
     pl.programs.forEach(p=>{
       const gi=groupOf[p.key], g=pr.groups[gi], c=card[p.key]||{};
       if(gi!==lastGroup){ html+=`<div class="pl-group"><h3 class="pr-group-lbl">${tr(g.name)}</h3><div class="pr-group-sub">${tr(g.sub)}</div></div>`; lastGroup=gi; }
       const col=progColor(p.key,bg), open=plOpen===p.key;
-      const cells=phases.map((_,idx)=>{
-        const cls=idx<=p.cur?' filled':(p.cur<0&&idx===0?' part':'');
-        return `<span class="pl-cell${cls}"></span>`;
+      const nextIdx=(p.target!=null&&p.target>p.cur)?p.target:(p.cur<0?-1:null);
+      const cells=phases.map((ph,idx)=>{
+        const research=p.cur<0&&idx===0;
+        const cls=idx<=p.cur?' filled':(research?' part':(idx===nextIdx?' next':''));
+        const lbl=research?(lang==='sv'?'Forskn.':'Research'):(idx===0?(lang==='sv'?'Prekl.':'Precl.'):ph);
+        return `<span class="pl-cell${cls}"><span class="pl-cl">${lbl}</span></span>`;
       }).join('');
       const facts=[];
       if(c.next) facts.push(`<div class="wide"><dt>${tr(L.next)}</dt><dd class="next">${tr(c.next)}</dd></div>`);
@@ -1763,7 +1781,7 @@
       const pre=c.preclin?`<div class="pl-pre"><div class="pc-lbl">${tr(L.preclin)}</div><p>${tr(c.preclin)}</p></div>`:'';
       const src=c.href?`<a class="pr-src" href="${c.href}" target="_blank" rel="noopener">${tr(L.src)}</a>`:'';
       const metric=c.metricV?`<div class="pl-metric"><span class="m-v">${typeof c.metricV==='string'?c.metricV:tr(c.metricV)}</span><span class="m-l">${tr(c.metricL)}</span></div>`:'';
-      html+=`<div class="pl-item${open?' open':''}" data-key="${p.key}" style="--c:${col}">
+      html+=`<div class="pl-item${open?' open':''}" data-key="${p.key}" style="--c:${col};--on:${onC}">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-${p.key}" aria-expanded="${open}" aria-controls="plp-${p.key}">
           <span class="pl-rowhead"><span class="pl-dot"></span><span class="pl-name"><span class="pl-code">${p.code}</span> <span class="pl-ind">${tr(p.ind)}</span></span><span class="pl-chev" aria-hidden="true"></span></span>
           <span class="pl-track" style="grid-template-columns:repeat(${phases.length},1fr)">${cells}</span>
@@ -1778,11 +1796,7 @@
       </div>`;
     });
     list.innerHTML=html;
-    list.querySelectorAll('.pl-item').forEach((it,i)=>{
-      const p=pl.programs[i];
-      it.querySelector('.pl-row')._arrow=(p.target!=null && p.target>p.cur)?{from:Math.max(p.cur,0),to:p.target,color:progColor(p.key,bg)}:null;
-    });
-    requestAnimationFrame(drawPlArrows);
+    document.querySelectorAll('.pl-arrow-line,.pl-arrow-head').forEach(e=>e.remove());
   }
   function togglePl(key){
     const items=[...document.querySelectorAll('#plList .pl-item')];
