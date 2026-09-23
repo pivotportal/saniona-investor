@@ -1,5 +1,5 @@
 // Saniona Investor service worker: network first, cache as offline fallback.
-const CACHE = 'saniona-investor-v2';
+const CACHE = 'saniona-investor-v3';
 self.addEventListener('install', e => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(
   caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))

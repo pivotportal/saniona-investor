@@ -57,7 +57,8 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2332496F'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk,sans-serif' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 <!-- PWA: installable app on desktop + mobile -->
 <meta name="theme-color" content="#ECF0F3" media="(prefers-color-scheme: light)">
@@ -748,6 +749,19 @@
   .pl-lg-next{width:22px;height:12px;border-radius:4px;border:1.5px dashed var(--nm-accent-2);box-sizing:border-box}
   .pl-lg-part{background:color-mix(in srgb,var(--nm-accent-2) 18%,var(--nm-bg))!important;box-shadow:none!important}
   @media(min-width:700px){.pl-cell{height:28px}.pl-cl{font-size:12px}}
+
+  /* back-to-top button */
+  .to-top{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;
+      width:44px;height:44px;border-radius:50%;border:0;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;
+      color:var(--nm-accent-2);background:var(--nm-bg);
+      box-shadow:5px 5px 12px var(--nm-shadow-dark),-4px -4px 10px var(--nm-shadow-light);
+      opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s,box-shadow .2s ease}
+  .to-top.show{opacity:.88;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease,box-shadow .2s ease}
+  .to-top:hover{opacity:1}
+  .to-top:active{box-shadow:inset 3px 3px 6px var(--nm-shadow-dark),inset -3px -3px 6px var(--nm-shadow-light)}
+  .to-top:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:3px;opacity:1}
+  @media(prefers-reduced-motion:reduce){.to-top,.to-top.show{transition:none}}
+  @media print{.to-top{display:none}}
 </style>
 </head>
 <body>
@@ -1237,6 +1251,7 @@
       <div class="foot-disclaimer" id="footDisclaimer">Oberoende sammanställning av en privat investerare, baserad enbart på Sanionas offentliga kommunikation. Detta är inte bolagets officiella investerarinformation och utgör inte investeringsrådgivning. Verifiera alltid mot primärkällorna innan beslut.</div>
       <div class="foot-coverage" id="footCoverage">Bolaget följs av oberoende analyshus, till exempel <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. Se deras publikationer för värdering och analys, som inte återges här.</div>
     </footer>
+    <button type="button" class="to-top" id="toTop" aria-label="Till toppen" tabindex="-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
   </div>
 
 <script>
@@ -1882,6 +1897,7 @@
   // language segmented control
   const svBtn=document.getElementById('langSv'), enBtn=document.getElementById('langEn');
   function setLang(l){
+    const tt=document.getElementById('toTop'); if(tt) tt.setAttribute('aria-label',l==='sv'?'Till toppen':'Back to top');
     lang=l; document.documentElement.lang=l;
     svBtn.classList.toggle('on', l==='sv'); enBtn.classList.toggle('on', l==='en');
     svBtn.setAttribute('aria-pressed', l==='sv'); enBtn.setAttribute('aria-pressed', l==='en');
@@ -2008,6 +2024,26 @@
       hint.textContent = isIos ? tr(inz.hintIos) : tr(inz.hintOther);
       hint.hidden=false;
     });
+  })();
+
+  // back-to-top: a small floating button that appears as the reader nears the end of the page
+  (function(){
+    const btn=document.getElementById('toTop'); if(!btn) return;
+    let ticking=false, shown=false;
+    const update=()=>{
+      ticking=false;
+      const max=document.documentElement.scrollHeight-window.innerHeight;
+      const show=max>1200 && window.scrollY>max*0.6;
+      if(show!==shown){ shown=show; btn.classList.toggle('show',show); btn.tabIndex=show?0:-1; btn.setAttribute('aria-hidden',String(!show)); }
+    };
+    window.addEventListener('scroll',()=>{ if(!ticking){ ticking=true; requestAnimationFrame(update);} },{passive:true});
+    window.addEventListener('resize',update);
+    btn.addEventListener('click',()=>{
+      const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+      const h=document.querySelector('h1'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
+    });
+    update();
   })();
 </script>
 
