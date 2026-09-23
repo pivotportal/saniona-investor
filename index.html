@@ -92,12 +92,16 @@
 <!-- Web App Manifest, inlined as a data URI so the page stays a single self-contained file -->
 <link rel="manifest" href="/manifest.webmanifest">
 <!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YLZTC4LT7P"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-YLZTC4LT7P');
+  // gtag.js is loaded after the page has loaded; the queued events above are sent when it arrives
+  window.addEventListener('load',function(){
+    var go=function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-YLZTC4LT7P';document.head.appendChild(s);};
+    if('requestIdleCallback' in window) requestIdleCallback(go,{timeout:3000}); else setTimeout(go,1500);
+  });
 </script>
 <!-- self-hosted fonts (no render-blocking third-party CSS); Inter + Space Grotesk: SIL OFL, IBM Plex Mono: SIL OFL -->
 <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -1810,7 +1814,7 @@
     return rgbHex(hslToRgb(hue,sat,darken?15:85));
   }
   function progColor(key,bg){const h=PROG_HUE[key]; return h==null?'var(--color-text-muted)':hueColor(h,bg||curBg());}
-  function curBg(){return getComputedStyle(document.documentElement).getPropertyValue('--nm-bg').trim()||'#ECF0F3';}
+  function curBg(){const t=document.documentElement.getAttribute('data-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); return t==='dark'?'#24262B':'#ECF0F3';}
 
   let plOpen=null; // key of the open pipeline row (kept across re-renders)
   function renderPipeline(){
@@ -1947,7 +1951,7 @@
   window.addEventListener('resize',spy,{passive:true});
 
   render();
-  spy();
+  requestAnimationFrame(()=>requestAnimationFrame(spy)); // first read after the first frame, so it never forces a layout
 
   // language segmented control
   const svBtn=document.getElementById('langSv'), enBtn=document.getElementById('langEn');
@@ -2023,7 +2027,7 @@
       cx.clearRect(0,0,w,h);cx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--nm-accent-2').trim()||accent;
       cx.textAlign='left';cx.textBaseline='middle';cx.fillText('Saniona Investor',pad,h/2);
       gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
-      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,c);wrap.classList.add('gl-on');
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,c);wrap.classList.add('gl-on');kick();
     }
     function resize(){const dpr=window.devicePixelRatio||1,r=wrap.getBoundingClientRect();
       const w=Math.max(2,Math.round(r.width*dpr)),h=Math.max(2,Math.round(r.height*dpr));
@@ -2032,21 +2036,28 @@
     // rebuild texture on theme change so the logo re-colours
     new MutationObserver(buildTex).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     const cur={x:99,y:99,px:99,py:99,vx:0,vy:0,inside:false};
-    wrap.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();const x=((e.clientX-r.left)/r.width)*2-1,y=1-((e.clientY-r.top)/r.height)*2;if(!cur.inside){cur.px=x;cur.py=y;cur.inside=true;}cur.x=x;cur.y=y;});
+    let running=false; function kick(){ if(!running){ running=true; requestAnimationFrame(tick); } }
+    wrap.addEventListener('pointermove',e=>{kick();const r=canvas.getBoundingClientRect();const x=((e.clientX-r.left)/r.width)*2-1,y=1-((e.clientY-r.top)/r.height)*2;if(!cur.inside){cur.px=x;cur.py=y;cur.inside=true;}cur.x=x;cur.y=y;});
     wrap.addEventListener('pointerleave',()=>{cur.inside=false;cur.x=99;cur.y=99;cur.vx=0;cur.vy=0;});
     function tick(){cur.vx=cur.x-cur.px;cur.vy=cur.y-cur.py;if(Math.hypot(cur.vx,cur.vy)>0.3){cur.vx=0;cur.vy=0;}cur.px=cur.x;cur.py=cur.y;
+      let energy=0;
       for(let i=0;i<vc;i++){const i2=i*2,px=pos[i2],py=pos[i2+1],dx=disp[i2],dy=disp[i2+1];
         const cd=Math.hypot(cur.x-(px+dx),cur.y-(py+dy)),prox=Math.max(0,1/(1+cd/0.05)-0.1);
         let vx=vel[i2],vy=vel[i2+1];vx+=cur.vx*1.5*prox;vy+=cur.vy*1.5*prox;vx-=dx*0.08;vy-=dy*0.08;vx*=0.9;vy*=0.9;
-        vel[i2]=vx;vel[i2+1]=vy;disp[i2]=Math.max(-1,Math.min(1,dx+vx*0.1));disp[i2+1]=Math.max(-1,Math.min(1,dy+vy*0.1));}
+        vel[i2]=vx;vel[i2+1]=vy;disp[i2]=Math.max(-1,Math.min(1,dx+vx*0.1));disp[i2+1]=Math.max(-1,Math.min(1,dy+vy*0.1));
+        energy=Math.max(energy,Math.abs(vx)+Math.abs(vy)+Math.abs(disp[i2])+Math.abs(disp[i2+1]));}
       gl.bindBuffer(gl.ARRAY_BUFFER,dbf);gl.bufferSubData(gl.ARRAY_BUFFER,0,disp);
       gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(pr);
       gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);gl.uniform1i(uT,0);
       gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.bindVertexArray(vao);
-      gl.drawElements(gl.TRIANGLES,idx.length,gl.UNSIGNED_INT,0);requestAnimationFrame(tick);}
-    requestAnimationFrame(tick);
+      gl.drawElements(gl.TRIANGLES,idx.length,gl.UNSIGNED_INT,0);
+      // stop the loop once the surface has settled and the pointer is gone; the last frame stays on screen
+      if(!cur.inside&&energy<1e-4){ running=false; return; }
+      requestAnimationFrame(tick);}
+    kick();
   }
-  initBrandMesh('brandMesh','brandCanvas');
+  { const startMesh=()=>initBrandMesh('brandMesh','brandCanvas'); // the plain H1 is shown until then
+    if('requestIdleCallback' in window) requestIdleCallback(startMesh,{timeout:2000}); else setTimeout(startMesh,400); }
 
   /* ---- PWA: register an inline service worker (network-first = always fresh) ----
      Kept inline via a Blob so the page stays a single self-contained file.
@@ -2106,7 +2117,7 @@
       window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
       const h=document.querySelector('h1'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
     });
-    update();
+    requestAnimationFrame(()=>requestAnimationFrame(update));
   })();
 </script>
 
