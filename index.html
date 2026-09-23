@@ -6,11 +6,24 @@
 <title>Saniona Investor: översikt av Saniona AB (SANION)</title>
 <meta name="description" content="Oberoende investeraröversikt av Saniona AB (Nasdaq Stockholm: SANION): pipeline, avtal, katalysatorer och pressmeddelanden från offentliga källor.">
 <link rel="canonical" href="https://sanionainvestor.vercel.app/">
+<link rel="alternate" hreflang="sv" href="https://sanionainvestor.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://sanionainvestor.vercel.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://sanionainvestor.vercel.app/en/">
 <meta property="og:title" content="Saniona Investor: översikt av Saniona AB (SANION)">
 <meta property="og:description" content="Oberoende sammanställning av Saniona AB från offentliga källor: pipeline, avtal, katalysatorer och nyckeltal.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sanionainvestor.vercel.app/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://sanionainvestor.vercel.app/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Saniona Investor: oberoende översikt av Saniona AB (SANION). Ej officiell investerarinformation.">
+<meta property="og:site_name" content="Saniona Investor">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sanionainvestor.vercel.app/og-image.png">
+<meta name="twitter:image:alt" content="Saniona Investor: oberoende översikt av Saniona AB (SANION). Ej officiell investerarinformation.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +52,14 @@
       "description": "Oberoende sammanställning av Saniona AB (Nasdaq Stockholm: SANION): pipeline, avtal, katalysatorer och pressmeddelanden från offentliga källor. Ej bolagets officiella investerarinformation och ej investeringsrådgivning.",
       "about": {
         "@id": "https://sanionainvestor.vercel.app/#saniona"
-      }
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://sanionainvestor.vercel.app/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "image": "https://sanionainvestor.vercel.app/og-image.png"
     },
     {
       "@type": "Corporation",
@@ -79,9 +99,15 @@
   gtag('js', new Date());
   gtag('config', 'G-YLZTC4LT7P');
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- self-hosted fonts (no render-blocking third-party CSS); Inter + Space Grotesk: SIL OFL, IBM Plex Mono: SIL OFL -->
+<link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/inter-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/space-grotesk-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -762,10 +788,33 @@
   .to-top:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:3px;opacity:1}
   @media(prefers-reduced-motion:reduce){.to-top,.to-top.show{transition:none}}
   @media print{.to-top{display:none}}
+
+  /* realized & other deals: full-width description */
+  .dc-row.dc-row2{display:block}
+  .dc-row2 .dc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px var(--space-3);margin-bottom:6px}
+  .dc-row2 .dc-v{white-space:normal}
+  .dc-row2 .dc-note{line-height:1.5}
+  .dc-row2 .dc-srcl{margin-top:var(--space-2)}
+
+  /* accessibility: contrast-safe chips and states (WCAG AA) */
+  .prog-chip,.tlx-chip{background:transparent;box-shadow:inset 0 0 0 1.5px var(--c)}
+  .pl-cell.part{background:transparent;box-shadow:inset 2px 2px 4px var(--nm-shadow-dark),inset -2px -2px 4px var(--nm-shadow-light);border-bottom:3px solid var(--c)}
+  .pl-lg-part{background:transparent!important;box-shadow:inset 1px 1px 2px var(--nm-shadow-dark),inset -1px -1px 2px var(--nm-shadow-light)!important;border-bottom:3px solid var(--nm-accent-2);box-sizing:border-box}
+  .lang-seg button.on{color:var(--nm-bg)}
+  .cat-chip.mile,.cat-chip.crit{color:var(--nm-bg)}
+
+  /* ===== contrast fixes (PageSpeed / axe) ===== */
+  .prog-chip,.tlx-chip{background:transparent;box-shadow:inset 0 0 0 1.5px var(--c)}
+  .pl-cell.part{background:var(--nm-bg);box-shadow:inset 2px 2px 4px var(--nm-shadow-dark),inset -2px -2px 4px var(--nm-shadow-light),inset 0 -3px 0 var(--c)}
+  .pl-lg-part{background:var(--nm-bg)!important;box-shadow:inset 1px 1px 2px var(--nm-shadow-dark),inset -1px -1px 2px var(--nm-shadow-light),inset 0 -3px 0 var(--nm-accent-2)!important}
+  .lang-seg button.on{color:var(--nm-bg)}
+  .cat-chip.crit,.cat-chip.mile{color:var(--nm-bg)}
+  .site-head{display:block}
 </style>
 </head>
 <body>
   <div class="wrap">
+    <header class="site-head">
     <div class="topbar">
       <div class="lang-seg" role="group" aria-label="Språk / Language">
         <button id="langSv" class="on" aria-pressed="true">SV</button>
@@ -775,14 +824,16 @@
     </div>
 
     <div class="brand">
-      <div class="brand-mesh" id="brandMesh" role="img" aria-label="Saniona Investor">
+      <div class="brand-mesh" id="brandMesh">
         <canvas id="brandCanvas" aria-hidden="true"></canvas>
         <h1 class="brand-fallback">Saniona Investor<span class="sr-only">: oberoende översikt av Saniona AB (SANION)</span></h1>
       </div>
       <div class="brand-sub">Saniona AB · <a class="ticker" href="https://finance.yahoo.com/quote/SANION.ST/" target="_blank" rel="noopener">SANION ↗</a></div>
       <div class="brand-updated" id="brandUpdated">Uppdaterad 23 september 2026</div>
     </div>
+    </header>
 
+    <main id="main">
     <div class="thesis">
       <h2 class="t-lbl hx" data-i18n="thesisLbl">Om Saniona</h2>
       <div class="thesis-body" id="thesisText"><p>Saniona är ett läkemedelsutvecklingsbolag med en forskningsplattform inriktad på jonkanaler. Plattformen används för att identifiera och utveckla läkemedelskandidater och har resulterat i samarbeten med externa läkemedelsbolag.</p><p>Saniona har i dag sex partnersamarbeten, däribland Jazz Pharmaceuticals och Acadia Pharmaceuticals, och därtill avknoppningen Initiator Pharma. Samarbetena omfattar finansiering av delar av forsknings- och utvecklingsverksamheten. Det sammanlagda värdet av avtalen uppgår till över 1,8 miljarder dollar, förutsatt att samtliga avtalade milstolpar uppnås. Bolaget redovisade positivt resultat både 2024 och 2025.</p><p>Saniona utvecklar även egna läkemedelskandidater. Kring årsskiftet 2026/2027 planeras de första kliniska studierna på människa för två av bolagets kandidater. SAN2668 utvecklas för behandling av utvecklings- och epileptiska encefalopatier (DEE) hos barn. SAN2465 utvecklas för behandling av svårbehandlad depression. Bolagets finansiering bedöms räcka in i 2029, vilket täcker de planerade studierna utan omedelbart behov av nytt kapital.</p></div>
@@ -851,7 +902,7 @@
           <div class="pl-metric"><span class="m-v">Q1 2027</span><span class="m-l">first-in-human-dosering</span></div>
           <p class="pl-sum">Huvudkandidaten och ett av de två program som ligger närmast klinik. Kan bli först i sin klass för barn med svårbehandlad, ofta läkemedelsresistent epilepsi. Bolaget ser potential att utveckla SAN2668 brett över flera DEE-syndrom snarare än en enskild indikation. Enligt Q2-rapporten kan inriktningen på sällsynta sjukdomar göra det möjligt för Saniona att behålla programmet genom sen klinisk utveckling och sälja läkemedlet i egen regi.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">CTA-ansökan kring årsskiftet 2026 → first-in-human-dosering Q1 2027</dd></div><div><dt>Indikation</dt><dd>Svåra pediatriska epilepsier (DEE)</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>GABAA α2/α3-selektiv positiv allosterisk modulator (PAM) med balanserad α1. Tanken är att behålla bensodiazepinernas effekt mot anfall men med mindre sedering, kognitiv påverkan och beroende</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
-          <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Bättre anfallskontroll än klobazam vid kliniskt jämförbar exponering, utan påverkan på motorik och utan sedering. Minskar spike-wave-urladdningar (SWD) i tre genetiska DEE-modeller: helt i SYNGAP1 och STXBP1, ungefär till hälften i CHD2. En kraftig minskning syns även i råttmodellen GAERS. Förbättrar också symtom utöver anfallen, som kognition, aggression och social interaktion. Ger extra effekt tillsammans med lamotrigin, levetiracetam och valproat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener">Källa ↗</a>
+          <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Bättre anfallskontroll än klobazam vid kliniskt jämförbar exponering, utan påverkan på motorik och utan sedering. Minskar spike-wave-urladdningar (SWD) i tre genetiska DEE-modeller: helt i SYNGAP1 och STXBP1, ungefär till hälften i CHD2. En kraftig minskning syns även i råttmodellen GAERS. Förbättrar också symtom utöver anfallen, som kognition, aggression och social interaktion. Ger extra effekt tillsammans med lamotrigin, levetiracetam och valproat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener" aria-label="Källa för SAN2668">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="san2465" style="--c:#ab35b6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2465" aria-expanded="false" aria-controls="plp-san2465">
@@ -863,7 +914,7 @@
           <div class="pl-metric"><span class="m-v">Kring årsskiftet 2026</span><span class="m-l">first-in-human-dosering</span></div>
           <p class="pl-sum">Potentiell först-i-klassen-behandling med snabb och långvarig antidepressiv effekt i prekliniska modeller. Doserar först av de interna programmen.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">First-in-human-dosering kring årsskiftet 2026</dd></div><div><dt>Indikation</dt><dd>Svår depression (MDD)</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>Negativ allosterisk modulator (NAM) av GABAA α5. En ny mekanism som skiljer sig från vanliga antidepressiva, NMDA-antagonister och psykedelika</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
-          <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Anhedoni normaliserad inom 24 timmar och kvarstående i minst 48 timmar efter en enda oral dos; ångestbeteende fullt reverserat. Effektstorlek jämförbar med ketamin, där konventionella antidepressiva kräver 3–5 veckors daglig dosering. Återställer kognition i två domäner och två oberoende modeller (jämförbart med ketamin/donepezil) utan påverkan på motorik. Anatomiskt begränsad målverkan (hippocampus) bekräftad med PET i primat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa ↗</a>
+          <div class="pl-pre"><div class="pc-lbl">Preklinisk data (Sanionas presentation)</div><p>Anhedoni normaliserad inom 24 timmar och kvarstående i minst 48 timmar efter en enda oral dos; ångestbeteende fullt reverserat. Effektstorlek jämförbar med ketamin, där konventionella antidepressiva kräver 3–5 veckors daglig dosering. Återställer kognition i två domäner och två oberoende modeller (jämförbart med ketamin/donepezil) utan påverkan på motorik. Anatomiskt begränsad målverkan (hippocampus) bekräftad med PET i primat.</p></div><a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa för SAN2465">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="san2219" style="--c:#8e6129;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2219" aria-expanded="false" aria-controls="plp-san2219">
@@ -875,7 +926,7 @@
           <div class="pl-metric"><span class="m-v">Pausat</span><span class="m-l">behålls för framtida utveckling/partnerskap</span></div>
           <p class="pl-sum">Utvecklingen pausad (Q2 2026) för att koncentrera resurserna till de två ledande programmen. Har en attraktiv preklinisk profil och behålls för potentiell framtida utveckling eller partnerskap.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Framtida utveckling eller partnerskap</dd></div><div><dt>Indikation</dt><dd>Refraktära fokala anfall</dd></div><div><dt>Ägande</dt><dd>Helägt av Saniona</dd></div><div class="wide"><dt>Mekanism</dt><dd>Subtypsselektiv positiv allosterisk modulator av GABAA, med bred effekt mot behandlingsresistenta anfall</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Substanspatent in på 2040-talet</dd></div></dl>
-          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa för SAN2219">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-group"><h3 class="pr-group-lbl">Utlicensierade program</h3><div class="pr-group-sub">Partnern betalar utvecklingen, Saniona får milstolpar och royalty</div></div><div class="pl-item" data-key="san711" style="--c:#3953c6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san711" aria-expanded="false" aria-controls="plp-san711">
@@ -887,7 +938,7 @@
           <div class="pl-metric"><span class="m-v">+96 MSEK</span><span class="m-l">milstolpe vid fas 2-start (10 MUSD)</span></div>
           <p class="pl-sum">Utlicensierat till Acadia som finansierar all vidareutveckling. Fas 2-start i essentiell tremor väntas 2027 och utlöser milstolpe.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona</dd></div><div><dt>Indikation</dt><dd>Essentiell tremor</dd></div><div><dt>Ägande</dt><dd>Acadia Pharmaceuticals, globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Positiv allosterisk modulator av GABAA α3</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Del av Acadia-avtalet från 2024, värt upp till 5,89 mdr SEK (610 MUSD) totalt</dd></div></dl>
-          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-highlights-acadia-pharmaceuticals-upcoming-randd-day" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-highlights-acadia-pharmaceuticals-upcoming-randd-day" target="_blank" rel="noopener" aria-label="Källa för SAN711 / ACP-711">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="san2355" style="--c:#c23838;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san2355" aria-expanded="false" aria-controls="plp-san2355">
@@ -899,7 +950,7 @@
           <div class="pl-metric"><span class="m-v">+410 MSEK</span><span class="m-l">upfront erhållet (42,5 MUSD) · upp till 9,58 mdr SEK i milstolpar</span></div>
           <p class="pl-sum">Bolagets största enskilda värdehändelse. Jazz leder och finansierar all utveckling; aktien steg 46 % på beskedet.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona</dd></div><div><dt>Indikation</dt><dd>Epilepsi och andra neurologiska tillstånd</dd></div><div><dt>Ägande</dt><dd>Jazz Pharmaceuticals, exklusiva globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Subtypsselektiv Kv7.2/Kv7.3-aktivator. Mekanismen är etablerad för att dämpa anfall</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Jazz-avtal (aug 2025): 410 MSEK (42,5 MUSD) upfront, upp till 1,86 mdr SEK (192,5 MUSD) i utv-/reg-milstolpar, upp till 7,72 mdr SEK (800 MUSD) kommersiella, samt royalty</dd></div></dl>
-          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener" aria-label="Källa för SAN2355">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="teso" style="--c:#247b34;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-teso" aria-expanded="false" aria-controls="plp-teso">
@@ -911,7 +962,7 @@
           <div class="pl-metric"><span class="m-v">Granskning</span><span class="m-l">marknadsgodkännande Mexiko</span></div>
           <p class="pl-sum">Regulatorisk granskning pågår i Mexiko via partnern Medix, som bekostat fas III-studierna. Ett godkännande utlöser en milstolpe om 19 MSEK (2,0 MUSD), men den stora uppsidan är låga tvåsiffriga, icke-utspädande royalties på den faktiska försäljningen när produkten når marknaden.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning</dd></div><div><dt>Indikation</dt><dd>Fetma</dd></div><div><dt>Ägande</dt><dd>Medix, rättigheter i Mexiko och Argentina</dd></div><div class="wide"><dt>Mekanism</dt><dd>Monoaminåterupptagshämmare (dopamin, serotonin, noradrenalin)</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Upfront 12 MSEK (1,25 MUSD) erhållet 2016. Vid godkännande utlöses ytterligare 19 MSEK (2,0 MUSD) samt låga tvåsiffriga royalties på försäljning</dd></div></dl>
-          <a class="pr-src" href="https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621" target="_blank" rel="noopener" aria-label="Källa för Tesofensin">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-group"><h3 class="pr-group-lbl">Tillgängliga för partnering</h3><div class="pr-group-sub">Kliniska tillgångar redo för nästa steg</div></div><div class="pl-item" data-key="tesomet" style="--c:#6d39c6;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-tesomet" aria-expanded="false" aria-controls="plp-tesomet">
@@ -923,7 +974,7 @@
           <div class="pl-metric"><span class="m-v">Fas 2b</span><span class="m-l">redo att inledas</span></div>
           <p class="pl-sum">Kliniskt moget program som är redo för fas 2b i sällsynta ätstörningar. Bolaget söker en partner för nästa steg.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Partneravtal för fas 2b</dd></div><div><dt>Indikation</dt><dd>Sällsynta ätstörningar (HO, PWS)</dd></div><div><dt>Ägande</dt><dd>Tillgängligt för partnering</dd></div><div class="wide"><dt>Mekanism</dt><dd>Tesofensin + metoprolol i kombination</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Tidigare Orphan Drug-designation (FDA)</dd></div></dl>
-          <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener" aria-label="Källa för Tesomet">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="san903" style="--c:#686f20;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-san903" aria-expanded="false" aria-controls="plp-san903">
@@ -935,7 +986,7 @@
           <div class="pl-metric"><span class="m-v">Fas 1</span><span class="m-l">redo att inledas</span></div>
           <p class="pl-sum">Ett program utanför CNS som breddar plattformen mot inflammation. Prekliniska studier pågår för att möjliggöra fas 1, i egen regi eller med en partner.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Partneravtal för fas 1</dd></div><div><dt>Indikation</dt><dd>Inflammatorisk tarmsjukdom (IBD)</dd></div><div><dt>Ägande</dt><dd>Tillgängligt för partnering</dd></div><div class="wide"><dt>Mekanism</dt><dd>Hämning av kalciumaktiverad kaliumjonkanal</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Preklinisk utveckling slutförd</dd></div></dl>
-          <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://saniona.com/investors/" target="_blank" rel="noopener" aria-label="Källa för SAN903">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-group"><h3 class="pr-group-lbl">Forskningssamarbeten</h3><div class="pr-group-sub">Tidiga program hos partners, byggda på Sanionas plattform</div></div><div class="pl-item" data-key="boehringer" style="--c:#29738e;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-boehringer" aria-expanded="false" aria-controls="plp-boehringer">
@@ -947,7 +998,7 @@
           <div class="pl-metric"><span class="m-v">842 MSEK</span><span class="m-l">milstolpspotential (76,5 M€) + royalty</span></div>
           <p class="pl-sum">Ett av Sanionas mest långvariga samarbeten. Bolaget får löpande forskningsfinansiering plus milstolpar och royalty om programmet når marknad.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Forskningsmilstolpar → utvecklingsmilstolpar</dd></div><div><dt>Indikation</dt><dd>Schizofreni</dd></div><div><dt>Ägande</dt><dd>Boehringer Ingelheim, exklusiva globala rättigheter</dd></div><div class="wide"><dt>Mekanism</dt><dd>Ej offentliggjord jonkanal i CNS, en ny klass av läkemedel</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Milstolpspotential upp till 842 MSEK (76,5 M€) plus royalty. Samarbete sedan 2020; forskningsperioden förlängdes med ett år (mars 2025)</dd></div></dl>
-          <a class="pr-src" href="https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar" target="_blank" rel="noopener" aria-label="Källa för Boehringer Ingelheim">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="astronautx" style="--c:#ba367e;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-astronautx" aria-expanded="false" aria-controls="plp-astronautx">
@@ -959,7 +1010,7 @@
           <div class="pl-metric"><span class="m-v">1,66 mdr SEK</span><span class="m-l">milstolpspotential + royalty · 48 MSEK i aktier erhållet</span></div>
           <p class="pl-sum">Ett starkt kvitto på plattformen: efter flera års samarbete utnyttjade AstronauTx sin option och förvärvade de globala rättigheterna. Saniona blir aktieägare i AstronauTx och behåller milstolpar och royalty.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">IND-enabling-studier → klinisk fas 1 hos AstronauTx</dd></div><div><dt>Indikation</dt><dd>Neurologisk sjukdom / Alzheimers (ATX0926)</dd></div><div><dt>Ägande</dt><dd>AstronauTx Ltd, som äger exklusiva globala rättigheter sedan optionen utnyttjades i aug 2026</dd></div><div class="wide"><dt>Mekanism</dt><dd>Ej offentliggjort jonkanalsmål kopplat till sömnbiologi/glymfatiskt flöde, via Sanionas plattform</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Saniona fick aktier värda 48 MSEK (5 MUSD) vid optionsutnyttjandet. Därtill upp till 1,66 mdr SEK (172 MUSD): 936 MSEK utv-/reg + 724 MSEK kommersiella, plus tiered royalty</dd></div></dl>
-          <a class="pr-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener" aria-label="Källa för AstronauTx">Källa ↗</a>
         </div></div></div>
       </div><div class="pl-item" data-key="cephagenix" style="--c:#417722;--on:#FFFFFF">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-cephagenix" aria-expanded="false" aria-controls="plp-cephagenix">
@@ -971,7 +1022,7 @@
           <div class="pl-metric"><span class="m-v">~24 % ägande</span><span class="m-l">joint venture · finansierat av AbbVie Ventures &amp; AdBio</span></div>
           <p class="pl-sum">Saniona äger 23,98 % av detta migrän-JV (per 30 juni 2026, Q2-rapporten). Att välrenommerade investerare som AbbVie Ventures gick in validerar programmet och ger Saniona uppsida via ägarandelen, utan att bolaget själv står för kostnaden.</p>
           <dl class="pl-facts"><div class="wide"><dt>Nästa steg</dt><dd class="next">Val av utvecklingskandidat i KATP-programmet</dd></div><div><dt>Indikation</dt><dd>Migrän</dd></div><div><dt>Ägande</dt><dd>Avknoppning med prof. Jes Olesen; Saniona äger ~24 %</dd></div><div class="wide"><dt>Mekanism</dt><dd>Subtypsselektiva KATP-kanalhämmare (vaskulära)</dd></div><div class="wide"><dt>Patent och avtal</dt><dd>Seed-runda om upp till 99 MSEK (€9M) ledd av AdBio Partners &amp; AbbVie Ventures (2025)</dd></div></dl>
-          <a class="pr-src" href="https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf" target="_blank" rel="noopener">Källa ↗</a>
+          <a class="pr-src" href="https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf" target="_blank" rel="noopener" aria-label="Källa för Cephagenix (JV)">Källa ↗</a>
         </div></div></div>
       </div></div>
       <div class="pl-legend">
@@ -999,7 +1050,7 @@
         <div class="deal-bar-lbl"><span>Andel utbetalt av potentialen</span><span>4%</span></div>
           <div class="deal-bar" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100" aria-label="Andel utbetalt av potentialen"><div class="fill" style="width:4%"></div></div>
         <div class="deal-next"><span class="k">Nästa</span><span>Fas 1-start → +72 MSEK (7,5 MUSD) till Saniona</span></div>
-        <a class="deal-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener">↗ Källa</a>
+        <a class="deal-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener" aria-label="Källa för avtalet med Jazz Pharmaceuticals">↗ Källa</a>
       </div><div class="deal-card">
         <h3 class="deal-partner">Acadia Pharmaceuticals</h3>
         <div class="deal-prog"><span class="prog-chip" style="--c:#3953c6">SAN711 / ACP-711</span></div>
@@ -1011,7 +1062,7 @@
         <div class="deal-bar-lbl"><span>Andel utbetalt av potentialen</span><span>5%</span></div>
           <div class="deal-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" aria-label="Andel utbetalt av potentialen"><div class="fill" style="width:5%"></div></div>
         <div class="deal-next"><span class="k">Nästa</span><span>Fas 2-start 2027 → +96 MSEK (10 MUSD) till Saniona</span></div>
-        <a class="deal-src" href="https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf" target="_blank" rel="noopener">↗ Källa</a>
+        <a class="deal-src" href="https://storage.mfn.se/bd3186cd-64ce-4296-a3b7-b0f3c6a395b4/saniona-annual-report-2024-uk.pdf" target="_blank" rel="noopener" aria-label="Källa för avtalet med Acadia Pharmaceuticals">↗ Källa</a>
       </div><div class="deal-card">
         <h3 class="deal-partner">Boehringer Ingelheim</h3>
         <div class="deal-prog"><span class="prog-chip" style="--c:#29738e">Schizofreni</span></div>
@@ -1022,7 +1073,7 @@
         </div>
         <div class="deal-struct"><div class="sc pending"><span class="mk">○</span><span>Upfront ej offentligt</span></div><div class="sc pending"><span class="mk">○</span><span>Milstolpar upp till 842 MSEK (villkorat)</span></div><div class="sc recurring"><span class="mk">↻</span><span>Royalty på försäljning (löpande)</span></div><div class="sc recurring"><span class="mk">↻</span><span>Forskningsfinansiering under samarbetet</span></div></div>
         <div class="deal-next"><span class="k">Nästa</span><span>Forskningsmilstolpar → utvecklingsmilstolpar</span></div>
-        <a class="deal-src" href="https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar" target="_blank" rel="noopener">↗ Källa</a>
+        <a class="deal-src" href="https://saniona.com/newsroom/single-press-release/?slug=saniona-och-boehringer-ingelheim-forlanger-forskningssamarbete-med-ett-ar" target="_blank" rel="noopener" aria-label="Källa för avtalet med Boehringer Ingelheim">↗ Källa</a>
       </div><div class="deal-card">
         <h3 class="deal-partner">AstronauTx</h3>
         <div class="deal-prog"><span class="prog-chip" style="--c:#ba367e">Neurologisk sjukdom (ATX0926)</span></div>
@@ -1034,7 +1085,7 @@
         <div class="deal-bar-lbl"><span>Andel utbetalt av potentialen</span><span>3%</span></div>
           <div class="deal-bar" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" aria-label="Andel utbetalt av potentialen"><div class="fill" style="width:3%"></div></div>
         <div class="deal-next"><span class="k">Nästa</span><span>IND-enabling-studier → klinisk fas 1 hos AstronauTx</span></div>
-        <a class="deal-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener">↗ Källa</a>
+        <a class="deal-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener" aria-label="Källa för avtalet med AstronauTx">↗ Källa</a>
       </div><div class="deal-card">
         <h3 class="deal-partner">Medix</h3>
         <div class="deal-prog"><span class="prog-chip" style="--c:#247b34">Tesofensin · fetma</span></div>
@@ -1045,11 +1096,11 @@
         </div>
         <div class="deal-struct"><div class="sc done"><span class="mk">✓</span><span>Upfront 12 MSEK erhållet</span></div><div class="sc pending"><span class="mk">○</span><span>Milstolpe 19 MSEK vid godkännande (villkorat)</span></div><div class="sc recurring"><span class="mk">↻</span><span>Låga tvåsiffriga royalties (huvuduppsida, löpande)</span></div></div>
         <div class="deal-next"><span class="k">Nästa</span><span>Godkännande → +19 MSEK (2,0 MUSD) + låga tvåsiffriga royalties på försäljning</span></div>
-        <a class="deal-src" href="https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621" target="_blank" rel="noopener">↗ Källa</a>
+        <a class="deal-src" href="https://news.cision.com/saniona/r/saniona-and-medix-sign-development-and-commercialisation-agreement-for-tesofensine-and-tesomet-in-me,c9916621" target="_blank" rel="noopener" aria-label="Källa för avtalet med Medix">↗ Källa</a>
       </div></div>
       <div class="deal-foot" id="ecDealFoot">Total potential avser summan av upfront, utvecklings-, regulatoriska och kommersiella milstolpar per avtal och förutsätter att alla milstolpar nås. Royalty kommer utöver det. En liten andel har hittills betalats ut; merparten är villkorad uppsida. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; officiellt avtalsbelopp i originalvaluta anges inom parentes.</div>
       <h3 class="dc-head hx" id="ecCompactHead">Realiserade &amp; övriga samarbeten</h3>
-      <div id="ecCompact"><div class="dc-row"><div><div class="dc-code">Cadent / Novartis <a class="dc-src" href="https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html" target="_blank" rel="noopener" aria-label="Källa">↗</a></div><div class="dc-note">Saniona ägde ~3% av avknoppningen Cadent; löstes ut kontant när Novartis förvärvade bolaget 2021.</div></div><div class="dc-v">~31,5 MSEK erhållet</div></div><div class="dc-row"><div><div class="dc-code">Initiator Pharma (IP2018) <a class="dc-src" href="https://www.globenewswire.com/news-release/2018/11/08/1647641/0/en/Saniona-signs-option-agreement-with-Initiator-Pharma.html" target="_blank" rel="noopener" aria-label="Källa">↗</a></div><div class="dc-note">Upp till 20% av framtida AN788-betalningar till Initiator Pharma plus ensiffriga royalties. Både bolaget och tillgången kommer från Sanionas forskning.</div></div><div class="dc-v">≤ 20% + ensiffrig royalty</div></div></div>
+      <div id="ecCompact"><div class="dc-row dc-row2"><div class="dc-top"><div class="dc-code">Cadent / Novartis</div><div class="dc-v">~31,5 MSEK erhållet</div></div><div class="dc-note">Saniona ägde ~3% av avknoppningen Cadent; löstes ut kontant när Novartis förvärvade bolaget 2021.</div><a class="ek-src dc-srcl" href="https://www.globenewswire.com/news-release/2021/01/25/2163424/0/en/Saniona-received-approximately-USD-2-9-million-SEK-24-2-million-upfront-payment-in-connection-with-Cadent-Therapeutics-transaction.html" target="_blank" rel="noopener" aria-label="Källa för Cadent / Novartis">Källa ↗</a></div><div class="dc-row dc-row2"><div class="dc-top"><div class="dc-code">Initiator Pharma (IP2018)</div><div class="dc-v">≤ 20% + ensiffrig royalty</div></div><div class="dc-note">Upp till 20% av framtida AN788-betalningar till Initiator Pharma plus ensiffriga royalties. Både bolaget och tillgången kommer från Sanionas forskning.</div><a class="ek-src dc-srcl" href="https://www.globenewswire.com/news-release/2018/11/08/1647641/0/en/Saniona-signs-option-agreement-with-Initiator-Pharma.html" target="_blank" rel="noopener" aria-label="Källa för Initiator Pharma (IP2018)">Källa ↗</a></div></div>
     </section>
 
     <section class="content-sec" id="ekonomi">
@@ -1107,22 +1158,22 @@
         <div class="cat-top"><span class="cat-when">Q4 2026</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2465: R&amp;D Day kring fas 1-start</h3>
         <div class="cat-d">Bolaget räknar med att hålla en R&amp;D Day för SAN2465 under fjärde kvartalet, i samband med att fas 1 startar. Mer information kommer i ett pressmeddelande.</div>
-        <a class="cat-src" href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener">Källa: Q2-webcast 27 aug 2026 (Q&amp;A) ↗</a>
+        <a class="cat-src" href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-webcast 27 aug 2026 (Q&amp;A) (SAN2465: R&amp;D Day kring fas 1-start)">Källa: Q2-webcast 27 aug 2026 (Q&amp;A) <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:#ab35b6">
         <div class="cat-top"><span class="cat-when">Kring årsskiftet 2026</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#ab35b6;background:#ab35b6">Kritisk</span></div>
         <h3 class="cat-t">SAN2465: första dosering i människa</h3>
         <div class="cat-d">Doserar först av de interna programmen. In-life-fasen för IND-förberedande toxikologi klar. Potentiellt först i sin klass: en NAM av GABAA α5 för svår depression.</div>
-        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa: Q2-rapport 2026 ↗</a>
+        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (SAN2465: första dosering i människa)">Källa: Q2-rapport 2026 <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:#227762">
         <div class="cat-top"><span class="cat-when">Årsskiftet 2026 → Q1 2027</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#227762;background:#227762">Kritisk</span></div>
         <h3 class="cat-t">SAN2668: CTA-ansökan och dosering</h3>
         <div class="cat-d">CTA-ansökan kring årsskiftet 2026, first-in-human-dosering Q1 2027. Huvudkandidat för svåra pediatriska epilepsier (DEE). Potential för Orphan Drug- och Rare Pediatric Disease-designation.</div>
-        <a class="cat-src" href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener">Källa: Q2-webcast 27 aug 2026 ↗</a>
+        <a class="cat-src" href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-webcast 27 aug 2026 (SAN2668: CTA-ansökan och dosering)">Källa: Q2-webcast 27 aug 2026 <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:#3953c6">
         <div class="cat-top"><span class="cat-when">2027</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+96 MSEK</span></div>
         <h3 class="cat-t">ACP-711: fas 2-start (Acadia)</h3>
         <div class="cat-d">Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 96 MSEK (10 MUSD).</div>
-        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa: Q2-rapport 2026 ↗</a>
+        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (ACP-711: fas 2-start (Acadia))">Källa: Q2-rapport 2026 <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:#227762">
         <div class="cat-top"><span class="cat-when">2028</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2668: potentiella PoC-studier</h3>
@@ -1132,12 +1183,12 @@
         <div class="cat-top"><span class="cat-when">Tidpunkt ej angiven</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+72 MSEK</span></div>
         <h3 class="cat-t">SAN2355: fas 1-start (Jazz)</h3>
         <div class="cat-d">Jazz förbereder första fas 1-studien med SAN2355. Bolaget har inte angett när studien startar. Studiestart utlöser en milstolpe om 72 MSEK (7,5 MUSD) till Saniona.</div>
-        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa: Q2-rapport 2026 ↗</a>
+        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (SAN2355: fas 1-start (Jazz))">Källa: Q2-rapport 2026 <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:#247b34">
         <div class="cat-top"><span class="cat-when">Tidpunkt styrs av myndighet</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+19 MSEK</span></div>
         <h3 class="cat-t">Tesofensin: godkännande i Mexiko</h3>
         <div class="cat-d">Regulatorisk granskning pågår hos COFEPRIS. Ett godkännande ger en milstolpe på 19 MSEK (2,0 MUSD). Den stora uppsidan är låga tvåsiffriga royalties på försäljningen.</div>
-        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Källa: Q2-rapport 2026 ↗</a>
+        <a class="cat-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (Tesofensin: godkännande i Mexiko)">Källa: Q2-rapport 2026 <span aria-hidden="true">↗</span></a>
       </div><div class="cat-item" style="--cat-c:var(--color-text-muted)">
         <div class="cat-top"><span class="cat-when">Kort–medellång sikt · ambition</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">Utlicensiering av intern tillgång</h3>
@@ -1155,62 +1206,62 @@
         <div class="tlx-meta"><time datetime="2026-08-27">27 aug</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q2 2026</span></div>
         <div class="tlx-title">Internt fokus skärpt till SAN2668 och SAN2465, fas 1 kring årsskiftet</div>
         <div class="tlx-facts"><span class="tlx-fact">Kassa 486 MSEK</span><span class="tlx-fact">Rörelseresultat −60 MSEK</span></div>
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Internt fokus skärpt till SAN2668 och SAN2465, fas 1 kring årsskiftet">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-08-10">10 aug</time><span class="dot">·</span><span>Avtal och partner</span><span class="tlx-chip" style="--c:#ba367e">ATX0926</span></div>
         <div class="tlx-title">AstronauTx utnyttjar sin option och tar över de globala rättigheterna</div>
         <div class="tlx-facts"><span class="tlx-fact">Aktier värda 48 MSEK (5 MUSD)</span></div>
-        <a class="tlx-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: AstronauTx utnyttjar sin option och tar över de globala rättigheterna">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">Juni 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-06-04">4 jun</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#227762">SAN2668</span></div>
         <div class="tlx-title">Investerarwebbinarie om SAN2668 för svåra pediatriska epilepsier</div>
         
-        <a class="tlx-src" href="https://mfn.se/all/a/saniona" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/all/a/saniona" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Investerarwebbinarie om SAN2668 för svåra pediatriska epilepsier">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">Maj 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-27">27 maj</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Årsstämma 2026 genomförd</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/kommunike-fran-arsstamma-den-27-maj-2026-i-saniona-ab" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/kommunike-fran-arsstamma-den-27-maj-2026-i-saniona-ab" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Årsstämma 2026 genomförd">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-26">26 maj</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q1 2026</span></div>
         <div class="tlx-title">GLP-toxikologi klar för alla tre interna program</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-forsta-kvartalet-2026" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-forsta-kvartalet-2026" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: GLP-toxikologi klar för alla tre interna program">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">April 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-04-30">30 apr</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Helår 2025</span></div>
         <div class="tlx-title">Årsredovisning 2025 publicerad</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-arsredovisningen-for-2025" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-arsredovisningen-for-2025" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Årsredovisning 2025 publicerad">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">Februari 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-02-26">26 feb</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Helår 2025</span></div>
         <div class="tlx-title">Bokslutskommuniké 2025</div>
         <div class="tlx-facts"><span class="tlx-fact">Intäkter 434 MSEK</span><span class="tlx-fact">Resultat 285 MSEK</span></div>
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-bokslutskommunike-for-2025" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-bokslutskommunike-for-2025" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Bokslutskommuniké 2025">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">December 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-12-17">17 dec</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Förändringar i ledningsgruppen</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-starker-ledningsteamet-for-att-accelerera-utvecklingen-av-centrala-cns-program" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-starker-ledningsteamet-for-att-accelerera-utvecklingen-av-centrala-cns-program" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Förändringar i ledningsgruppen">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">November 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-11-27">27 nov</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q3 2025</span></div>
         <div class="tlx-title">Delårsrapport juli–september 2025</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-sin-delarsrapport-for-det-tredje-kvartalet-2025" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-sin-delarsrapport-for-det-tredje-kvartalet-2025" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Delårsrapport juli–september 2025">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">September 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-09-04">4 sep</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#227762">SAN2668</span></div>
         <div class="tlx-title">SAN2668 utses till klinisk kandidat</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: SAN2668 utses till klinisk kandidat">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">Augusti 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-08-20">20 aug</time><span class="dot">·</span><span>Avtal och partner</span><span class="tlx-chip" style="--c:#c23838">SAN2355</span></div>
         <div class="tlx-title">Jazz licensierar SAN2355 för epilepsi</div>
         <div class="tlx-facts"><span class="tlx-fact">Upfront 42,5 MUSD</span><span class="tlx-fact">Milstolpar upp till 992,5 MUSD</span></div>
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Jazz licensierar SAN2355 för epilepsi">Läs pressmeddelandet ↗</a>
       </div></div><div class="tlx-month">Juni 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-06-19">19 jun</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Saniona förvärvar sitt huvudkontor</div>
         
-        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-forvarvar-huvudkontoret-for-att-sakra-langsiktig-stabilitet" target="_blank" rel="noopener">Läs pressmeddelandet ↗</a>
+        <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-forvarvar-huvudkontoret-for-att-sakra-langsiktig-stabilitet" target="_blank" rel="noopener" aria-label="Läs pressmeddelandet: Saniona förvärvar sitt huvudkontor">Läs pressmeddelandet ↗</a>
       </div></div></div>
     </section>
 
@@ -1243,6 +1294,7 @@
       </div>
     </div>
 
+    </main>
     <footer class="site-foot">
       <div class="foot-sources">
         <div class="fs-note" id="footSources">Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, företagspresentation september 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.</div>
@@ -1403,7 +1455,7 @@
        note:{sv:'SAN2465 (årsskiftet 2026) & SAN2668 (Q1 2027).', en:'SAN2465 (year-end 2026) & SAN2668 (Q1 2027).'}}
     ]
   };
-  let lang='sv';
+  let lang=(document.documentElement.lang==='en')?'en':'sv';
   const tr=o=>o[lang];
   function render(){
     document.getElementById('grid').innerHTML = DATA.kpis.map(k=>`
@@ -1539,7 +1591,7 @@
         <div class="tlx-meta">${timeTag(it.date)}<span class="dot">·</span><span>${tr(TL_TYPE[it.type]||TL_TYPE.company)}</span>${it.period?`<span class="tlx-tag">${tr(it.period)}</span>`:''}${chip(it.key)}</div>
         <div class="tlx-title">${tr(it.title)}</div>
         ${facts?`<div class="tlx-facts">${facts}</div>`:''}
-        ${it.href?`<a class="tlx-src" href="${it.href}" target="_blank" rel="noopener">${srcLbl(it.href)} ↗</a>`:''}
+        ${it.href?`<a class="tlx-src" href="${it.href}" target="_blank" rel="noopener" aria-label="${srcLbl(it.href)}: ${String(tr(it.title)).replace(/"/g,'&quot;')}">${srcLbl(it.href)} ↗</a>`:''}
       </div></div>`;
     });
     document.getElementById('tlList').innerHTML=html;
@@ -1559,7 +1611,7 @@
       if(c.crit) chips.push(`<span class="cat-chip crit" style="--cat-c:${col};background:${col}">${tr(L.critLbl)}</span>`);
       if(c.mile) chips.push(`<span class="cat-chip mile">${tr(c.mile)}</span>`);
       const src = c.src ? (c.srcHref
-        ? `<a class="cat-src" href="${c.srcHref}" target="_blank" rel="noopener">${tr(L.source)}: ${tr(c.src)} ↗</a>`
+        ? `<a class="cat-src" href="${c.srcHref}" target="_blank" rel="noopener" aria-label="${tr(L.source)}: ${tr(c.src)} (${String(tr(c.t)).replace(/"/g,'&quot;')})">${tr(L.source)}: ${tr(c.src)} <span aria-hidden="true">↗</span></a>`
         : `<span class="cat-src no">${tr(L.source)}: ${tr(c.src)}</span>`) : '';
       return `<div class="cat-item" style="--cat-c:${col}">
         <div class="cat-top"><span class="cat-when">${tr(c.when)}</span>${chips.join('')}</div>
@@ -1681,7 +1733,7 @@
         ${flow}
         ${body}
         ${nxt?`<div class="deal-next"><span class="k">${lang==='sv'?'Nästa':'Next'}</span><span>${tr(nxt)}</span></div>`:''}
-        ${d.src?`<a class="deal-src" href="${d.src}" target="_blank" rel="noopener">↗ ${lang==='sv'?'Källa':'Source'}</a>`:''}
+        ${d.src?`<a class="deal-src" href="${d.src}" target="_blank" rel="noopener" aria-label="${lang==='sv'?'Källa för avtalet med':'Source for the deal with'} ${partner}">↗ ${lang==='sv'?'Källa':'Source'}</a>`:''}
       </div>`;
     }).join('');
     document.getElementById('ecDealFoot').textContent=tr(L.dealFoot);
@@ -1690,8 +1742,9 @@
     document.getElementById('ecCompact').innerHTML=ec.dealsCompact.map(d=>{
       const name = typeof d.partner==='string'?d.partner:tr(d.partner);
       const desc = d.desc?tr(d.desc):'';
-      const src = d.src?` <a class="dc-src" href="${d.src}" target="_blank" rel="noopener" aria-label="${lang==='sv'?'Källa':'Source'}">↗</a>`:'';
-      return `<div class="dc-row"><div><div class="dc-code">${name}${src}</div><div class="dc-note">${desc}</div></div><div class="dc-v">${tr(d.value)}</div></div>`;
+      const src = d.src?`<a class="ek-src dc-srcl" href="${d.src}" target="_blank" rel="noopener" aria-label="${lang==='sv'?'Källa för':'Source for'} ${name}">${lang==='sv'?'Källa':'Source'} ↗</a>`:'';
+      // name and value share the top line (value wraps under the name when space is short); the description gets the full width
+      return `<div class="dc-row dc-row2"><div class="dc-top"><div class="dc-code">${name}</div><div class="dc-v">${tr(d.value)}</div></div>${desc?`<div class="dc-note">${desc}</div>`:''}${src}</div>`;
     }).join('');
   }
 
@@ -1714,7 +1767,7 @@
         if(c.patent) meta.push(`<div><div class="k">${tr(L.patent)}</div><div class="val">${tr(c.patent)}</div></div>`);
         const nextRow=c.next?`<div class="pr-meta pr-next"><div><div class="k">${tr(L.next)}</div><div class="val next">${tr(c.next)}</div></div></div>`:'';
         const preclin=c.preclin?`<div class="pr-preclin"><div class="pc-lbl">${tr(L.preclin)}</div><div class="pc-body">${tr(c.preclin)}</div></div>`:'';
-        const src=c.href?`<a class="pr-src" href="${c.href}" target="_blank" rel="noopener">${tr(L.src)}</a>`:'';
+        const src=c.href?`<a class="pr-src" href="${c.href}" target="_blank" rel="noopener" aria-label="${lang==='sv'?'Källa för':'Source for'} ${typeof c.code==='string'?c.code:tr(c.code)}">${tr(L.src)}</a>`:'';
         const codeTxt = typeof c.code==='string'?c.code:tr(c.code);
         return `<div class="pr-card" style="--pr-c:${col}">
           <div class="pr-top"><h4 class="pr-code hx">${codeTxt}</h4>
@@ -1794,7 +1847,7 @@
       if(c.mech) facts.push(`<div class="wide"><dt>${tr(L.mech)}</dt><dd>${tr(c.mech)}</dd></div>`);
       if(c.patent) facts.push(`<div class="wide"><dt>${tr(L.patent)}</dt><dd>${tr(c.patent)}</dd></div>`);
       const pre=c.preclin?`<div class="pl-pre"><div class="pc-lbl">${tr(L.preclin)}</div><p>${tr(c.preclin)}</p></div>`:'';
-      const src=c.href?`<a class="pr-src" href="${c.href}" target="_blank" rel="noopener">${tr(L.src)}</a>`:'';
+      const src=c.href?`<a class="pr-src" href="${c.href}" target="_blank" rel="noopener" aria-label="${lang==='sv'?'Källa för':'Source for'} ${typeof c.code==='string'?c.code:tr(c.code)}">${tr(L.src)}</a>`:'';
       const metric=c.metricV?`<div class="pl-metric"><span class="m-v">${typeof c.metricV==='string'?c.metricV:tr(c.metricV)}</span><span class="m-l">${tr(c.metricL)}</span></div>`:'';
       html+=`<div class="pl-item${open?' open':''}" data-key="${p.key}" style="--c:${col};--on:${onC}">
         <h4 class="pl-h hx"><button type="button" class="pl-row" id="plb-${p.key}" aria-expanded="${open}" aria-controls="plp-${p.key}">
@@ -1877,7 +1930,8 @@
       inner.scrollTo({left:Math.max(0,Math.min(max,target)),behavior:'smooth'});
     }
   }
-  const spySections=['bolaget','pipeline','program','ekonomi','bevaka','proof','risker','community'];
+  // sections for scroll-spy come from the nav itself, so they can never drift out of sync
+  const spySections=DATA.nav.sv.map(n=>n[0]).filter(id=>id!=='__all');
   function spy(){
     const navH=document.querySelector('.nav').offsetHeight;
     const probe=window.pageYOffset+navH+12;
@@ -1888,7 +1942,8 @@
     if((window.innerHeight+window.pageYOffset)>=(document.body.scrollHeight-4)) cur=spySections[spySections.length-1];
     if(cur!==activeTarget) setActive(cur,true);
   }
-  window.addEventListener('scroll',spy,{passive:true});
+  let spyTick=false;
+  window.addEventListener('scroll',()=>{ if(!spyTick){ spyTick=true; requestAnimationFrame(()=>{ spyTick=false; spy(); }); } },{passive:true});
   window.addEventListener('resize',spy,{passive:true});
 
   render();
@@ -1899,12 +1954,20 @@
   function setLang(l){
     const tt=document.getElementById('toTop'); if(tt) tt.setAttribute('aria-label',l==='sv'?'Till toppen':'Back to top');
     lang=l; document.documentElement.lang=l;
+    const tb=document.getElementById('themeBtn'); if(tb){const t=l==='sv'?'Växla ljust/mörkt läge':'Toggle light/dark mode'; tb.setAttribute('aria-label',t); tb.setAttribute('title',t);}
     svBtn.classList.toggle('on', l==='sv'); enBtn.classList.toggle('on', l==='en');
     svBtn.setAttribute('aria-pressed', l==='sv'); enBtn.setAttribute('aria-pressed', l==='en');
     render(); setActive(activeTarget,false);
   }
-  svBtn.addEventListener('click',()=>setLang('sv'));
-  enBtn.addEventListener('click',()=>setLang('en'));
+  const LANG_URL={sv:'/',en:'/en/'};
+  function switchLang(l){
+    if(l===lang) return;
+    if(/^https?:$/.test(location.protocol)){ location.href=LANG_URL[l]+location.hash; return; }
+    setLang(l);
+  }
+  svBtn.addEventListener('click',()=>switchLang('sv'));
+  enBtn.addEventListener('click',()=>switchLang('en'));
+  if(lang!=='sv') setLang(lang); // sync buttons and labels on the English page
 
   const btn=document.getElementById('themeBtn');
   btn.addEventListener('click',()=>{
