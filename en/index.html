@@ -820,6 +820,21 @@
   .pl-quote p{margin:0;font-size:var(--fs-sm);line-height:1.5;font-style:italic;color:var(--color-text)}
   .pl-quote a{display:inline-block;margin-top:6px;font-size:12px;color:var(--nm-accent-2);text-decoration:none;padding:4px 0}
   @media(max-width:520px){.pl-quote p{font-size:13px}}
+
+  /* press releases: latest 6, soft fade, "show more" */
+  .tl-list [hidden]{display:none!important}
+  .tl-list.tlx-faded{-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 170px),transparent 100%);mask-image:linear-gradient(to bottom,#000 calc(100% - 170px),transparent 100%)}
+  .tlx-morewrap{display:flex;justify-content:center;position:relative;z-index:1;margin-top:calc(-1 * var(--space-7, 44px))}
+  .tlx-morewrap.open{margin-top:var(--space-5)}
+  .tlx-morewrap:empty{display:none}
+  .tlx-morebtn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:0;border-radius:999px;cursor:pointer;background:var(--nm-bg);color:var(--nm-accent-2);font:600 14px 'Inter',system-ui,sans-serif;
+      box-shadow:5px 5px 12px var(--nm-shadow-dark),-5px -5px 12px var(--nm-shadow-light);transition:box-shadow .2s ease}
+  .tlx-morebtn .n{font-weight:500;font-size:12px;color:var(--color-text-muted)}
+  .tlx-morebtn:active{box-shadow:inset 3px 3px 6px var(--nm-shadow-dark),inset -3px -3px 6px var(--nm-shadow-light)}
+  .tlx-morebtn:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:3px}
+  .tlx-in{animation:tlxIn .35s ease both}
+  @keyframes tlxIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.tlx-in{animation:none}}
 </style>
 </head>
 <body>
@@ -1226,74 +1241,77 @@
       <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="tlEyebrow">Press releases</span></div>
       <h2 class="co-head" id="tlHead">Press releases</h2>
       <div class="co-sub" id="tlSub">Press releases and insider trades · latest first</div>
-      <div class="tl-list" id="tlList"><div class="tlx-month">September 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      <div class="tl-list tlx-faded" id="tlList"><div class="tlx-month" data-i="0">September 2026</div><div class="tlx-item" data-i="0"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-09-24">24 Sep</time><span class="dot">·</span><span>Pipeline and research</span><span class="tlx-chip" style="--c:#ab35b6">SAN2465</span></div>
         <div class="tlx-title">Toxicology and CMC studies for SAN2465 completed, IND submission to the FDA expected by end of October 2026</div>
         <div class="tlx-facts"><span class="tlx-fact">IND to the FDA by October 2026</span><span class="tlx-fact">Phase 1 in healthy volunteers</span></div>
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-completes-toxicology-and-cmc-studies-for-san2465-enabling-ind-submission-by-october-2026" target="_blank" rel="noopener" aria-label="Read the press release: Toxicology and CMC studies for SAN2465 completed, IND submission to the FDA expected by end of October 2026">Read the press release ↗</a>
-      </div></div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="1"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
           <div class="tlx-meta"><time datetime="2026-08-28">28 Aug</time> – <time datetime="2026-09-09">9 Sep</time><span class="dot">·</span><span>Insider trade</span><span class="tlx-tag">4 buys</span></div>
-          <div class="tlx-title">4 insider trades, about SEK 866,000 in total</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-styrelseledamot-kopt-aktier-for-0-5-mln-kr-20260909" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">Chairman, via JSH Biotech</span></span><span class="amt">50,000 sh · SEK 10.81 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Johnny Stilou</span> <span class="rl">CFO</span></span><span class="amt">15,000 sh · SEK 11.54 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Jørgen Drejer</span> <span class="rl">Deputy Chairman</span></span><span class="amt">9,000 sh · SEK 11.41 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-sanionas-styrelseledamot-anna-ljung-gor-ett-mindre-aktiekop-20260828" target="_blank" rel="noopener"><span class="who"><span class="nm">Anna Ljung</span> <span class="rl">Board member</span></span><span class="amt">4,188 sh · SEK 11.94 <span class="ar">↗</span></span></a></div></div></div><div class="tlx-month">August 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+          <div class="tlx-title">4 insider trades, about SEK 866,000 in total</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-styrelseledamot-kopt-aktier-for-0-5-mln-kr-20260909" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">Chairman, via JSH Biotech</span></span><span class="amt">50,000 sh · SEK 10.81 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Johnny Stilou</span> <span class="rl">CFO</span></span><span class="amt">15,000 sh · SEK 11.54 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Jørgen Drejer</span> <span class="rl">Deputy Chairman</span></span><span class="amt">9,000 sh · SEK 11.41 <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-sanionas-styrelseledamot-anna-ljung-gor-ett-mindre-aktiekop-20260828" target="_blank" rel="noopener"><span class="who"><span class="nm">Anna Ljung</span> <span class="rl">Board member</span></span><span class="amt">4,188 sh · SEK 11.94 <span class="ar">↗</span></span></a></div></div></div><div class="tlx-month" data-i="2">August 2026</div><div class="tlx-item" data-i="2"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-08-27">27 Aug</time><span class="dot">·</span><span>Report</span><span class="tlx-tag">Q2 2026</span></div>
         <div class="tlx-title">Internal focus sharpened to SAN2668 and SAN2465, Phase 1 around year-end</div>
         <div class="tlx-facts"><span class="tlx-fact">Cash SEK 486M</span><span class="tlx-fact">Operating result SEK −60M</span></div>
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Read the press release: Internal focus sharpened to SAN2668 and SAN2465, Phase 1 around year-end">Read the press release ↗</a>
-      </div></div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="3"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-08-10">10 Aug</time><span class="dot">·</span><span>Deal and partner</span><span class="tlx-chip" style="--c:#ba367e">ATX0926</span></div>
         <div class="tlx-title">AstronauTx exercises its option and takes over worldwide rights</div>
         <div class="tlx-facts"><span class="tlx-fact">Shares worth SEK 48M (USD 5M)</span></div>
         <a class="tlx-src" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener" aria-label="Read the press release: AstronauTx exercises its option and takes over worldwide rights">Read the press release ↗</a>
-      </div></div><div class="tlx-month">June 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="4">June 2026</div><div class="tlx-item" data-i="4"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-06-04">4 Jun</time><span class="dot">·</span><span>Pipeline and research</span><span class="tlx-chip" style="--c:#227762">SAN2668</span></div>
         <div class="tlx-title">Investor webinar on SAN2668 for severe paediatric epilepsies</div>
         
         <a class="tlx-src" href="https://mfn.se/all/a/saniona" target="_blank" rel="noopener" aria-label="Read the press release: Investor webinar on SAN2668 for severe paediatric epilepsies">Read the press release ↗</a>
-      </div></div><div class="tlx-month">May 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="5">May 2026</div><div class="tlx-item" data-i="5"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-27">27 May</time><span class="dot">·</span><span>Company</span></div>
         <div class="tlx-title">Annual general meeting 2026 held</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/kommunike-fran-arsstamma-den-27-maj-2026-i-saniona-ab" target="_blank" rel="noopener" aria-label="Read the press release: Annual general meeting 2026 held">Read the press release ↗</a>
-      </div></div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="6" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-26">26 May</time><span class="dot">·</span><span>Report</span><span class="tlx-tag">Q1 2026</span></div>
         <div class="tlx-title">GLP toxicology completed for all three internal programs</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-forsta-kvartalet-2026" target="_blank" rel="noopener" aria-label="Read the press release: GLP toxicology completed for all three internal programs">Read the press release ↗</a>
-      </div></div><div class="tlx-month">April 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="7" hidden="">April 2026</div><div class="tlx-item" data-i="7" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-04-30">30 Apr</time><span class="dot">·</span><span>Report</span><span class="tlx-tag">FY 2025</span></div>
         <div class="tlx-title">Annual report 2025 published</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-arsredovisningen-for-2025" target="_blank" rel="noopener" aria-label="Read the press release: Annual report 2025 published">Read the press release ↗</a>
-      </div></div><div class="tlx-month">February 2026</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="8" hidden="">February 2026</div><div class="tlx-item" data-i="8" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-02-26">26 Feb</time><span class="dot">·</span><span>Report</span><span class="tlx-tag">FY 2025</span></div>
         <div class="tlx-title">Year-end report 2025</div>
         <div class="tlx-facts"><span class="tlx-fact">Revenue SEK 434M</span><span class="tlx-fact">Net result SEK 285M</span></div>
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-bokslutskommunike-for-2025" target="_blank" rel="noopener" aria-label="Read the press release: Year-end report 2025">Read the press release ↗</a>
-      </div></div><div class="tlx-month">December 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="9" hidden="">December 2025</div><div class="tlx-item" data-i="9" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-12-17">17 Dec</time><span class="dot">·</span><span>Company</span></div>
         <div class="tlx-title">Changes to the management team</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-starker-ledningsteamet-for-att-accelerera-utvecklingen-av-centrala-cns-program" target="_blank" rel="noopener" aria-label="Read the press release: Changes to the management team">Read the press release ↗</a>
-      </div></div><div class="tlx-month">November 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="10" hidden="">November 2025</div><div class="tlx-item" data-i="10" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-11-27">27 Nov</time><span class="dot">·</span><span>Report</span><span class="tlx-tag">Q3 2025</span></div>
         <div class="tlx-title">Interim report July–September 2025</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-publicerar-sin-delarsrapport-for-det-tredje-kvartalet-2025" target="_blank" rel="noopener" aria-label="Read the press release: Interim report July–September 2025">Read the press release ↗</a>
-      </div></div><div class="tlx-month">September 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="11" hidden="">September 2025</div><div class="tlx-item" data-i="11" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-09-04">4 Sep</time><span class="dot">·</span><span>Pipeline and research</span><span class="tlx-chip" style="--c:#227762">SAN2668</span></div>
         <div class="tlx-title">SAN2668 selected as clinical candidate</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-valjer-san2668-som-forst-i-klassen-klinisk-kandidat-for-pediatrisk-epilepsi" target="_blank" rel="noopener" aria-label="Read the press release: SAN2668 selected as clinical candidate">Read the press release ↗</a>
-      </div></div><div class="tlx-month">August 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="12" hidden="">August 2025</div><div class="tlx-item" data-i="12" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-08-20">20 Aug</time><span class="dot">·</span><span>Deal and partner</span><span class="tlx-chip" style="--c:#c23838">SAN2355</span></div>
         <div class="tlx-title">Jazz licenses SAN2355 for epilepsy</div>
         <div class="tlx-facts"><span class="tlx-fact">Upfront USD 42.5M</span><span class="tlx-fact">Milestones up to USD 992.5M</span></div>
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-ingar-exklusivt-licensavtal-med-jazz-pharmaceuticals-for-att-utveckla-och-kommersialisera-san2355" target="_blank" rel="noopener" aria-label="Read the press release: Jazz licenses SAN2355 for epilepsy">Read the press release ↗</a>
-      </div></div><div class="tlx-month">June 2025</div><div class="tlx-item"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="13" hidden="">June 2025</div><div class="tlx-item" data-i="13" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-06-19">19 Jun</time><span class="dot">·</span><span>Company</span></div>
         <div class="tlx-title">Saniona acquires its headquarters</div>
         
         <a class="tlx-src" href="https://mfn.se/a/saniona/saniona-forvarvar-huvudkontoret-for-att-sakra-langsiktig-stabilitet" target="_blank" rel="noopener" aria-label="Read the press release: Saniona acquires its headquarters">Read the press release ↗</a>
       </div></div></div>
+      <div class="tlx-morewrap" id="tlMore"><button type="button" class="tlx-morebtn" aria-controls="tlList" aria-expanded="false">
+      <span>Show more</span><span class="n">8 older</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button></div>
     </section>
 
     <section class="content-sec" id="risker">
@@ -1574,6 +1592,36 @@
     company:'<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>'};
   const TL_TYPE={report:{sv:'Rapport',en:'Report'},insider:{sv:'Insynshandel',en:'Insider trade'},deal:{sv:'Avtal och partner',en:'Deal and partner'},pipeline:{sv:'Pipeline och forskning',en:'Pipeline and research'},company:{sv:'Bolag',en:'Company'}};
   const MONTHS={sv:['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'],en:['January','February','March','April','May','June','July','August','September','October','November','December']};
+
+  // Press releases: show the latest 6, fade the rest out, reveal 6 more per tap (state survives re-renders)
+  const TL_STEP=6; let tlShown=TL_STEP;
+  function applyTl(revealFrom){
+    const list=document.getElementById('tlList'), wrap=document.getElementById('tlMore');
+    const total=list.querySelectorAll('.tlx-item').length;
+    tlShown=Math.min(Math.max(tlShown,TL_STEP),Math.max(total,TL_STEP));
+    list.querySelectorAll('[data-i]').forEach(el=>{
+      const i=+el.dataset.i, hide=i>=tlShown; el.hidden=hide;
+      if(!hide&&revealFrom!=null&&i>=revealFrom){ el.classList.remove('tlx-in'); void el.offsetWidth; el.classList.add('tlx-in'); }
+    });
+    const rest=total-tlShown;
+    list.classList.toggle('tlx-faded',rest>0);
+    wrap.classList.toggle('open',rest<=0);
+    if(total<=TL_STEP){ wrap.innerHTML=''; return; }
+    const sv=lang==='sv';
+    const label=rest>0?(sv?'Visa fler':'Show more'):(sv?'Visa färre':'Show fewer');
+    const note=rest>0?(sv?`${rest} äldre`:`${rest} older`):'';
+    wrap.innerHTML=`<button type="button" class="tlx-morebtn" aria-controls="tlList" aria-expanded="${rest<=0}">
+      <span>${label}</span>${note?`<span class="n">${note}</span>`:''}
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${rest>0?'6 9 12 15 18 9':'18 15 12 9 6 15'}"/></svg></button>`;
+    wrap.querySelector('button').addEventListener('click',()=>{
+      if(rest>0){ const from=tlShown; tlShown+=TL_STEP; applyTl(from); }
+      else{
+        tlShown=TL_STEP; applyTl();
+        const sec=document.getElementById('proof'), reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if(sec.getBoundingClientRect().top<0) sec.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      }
+    });
+  }
   function renderTimeline(){
     const tl=DATA.tl, L=tl.labels, bg=curBg();
     document.getElementById('tlEyebrow').textContent=tr(L.tlHead);
@@ -1596,10 +1644,11 @@
       }
       items.push(e.type==='insider'?{type:'insider-group',list:[e]}:e);
     });
-    let html='', month='';
+    let html='', month='', idx=-1;
     items.forEach(it=>{
+      idx++;
       const first=it.type==='insider-group'?it.list[0]:it, iso=isoDate(first.date.sv);
-      if(iso){ const [y,m]=iso.split('-'); const mk=`${MONTHS[lang][+m-1]} ${y}`; if(mk!==month){ month=mk; html+=`<div class="tlx-month">${lang==='sv'?mk.charAt(0).toUpperCase()+mk.slice(1):mk}</div>`; } }
+      if(iso){ const [y,m]=iso.split('-'); const mk=`${MONTHS[lang][+m-1]} ${y}`; if(mk!==month){ month=mk; html+=`<div class="tlx-month" data-i="${idx}">${lang==='sv'?mk.charAt(0).toUpperCase()+mk.slice(1):mk}</div>`; } }
       if(it.type==='insider-group'){
         const list=it.list, buys=list.filter(e=>e.trade.side!=='sell').length, sells=list.length-buys;
         const sum=list.reduce((t,e)=>t+e.trade.shares*e.trade.price,0);
@@ -1612,13 +1661,13 @@
           :(lang==='sv'?`${list[0].trade.side==='sell'?'Insynsförsäljning':'Insynsköp'}: ${list[0].trade.person}, ${tr(list[0].trade.role)}`:`Insider ${list[0].trade.side==='sell'?'sale':'purchase'}: ${list[0].trade.person}, ${tr(list[0].trade.role)}`);
         const rows=list.map(e=>{const t=e.trade;
           return `<a class="tlx-trade" href="${e.href}" target="_blank" rel="noopener"><span class="who"><span class="nm">${t.person}</span> <span class="rl">${tr(t.role)}${t.via?`, via ${t.via}`:''}</span></span><span class="amt">${t.side==='sell'?(lang==='sv'?'Sålde ':'Sold '):''}${nf.format(t.shares)} ${lang==='sv'?'st':'sh'} · ${lang==='sv'?price(t.price)+' kr':'SEK '+price(t.price)} <span class="ar">↗</span></span></a>`;}).join('');
-        html+=`<div class="tlx-item">${icon('insider')}<div class="tlx-card">
+        html+=`<div class="tlx-item" data-i="${idx}">${icon('insider')}<div class="tlx-card">
           <div class="tlx-meta">${range}<span class="dot">·</span><span>${tr(TL_TYPE.insider)}</span><span class="tlx-tag">${cnt}</span></div>
           <div class="tlx-title">${title}</div><div class="tlx-trades">${rows}</div></div></div>`;
         return;
       }
       const facts=(it.facts||[]).map(f=>`<span class="tlx-fact">${tr(f)}</span>`).join('');
-      html+=`<div class="tlx-item">${icon(it.type)}<div class="tlx-card">
+      html+=`<div class="tlx-item" data-i="${idx}">${icon(it.type)}<div class="tlx-card">
         <div class="tlx-meta">${timeTag(it.date)}<span class="dot">·</span><span>${tr(TL_TYPE[it.type]||TL_TYPE.company)}</span>${it.period?`<span class="tlx-tag">${tr(it.period)}</span>`:''}${chip(it.key)}</div>
         <div class="tlx-title">${tr(it.title)}</div>
         ${facts?`<div class="tlx-facts">${facts}</div>`:''}
@@ -1626,6 +1675,7 @@
       </div></div>`;
     });
     document.getElementById('tlList').innerHTML=html;
+    applyTl();
   }
 
   function renderCatalysts(){
