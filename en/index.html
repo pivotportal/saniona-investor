@@ -1402,8 +1402,6 @@
 
     </main>
     <footer class="site-foot">
-      <div class="prim" id="primBox"><h2 class="prim-h hx">Follow Saniona at the source</h2><div class="prim-sub">The primary sources this page is built on</div>
-      <ul class="prim-list"><li><a href="https://saniona.com/investors/" target="_blank" rel="noopener"><span class="t">Saniona investor relations</span><span class="s">Reports, presentations and governance</span><span class="ar" aria-hidden="true">↗</span></a></li><li><a href="https://saniona.com/investors/financial-calendar/" target="_blank" rel="noopener"><span class="t">Saniona financial calendar</span><span class="s">Dates for reports and the AGM</span><span class="ar" aria-hidden="true">↗</span></a></li><li><a href="https://mfn.se/all/a/saniona" target="_blank" rel="noopener"><span class="t">Press releases on MFN</span><span class="s">All Saniona press releases, with subscription</span><span class="ar" aria-hidden="true">↗</span></a></li><li><a href="https://www.nasdaq.com/sv/european-market-activity/shares/sanion?id=TX1551532" target="_blank" rel="noopener"><span class="t">The share on Nasdaq Stockholm</span><span class="s">Price, trading and company facts for SANION</span><span class="ar" aria-hidden="true">↗</span></a></li></ul></div>
       <div class="foot-sources">
         <div class="fs-note" id="footSources">Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11.</div>
         <a class="foot-preslink" id="footPresLink" target="_blank" rel="noopener">↗ Saniona company presentation, September 2026 (PDF)</a>
@@ -1451,14 +1449,6 @@
     support:{text:{sv:'Sidan är gratis, utan reklam och har inga band till bolaget. Vill du stödja arbetet kan du bjuda på en kaffe.',
                    en:'The page is free, ad-free and has no ties to the company. If you want to support the work, you can buy me a coffee.'},
              btn:{sv:'Stöd sidan',en:'Support the site'},href:'https://buymeacoffee.com/PivotPortal'},
-    primary:{lbl:{sv:'Följ Saniona hos källan',en:'Follow Saniona at the source'},
-      sub:{sv:'Primärkällorna som sidan bygger på',en:'The primary sources this page is built on'},
-      items:[
-        {t:{sv:'Sanionas investerarsida',en:'Saniona investor relations'},s:{sv:'Rapporter, presentationer och bolagsstyrning',en:'Reports, presentations and governance'},href:'https://saniona.com/investors/'},
-        {t:{sv:'Sanionas finansiella kalender',en:'Saniona financial calendar'},s:{sv:'Datum för rapporter och årsstämma',en:'Dates for reports and the AGM'},href:'https://saniona.com/investors/financial-calendar/'},
-        {t:{sv:'Pressmeddelanden på MFN',en:'Press releases on MFN'},s:{sv:'Alla Sanionas pressmeddelanden, med prenumeration',en:'All Saniona press releases, with subscription'},href:'https://mfn.se/all/a/saniona'},
-        {t:{sv:'Aktien på Nasdaq Stockholm',en:'The share on Nasdaq Stockholm'},s:{sv:'Kurs, handel och bolagsfakta för SANION',en:'Price, trading and company facts for SANION'},href:'https://www.nasdaq.com/sv/european-market-activity/shares/sanion?id=TX1551532'}
-      ]},
     gloss:{
       sv:[
         ['IND','\\bIND\\b','Investigational New Drug: ansökan till amerikanska FDA om att få starta kliniska studier i människa.'],
@@ -1687,7 +1677,6 @@
     renderEcon();
     renderFin();
     renderNewSince();
-    renderPrimary();
     applyGlossary();
     renderCatalysts();
     renderTimeline();
@@ -1877,11 +1866,7 @@
     window.addEventListener('resize',close);
   })();
 
-  function renderPrimary(){
-    const P=DATA.primary, el=document.getElementById('primBox'); if(!P||!el) return;
-    el.innerHTML=`<h2 class="prim-h hx">${tr(P.lbl)}</h2><div class="prim-sub">${tr(P.sub)}</div>
-      <ul class="prim-list">${P.items.map(i=>`<li><a href="${i.href}" target="_blank" rel="noopener"><span class="t">${tr(i.t)}</span><span class="s">${tr(i.s)}</span><span class="ar" aria-hidden="true">↗</span></a></li>`).join('')}</ul>`;
-  }
+
   function renderTimeline(){
     const tl=DATA.tl, L=tl.labels, bg=curBg();
     document.getElementById('tlEyebrow').textContent=tr(L.tlHead);
