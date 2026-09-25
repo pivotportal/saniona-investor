@@ -935,6 +935,15 @@
   .app-name{font-size:11px;font-weight:500;color:var(--color-text);letter-spacing:.01em}
   @media(hover:hover){.install-card:hover .app-tile{transform:translateY(-3px) scale(1.03)}}
   @media(prefers-reduced-motion:reduce){.app-shine{animation:none;display:none}.app-tile{transition:none}}
+
+  /* support well spans the whole About card (not just the text column) */
+  .foot-about{flex-wrap:wrap}
+  .foot-about>.foot-support{flex:1 0 100%;margin:var(--space-2) 0 0}
+  .foot-about>.fa-body{flex:1 1 0}
+
+  /* analyst-coverage note, now closing the Risks section */
+  .risk-coverage{margin:var(--space-5) 0 0!important;padding:var(--space-4) 0 0!important;border:0!important;border-top:1px solid var(--nm-shadow-dark)!important;border-radius:0;font-size:13px!important;line-height:1.55!important;font-style:italic!important;color:var(--color-text-muted);box-shadow:none}
+  .risk-coverage a{font-weight:600;color:var(--nm-accent-2);text-decoration:none}
 </style>
 </head>
 <body>
@@ -1420,7 +1429,8 @@
       <h2 class="co-head" id="riskHead">Risks to weigh</h2>
       <div class="co-sub" id="riskSub">A balanced view means seeing the risks, not only the opportunities.</div>
       <div class="risk-list" id="riskList"><div class="risk-item"><h3 class="risk-h">Clinical risk</h3><div class="risk-d">The lead programs are still preclinical. The step into Phase 1 and beyond is big, and most drug candidates never reach the market.</div></div><div class="risk-item"><h3 class="risk-h">Dependence on partners</h3><div class="risk-d">A large share of value sits in partner-driven programs (Jazz, Acadia and others). Saniona does not control their timelines or decisions, and milestones may slip or fail to materialise.</div></div><div class="risk-item"><h3 class="risk-h">Need for future deals</h3><div class="risk-d">SAN2465 (depression) is likely too large for Saniona to take through late-stage trials alone. Its value probably depends on an out-licensing deal that does not yet exist.</div></div><div class="risk-item"><h3 class="risk-h">Financing &amp; dilution</h3><div class="risk-d">The cash lasts into 2029 under the current plan. Delays or bigger ambitions could still require new capital, which could dilute shareholders.</div></div><div class="risk-item"><h3 class="risk-h">Regulatory uncertainty</h3><div class="risk-d">Approvals (e.g. tesofensine in Mexico) are set by authorities with no fixed timelines. Both outcome and timing are uncertain.</div></div><div class="risk-item"><h3 class="risk-h">Market &amp; liquidity risk</h3><div class="risk-d">This is a small-cap stock and can be volatile. The share price is affected by news flow, sentiment and limited trading liquidity.</div></div></div>
-    </section>
+      <div class="foot-coverage risk-coverage" id="footCoverage">The company is covered by independent research firms, for example <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. See their publications for valuation and analysis, not reproduced here.</div>
+     </section>
 
 
 
@@ -1436,9 +1446,9 @@
         <div class="fa-body">
           <h2 class="fa-h hx" id="footAboutH">About and support</h2>
           <div class="foot-disclaimer" id="footDisclaimer">Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions.</div>
-          <div class="foot-coverage" id="footCoverage">The company is covered by independent research firms, for example <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. See their publications for valuation and analysis, not reproduced here.</div>
-          <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Support the site</span></a></div>
+          
         </div>
+        <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Support the site</span></a></div>
       </div>
 
 
