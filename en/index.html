@@ -911,6 +911,30 @@
   /* About + support in one card: support sits in an inset well at the bottom */
   .foot-about .foot-support{margin:var(--space-4) 0 0;padding:var(--space-4);border-radius:14px}
   .foot-about .foot-support p{font-size:13px}
+
+  /* support button: gentle rising steam + a small lift on hover */
+  .support-btn{transition:box-shadow .2s ease,transform .2s ease}
+  .support-btn svg{overflow:visible}
+  .support-btn .steam line{transform-box:fill-box;transform-origin:50% 100%;animation:steam 3.6s ease-in-out infinite;opacity:0}
+  .support-btn .steam .s2{animation-delay:.45s}
+  .support-btn .steam .s3{animation-delay:.9s}
+  @keyframes steam{0%{opacity:0;transform:translateY(2px)}20%{opacity:1}50%{opacity:0;transform:translateY(-3px)}100%{opacity:0;transform:translateY(-3px)}}
+  @media(hover:hover){.support-btn:hover{transform:translateY(-2px);box-shadow:5px 5px 12px var(--nm-shadow-dark),-5px -5px 12px var(--nm-shadow-light)}}
+  .support-btn:active{transform:none}
+  @media(prefers-reduced-motion:reduce){.support-btn .steam line{animation:none;opacity:1}.support-btn,.support-btn:hover{transform:none;transition:none}}
+
+  /* app card: a home-screen style icon that invites installing */
+  .app-ico{display:flex;flex-direction:column;align-items:center;gap:8px;margin:var(--space-2) 0 var(--space-3)}
+  .app-tile{position:relative;width:72px;height:72px;border-radius:18px;overflow:hidden;
+      box-shadow:6px 6px 14px var(--nm-shadow-dark),-5px -5px 12px var(--nm-shadow-light),0 1px 0 rgba(255,255,255,.18) inset;
+      transition:transform .25s ease}
+  .app-tile svg{display:block}
+  .app-shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%);animation:appShine 7s ease-in-out infinite 1.5s;pointer-events:none}
+  @keyframes appShine{0%{transform:translateX(-120%)}12%{transform:translateX(120%)}100%{transform:translateX(120%)}}
+  .install-card .app-ico+.dc-head{margin-top:var(--space-2)}
+  .app-name{font-size:11px;font-weight:500;color:var(--color-text);letter-spacing:.01em}
+  @media(hover:hover){.install-card:hover .app-tile{transform:translateY(-3px) scale(1.03)}}
+  @media(prefers-reduced-motion:reduce){.app-shine{animation:none;display:none}.app-tile{transition:none}}
 </style>
 </head>
 <body>
@@ -1413,7 +1437,7 @@
           <h2 class="fa-h hx" id="footAboutH">About and support</h2>
           <div class="foot-disclaimer" id="footDisclaimer">Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions.</div>
           <div class="foot-coverage" id="footCoverage">The company is covered by independent research firms, for example <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. See their publications for valuation and analysis, not reproduced here.</div>
-          <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg><span>Support the site</span></a></div>
+          <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Support the site</span></a></div>
         </div>
       </div>
 
@@ -1430,7 +1454,8 @@
       </div>
       <div class="cta-card install-card">
         <div class="dc-lbl" id="inLbl">App</div>
-        <h2 class="dc-head hx" id="inHead">Install as an app</h2>
+        <div class="app-ico" aria-hidden="true"><div class="app-tile"><svg viewBox="0 0 141.76 141.76" width="72" height="72"><defs><linearGradient id="appg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3E5C8C"></stop><stop offset="1" stop-color="#2A3E60"></stop></linearGradient></defs><rect width="141.76" height="141.76" rx="32" fill="url(#appg)"></rect><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"></path><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"></path><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"></path></g></svg><span class="app-shine"></span></div><div class="app-name">Saniona Investor</div></div>
+                <h2 class="dc-head hx" id="inHead">Install as an app</h2>
         <div class="dc-line" id="inLine">Add the page to your home screen or desktop and open it as an app.</div>
         <button class="discord-btn" id="inBtn" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
@@ -1723,7 +1748,7 @@
     const fe=document.getElementById('footEnd');
     if(fe) fe.innerHTML=`<svg class="fe-logo" viewBox="0 0 141.76 141.76" width="22" height="22" role="img" aria-label="Saniona Investor"><circle cx="70.88" cy="70.88" r="70.88" fill="#32496F"/><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"/><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"/><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"/></g></svg><span class="sep" aria-hidden="true">·</span><span>${lang==='sv'?'Oberoende sammanställning':'Independent summary'}</span><span class="sep" aria-hidden="true">·</span><span>${tr(f.updated)}</span>`;
     const sp=document.getElementById('footSupport'), S=DATA.support;
-    if(sp&&S) sp.innerHTML=`<p>${tr(S.text)}</p><a class="support-btn" href="${S.href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg><span>${tr(S.btn)}</span></a>`;
+    if(sp&&S) sp.innerHTML=`<p>${tr(S.text)}</p><a class="support-btn" href="${S.href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"/><line class="s2" x1="10" y1="1" x2="10" y2="4"/><line class="s3" x1="14" y1="1" x2="14" y2="4"/></g></svg><span>${tr(S.btn)}</span></a>`;
   }
 
   // "1 sep 2026" -> "2026-09-01" (machine-readable date for crawlers; null if the text is not a plain date)
