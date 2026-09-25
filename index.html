@@ -935,6 +935,15 @@
   .app-name{font-size:11px;font-weight:500;color:var(--color-text);letter-spacing:.01em}
   @media(hover:hover){.install-card:hover .app-tile{transform:translateY(-3px) scale(1.03)}}
   @media(prefers-reduced-motion:reduce){.app-shine{animation:none;display:none}.app-tile{transition:none}}
+
+  /* support well spans the whole About card (not just the text column) */
+  .foot-about{flex-wrap:wrap}
+  .foot-about>.foot-support{flex:1 0 100%;margin:var(--space-2) 0 0}
+  .foot-about>.fa-body{flex:1 1 0}
+
+  /* analyst-coverage note, now closing the Risks section */
+  .risk-coverage{margin:var(--space-5) 0 0!important;padding:var(--space-4) 0 0!important;border:0!important;border-top:1px solid var(--nm-shadow-dark)!important;border-radius:0;font-size:13px!important;line-height:1.55!important;font-style:italic!important;color:var(--color-text-muted);box-shadow:none}
+  .risk-coverage a{font-weight:600;color:var(--nm-accent-2);text-decoration:none}
 </style>
 </head>
 <body>
@@ -1420,7 +1429,8 @@
       <h2 class="co-head" id="riskHead">Risker att väga in</h2>
       <div class="co-sub" id="riskSub">En balanserad bild kräver att man ser riskerna, inte bara möjligheterna.</div>
       <div class="risk-list" id="riskList"><div class="risk-item"><h3 class="risk-h">Klinisk risk</h3><div class="risk-d">De ledande programmen är fortfarande prekliniska. Steget in i fas 1 och vidare är stort, och de flesta läkemedelskandidater når aldrig marknaden.</div></div><div class="risk-item"><h3 class="risk-h">Beroende av partners</h3><div class="risk-d">Stora delar av värdet ligger i partnerdrivna program (Jazz, Acadia m.fl.). Saniona styr inte tidplaner eller beslut i dessa, och milstolpar kan skjutas upp eller utebli.</div></div><div class="risk-item"><h3 class="risk-h">Behov av framtida avtal</h3><div class="risk-d">SAN2465 (depression) är sannolikt för stort för att Saniona ska driva genom sena studier själv. Värdet förutsätter troligen en utlicensiering som ännu inte finns.</div></div><div class="risk-item"><h3 class="risk-h">Finansiering &amp; utspädning</h3><div class="risk-d">Kassan räcker in i 2029 med nuvarande plan. Förseningar eller större ambitioner kan ändå kräva nytt kapital, vilket kan späda ut aktieägarna.</div></div><div class="risk-item"><h3 class="risk-h">Regulatorisk osäkerhet</h3><div class="risk-d">Godkännanden (t.ex. tesofensin i Mexiko) styrs av myndigheter utan fastställda tidplaner. Utfall och tidpunkt är osäkra.</div></div><div class="risk-item"><h3 class="risk-h">Marknads- och likviditetsrisk</h3><div class="risk-d">Aktien är småbolag och kan vara volatil. Kursen påverkas av nyhetsflöde, sentiment och begränsad handelslikviditet.</div></div></div>
-    </section>
+      <div class="foot-coverage risk-coverage" id="footCoverage">Bolaget följs av oberoende analyshus, till exempel <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. Se deras publikationer för värdering och analys, som inte återges här.</div>
+     </section>
 
 
 
@@ -1436,9 +1446,9 @@
         <div class="fa-body">
           <h2 class="fa-h hx" id="footAboutH">Om sidan och stöd</h2>
           <div class="foot-disclaimer" id="footDisclaimer">Oberoende sammanställning av en privat investerare, baserad enbart på Sanionas offentliga kommunikation. Detta är inte bolagets officiella investerarinformation och utgör inte investeringsrådgivning. Verifiera alltid mot primärkällorna innan beslut.</div>
-          <div class="foot-coverage" id="footCoverage">Bolaget följs av oberoende analyshus, till exempel <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. Se deras publikationer för värdering och analys, som inte återges här.</div>
-          <div class="foot-support" id="footSupport"><p>Sidan är gratis, utan reklam och har inga band till bolaget. Vill du stödja driften och arbetet kan du bjuda på en kaffe.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Stöd sidan</span></a></div>
+          
         </div>
+        <div class="foot-support" id="footSupport"><p>Sidan är gratis, utan reklam och har inga band till bolaget. Vill du stödja driften och arbetet kan du bjuda på en kaffe.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Stöd sidan</span></a></div>
       </div>
 
 
