@@ -48,7 +48,7 @@
         "@id": "https://sanionainvestor.vercel.app/#website"
       },
       "inLanguage": "en",
-      "dateModified": "2026-09-24",
+      "dateModified": "2026-09-26",
       "description": "Independent summary of Saniona AB (Nasdaq Stockholm: SANION): pipeline, deals, catalysts and press releases from public sources. Not the company's official investor information and not investment advice.",
       "about": {
         "@id": "https://sanionainvestor.vercel.app/#saniona"
@@ -926,10 +926,12 @@
       font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--color-text-muted);text-align:center}
   .foot-end .fe-logo{flex:0 0 auto;display:block}
   .foot-end .sep{opacity:.5}
+  .foot-end .fe-name{font-weight:600;color:var(--color-text)}
+  .foot-end .fe-logo+.fe-name{margin-left:-2px}
   .foot-end:empty{display:none}
   .site-foot .cta-row{gap:var(--space-5)}
   @media(max-width:700px){.site-foot .cta-row{grid-template-columns:1fr;max-width:none}}
-  @media(max-width:520px){.foot-end{flex-direction:column;gap:4px}.foot-end .sep{display:none}.foot-end .fe-logo{margin-bottom:4px}}
+  @media(max-width:520px){.foot-end{flex-direction:column;gap:4px}.foot-end .sep{display:none}.foot-end .fe-logo{margin-bottom:2px}.foot-end .fe-logo+.fe-name{margin-left:0}}
 
   /* About + support in one card: support sits in an inset well at the bottom */
   .foot-about .foot-support{margin:var(--space-4) 0 0;padding:var(--space-4);border-radius:14px}
@@ -967,6 +969,25 @@
   /* analyst-coverage note, now closing the Risks section */
   .risk-coverage{margin:var(--space-5) 0 0!important;padding:var(--space-4) 0 0!important;border:0!important;border-top:1px solid var(--nm-shadow-dark)!important;border-radius:0;font-size:13px!important;line-height:1.55!important;font-style:italic!important;color:var(--color-text-muted);box-shadow:none}
   .risk-coverage a{font-weight:600;color:var(--nm-accent-2);text-decoration:none}
+
+  /* ===== "Om sidan" section ===== */
+  #om .foot-about{margin-top:var(--space-4)}
+  .foot-about .foot-method{margin:var(--space-3) 0 0;font-size:14px;line-height:1.55;color:var(--color-text)}
+  .om-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-5);margin-top:var(--space-5)}
+  .om-card{padding:var(--space-5);border-radius:var(--nm-radius);background:var(--nm-bg);
+      box-shadow:var(--nm-distance) var(--nm-distance) var(--nm-blur) var(--nm-shadow-dark),calc(-1 * var(--nm-distance)) calc(-1 * var(--nm-distance)) var(--nm-blur) var(--nm-shadow-light)}
+  .om-h{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-muted);margin:0 0 var(--space-3)}
+  .om-sources{background:none!important;box-shadow:none!important;padding:0!important;margin:0!important}
+  .om-sources .fs-note{font-size:13px;line-height:1.55;color:var(--color-text)}
+  .om-sources .foot-preslink{display:inline-block;margin-top:var(--space-3);font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:600;color:var(--nm-accent-2);text-decoration:none}
+  .om-docs{list-style:none;margin:var(--space-3) 0 0;padding:0}
+  .om-docs li{border-top:1px solid var(--nm-shadow-dark)}
+  .om-docs a{display:block;padding:10px 0;font-size:13px;color:var(--color-text);text-decoration:none}
+  .om-docs a span{color:var(--nm-accent-2)}
+  .om-coverage{margin:0!important;padding:0!important;border:0!important;font-size:14px!important;line-height:1.55!important;font-style:normal!important;color:var(--color-text)!important}
+  .om-coverage a{font-weight:600;color:var(--nm-accent-2);text-decoration:none}
+  @media(max-width:700px){.om-grid{grid-template-columns:1fr}}
+  @media(max-width:520px){.om-card{padding:var(--space-4)}.foot-about .foot-method{font-size:13px}}
 </style>
 </head>
 <body>
@@ -987,7 +1008,7 @@
       </div>
       <div class="brand-sub">Saniona AB · <a class="ticker" href="https://finance.yahoo.com/quote/SANION.ST/" target="_blank" rel="noopener">SANION ↗</a></div>
       <div class="new-since" id="newSince"></div>
-      <div class="brand-updated" id="brandUpdated">Updated 24 September 2026</div>
+      <div class="brand-updated" id="brandUpdated">Updated 26 September 2026</div>
     </div>
     </header>
 
@@ -1029,7 +1050,7 @@
       </div></div>
 
     <nav class="nav" aria-label="Sektioner">
-      <div class="nav-inner" id="navInner"><a data-target="__all" href="#" class="active">Overview</a><a data-target="bolaget" href="#bolaget">Company &amp; team</a><a data-target="pipeline" href="#pipeline">Pipeline &amp; programs</a><a data-target="avtal" href="#avtal">Deals</a><a data-target="ekonomi" href="#ekonomi">Financials</a><a data-target="bevaka" href="#bevaka">Catalysts</a><a data-target="proof" href="#proof">Press releases</a><a data-target="risker" href="#risker">Risks</a><a data-target="community" href="#community">Community</a></div>
+      <div class="nav-inner" id="navInner"><a data-target="__all" href="#" class="active">Overview</a><a data-target="bolaget" href="#bolaget">Company &amp; team</a><a data-target="pipeline" href="#pipeline">Pipeline &amp; programs</a><a data-target="avtal" href="#avtal">Deals</a><a data-target="ekonomi" href="#ekonomi">Financials</a><a data-target="bevaka" href="#bevaka">Catalysts</a><a data-target="proof" href="#proof">Press releases</a><a data-target="risker" href="#risker">Risks</a><a data-target="om" href="#om">About</a><a data-target="community" href="#community">Community</a></div>
     </nav>
 
     <section class="content-sec" id="bolaget">
@@ -1452,27 +1473,41 @@
       <h2 class="co-head" id="riskHead">Risks to weigh</h2>
       <div class="co-sub" id="riskSub">A balanced view means seeing the risks, not only the opportunities.</div>
       <div class="risk-list" id="riskList"><div class="risk-item"><h3 class="risk-h">Clinical risk</h3><div class="risk-d">The lead programs are still preclinical. The step into Phase 1 and beyond is big, and most drug candidates never reach the market.</div></div><div class="risk-item"><h3 class="risk-h">Dependence on partners</h3><div class="risk-d">A large share of value sits in partner-driven programs (Jazz, Acadia and others). Saniona does not control their timelines or decisions, and milestones may slip or fail to materialise.</div></div><div class="risk-item"><h3 class="risk-h">Need for future deals</h3><div class="risk-d">SAN2465 (depression) is likely too large for Saniona to take through late-stage trials alone. Its value probably depends on an out-licensing deal that does not yet exist.</div></div><div class="risk-item"><h3 class="risk-h">Financing &amp; dilution</h3><div class="risk-d">The cash lasts into 2029 under the current plan. Delays or bigger ambitions could still require new capital, which could dilute shareholders.</div></div><div class="risk-item"><h3 class="risk-h">Regulatory uncertainty</h3><div class="risk-d">Approvals (e.g. tesofensine in Mexico) are set by authorities with no fixed timelines. Both outcome and timing are uncertain.</div></div><div class="risk-item"><h3 class="risk-h">Market &amp; liquidity risk</h3><div class="risk-d">This is a small-cap stock and can be volatile. The share price is affected by news flow, sentiment and limited trading liquidity.</div></div></div>
-      <div class="foot-coverage risk-coverage" id="footCoverage">The company is covered by independent research firms, for example <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. See their publications for valuation and analysis, not reproduced here.</div>
      </section>
+    <section class="content-sec" id="om">
+      <div class="toolbar" style="margin-bottom:var(--space-2)"><span class="eyebrow" id="omEyebrow">About</span></div>
+      <h2 class="co-head" id="omHead">About this page</h2>
+      <div class="co-sub" id="omSub">Who is behind the page, how the information is compiled and where to find the sources.</div>
+      <div class="foot-about">
+        <span class="fa-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>
+        <div class="fa-body">
+          <h3 class="fa-h hx" id="footAboutH">Independence and method</h3>
+          <div class="foot-disclaimer" id="footDisclaimer">Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions.</div>
+          <p class="foot-method" id="footMethod">How the information is compiled: every item is checked against the company’s own reports, presentations, webcast and press releases, and every section links to its source. The page is updated whenever the company communicates something new, and the date of the latest update is shown at the top. The page makes no valuations or forecasts of its own.</p>
+          
+        </div>
+        <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Support the site</span></a></div>
+      </div>
+      <div class="om-grid">
+        <div class="om-card">
+          <h3 class="om-h hx" id="omSrcH">Sources and presentations</h3>
+          <div class="foot-sources om-sources"><div class="fs-note" id="footSources">Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11.</div>
+        <a class="foot-preslink" id="footPresLink" target="_blank" rel="noopener" href="https://saniona.com/wp-content/uploads/2026/09/Saniona-Offline-Investor-Deck-September-2026-2.pdf">↗ Saniona company presentation, September 2026 (PDF)</a></div>
+          <ul class="om-docs" id="omDocs"><li><a href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Q2 report 2026 (27 Aug) <span aria-hidden="true">↗</span></a></li><li><a href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener">Q2 webcast 27 Aug 2026 (replay via the press release) <span aria-hidden="true">↗</span></a></li><li><a href="https://mfn.se/a/saniona/saniona-completes-toxicology-and-cmc-studies-for-san2465-enabling-ind-submission-by-october-2026" target="_blank" rel="noopener">Press release 24 Sep 2026: SAN2465 towards IND <span aria-hidden="true">↗</span></a></li><li><a href="https://mfn.se/all/a/saniona" target="_blank" rel="noopener">Saniona press releases on MFN <span aria-hidden="true">↗</span></a></li></ul>
+        </div>
+        <div class="om-card">
+          <h3 class="om-h hx" id="omAnaH">External research</h3>
+          <div class="foot-coverage om-coverage" id="footCoverage">The company is covered by independent research firms, for example <a class="foot-cov-link" href="https://www.redeye.se/company/saniona/about-analyst" target="_blank" rel="noopener">Redeye</a>. See their publications for valuation and analysis, not reproduced here.</div>
+        </div>
+      </div>
+    </section>
+
 
 
 
     </main>
     <footer class="site-foot">
-      <div class="foot-sources">
-        <div class="fs-note" id="footSources">Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11.</div>
-        <a class="foot-preslink" id="footPresLink" target="_blank" rel="noopener">↗ Saniona company presentation, September 2026 (PDF)</a>
-      </div>
 
-      <div class="foot-about">
-        <span class="fa-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>
-        <div class="fa-body">
-          <h2 class="fa-h hx" id="footAboutH">About this page</h2>
-          <div class="foot-disclaimer" id="footDisclaimer">Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions.</div>
-          
-        </div>
-        <div class="foot-support" id="footSupport"><p>The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.</p><a class="support-btn" href="https://buymeacoffee.com/PivotPortal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"></line><line class="s2" x1="10" y1="1" x2="10" y2="4"></line><line class="s3" x1="14" y1="1" x2="14" y2="4"></line></g></svg><span>Support the site</span></a></div>
-      </div>
 
 
   <div class="cta-row" id="community">
@@ -1497,13 +1532,24 @@
         <div class="dc-hint" id="inHint" hidden=""></div>
       </div>
     </div>
-      <div class="foot-end" id="footEnd"><svg class="fe-logo" viewBox="0 0 141.76 141.76" width="22" height="22" role="img" aria-label="Saniona Investor"><circle cx="70.88" cy="70.88" r="70.88" fill="#32496F"></circle><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"></path><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"></path><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"></path></g></svg><span class="sep" aria-hidden="true">·</span><span>Independent summary</span><span class="sep" aria-hidden="true">·</span><span>Updated 24 September 2026</span></div>
+      <div class="foot-end" id="footEnd"><svg class="fe-logo" viewBox="0 0 141.76 141.76" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="70.88" cy="70.88" r="70.88" fill="#32496F"></circle><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"></path><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"></path><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"></path></g></svg><span class="fe-name">Saniona Investor</span><span class="sep" aria-hidden="true">·</span><span>Independent summary</span><span class="sep" aria-hidden="true">·</span><span>Updated 26 September 2026</span></div>
     </footer>
     <button type="button" class="to-top" id="toTop" aria-label="Back to top" tabindex="-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
   </div>
 
 <script>
   const DATA = {
+    about:{sub:{sv:'Vem som står bakom sidan, hur uppgifterna tas fram och var du hittar källorna.',en:'Who is behind the page, how the information is compiled and where to find the sources.'},
+      cardH:{sv:'Oberoende och metod',en:'Independence and method'},
+      method:{sv:'Så tas uppgifterna fram: varje uppgift kontrolleras mot bolagets egna rapporter, presentationer, webcast och pressmeddelanden, och varje avsnitt länkar till sin källa. Sidan uppdateras när bolaget kommunicerar något nytt, och datum för senaste uppdatering står överst. Sidan gör inga egna värderingar eller prognoser.',
+              en:'How the information is compiled: every item is checked against the company\u2019s own reports, presentations, webcast and press releases, and every section links to its source. The page is updated whenever the company communicates something new, and the date of the latest update is shown at the top. The page makes no valuations or forecasts of its own.'},
+      srcH:{sv:'Källor och presentationer',en:'Sources and presentations'},anaH:{sv:'Externa analyshus',en:'External research'},
+      docs:[
+        {t:{sv:'Q2-rapport 2026 (27 aug)',en:'Q2 report 2026 (27 Aug)'},href:'https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026'},
+        {t:{sv:'Q2-webcast 27 aug 2026 (repris via pressmeddelandet)',en:'Q2 webcast 27 Aug 2026 (replay via the press release)'},href:'https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026'},
+        {t:{sv:'Pressmeddelande 24 sep 2026: SAN2465 mot IND',en:'Press release 24 Sep 2026: SAN2465 towards IND'},href:'https://mfn.se/a/saniona/saniona-completes-toxicology-and-cmc-studies-for-san2465-enabling-ind-submission-by-october-2026'},
+        {t:{sv:'Sanionas pressmeddelanden på MFN',en:'Saniona press releases on MFN'},href:'https://mfn.se/all/a/saniona'}
+      ]},
     support:{text:{sv:'Sidan är gratis, utan reklam och har inga band till bolaget. Vill du stödja driften och arbetet kan du bjuda på en kaffe.',
                    en:'The page is free, ad-free and has no ties to the company. If you want to support the running costs and the work, you can buy me a coffee.'},
              btn:{sv:'Stöd sidan',en:'Support the site'},href:'https://buymeacoffee.com/PivotPortal'},
@@ -1601,8 +1647,8 @@
       ]
     },
     nav:{
-      sv:[['__all','Översikt'],['bolaget','Bolaget & teamet'],['pipeline','Pipeline & program'],['avtal','Avtal'],['ekonomi','Ekonomi'],['bevaka','Katalysatorer'],['proof','Pressmeddelanden'],['risker','Risker'],['community','Community']],
-      en:[['__all','Overview'],['bolaget','Company & team'],['pipeline','Pipeline & programs'],['avtal','Deals'],['ekonomi','Financials'],['bevaka','Catalysts'],['proof','Press releases'],['risker','Risks'],['community','Community']]
+      sv:[['__all','Översikt'],['bolaget','Bolaget & teamet'],['pipeline','Pipeline & program'],['avtal','Avtal'],['ekonomi','Ekonomi'],['bevaka','Katalysatorer'],['proof','Pressmeddelanden'],['risker','Risker'],['om','Om sidan'],['community','Community']],
+      en:[['__all','Overview'],['bolaget','Company & team'],['pipeline','Pipeline & programs'],['avtal','Deals'],['ekonomi','Financials'],['bevaka','Catalysts'],['proof','Press releases'],['risker','Risks'],['om','About'],['community','Community']]
     },
     co:{
       head:{sv:'Bolaget & teamet', en:'Company & team'},
@@ -1691,7 +1737,7 @@
       hintOther:{sv:'Öppna webbläsarens meny och välj ”Installera” eller ”Lägg till på hemskärmen”.', en:'Open your browser menu and choose “Install” or “Add to Home Screen”.'},
       installed:{sv:'Appen är installerad ✓', en:'App installed ✓'}
     },
-    foot:{"footer":{"sv":"Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, företagspresentation september 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.","en":"Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11."},"disclaimer":{"sv":"Oberoende sammanställning av en privat investerare, baserad enbart på Sanionas offentliga kommunikation. Detta är inte bolagets officiella investerarinformation och utgör inte investeringsrådgivning. Verifiera alltid mot primärkällorna innan beslut.","en":"Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions."},"presLink":{"sv":"Sanionas företagspresentation, september 2026 (PDF)","en":"Saniona company presentation, September 2026 (PDF)"},"presHref":"https://saniona.com/wp-content/uploads/2026/09/Saniona-Offline-Investor-Deck-September-2026-2.pdf","updated":{"sv":"Uppdaterad 24 september 2026","en":"Updated 24 September 2026"},"coverage":{"sv":{"pre":"Bolaget följs av oberoende analyshus, till exempel ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". Se deras publikationer för värdering och analys, som inte återges här."},"en":{"pre":"The company is covered by independent research firms, for example ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". See their publications for valuation and analysis, not reproduced here."}}},
+    foot:{"footer":{"sv":"Källor: MFN, Cision, samt Sanionas Q2-rapport 2026, företagspresentation september 2026, bokslutskommuniké 2025, årsredovisning 2024 och enskilda pressmeddelanden (länkade vid respektive avtal). Alla uppgifter är hämtade ur bolagets offentliga kommunikation. Belopp är omräknade till SEK enligt 1 USD = 9,65 SEK och 1 EUR = 11 SEK; originalvaluta anges inom parentes.","en":"Sources: MFN, Cision, and Saniona’s Q2 2026 report, company presentation September 2026, year-end report 2025, annual report 2024 and individual press releases (linked at each deal). All data is drawn from the company’s public communications. Deal figures are shown in their original currency (USD or EUR), with an approximate SEK equivalent in brackets at USD 1 = SEK 9.65 and EUR 1 = SEK 11."},"disclaimer":{"sv":"Oberoende sammanställning av en privat investerare, baserad enbart på Sanionas offentliga kommunikation. Detta är inte bolagets officiella investerarinformation och utgör inte investeringsrådgivning. Verifiera alltid mot primärkällorna innan beslut.","en":"Independent compilation by a private investor, based solely on Saniona’s public communications. This is not the company’s official investor information and does not constitute investment advice. Always verify against the primary sources before making decisions."},"presLink":{"sv":"Sanionas företagspresentation, september 2026 (PDF)","en":"Saniona company presentation, September 2026 (PDF)"},"presHref":"https://saniona.com/wp-content/uploads/2026/09/Saniona-Offline-Investor-Deck-September-2026-2.pdf","updated":{"sv":"Uppdaterad 26 september 2026","en":"Updated 26 September 2026"},"coverage":{"sv":{"pre":"Bolaget följs av oberoende analyshus, till exempel ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". Se deras publikationer för värdering och analys, som inte återges här."},"en":{"pre":"The company is covered by independent research firms, for example ","link":"Redeye","href":"https://www.redeye.se/company/saniona/about-analyst","post":". See their publications for valuation and analysis, not reproduced here."}}},
     kpis:[
       {v:{sv:'486 MSEK',en:'SEK 486M'}, u:{sv:'likvida medel',en:'cash & equivalents'},
        note:{sv:'Per 30 juni 2026 (Q2). Total position 721 MSEK. Runway in i 2029.', en:'As of 30 Jun 2026 (Q2). Total position SEK 721M. Runway into 2029.'}},
@@ -1773,13 +1819,21 @@
     const pl=document.getElementById('footPresLink');
     pl.textContent='↗ '+tr(f.presLink); pl.href=f.presHref;
     document.getElementById('footDisclaimer').textContent=tr(f.disclaimer);
-    const fah=document.getElementById('footAboutH'); if(fah) fah.textContent=lang==='sv'?'Om sidan':'About this page';
+    const fah=document.getElementById('footAboutH'); if(fah) fah.textContent=tr(DATA.about.cardH);
+    const A=DATA.about;
+    document.getElementById('omEyebrow').textContent=lang==='sv'?'Om sidan':'About';
+    document.getElementById('omHead').textContent=lang==='sv'?'Om sidan':'About this page';
+    document.getElementById('omSub').textContent=tr(A.sub);
+    document.getElementById('footMethod').textContent=tr(A.method);
+    document.getElementById('omSrcH').textContent=tr(A.srcH);
+    document.getElementById('omAnaH').textContent=tr(A.anaH);
+    document.getElementById('omDocs').innerHTML=A.docs.map(d=>`<li><a href="${d.href}" target="_blank" rel="noopener">${tr(d.t)} <span aria-hidden="true">↗</span></a></li>`).join('');
     const cov=document.getElementById('footCoverage');
     if(cov&&f.coverage){ const cv=tr(f.coverage);
       cov.innerHTML=`${cv.pre}<a class="foot-cov-link" href="${cv.href}" target="_blank" rel="noopener">${cv.link}</a>${cv.post}`; }
     const bu=document.getElementById('brandUpdated'); if(bu) bu.textContent=tr(f.updated);
     const fe=document.getElementById('footEnd');
-    if(fe) fe.innerHTML=`<svg class="fe-logo" viewBox="0 0 141.76 141.76" width="22" height="22" role="img" aria-label="Saniona Investor"><circle cx="70.88" cy="70.88" r="70.88" fill="#32496F"/><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"/><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"/><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"/></g></svg><span class="sep" aria-hidden="true">·</span><span>${lang==='sv'?'Oberoende sammanställning':'Independent summary'}</span><span class="sep" aria-hidden="true">·</span><span>${tr(f.updated)}</span>`;
+    if(fe) fe.innerHTML=`<svg class="fe-logo" viewBox="0 0 141.76 141.76" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="70.88" cy="70.88" r="70.88" fill="#32496F"/><g fill="#fff"><path d="M86.24,34.75v-13.9c-27.63,0-50.03,22.4-50.03,50.03h13.9c0-19.95,16.18-36.13,36.13-36.13Z"/><path d="M91.65,70.88c0,19.95-16.18,36.13-36.13,36.13v13.9c27.63,0,50.03-22.4,50.03-50.03h-13.9Z"/><path d="M63.85,70.88v20.87c2.6-.9,4.95-2.24,6.95-4.01,4.28-3.77,6.95-9.47,6.95-16.86v-20.88c-2.6.9-4.95,2.24-6.95,4.01-4.28,3.77-6.95,9.47-6.95,16.86Z"/></g></svg><span class="fe-name">Saniona Investor</span><span class="sep" aria-hidden="true">·</span><span>${lang==='sv'?'Oberoende sammanställning':'Independent summary'}</span><span class="sep" aria-hidden="true">·</span><span>${tr(f.updated)}</span>`;
     const sp=document.getElementById('footSupport'), S=DATA.support;
     if(sp&&S) sp.innerHTML=`<p>${tr(S.text)}</p><a class="support-btn" href="${S.href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><g class="steam"><line class="s1" x1="6" y1="1" x2="6" y2="4"/><line class="s2" x1="10" y1="1" x2="10" y2="4"/><line class="s3" x1="14" y1="1" x2="14" y2="4"/></g></svg><span>${tr(S.btn)}</span></a>`;
   }
