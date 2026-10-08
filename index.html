@@ -1059,6 +1059,18 @@
   .cat-rows li+li{border-top:1px solid var(--nm-shadow-dark)}
   .cat-rows .w{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--nm-accent-2)}
   .cat-rows .c{font-size:12px;color:var(--color-text-muted);text-align:right}
+
+  /* calendar card: subscribe on top, full list of upcoming events below */
+  .calsub-body{grid-template-columns:1fr!important}
+  .calsub-list{padding:4px var(--space-4) 8px;border-radius:14px;box-shadow:inset 2px 2px 5px var(--nm-shadow-dark),inset -2px -2px 5px var(--nm-shadow-light)}
+  .calsub-month{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--color-text-muted);padding:14px 0 4px}
+  .calsub-ev{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:4px var(--space-3);align-items:baseline;padding:10px 0;border-top:1px solid var(--nm-shadow-dark);font-size:13px;line-height:1.4;color:var(--color-text)}
+  .calsub-month+.calsub-ev{border-top:0}
+  .calsub-ev time{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--nm-accent-2);white-space:nowrap}
+  .calsub-ev .m{font-size:12px;color:var(--color-text-muted);text-align:right}
+  .calsub-btns{grid-template-columns:repeat(4,minmax(0,1fr))}
+  @media(max-width:860px){.calsub-btns{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.calsub-ev{grid-template-columns:78px minmax(0,1fr)}.calsub-ev .m{grid-column:2;text-align:left}}
 </style>
 </head>
 <body>
@@ -1652,9 +1664,9 @@
           <div><h2 class="calsub-h hx" id="calHead">Bolagets kalender i din telefon</h2><p class="calsub-lead" id="calLead">Rapporter, stämmor och presentationer läggs in automatiskt i din kalender, och nya datum dyker upp av sig själva när sidan uppdateras.</p></div>
         </div>
         <div class="calsub-body">
-          <div class="calsub-next"><div class="calsub-k" id="calNextLbl">Nästa i kalendern</div><ul id="calNext"><li><time datetime="2026-10-15">15 okt</time><span>Saniona presenterar på Redeyes neurologidag <em>09:15</em></span></li><li><time datetime="2026-10-27">27 okt</time><span>Saniona: sista dag att anmäla sig till extra bolagsstämman</span></li><li><time datetime="2026-11-02">2 nov</time><span>Saniona: extra bolagsstämma <em>11:00</em></span></li></ul></div>
           <div class="calsub-go"><div class="calsub-k" id="calGoLbl">Prenumerera med</div><div class="calsub-btns" id="calBtns"><a class="calsub-btn first" href="webcal://sanionainvestor.vercel.app/kalender.ics"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span>iPhone och Mac</span></a><a class="calsub-btn" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fsanionainvestor.vercel.app%2Fkalender.ics" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span>Google Kalender</span></a><a class="calsub-btn" href="https://outlook.live.com/calendar/0/addfromweb?url=https%3A%2F%2Fsanionainvestor.vercel.app%2Fkalender.ics&amp;name=Saniona%20Investor%3A%20kalender" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span>Outlook</span></a><button type="button" class="calsub-btn copy" data-url="https://sanionainvestor.vercel.app/kalender.ics"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>Kopiera länk</span></button></div>
             <ol class="calsub-steps" id="calSteps"><li>Välj din kalender ovan.</li><li>Bekräfta prenumerationen i appen som öppnas.</li><li>Klart. Nya händelser kommer automatiskt, oftast inom ett dygn.</li></ol></div>
+          <div class="calsub-all"><div class="calsub-k" id="calNextLbl">Alla kommande händelser (13)</div><div class="calsub-list" id="calNext"><div class="calsub-month">Oktober 2026</div><div class="calsub-ev"><time datetime="2026-10-15">15 okt</time><span class="t">Presenterar på Redeyes neurologidag</span><span class="m">09:15 · Stockholm och online (Redeye)</span></div><div class="calsub-ev"><time datetime="2026-10-27">27 okt</time><span class="t">Sista dag att anmäla sig till extra bolagsstämman</span></div><div class="calsub-month">November 2026</div><div class="calsub-ev"><time datetime="2026-11-02">2 nov</time><span class="t">Extra bolagsstämma</span><span class="m">11:00 · Ascente Law, Stortorget 23, Malmö</span></div><div class="calsub-ev"><time datetime="2026-11-04">4–5 nov</time><span class="t">BioStock Life Science Summit</span><span class="m">Lund</span></div><div class="calsub-ev"><time datetime="2026-11-09">9–11 nov</time><span class="t">BIO-Europe</span><span class="m">Köln</span></div><div class="calsub-ev"><time datetime="2026-11-11">11–13 nov</time><span class="t">International League Against Epilepsy (ILAE)</span><span class="m">Rom</span></div><div class="calsub-ev"><time datetime="2026-11-14">14–18 nov</time><span class="t">Society for Neuroscience, årsmöte</span><span class="m">Washington DC</span></div><div class="calsub-ev"><time datetime="2026-11-16">16–19 nov</time><span class="t">International Pharmaco-EEG Society</span><span class="m">Vilnius</span></div><div class="calsub-ev"><time datetime="2026-11-24">24 nov</time><span class="t">Aktieinfo</span><span class="m">Kolding</span></div><div class="calsub-ev"><time datetime="2026-11-26">26 nov</time><span class="t">Delårsrapport Q3 2026</span><span class="m">08:00</span></div><div class="calsub-month">December 2026</div><div class="calsub-ev"><time datetime="2026-12-04">4–8 dec</time><span class="t">American Epilepsy Society (AES)</span><span class="m">Denver</span></div><div class="calsub-ev"><time datetime="2026-12-08">8 dec</time><span class="t">DI Investor Summit · Life Science</span><span class="m">Stockholm</span></div><div class="calsub-month">Februari 2027</div><div class="calsub-ev"><time datetime="2027-02-25">25 feb</time><span class="t">Bokslutskommuniké 2026</span><span class="m">08:00</span></div></div></div>
         </div>
       </div>
       <div class="cta-row" id="community">
@@ -2175,6 +2187,11 @@
     [rp.next,rp.after].forEach(r=>{ if(r&&r.time&&isoDate(r.date.sv)) out.push({date:isoDate(r.date.sv),start:r.time,title:r.title||r.label}); });
     return out.sort((a,b)=>(a.date+(a.start||'')).localeCompare(b.date+(b.start||'')));
   }
+  // the card is all about Saniona, so the company name is dropped from list titles
+  function calTitle(t){
+    let x=t.replace(/^Saniona presenterar på /,'Presenterar på ').replace(/^Saniona presents at /,'Presents at ').replace(/^Saniona(:\s*|\s+på\s+|\s+at\s+)/,'');
+    return x.charAt(0).toUpperCase()+x.slice(1);
+  }
   function renderCalendar(){
     const C=DATA.calendar, sv=lang==='sv', host='sanionainvestor.vercel.app', path=tr(C.file);
     const https='https://'+host+path, webcal='webcal://'+host+path;
@@ -2191,9 +2208,20 @@
     document.getElementById('calNextLbl').textContent=T.next;
     document.getElementById('calGoLbl').textContent=T.go;
     const today=new Date(); today.setHours(0,0,0,0);
-    const up=calEvents().filter(e=>new Date(e.date+'T00:00:00')>=today).slice(0,3);
-    const fmt=d=>new Date(d+'T12:00:00').toLocaleDateString(sv?'sv-SE':'en-GB',{day:'numeric',month:'short'}).replace(/\.$/,'');
-    document.getElementById('calNext').innerHTML=up.map(e=>`<li><time datetime="${e.date}">${fmt(e.date)}</time><span>${tr(e.title)}${e.start?` <em>${e.start}</em>`:''}</span></li>`).join('');
+    const up=calEvents().filter(e=>new Date((e.endDate||e.date)+'T00:00:00')>=today);
+    const D=d=>new Date(d+'T12:00:00'), loc=sv?'sv-SE':'en-GB';
+    const day=d=>D(d).getDate(), mon=d=>D(d).toLocaleDateString(loc,{month:'short'}).replace(/\.$/,'');
+    const range=e=>{ if(!e.endDate||e.endDate===e.date) return `${day(e.date)} ${mon(e.date)}`;
+      return mon(e.date)===mon(e.endDate)?`${day(e.date)}–${day(e.endDate)} ${mon(e.date)}`:`${day(e.date)} ${mon(e.date)}–${day(e.endDate)} ${mon(e.endDate)}`; };
+    let html='', cur='';
+    up.forEach(e=>{
+      const mk=D(e.date).toLocaleDateString(loc,{month:'long',year:'numeric'});
+      if(mk!==cur){ cur=mk; html+=`<div class="calsub-month">${mk.charAt(0).toUpperCase()+mk.slice(1)}</div>`; }
+      const where=e.loc?tr(e.loc):'', meta=[e.start||'',where].filter(Boolean).join(' · ');
+      html+=`<div class="calsub-ev"><time datetime="${e.date}">${range(e)}</time><span class="t">${calTitle(tr(e.title))}</span>${meta?`<span class="m">${meta}</span>`:''}</div>`;
+    });
+    document.getElementById('calNextLbl').textContent=(sv?'Alla kommande händelser':'All upcoming events')+` (${up.length})`;
+    document.getElementById('calNext').innerHTML=html||`<div class="calsub-ev"><span class="t">${sv?'Inga inplanerade händelser just nu.':'No scheduled events right now.'}</span></div>`;
     const ico={cal:'<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
                copy:'<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'};
     const svg=n=>`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico[n]}</svg>`;
