@@ -1076,6 +1076,16 @@
      widen the masked box with padding and pull it back with a negative margin so the layout is unchanged */
   .tl-list{padding-right:28px;margin-right:-28px;padding-top:14px;margin-top:-14px}
   @media(max-width:700px){.tl-list{padding-right:12px;margin-right:-12px}}
+
+  /* desktop menu: all tabs must be visible (11 tabs since the Calendar was added) */
+  @media(min-width:701px){
+    .nav-inner{gap:6px;padding-left:var(--space-3);padding-right:var(--space-3);justify-content:center}
+    .nav a{padding:var(--space-2) 12px;letter-spacing:.02em}
+  }
+  /* between tablet and narrow desktop the tabs wrap onto two centred rows instead of being cut off */
+  @media(min-width:701px) and (max-width:1100px){
+    .nav-inner{flex-wrap:wrap;overflow:visible;row-gap:8px}
+  }
 </style>
 </head>
 <body>
@@ -1100,9 +1110,9 @@
     </div>
     </header>
 
-    <main id="main">
+    <section class="intro" aria-labelledby="introH">
     <div class="thesis">
-      <h2 class="t-lbl hx" data-i18n="thesisLbl">Om Saniona</h2>
+      <h2 class="t-lbl hx" id="introH" data-i18n="thesisLbl">Om Saniona</h2>
       <div class="thesis-body" id="thesisText"><p>Saniona är ett läkemedelsutvecklingsbolag med en forskningsplattform inriktad på jonkanaler. Plattformen används för att identifiera och utveckla läkemedelskandidater och har resulterat i samarbeten med externa läkemedelsbolag.</p><p>Saniona har i dag sex partnersamarbeten, däribland Jazz Pharmaceuticals och Acadia Pharmaceuticals, och därtill avknoppningen Initiator Pharma. Samarbetena omfattar finansiering av delar av forsknings- och utvecklingsverksamheten. Det sammanlagda värdet av avtalen uppgår till över 1,8 miljarder dollar, förutsatt att samtliga avtalade <button type="button" class="term" data-term="milstolpe" aria-expanded="false">milstolpar</button> uppnås. Bolaget redovisade positivt resultat både 2024 och 2025.</p><p>Saniona utvecklar även egna läkemedelskandidater. Kring årsskiftet 2026/2027 planeras de första kliniska studierna på människa för två av bolagets kandidater. SAN2668 utvecklas för behandling av utvecklings- och epileptiska encefalopatier (<button type="button" class="term" data-term="DEE" aria-expanded="false">DEE</button>) hos barn. SAN2465 utvecklas för behandling av egentlig depression (<button type="button" class="term" data-term="MDD" aria-expanded="false">MDD</button>), med <button type="button" class="term" data-term="TRD" aria-expanded="false">behandlingsresistent depression</button> som planerad inriktning för fas 2. Bolagets finansiering bedöms räcka in i 2029, vilket täcker de planerade studierna utan omedelbart behov av nytt kapital.</p></div>
     </div>
 
@@ -1137,10 +1147,13 @@
         <div class="note">SAN2465 (årsskiftet 2026) &amp; SAN2668 (Q1 2027).</div>
       </div></div>
 
+    </section>
+
     <nav class="nav" aria-label="Sektioner">
       <div class="nav-inner" id="navInner"><a data-target="__all" href="#" class="active">Översikt</a><a data-target="bolaget" href="#bolaget">Bolaget &amp; teamet</a><a data-target="pipeline" href="#pipeline">Pipeline &amp; program</a><a data-target="avtal" href="#avtal">Avtal</a><a data-target="ekonomi" href="#ekonomi">Ekonomi</a><a data-target="bevaka" href="#bevaka">Katalysatorer</a><a data-target="proof" href="#proof">Pressmeddelanden</a><a data-target="risker" href="#risker">Risker</a><a data-target="om" href="#om">Om sidan</a><a data-target="kalender" href="#kalender">Kalender</a><a data-target="community" href="#community">Community</a></div>
     </nav>
 
+    <main id="main">
     <section class="content-sec" id="bolaget">
       <h2 class="co-head" id="coHead">Bolaget &amp; teamet</h2>
       <div class="co-sub" id="coSub">Storlek, ledning och styrelse</div>
@@ -2140,10 +2153,10 @@
 
   // ---- glossary: first occurrence of a term per section becomes a tappable explanation ----
   function applyGlossary(){
-    const root=document.getElementById('main'); if(!root) return;
+    const root=document.querySelector('.wrap'); if(!root) return;
     const list=(DATA.gloss[lang]||[]).map(([k,re,def])=>({k,def,re:new RegExp(re)}));
     const big=new RegExp(list.map(g=>'('+g.re.source+')').join('|'),'g');
-    const skip='a,button,h1,h2,h3,h4,script,style,svg,time,.term,.nav,.lang-seg,.pl-cl,.pl-status,.prog-chip,.tlx-chip,.tlx-meta,.cat-top,.kpi .v,.pl-metric,.dc-code,.deal-partner,.co-sub,.eyebrow,.toolbar';
+    const skip='header,footer,a,button,h1,h2,h3,h4,script,style,svg,time,.term,.nav,.lang-seg,.pl-cl,.pl-status,.prog-chip,.tlx-chip,.tlx-meta,.cat-top,.kpi .v,.pl-metric,.dc-code,.deal-partner,.co-sub,.eyebrow,.toolbar';
     const used={};
     const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.nodeValue.trim()&&!n.parentElement.closest(skip)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
     const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
