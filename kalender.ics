@@ -1,0 +1,85 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Saniona Investor//Calendar//SV
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Saniona Investor: kalender
+X-WR-TIMEZONE:Europe/Stockholm
+X-WR-CALDESC:Oberoende sammanställning av Sanionas kommande datum. Ej inve
+ steringsråd.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:Europe/Stockholm
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:2026-10-15-redeye@sanionainvestor.vercel.app
+DTSTAMP:20261015T000000Z
+DTSTART;TZID=Europe/Stockholm:20261015T091500
+DTEND;TZID=Europe/Stockholm:20261015T093500
+SUMMARY:Saniona presenterar på Redeyes neurologidag
+LOCATION:Online (Redeye)
+DESCRIPTION:VD Thomas Feldthus presenterar Saniona. Eventet pågår 09.10
+ –11.55 och sänds digitalt.\nhttps://www.redeye.se/events/1145293/redeye
+ -theme-neurology-4
+URL:https://www.redeye.se/events/1145293/redeye-theme-neurology-4
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-27-egm-registration@sanionainvestor.vercel.app
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+TRANSP:TRANSPARENT
+SUMMARY:Saniona: sista dag att anmäla sig till extra bolagsstämman
+DESCRIPTION:Anmälan till stämman 2 november. Aktieägare måste vara regi
+ strerade i aktieboken 23 oktober.\nhttps://mfn.se/a/saniona/kallelse-till-
+ extra-bolagsstamma-i-saniona-ab-1
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 1
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-02-egm@sanionainvestor.vercel.app
+DTSTAMP:20261102T000000Z
+DTSTART;TZID=Europe/Stockholm:20261102T110000
+DTEND;TZID=Europe/Stockholm:20261102T120000
+SUMMARY:Saniona: extra bolagsstämma
+LOCATION:Ascente Law\, Stortorget 23\, Malmö
+DESCRIPTION:Röstning om emissionsbemyndigande (högst ca 20 %) och Persona
+ loptionsprogram 2026. Sluttid är uppskattad.\nhttps://mfn.se/a/saniona/ka
+ llelse-till-extra-bolagsstamma-i-saniona-ab-1
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 1
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-26-report@sanionainvestor.vercel.app
+DTSTAMP:20261126T000000Z
+DTSTART;TZID=Europe/Stockholm:20261126T080000
+DTEND;TZID=Europe/Stockholm:20261126T083000
+SUMMARY:Saniona: delårsrapport Q3 2026
+DESCRIPTION:Datum enligt Sanionas finansiella kalender.\nhttps://saniona.co
+ m/investors/financial-calendar/
+URL:https://saniona.com/investors/financial-calendar/
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-25-report@sanionainvestor.vercel.app
+DTSTAMP:20270225T000000Z
+DTSTART;TZID=Europe/Stockholm:20270225T080000
+DTEND;TZID=Europe/Stockholm:20270225T083000
+SUMMARY:Saniona: bokslutskommuniké 2026
+DESCRIPTION:Datum enligt Sanionas finansiella kalender.
+END:VEVENT
+END:VCALENDAR
