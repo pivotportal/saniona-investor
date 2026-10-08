@@ -1,0 +1,85 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Saniona Investor//Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Saniona Investor: calendar
+X-WR-TIMEZONE:Europe/Stockholm
+X-WR-CALDESC:Independent summary of Saniona's upcoming dates. Not investmen
+ t advice.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:Europe/Stockholm
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:2026-10-15-redeye@sanionainvestor.vercel.app
+DTSTAMP:20261015T000000Z
+DTSTART;TZID=Europe/Stockholm:20261015T091500
+DTEND;TZID=Europe/Stockholm:20261015T093500
+SUMMARY:Saniona presents at Redeye neurology event
+LOCATION:Online (Redeye)
+DESCRIPTION:CEO Thomas Feldthus presents Saniona. The event runs 09:10–11
+ :55 and is streamed.\nhttps://www.redeye.se/events/1145293/redeye-theme-ne
+ urology-4
+URL:https://www.redeye.se/events/1145293/redeye-theme-neurology-4
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-27-egm-registration@sanionainvestor.vercel.app
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+TRANSP:TRANSPARENT
+SUMMARY:Saniona: last day to register for the EGM
+DESCRIPTION:Registration for the meeting on 2 November. Shareholders must b
+ e recorded in the share register on 23 October.\nhttps://mfn.se/a/saniona/
+ kallelse-till-extra-bolagsstamma-i-saniona-ab-1
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 1
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-02-egm@sanionainvestor.vercel.app
+DTSTAMP:20261102T000000Z
+DTSTART;TZID=Europe/Stockholm:20261102T110000
+DTEND;TZID=Europe/Stockholm:20261102T120000
+SUMMARY:Saniona: extraordinary general meeting
+LOCATION:Ascente Law\, Stortorget 23\, Malmö\, Sweden
+DESCRIPTION:Votes on a share issue authorisation (up to ~20%) and Employee 
+ Option Programme 2026. End time is an estimate.\nhttps://mfn.se/a/saniona/
+ kallelse-till-extra-bolagsstamma-i-saniona-ab-1
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 1
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-26-report@sanionainvestor.vercel.app
+DTSTAMP:20261126T000000Z
+DTSTART;TZID=Europe/Stockholm:20261126T080000
+DTEND;TZID=Europe/Stockholm:20261126T083000
+SUMMARY:Saniona: Q3 2026 interim report
+DESCRIPTION:Date per Saniona’s financial calendar.\nhttps://saniona.com/i
+ nvestors/financial-calendar/
+URL:https://saniona.com/investors/financial-calendar/
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-25-report@sanionainvestor.vercel.app
+DTSTAMP:20270225T000000Z
+DTSTART;TZID=Europe/Stockholm:20270225T080000
+DTEND;TZID=Europe/Stockholm:20270225T083000
+SUMMARY:Saniona: year-end report 2026
+DESCRIPTION:Date per Saniona’s financial calendar.
+END:VEVENT
+END:VCALENDAR
