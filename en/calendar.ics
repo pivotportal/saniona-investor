@@ -32,7 +32,7 @@ DTSTAMP:20261015T000000Z
 DTSTART;TZID=Europe/Stockholm:20261015T091500
 DTEND;TZID=Europe/Stockholm:20261015T093500
 SUMMARY:Saniona presents at Redeye neurology event
-LOCATION:Online (Redeye)
+LOCATION:Stockholm and online (Redeye)
 DESCRIPTION:CEO Thomas Feldthus presents Saniona. The event runs 09:10–11
  :55 and is streamed.\nhttps://www.redeye.se/events/1145293/redeye-theme-ne
  urology-4
@@ -65,6 +65,90 @@ URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
  1
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-04-biostock@sanionainvestor.vercel.app
+DTSTAMP:20261104T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261106
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at BioStock Life Science Summit
+LOCATION:Lund\, Sweden
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-09-bio-europe@sanionainvestor.vercel.app
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261112
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at BIO-Europe
+LOCATION:Cologne\, Germany
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-11-ilae@sanionainvestor.vercel.app
+DTSTAMP:20261111T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261114
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at International League Against Epilepsy (ILAE)
+LOCATION:Rome\, Italy
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-sfn@sanionainvestor.vercel.app
+DTSTAMP:20261114T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261119
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at Society for Neuroscience annual meeting
+LOCATION:Washington DC\, USA
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-16-ipeg@sanionainvestor.vercel.app
+DTSTAMP:20261116T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261120
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at International Pharmaco-EEG Society
+LOCATION:Vilnius\, Lithuania
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-24-aktieinfo@sanionainvestor.vercel.app
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at Aktieinfo
+LOCATION:Kolding\, Denmark
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-26-report@sanionainvestor.vercel.app
 DTSTAMP:20261126T000000Z
 DTSTART;TZID=Europe/Stockholm:20261126T080000
@@ -73,6 +157,34 @@ SUMMARY:Saniona: Q3 2026 interim report
 DESCRIPTION:Date per Saniona’s financial calendar.\nhttps://saniona.com/i
  nvestors/financial-calendar/
 URL:https://saniona.com/investors/financial-calendar/
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-04-aes@sanionainvestor.vercel.app
+DTSTAMP:20261204T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261209
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at American Epilepsy Society (AES)
+LOCATION:Denver\, USA
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-di@sanionainvestor.vercel.app
+DTSTAMP:20261208T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+TRANSP:TRANSPARENT
+SUMMARY:Saniona at DI Investor Summit\, Life Science
+LOCATION:Stockholm\, Sweden
+DESCRIPTION:Saniona attends according to the press release of 8 October 202
+ 6.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conf
+ erences-in-2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-25-report@sanionainvestor.vercel.app
