@@ -32,7 +32,7 @@ DTSTAMP:20261015T000000Z
 DTSTART;TZID=Europe/Stockholm:20261015T091500
 DTEND;TZID=Europe/Stockholm:20261015T093500
 SUMMARY:Saniona presenterar på Redeyes neurologidag
-LOCATION:Online (Redeye)
+LOCATION:Stockholm och online (Redeye)
 DESCRIPTION:VD Thomas Feldthus presenterar Saniona. Eventet pågår 09.10
  –11.55 och sänds digitalt.\nhttps://www.redeye.se/events/1145293/redeye
  -theme-neurology-4
@@ -65,6 +65,90 @@ URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
  1
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-04-biostock@sanionainvestor.vercel.app
+DTSTAMP:20261104T000000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261106
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på BioStock Life Science Summit
+LOCATION:Lund
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-09-bio-europe@sanionainvestor.vercel.app
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261112
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på BIO-Europe
+LOCATION:Köln
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-11-ilae@sanionainvestor.vercel.app
+DTSTAMP:20261111T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261114
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på International League Against Epilepsy (ILAE)
+LOCATION:Rom
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-sfn@sanionainvestor.vercel.app
+DTSTAMP:20261114T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261119
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på Society for Neuroscience\, årsmöte
+LOCATION:Washington DC
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-16-ipeg@sanionainvestor.vercel.app
+DTSTAMP:20261116T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261120
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på International Pharmaco-EEG Society
+LOCATION:Vilnius
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-24-aktieinfo@sanionainvestor.vercel.app
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på Aktieinfo
+LOCATION:Kolding
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-26-report@sanionainvestor.vercel.app
 DTSTAMP:20261126T000000Z
 DTSTART;TZID=Europe/Stockholm:20261126T080000
@@ -73,6 +157,34 @@ SUMMARY:Saniona: delårsrapport Q3 2026
 DESCRIPTION:Datum enligt Sanionas finansiella kalender.\nhttps://saniona.co
  m/investors/financial-calendar/
 URL:https://saniona.com/investors/financial-calendar/
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-04-aes@sanionainvestor.vercel.app
+DTSTAMP:20261204T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261209
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på American Epilepsy Society (AES)
+LOCATION:Denver
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-di@sanionainvestor.vercel.app
+DTSTAMP:20261208T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+TRANSP:TRANSPARENT
+SUMMARY:Saniona på DI Investor Summit · Life Science
+LOCATION:Stockholm
+DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
+ /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
+ 2026
+URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
+ rences-in-2026
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-25-report@sanionainvestor.vercel.app
