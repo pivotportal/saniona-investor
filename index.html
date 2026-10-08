@@ -1071,6 +1071,11 @@
   .calsub-btns{grid-template-columns:repeat(4,minmax(0,1fr))}
   @media(max-width:860px){.calsub-btns{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.calsub-ev{grid-template-columns:78px minmax(0,1fr)}.calsub-ev .m{grid-column:2;text-align:left}}
+
+  /* the fade mask clips everything outside the list box, including the cards' right-hand shadow:
+     widen the masked box with padding and pull it back with a negative margin so the layout is unchanged */
+  .tl-list{padding-right:28px;margin-right:-28px;padding-top:14px;margin-top:-14px}
+  @media(max-width:700px){.tl-list{padding-right:12px;margin-right:-12px}}
 </style>
 </head>
 <body>
@@ -1133,7 +1138,7 @@
       </div></div>
 
     <nav class="nav" aria-label="Sektioner">
-      <div class="nav-inner" id="navInner"><a data-target="__all" href="#" class="active">Översikt</a><a data-target="bolaget" href="#bolaget">Bolaget &amp; teamet</a><a data-target="pipeline" href="#pipeline">Pipeline &amp; program</a><a data-target="avtal" href="#avtal">Avtal</a><a data-target="ekonomi" href="#ekonomi">Ekonomi</a><a data-target="bevaka" href="#bevaka">Katalysatorer</a><a data-target="proof" href="#proof">Pressmeddelanden</a><a data-target="risker" href="#risker">Risker</a><a data-target="om" href="#om">Om sidan</a><a data-target="community" href="#community">Community</a></div>
+      <div class="nav-inner" id="navInner"><a data-target="__all" href="#" class="active">Översikt</a><a data-target="bolaget" href="#bolaget">Bolaget &amp; teamet</a><a data-target="pipeline" href="#pipeline">Pipeline &amp; program</a><a data-target="avtal" href="#avtal">Avtal</a><a data-target="ekonomi" href="#ekonomi">Ekonomi</a><a data-target="bevaka" href="#bevaka">Katalysatorer</a><a data-target="proof" href="#proof">Pressmeddelanden</a><a data-target="risker" href="#risker">Risker</a><a data-target="om" href="#om">Om sidan</a><a data-target="kalender" href="#kalender">Kalender</a><a data-target="community" href="#community">Community</a></div>
     </nav>
 
     <section class="content-sec" id="bolaget">
@@ -1848,8 +1853,8 @@
       ]
     },
     nav:{
-      sv:[['__all','Översikt'],['bolaget','Bolaget & teamet'],['pipeline','Pipeline & program'],['avtal','Avtal'],['ekonomi','Ekonomi'],['bevaka','Katalysatorer'],['proof','Pressmeddelanden'],['risker','Risker'],['om','Om sidan'],['community','Community']],
-      en:[['__all','Overview'],['bolaget','Company & team'],['pipeline','Pipeline & programs'],['avtal','Deals'],['ekonomi','Financials'],['bevaka','Catalysts'],['proof','Press releases'],['risker','Risks'],['om','About'],['community','Community']]
+      sv:[['__all','Översikt'],['bolaget','Bolaget & teamet'],['pipeline','Pipeline & program'],['avtal','Avtal'],['ekonomi','Ekonomi'],['bevaka','Katalysatorer'],['proof','Pressmeddelanden'],['risker','Risker'],['om','Om sidan'],['kalender','Kalender'],['community','Community']],
+      en:[['__all','Overview'],['bolaget','Company & team'],['pipeline','Pipeline & programs'],['avtal','Deals'],['ekonomi','Financials'],['bevaka','Catalysts'],['proof','Press releases'],['risker','Risks'],['om','About'],['kalender','Calendar'],['community','Community']]
     },
     co:{
       head:{sv:'Bolaget & teamet', en:'Company & team'},
