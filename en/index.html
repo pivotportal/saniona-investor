@@ -1274,6 +1274,24 @@
   .fe-egg{display:inline-grid;place-items:center;width:40px;height:40px;padding:0}
   .fe-egg .fe-logo{margin:0!important;display:block}
   .fe-egg::after{inset:auto;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;box-sizing:border-box}
+
+  /* the next report glows softly on and off, so the upcoming date stands out */
+  .rt-step.next .rt-node::after{content:'';position:absolute;inset:-3px;border-radius:50%;pointer-events:none;
+      box-shadow:0 0 10px 4px var(--nm-accent-2);opacity:0;animation:rtGlow 2.4s ease-in-out infinite}
+  @keyframes rtGlow{0%,100%{opacity:0}50%{opacity:.7}}
+  @media (prefers-reduced-motion:reduce){.rt-step.next .rt-node::after{animation:none;opacity:.45}}
+
+  /* calmer: a permanent soft halo that slowly "breathes" (never switches off), instead of blinking */
+  .rt-step.next .rt-node::after{inset:-4px;box-shadow:0 0 12px 5px var(--nm-accent-2);opacity:.3;transform:scale(1);
+      animation:rtBreathe 6s ease-in-out infinite}
+  @keyframes rtBreathe{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.42;transform:scale(1.12)}}
+  @media (prefers-reduced-motion:reduce){.rt-step.next .rt-node::after{animation:none;opacity:.32;transform:none}}
+
+  /* internal "jump" links (to a section further down): one style everywhere */
+  .jump-a,.rt-sub{display:inline-block;max-width:100%;font:600 12.5px 'Inter',system-ui,sans-serif;color:var(--nm-accent-2);text-decoration:none}
+  .jump-a{margin-top:var(--space-2)}
+  .jump-a:hover,.rt-sub:hover{text-decoration:underline;text-underline-offset:2px}
+  .jump-a:focus-visible,.rt-sub:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:2px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -1314,30 +1332,35 @@
         <div class="u">cash &amp; equivalents</div>
         <div class="note">As of Jun 30, 2026. Total financial position SEK 721M including near-term <button type="button" class="term" data-term="milestone" aria-expanded="false">milestones</button> (SEK 165M) and property (SEK 70M); according to the company this lasts into 2029.</div>
         <div class="kpi-src">Source: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Q2 2026 report <span aria-hidden="true">↗</span></a></div>
+        
       </div>
       <div class="kpi">
         <div class="v">7</div>
         <div class="u">collaborations and <button type="button" class="term" data-term="Spin-out" aria-expanded="false">spin-outs</button></div>
         <div class="note">Six collaborations (Jazz · Acadia · Medix · Boehringer · AstronauTx · Cephagenix) plus the spin-out Initiator Pharma.</div>
         <div class="kpi-src">Source: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=4" target="_blank" rel="noopener">Deck Oct 2026 <span aria-hidden="true">↗</span></a></div>
+        
       </div>
       <div class="kpi">
         <div class="v">USD 1.8bn</div>
         <div class="u">combined deal value</div>
         <div class="note">Jazz, Acadia and AstronauTx including <button type="button" class="term" data-term="upfront" aria-expanded="false">upfront</button>, if all milestones are met. The company states over SEK 19bn in potential future milestones across all deals, and over SEK 1.2bn received to date.</div>
         <div class="kpi-src">Source: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=4" target="_blank" rel="noopener">Deck Oct 2026 <span aria-hidden="true">↗</span></a></div>
+        <a class="jump-a" href="#avtal">See all deals <span aria-hidden="true">↓</span></a>
       </div>
       <div class="kpi">
         <div class="v">8</div>
         <div class="u">programs in pipeline and partnerships</div>
         <div class="note">3 internal (2 lead, SAN2219 paused) · 3 licensed · 2 for partnering</div>
         <div class="kpi-src">Source: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Q2 2026 report <span aria-hidden="true">↗</span></a></div>
+        
       </div>
       <div class="kpi">
         <div class="v">2</div>
         <div class="u"><button type="button" class="term" data-term="Phase 1" aria-expanded="false">Phase 1</button> starts around year-end</div>
         <div class="note">SAN2465 and SAN2668, both around year-end 2026.</div>
         <div class="kpi-src">Source: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener">Q2 2026 report <span aria-hidden="true">↗</span></a> · <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener">Deck Oct 2026 <span aria-hidden="true">↗</span></a></div>
+        
       </div></div>
 
     </section>
@@ -2254,7 +2277,7 @@
        note:{sv:'Per 30 juni 2026. Total finansiell ställning 721 MSEK inklusive nära milstolpar (165 MSEK) och fastighet (70 MSEK); enligt bolaget räcker det in i 2029.', en:'As of Jun 30, 2026. Total financial position SEK 721M including near-term milestones (SEK 165M) and property (SEK 70M); according to the company this lasts into 2029.'}},
       {v:{sv:'7',en:'7'}, u:{sv:'samarbeten och avknoppningar',en:'collaborations and spin-outs'},
        note:{sv:'Sex samarbeten (Jazz · Acadia · Medix · Boehringer · AstronauTx · Cephagenix) plus avknoppningen Initiator Pharma.', en:'Six collaborations (Jazz · Acadia · Medix · Boehringer · AstronauTx · Cephagenix) plus the spin-out Initiator Pharma.'}},
-      {v:{sv:'1,8 mdr USD',en:'USD 1.8bn'}, u:{sv:'samlat avtalsvärde',en:'combined deal value'},
+      {jump:'avtal',v:{sv:'1,8 mdr USD',en:'USD 1.8bn'}, u:{sv:'samlat avtalsvärde',en:'combined deal value'},
        note:{sv:'Jazz, Acadia och AstronauTx inklusive upfront, om alla milstolpar nås. Bolaget anger totalt över 19 mdr SEK i möjliga framtida milstolpar från alla avtal, och över 1,2 mdr SEK mottaget hittills.', en:'Jazz, Acadia and AstronauTx including upfront, if all milestones are met. The company states over SEK 19bn in potential future milestones across all deals, and over SEK 1.2bn received to date.'}},
       {v:{sv:'8',en:'8'}, u:{sv:'program i pipeline och partnerskap',en:'programs in pipeline and partnerships'},
        note:{sv:'3 interna (2 ledande, SAN2219 pausat) · 3 utlicensierade · 2 för partnering', en:'3 internal (2 lead, SAN2219 paused) · 3 licensed · 2 for partnering'}},
@@ -2271,6 +2294,7 @@
         <div class="u">${tr(k.u)}</div>
         <div class="note">${tr(k.note)}</div>
         ${srcLinks((DATA.srcLinks.kpi||[])[i],'kpi-src')}
+        ${k.jump?`<a class="jump-a" href="#${k.jump}">${lang==='sv'?'Se alla avtal':'See all deals'} <span aria-hidden="true">↓</span></a>`:''}
       </div>`).join('');
     document.querySelector('[data-i18n="eyebrow"]').textContent = tr(DATA.eyebrow);
     document.querySelector('[data-i18n="thesisLbl"]').textContent = tr(DATA.thesisLbl);
@@ -3098,7 +3122,7 @@
   const spySections=DATA.nav.sv.map(n=>n[0]).filter(id=>id!=='__all');
   function spy(){
     const navH=document.querySelector('.nav').offsetHeight;
-    const probe=window.pageYOffset+navH+12;
+    const probe=window.pageYOffset+navH+24; // matches the sections' scroll margin, so anchor jumps mark the right tab
     let cur='__all';
     for(const id of spySections){ const s=document.getElementById(id); if(s && s.offsetTop<=probe) cur=id; }
     if(window.innerHeight+window.pageYOffset>=document.documentElement.scrollHeight-4) cur=spySections[spySections.length-1];
