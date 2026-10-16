@@ -3291,8 +3291,8 @@
   });
 
   // ---- footer easter egg: the logo says something small and silly when hovered or tapped ----
-  const EGG={sv:['Kanal öppen!','Laddad och redo.','Jonerna mår bra.','Selektiv sedan 2011.','Pling! Signal mottagen.','Fas 0: kaffe.','Läst allt? Imponerande!','Inga biverkningar här.','Ej investeringsråd. Bara hej.','Kalium, natrium, klart!'],
-             en:['Channel open!','Fully charged.','Ions are happy.','Selective since 2011.','Ping! Signal received.','Phase 0: coffee.','Read it all? Impressive!','No side effects here.','Not investment advice. Just hi.','Potassium, sodium, done!']};
+  const EGG={sv:['Kanal öppen!','Laddad och redo.','Jonerna mår bra.','Selektiv sedan 2011.','Any day now.','Fas 0: kaffe.','Läst allt? Imponerande!','Inga biverkningar här.','Ej investeringsråd. Bara hej.','Kalium, natrium, klart!'],
+             en:['Channel open!','Fully charged.','Ions are happy.','Selective since 2011.','Any day now.','Phase 0: coffee.','Read it all? Impressive!','No side effects here.','Not investment advice. Just hi.','Potassium, sodium, done!']};
   let eggLast=-1, eggTimer=null;
   function eggSay(btn){
     const list=EGG[lang]||EGG.en; let k; do{ k=Math.floor(Math.random()*list.length); }while(k===eggLast&&list.length>1); eggLast=k;
