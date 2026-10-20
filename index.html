@@ -1292,6 +1292,42 @@
   .jump-a{margin-top:var(--space-2)}
   .jump-a:hover,.rt-sub:hover{text-decoration:underline;text-underline-offset:2px}
   .jump-a:focus-visible,.rt-sub:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:2px;border-radius:3px}
+
+  /* ===== "Nyheter" bell + dropdown ===== */
+  .top-actions{position:relative;display:flex;align-items:center;gap:14px}
+  .news-btn{position:relative;display:inline-grid;place-items:center;color:var(--nm-accent-2)}
+  .news-count{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--nm-accent-2);color:var(--nm-bg);
+     font:700 11px/20px 'Inter',system-ui,sans-serif;text-align:center;box-shadow:0 0 0 3px var(--nm-bg)}
+  .news-panel{position:absolute;top:calc(100% + 14px);right:0;z-index:80;width:min(400px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;
+     border-radius:22px;background:var(--nm-bg);box-shadow:12px 12px 28px var(--nm-shadow-dark),-10px -10px 24px var(--nm-shadow-light);padding:18px 18px 14px;
+     animation:nwIn .18s ease-out}
+  @keyframes nwIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .nw-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:2px 4px 12px}
+  .nw-h{font:700 17px 'Space Grotesk',sans-serif;color:var(--color-text)} .nw-s{font-size:12.5px;color:var(--color-text-muted);margin-top:3px}
+  .nw-x{flex:0 0 auto;width:32px;height:32px;border:0;border-radius:50%;background:var(--nm-bg);color:var(--color-text-muted);cursor:pointer;display:grid;place-items:center;
+     box-shadow:3px 3px 7px var(--nm-shadow-dark),-3px -3px 7px var(--nm-shadow-light)}
+  .nw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .nw-item{display:flex;gap:12px;padding:13px 14px;border-radius:16px;box-shadow:inset 2px 2px 5px var(--nm-shadow-dark),inset -2px -2px 5px var(--nm-shadow-light)}
+  .nw-ico{flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--nm-accent-2);background:var(--nm-bg);box-shadow:2px 2px 5px var(--nm-shadow-dark),-2px -2px 5px var(--nm-shadow-light)}
+  .nw-body{min-width:0;flex:1}
+  .nw-meta{font:600 11px 'IBM Plex Mono',monospace;color:var(--color-text-muted);display:flex;flex-wrap:wrap;gap:5px;text-transform:uppercase;letter-spacing:.04em}
+  .nw-title{font:600 14px/1.35 'Inter',system-ui,sans-serif;color:var(--color-text);margin-top:4px}
+  .nw-sub{font-size:12.5px;line-height:1.4;color:var(--color-text-muted);margin-top:3px}
+  .nw-act{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-top:8px;font:500 11.5px 'IBM Plex Mono',monospace}
+  .nw-act .jump-a{margin:0;border:0;background:none;padding:0;cursor:pointer;font-size:12px}
+  .nw-foot{display:flex;justify-content:flex-end;padding:12px 4px 2px}
+  .nw-read{border:0;background:var(--nm-bg);color:var(--nm-accent-2);font:600 12.5px 'Inter',system-ui,sans-serif;padding:9px 16px;border-radius:999px;cursor:pointer;
+     box-shadow:3px 3px 7px var(--nm-shadow-dark),-3px -3px 7px var(--nm-shadow-light)}
+  .nw-x:focus-visible,.nw-read:focus-visible,.nw-go:focus-visible{outline:2px solid var(--nm-accent-2);outline-offset:2px}
+  /* the item you jumped to glows softly once */
+  .nw-flash{animation:nwFlash 2.4s ease-out 1}
+  @keyframes nwFlash{0%,100%{box-shadow:none}25%{box-shadow:0 0 0 3px var(--nm-accent-2)}}
+  .tlx-item.nw-flash .tlx-card,.cat-item.nw-flash{border-radius:20px}
+  @media (prefers-reduced-motion:reduce){.news-panel{animation:none}.nw-flash{animation:none;outline:3px solid var(--nm-accent-2);outline-offset:4px}}
+  @media (max-width:520px){.news-panel{position:fixed;top:72px;left:16px;right:16px;width:auto}}
+
+  .nw-also{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin-top:8px;padding-top:8px;border-top:1px solid var(--nm-shadow-dark);font-size:12px;color:var(--color-text-muted)}
+  .nw-also .jump-a{margin:0;border:0;background:none;padding:0;cursor:pointer;font-size:12px}
 </style>
 </head>
 <body>
@@ -1302,7 +1338,34 @@
         <button id="langSv" class="on" aria-pressed="true">SV</button>
         <button id="langEn" aria-pressed="false">EN</button>
       </div>
-      <button class="theme-ico" id="themeBtn" aria-label="Växla ljust/mörkt läge" title="Växla ljust/mörkt läge">☾</button>
+      <div class="top-actions">
+        <button class="theme-ico news-btn" id="newsBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="newsPanel" aria-label="Nyheter" title="Nyheter"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="news-count" id="newsCount" hidden="">0</span></button>
+        <button class="theme-ico" id="themeBtn" aria-label="Växla ljust/mörkt läge" title="Växla ljust/mörkt läge">☾</button>
+        <div class="news-panel" id="newsPanel" role="dialog" aria-labelledby="newsHead" hidden=""><div class="nw-head"><div><div class="nw-h" id="newsHead">Senaste uppdateringarna</div><div class="nw-s">Nästa gång du kommer tillbaka visas det som är nytt här.</div></div>
+        <button type="button" class="nw-x" aria-label="Stäng"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div>
+      <ul class="nw-list"><li class="nw-item">
+        <span class="nw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+        <div class="nw-body"><div class="nw-meta"><span>20 okt 2026</span><span class="dot">·</span><span>Pipeline och forskning</span></div>
+          <div class="nw-title">SAN2465: IND-ansökan inlämnad till FDA för egentlig depression</div><div class="nw-sub">Fas 1 före årsskiftet om FDA godkänner · Friska frivilliga: säkerhet och farmakokinetik</div>
+          <div class="nw-act"><button type="button" class="jump-a nw-go" data-go="0">Visa på sidan <span aria-hidden="true">↓</span></button><a class="src-a" href="https://storage.mfn.se/0f1b0fb9-ca83-4d71-91cf-f78a8f8ebe1b/saniona-submits-ind-application-for-san2465-for-major-depressive-disorder.pdf" target="_blank" rel="noopener" aria-label="Källa: SAN2465: IND-ansökan inlämnad till FDA för egentlig depression">Källa <span aria-hidden="true">↗</span></a></div>
+          </div></li><li class="nw-item">
+        <span class="nw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+        <div class="nw-body"><div class="nw-meta"><span>13 okt 2026</span><span class="dot">·</span><span>Pipeline och forskning</span></div>
+          <div class="nw-title">Nya prekliniska data: SAN2465 förstärker synaptisk plasticitet i hippocampus</div><div class="nw-sub">LTP +43,5 % mot +26,5 % för kontroll (p=0,022) · I nivå med referenssubstansen α5IA</div>
+          <div class="nw-act"><button type="button" class="jump-a nw-go" data-go="1">Visa på sidan <span aria-hidden="true">↓</span></button><a class="src-a" href="https://mfn.se/a/saniona/saniona-announces-new-preclinical-data-reinforcing-san2465s-potential-as-a-rapid-acting-antidepressant" target="_blank" rel="noopener" aria-label="Källa: Nya prekliniska data: SAN2465 förstärker synaptisk plasticitet i hippocampus">Källa <span aria-hidden="true">↗</span></a></div>
+          </div></li><li class="nw-item">
+        <span class="nw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+        <div class="nw-body"><div class="nw-meta"><span>8 okt 2026</span><span class="dot">·</span><span>Bolag</span></div>
+          <div class="nw-title">Saniona deltar och presenterar på flera konferenser under resten av 2026</div><div class="nw-sub">5 investerar- och life science-event · 4 vetenskapliga konferenser</div>
+          <div class="nw-act"><button type="button" class="jump-a nw-go" data-go="2">Visa på sidan <span aria-hidden="true">↓</span></button><a class="src-a" href="https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-2026" target="_blank" rel="noopener" aria-label="Källa: Saniona deltar och presenterar på flera konferenser under resten av 2026">Källa <span aria-hidden="true">↗</span></a></div>
+          </div></li><li class="nw-item">
+        <span class="nw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+        <div class="nw-body"><div class="nw-meta"><span>7 okt 2026</span><span class="dot">·</span><span>Insynshandel</span></div>
+          <div class="nw-title">Insynsköp: John Haurum</div><div class="nw-sub">84&nbsp;317 aktier</div>
+          <div class="nw-act"><button type="button" class="jump-a nw-go" data-go="3">Visa på sidan <span aria-hidden="true">↓</span></button><a class="src-a" href="https://www.affarsvarlden.se/borsnyheter/sanionas-ordforande-john-haurum-koper-aktier-for-knappt-0-8-miljoner-kronor" target="_blank" rel="noopener" aria-label="Källa: Insynsköp: John Haurum">Källa <span aria-hidden="true">↗</span></a></div>
+          </div></li></ul>
+      </div>
+      </div>
     </div>
 
     <div class="brand">
@@ -1311,7 +1374,6 @@
         <h1 class="brand-fallback">Saniona Investor<span class="sr-only">: oberoende översikt av Saniona AB (SANION)</span></h1>
       </div>
       <div class="brand-sub">Saniona AB · <a class="ticker" href="https://finance.yahoo.com/quote/SANION.ST/" target="_blank" rel="noopener">SANION ↗</a></div>
-      <div class="new-since" id="newSince"></div>
       <div class="brand-updated" id="brandUpdated">Uppdaterad 20 oktober 2026</div>
     </div>
     </header>
@@ -1725,85 +1787,85 @@
       <h2 class="co-head" id="catHead">Katalysatorer</h2>
       <div class="co-sub" id="catSub">Det som kan driva bolagets värde framåt, i tidsordning. Datum för rapporter, stämmor och konferenser finns i kalendern.</div>
       
-      <div class="cat-list" id="catList"><div class="cat-item" style="--cat-c:#ab35b6">
+      <div class="cat-list" id="catList"><div class="cat-item" style="--cat-c:#ab35b6" data-nk="cat-san2465-fas-1-start">
         <div class="cat-top"><span class="cat-when">Kring årsskiftet 2026</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#ab35b6;background:#ab35b6">Kritisk</span></div>
         <h3 class="cat-t">SAN2465: fas 1-start</h3>
         <div class="cat-d">IND-ansökan lämnades in till FDA 20 oktober 2026. Fas 1 med friska frivilliga ska starta före årsskiftet, under förutsättning att FDA godkänner ansökan. Potentiellt först i sin klass: en NAM av GABAA α5 för egentlig depression.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://storage.mfn.se/0f1b0fb9-ca83-4d71-91cf-f78a8f8ebe1b/saniona-submits-ind-application-for-san2465-for-major-depressive-disorder.pdf" target="_blank" rel="noopener" aria-label="Källa: PM 20 okt 2026 (SAN2465: fas 1-start)">PM 20 okt 2026 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-cta-ansökan-och-dosering">
         <div class="cat-top"><span class="cat-when">Kring årsskiftet 2026</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#227762;background:#227762">Kritisk</span></div>
         <h3 class="cat-t">SAN2668: CTA-ansökan och dosering</h3>
         <div class="cat-d">CTA-ansökan och fas 1-start kring årsskiftet 2026 (bolagets presentation okt 2026). Huvudkandidat för svåra pediatriska epilepsier (DEE). Potential för Orphan Drug- och Rare Pediatric Disease-designation.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/all/a/saniona/saniona-publishes-its-interim-report-for-the-second-quarter-of-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-webcast 27 aug 2026 (SAN2668: CTA-ansökan och dosering)">Q2-webcast 27 aug 2026 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#3953c6">
+      </div><div class="cat-item" style="--cat-c:#3953c6" data-nk="cat-acp-711-fas-2-start-acadia-">
         <div class="cat-top"><span class="cat-when">2027</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+10 MUSD</span></div>
         <h3 class="cat-t">ACP-711: fas 2-start (Acadia)</h3>
         <div class="cat-d">Acadia väntas inleda en fas 2-studie i essentiell tremor 2027. Studiestart utlöser en milstolpe om 10 MUSD (~95 MSEK).</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (ACP-711: fas 2-start (Acadia))">Q2-rapport 2026 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-pom-studie-startar">
         <div class="cat-top"><span class="cat-when">Mitten av 2027</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2668: PoM-studie startar</h3>
         <div class="cat-d">Studie i patienter med fotosensitiv epilepsi, där anfall kan framkallas med ljus. Den ska visa att läkemedlet påverkar hjärnans aktivitet som tänkt (proof of mechanism).</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 16 (SAN2668: PoM-studie startar)">Presentation okt 2026, s. 16 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#ab35b6">
+      </div><div class="cat-item" style="--cat-c:#ab35b6" data-nk="cat-san2465-fas-1-resultat">
         <div class="cat-top"><span class="cat-when">Slutet av 2027</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#ab35b6;background:#ab35b6">Kritisk</span></div>
         <h3 class="cat-t">SAN2465: fas 1-resultat</h3>
         <div class="cat-d">Första resultaten i människa: säkerhet och biomarkörer, bland annat qEEG, som underlag för fas 2.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=26" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 26 (SAN2465: fas 1-resultat)">Presentation okt 2026, s. 26 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-fas-1-resultat">
         <div class="cat-top"><span class="cat-when">Tidigt 2028</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#227762;background:#227762">Kritisk</span></div>
         <h3 class="cat-t">SAN2668: fas 1-resultat</h3>
         <div class="cat-d">Säkerhet och biomarkörer, bland annat PET och qEEG, från den första studien i människa.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 16 (SAN2668: fas 1-resultat)">Presentation okt 2026, s. 16 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-pom-data-och-start-av-poc-studie">
         <div class="cat-top"><span class="cat-when">Mitten av 2028</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2668: PoM-data och start av PoC-studie</h3>
         <div class="cat-d">Resultat från studien i fotosensitiv epilepsi och start av en proof-of-concept-studie i patienter med DEE.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 16 (SAN2668: PoM-data och start av PoC-studie)">Presentation okt 2026, s. 16 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#ab35b6">
+      </div><div class="cat-item" style="--cat-c:#ab35b6" data-nk="cat-san2465-fas-2-start-i-trd">
         <div class="cat-top"><span class="cat-when">Mitten av 2028</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2465: fas 2-start i TRD</h3>
         <div class="cat-d">Fas 2-studie i behandlingsresistent depression (TRD).</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=26" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 26 (SAN2465: fas 2-start i TRD)">Presentation okt 2026, s. 26 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-poc-data-i-dee">
         <div class="cat-top"><span class="cat-when">Slutet av 2028</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#227762;background:#227762">Kritisk</span></div>
         <h3 class="cat-t">SAN2668: PoC-data i DEE</h3>
         <div class="cat-d">Första effektdata i barn och unga med DEE, programmets viktigaste värdepunkt före fas 2/3.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 16 (SAN2668: PoC-data i DEE)">Presentation okt 2026, s. 16 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#ab35b6">
+      </div><div class="cat-item" style="--cat-c:#ab35b6" data-nk="cat-san2465-fas-2-data-i-trd">
         <div class="cat-top"><span class="cat-when">2029</span><span class="cat-chip internal">Internt</span><span class="cat-chip crit" style="--cat-c:#ab35b6;background:#ab35b6">Kritisk</span></div>
         <h3 class="cat-t">SAN2465: fas 2-data i TRD</h3>
         <div class="cat-d">Effektdata i behandlingsresistent depression.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=26" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 26 (SAN2465: fas 2-data i TRD)">Presentation okt 2026, s. 26 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#227762">
+      </div><div class="cat-item" style="--cat-c:#227762" data-nk="cat-san2668-fas-2-3-start">
         <div class="cat-top"><span class="cat-when">2029</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">SAN2668: fas 2/3-start</h3>
         <div class="cat-d">Planerad fas 2/3-studie i en bred DEE-population.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://saniona.com/wp-content/uploads/2026/10/Saniona-Website-Investor-Deck-October-2026-3.pdf#page=16" target="_blank" rel="noopener" aria-label="Källa: Presentation okt 2026, s. 16 (SAN2668: fas 2/3-start)">Presentation okt 2026, s. 16 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#c23838">
+      </div><div class="cat-item" style="--cat-c:#c23838" data-nk="cat-san2355-fas-1-start-jazz-">
         <div class="cat-top"><span class="cat-when">Tidpunkt ej angiven</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+7,5 MUSD</span></div>
         <h3 class="cat-t">SAN2355: fas 1-start (Jazz)</h3>
         <div class="cat-d">Jazz förbereder första fas 1-studien med SAN2355. Bolaget har inte angett när studien startar. Studiestart utlöser en milstolpe om 7,5 MUSD (~71 MSEK) till Saniona.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (SAN2355: fas 1-start (Jazz))">Q2-rapport 2026 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:#247b34">
+      </div><div class="cat-item" style="--cat-c:#247b34" data-nk="cat-tesofensin-godkännande-i-mexiko">
         <div class="cat-top"><span class="cat-when">Tidpunkt styrs av myndighet</span><span class="cat-chip partner">Partner</span><span class="cat-chip mile">+2,0 MUSD</span></div>
         <h3 class="cat-t">Tesofensin: godkännande i Mexiko</h3>
         <div class="cat-d">Regulatorisk granskning pågår hos COFEPRIS. Medix reviderade ansökan efter återkoppling från myndigheten och lämnade in en ny 20 februari 2025, enligt årsredovisningen 2025. Ett godkännande ger en milstolpe på 2,0 MUSD (~19 MSEK). Den stora uppsidan är royalty i mitten av tiotalet procent (mid-teens) på försäljningen.</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Q2-rapport 2026 (Tesofensin: godkännande i Mexiko)">Q2-rapport 2026 <span aria-hidden="true">↗</span></a></div>
-      </div><div class="cat-item" style="--cat-c:var(--color-text-muted)">
+      </div><div class="cat-item" style="--cat-c:var(--color-text-muted)" data-nk="cat-utlicensiering-av-intern-tillgång">
         <div class="cat-top"><span class="cat-when">Kort–medellång sikt · ambition</span><span class="cat-chip internal">Internt</span></div>
         <h3 class="cat-t">Utlicensiering av intern tillgång</h3>
         <div class="cat-d">Uttalad ambition att partnera ut minst en intern tillgång för att stärka kassan. Ambition, ej fastställt.</div>
@@ -1832,76 +1894,76 @@
     <section class="content-sec" id="proof">
       <h2 class="co-head" id="tlHead">Pressmeddelanden</h2>
       <div class="co-sub" id="tlSub">Senaste först, inklusive insynshandel</div>
-      <div class="tl-list tlx-faded" id="tlList"><div class="tlx-month" data-i="0">Oktober 2026</div><div class="tlx-item" data-i="0"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      <div class="tl-list tlx-faded" id="tlList"><div class="tlx-month" data-i="0">Oktober 2026</div><div class="tlx-item" data-i="0" data-nk="tl-2026-10-20-san2465-ind-ansökan-inlämnad-till-fda-för-egentl"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-10-20">20 okt</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#ab35b6">SAN2465</span></div>
         <div class="tlx-title">SAN2465: IND-ansökan inlämnad till FDA för egentlig depression</div>
         <div class="tlx-facts"><span class="tlx-fact">Fas 1 före årsskiftet om FDA godkänner</span><span class="tlx-fact">Friska frivilliga: säkerhet och farmakokinetik</span><span class="tlx-fact">Kognitiva tester och qEEG</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://storage.mfn.se/0f1b0fb9-ca83-4d71-91cf-f78a8f8ebe1b/saniona-submits-ind-application-for-san2465-for-major-depressive-disorder.pdf" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): SAN2465: IND-ansökan inlämnad till FDA för egentlig depression">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="1"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="1" data-nk="tl-2026-10-13-nya-prekliniska-data-san2465-förstärker-synaptis"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-10-13">13 okt</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#ab35b6">SAN2465</span></div>
         <div class="tlx-title">Nya prekliniska data: SAN2465 förstärker synaptisk plasticitet i hippocampus</div>
         <div class="tlx-facts"><span class="tlx-fact">LTP +43,5 % mot +26,5 % för kontroll (p=0,022)</span><span class="tlx-fact">I nivå med referenssubstansen α5IA</span><span class="tlx-fact">IND till FDA senast oktober 2026</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-announces-new-preclinical-data-reinforcing-san2465s-potential-as-a-rapid-acting-antidepressant" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Nya prekliniska data: SAN2465 förstärker synaptisk plasticitet i hippocampus">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="2"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="2" data-nk="tl-2026-10-08-saniona-deltar-och-presenterar-på-flera-konferen"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-10-08">8 okt</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Saniona deltar och presenterar på flera konferenser under resten av 2026</div>
         <div class="tlx-facts"><span class="tlx-fact">5 investerar- och life science-event</span><span class="tlx-fact">4 vetenskapliga konferenser</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-2026" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Saniona deltar och presenterar på flera konferenser under resten av 2026">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="3"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="3" data-nk="tl-2026-10-07-insynsköp-styrelseordförande-john-haurum-köpte-8"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
           <div class="tlx-meta"><time datetime="2026-10-07">7 okt</time><span class="dot">·</span><span>Insynshandel</span><span class="tlx-tag">1 köp</span></div>
-          <div class="tlx-title">Insynsköp: John Haurum, styrelseordförande</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.affarsvarlden.se/borsnyheter/sanionas-ordforande-john-haurum-koper-aktier-for-knappt-0-8-miljoner-kronor" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">styrelseordförande</span></span><span class="amt">84&nbsp;317 st · 9,03 kr <span class="ar">↗</span></span></a></div></div></div><div class="tlx-item" data-i="4"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+          <div class="tlx-title">Insynsköp: John Haurum, styrelseordförande</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.affarsvarlden.se/borsnyheter/sanionas-ordforande-john-haurum-koper-aktier-for-knappt-0-8-miljoner-kronor" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">styrelseordförande</span></span><span class="amt">84&nbsp;317 st · 9,03 kr <span class="ar">↗</span></span></a></div></div></div><div class="tlx-item" data-i="4" data-nk="tl-2026-10-07-kallelse-till-extra-bolagsstämma-2-november-emis"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-10-07">7 okt</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Kallelse till extra bolagsstämma 2 november: emissionsbemyndigande och nytt personaloptionsprogram</div>
         <div class="tlx-facts"><span class="tlx-fact">Bemyndigande: högst ca 20 % nya aktier</span><span class="tlx-fact">Optionsprogram: högst 2,51 milj. optioner</span><span class="tlx-fact">Utspädning från programmet ca 1,8 %</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-1" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Kallelse till extra bolagsstämma 2 november: emissionsbemyndigande och nytt personaloptionsprogram">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="5">September 2026</div><div class="tlx-item" data-i="5"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="5">September 2026</div><div class="tlx-item" data-i="5" data-nk="tl-2026-09-24-toxikologi-och-cmc-studierna-för-san2465-klara-i"><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-09-24">24 sep</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#ab35b6">SAN2465</span></div>
         <div class="tlx-title">Toxikologi- och CMC-studierna för SAN2465 klara, IND-ansökan till FDA väntas i slutet av oktober 2026</div>
         <div class="tlx-facts"><span class="tlx-fact">IND till FDA senast oktober 2026</span><span class="tlx-fact">Fas 1 med friska frivilliga</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-completes-toxicology-and-cmc-studies-for-san2465-enabling-ind-submission-by-october-2026" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Toxikologi- och CMC-studierna för SAN2465 klara, IND-ansökan till FDA väntas i slutet av oktober 2026">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="6" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="6" data-nk="tl-2026-09-09-insynsköp-styrelseordförande-john-haurum-köpte-5 tl-2026-09-01-insynsköp-cfo-johnny-stilou-köpte-15-000-aktier- tl-2026-09-01-insynsköp-vice-ordförande-j-rgen-drejer-köpte-9- tl-2026-08-28-insynsköp-styrelseledamot-anna-ljung-köpte-4-188" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span><div class="tlx-card">
           <div class="tlx-meta"><time datetime="2026-08-28">28 aug</time> – <time datetime="2026-09-09">9 sep</time><span class="dot">·</span><span>Insynshandel</span><span class="tlx-tag">4 köp</span></div>
-          <div class="tlx-title">4 insynsaffärer, totalt cirka 866&nbsp;000 kr</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-styrelseledamot-kopt-aktier-for-0-5-mln-kr-20260909" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">styrelseordförande, via JSH Biotech</span></span><span class="amt">50&nbsp;000 st · 10,81 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Johnny Stilou</span> <span class="rl">CFO</span></span><span class="amt">15&nbsp;000 st · 11,54 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Jørgen Drejer</span> <span class="rl">vice ordförande</span></span><span class="amt">9&nbsp;000 st · 11,41 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-sanionas-styrelseledamot-anna-ljung-gor-ett-mindre-aktiekop-20260828" target="_blank" rel="noopener"><span class="who"><span class="nm">Anna Ljung</span> <span class="rl">styrelseledamot</span></span><span class="amt">4&nbsp;188 st · 11,94 kr <span class="ar">↗</span></span></a></div></div></div><div class="tlx-month" data-i="7" hidden="">Augusti 2026</div><div class="tlx-item" data-i="7" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+          <div class="tlx-title">4 insynsaffärer, totalt cirka 866&nbsp;000 kr</div><div class="tlx-trades"><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-styrelseledamot-kopt-aktier-for-0-5-mln-kr-20260909" target="_blank" rel="noopener"><span class="who"><span class="nm">John Haurum</span> <span class="rl">styrelseordförande, via JSH Biotech</span></span><span class="amt">50&nbsp;000 st · 10,81 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Johnny Stilou</span> <span class="rl">CFO</span></span><span class="amt">15&nbsp;000 st · 11,54 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.borskollen.se/aktie/saniona-ab/insynshandel" target="_blank" rel="noopener"><span class="who"><span class="nm">Jørgen Drejer</span> <span class="rl">vice ordförande</span></span><span class="amt">9&nbsp;000 st · 11,41 kr <span class="ar">↗</span></span></a><a class="tlx-trade" href="https://www.placera.se/telegram/saniona-sanionas-styrelseledamot-anna-ljung-gor-ett-mindre-aktiekop-20260828" target="_blank" rel="noopener"><span class="who"><span class="nm">Anna Ljung</span> <span class="rl">styrelseledamot</span></span><span class="amt">4&nbsp;188 st · 11,94 kr <span class="ar">↗</span></span></a></div></div></div><div class="tlx-month" data-i="7" hidden="">Augusti 2026</div><div class="tlx-item" data-i="7" data-nk="tl-2026-08-27-internt-fokus-skärpt-till-san2668-och-san2465-fa" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-08-27">27 aug</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q2 2026</span></div>
         <div class="tlx-title">Internt fokus skärpt till SAN2668 och SAN2465, fas 1 kring årsskiftet</div>
         <div class="tlx-facts"><span class="tlx-fact">Kassa 486 MSEK</span><span class="tlx-fact">Rörelseresultat −60 MSEK</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-andra-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Internt fokus skärpt till SAN2668 och SAN2465, fas 1 kring årsskiftet">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="8" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="8" data-nk="tl-2026-08-10-astronautx-utnyttjar-sin-option-och-tar-över-de-" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-08-10">10 aug</time><span class="dot">·</span><span>Avtal och partner</span><span class="tlx-chip" style="--c:#ba367e">ATX0926</span></div>
         <div class="tlx-title">AstronauTx utnyttjar sin option och tar över de globala rättigheterna</div>
         <div class="tlx-facts"><span class="tlx-fact">Aktier värda 48 MSEK (5 MUSD)</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/astronautx-exercises-option-from-saniona-to-acquire-worldwide-rights-to-neurological-disease-program-under-research-collaboration" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): AstronauTx utnyttjar sin option och tar över de globala rättigheterna">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="9" hidden="">Juni 2026</div><div class="tlx-item" data-i="9" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="9" hidden="">Juni 2026</div><div class="tlx-item" data-i="9" data-nk="tl-2026-06-04-bjuder-in-till-virtuell-r-d-day-om-san2668-för-s" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-06-04">4 jun</time><span class="dot">·</span><span>Pipeline och forskning</span><span class="tlx-chip" style="--c:#227762">SAN2668</span></div>
         <div class="tlx-title">Bjuder in till virtuell R&amp;D Day om SAN2668 för svåra pediatriska epilepsier</div>
         <div class="tlx-facts"><span class="tlx-fact">Hölls 17 juni 2026, repris finns</span><span class="tlx-fact">Med epilepsiexperten Nicola Specchio</span><span class="tlx-fact">Första i en planerad serie webbinarier</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://www.inderes.se/en/releases/saniona-to-host-virtual-randd-day-focusing-on-san2668-for-severe-pediatric-epilepsies" target="_blank" rel="noopener" aria-label="Källa: Inderes: Bjuder in till virtuell R&amp;D Day om SAN2668 för svåra pediatriska epilepsier">Inderes <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="10" hidden="">Maj 2026</div><div class="tlx-item" data-i="10" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="10" hidden="">Maj 2026</div><div class="tlx-item" data-i="10" data-nk="tl-2026-05-27-årsstämma-2026-genomförd" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-27">27 maj</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Årsstämma 2026 genomförd</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/kommunike-fran-arsstamma-den-27-maj-2026-i-saniona-ab" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Årsstämma 2026 genomförd">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-item" data-i="11" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-item" data-i="11" data-nk="tl-2026-05-26-glp-toxikologi-klar-för-alla-tre-interna-program" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-05-26">26 maj</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q1 2026</span></div>
         <div class="tlx-title">GLP-toxikologi klar för alla tre interna program</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-delarsrapport-for-det-forsta-kvartalet-2026" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): GLP-toxikologi klar för alla tre interna program">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="12" hidden="">April 2026</div><div class="tlx-item" data-i="12" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="12" hidden="">April 2026</div><div class="tlx-item" data-i="12" data-nk="tl-2026-04-30-årsredovisning-2025-publicerad" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-04-30">30 apr</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Helår 2025</span></div>
         <div class="tlx-title">Årsredovisning 2025 publicerad</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-arsredovisningen-for-2025" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Årsredovisning 2025 publicerad">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="13" hidden="">Februari 2026</div><div class="tlx-item" data-i="13" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="13" hidden="">Februari 2026</div><div class="tlx-item" data-i="13" data-nk="tl-2026-02-26-bokslutskommunik-2025" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2026-02-26">26 feb</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Helår 2025</span></div>
         <div class="tlx-title">Bokslutskommuniké 2025</div>
         <div class="tlx-facts"><span class="tlx-fact">Intäkter 434 MSEK</span><span class="tlx-fact">Resultat 285 MSEK</span></div>
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-publicerar-bokslutskommunike-for-2025" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Bokslutskommuniké 2025">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="14" hidden="">December 2025</div><div class="tlx-item" data-i="14" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="14" hidden="">December 2025</div><div class="tlx-item" data-i="14" data-nk="tl-2025-12-17-förändringar-i-ledningsgruppen" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-12-17">17 dec</time><span class="dot">·</span><span>Bolag</span></div>
         <div class="tlx-title">Förändringar i ledningsgruppen</div>
         
         <div class="src-line">Källa: <a class="src-a" href="https://mfn.se/a/saniona/saniona-starker-ledningsteamet-for-att-accelerera-utvecklingen-av-centrala-cns-program" target="_blank" rel="noopener" aria-label="Källa: Pressmeddelandet (MFN): Förändringar i ledningsgruppen">Pressmeddelandet (MFN) <span aria-hidden="true">↗</span></a></div>
-      </div></div><div class="tlx-month" data-i="15" hidden="">November 2025</div><div class="tlx-item" data-i="15" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
+      </div></div><div class="tlx-month" data-i="15" hidden="">November 2025</div><div class="tlx-item" data-i="15" data-nk="tl-2025-11-27-delårsrapport-juli-september-2025" hidden=""><span class="tlx-node" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span><div class="tlx-card">
         <div class="tlx-meta"><time datetime="2025-11-27">27 nov</time><span class="dot">·</span><span>Rapport</span><span class="tlx-tag">Q3 2025</span></div>
         <div class="tlx-title">Delårsrapport juli–september 2025</div>
         
@@ -2327,7 +2389,7 @@
     renderPipeline();
     renderEcon();
     renderFin();
-    renderNewSince();
+    renderNews();
     renderCalendar();
     renderPlatform();
     applyGlossary();
@@ -2449,17 +2511,77 @@
     return new Date(iso+'T00:00:00')>d0 && new Date(iso+'T00:00:00')<=new Date(); // strictly after the day of the last visit
   }
   const newBadge=()=>`<span class="new-badge">${lang==='sv'?'Ny':'New'}</span>`;
-  function renderNewSince(){
-    const el=document.getElementById('newSince'); if(!el) return;
-    if(!VISIT.prev){ el.innerHTML=''; return; }
-    const tl=DATA.tl.timeline.filter(e=>isNewIso(isoDate(e.date.sv))).length;
-    const ct=DATA.cat.catalysts.filter(c=>isNewIso(c.added)).length;
-    const pl=DATA.pl.programs.filter(p=>isNewIso(p.added)).length;
-    const n=tl+ct+pl; if(!n){ el.innerHTML=''; return; }
-    const d=new Date(VISIT.prev), when=d.toLocaleDateString(lang==='sv'?'sv-SE':'en-US',{day:'numeric',month:'short'}).replace(/\.$/,'');
-    const target=tl?'proof':(ct?'bevaka':'pipeline');
-    el.innerHTML=`<a href="#${target}" class="new-since-link">${newBadge()}<span>${lang==='sv'?`${n} ${n===1?'nyhet':'nyheter'} sedan ditt senaste besök ${when}`:`${n} ${n===1?'update':'updates'} since your last visit on ${when}`}</span></a>`;
+  // ---- "Nyheter": bell next to the theme toggle; dropdown summarising everything new since the last visit (stored only in this browser) ----
+  const slugK=t=>String(t||'').toLowerCase().replace(/[^a-z0-9åäö]+/g,'-').slice(0,48);
+  function newsKey(it){ return 'tl-'+(isoDate(it.date.sv)||'')+'-'+slugK(it.title?it.title.sv:(it.trade?it.trade.person:'')); }
+  function catKey(c){ return 'cat-'+slugK(c.t.sv); }
+  function collectNews(onlyNew){
+    const sv=lang==='sv', out=[];
+    DATA.tl.timeline.forEach(it=>{ const iso=isoDate(it.date.sv); if(onlyNew&&!isNewIso(iso)) return;
+      const title=it.trade?(sv?`${it.trade.side==='sell'?'Insynsförsäljning':'Insynsköp'}: ${it.trade.person}`:`Insider ${it.trade.side==='sell'?'sale':'purchase'}: ${it.trade.person}`):tr(it.title);
+      const sub=it.trade?`${new Intl.NumberFormat(sv?'sv-SE':'en-US').format(it.trade.shares)} ${sv?'aktier':'shares'}`:(it.facts||[]).slice(0,2).map(tr).join(' · ');
+      out.push({kind:'tl',iso,when:tr(it.date),type:it.trade?'insider':it.type,label:tr(TL_TYPE[it.trade?'insider':it.type]||TL_TYPE.company),title,sub,href:it.href,nk:newsKey(it),key:it.key}); });
+    DATA.cat.catalysts.forEach(c=>{ if(onlyNew&&!isNewIso(c.added)) return; if(!onlyNew) return;
+      out.push({kind:'cat',iso:c.added,when:tr(c.when),type:'cat',label:sv?'Ny katalysator':'New catalyst',title:tr(c.t),sub:'',href:c.srcHref,nk:catKey(c),key:c.key}); });
+    DATA.pl.programs.forEach(p=>{ if(onlyNew&&!isNewIso(p.added)) return; if(!onlyNew) return;
+      out.push({kind:'pl',iso:p.added,when:'',type:'pipeline',label:sv?'Pipeline':'Pipeline',title:`${p.code}: ${tr(p.status)}`,sub:tr(p.ind),href:'',nk:'pl-'+p.key,key:p.key}); });
+    out.sort((x,y)=>(y.iso||'').localeCompare(x.iso||''));
+    if(!onlyNew) return out;
+    const tls=out.filter(x=>x.kind==='tl'), rest=[];
+    out.forEach(x=>{ if(x.kind==='tl'){ rest.push(x); return; }
+      const host=tls.find(t=>t.key&&t.key===x.key&&t.iso===x.iso);
+      if(host){ (host.also=host.also||[]).push(x); } else rest.push(x); });
+    return rest;
   }
+  const NEWS_ICON={...TL_ICON,cat:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'};
+  function renderNews(){
+    const btn=document.getElementById('newsBtn'), cnt=document.getElementById('newsCount'), pan=document.getElementById('newsPanel'); if(!btn||!pan) return;
+    const sv=lang==='sv', fresh=VISIT.prev?collectNews(true):[], n=fresh.length;
+    const lbl=n?(sv?`${n} ${n===1?'nyhet':'nyheter'} sedan ditt senaste besök`:`${n} ${n===1?'update':'updates'} since your last visit`):(sv?'Nyheter':'Updates');
+    btn.setAttribute('aria-label',lbl); btn.title=lbl; cnt.hidden=!n; cnt.textContent=n>9?'9+':String(n);
+    const when=VISIT.prev?new Date(VISIT.prev).toLocaleDateString(sv?'sv-SE':'en-US',{day:'numeric',month:'short'}).replace(/\.$/,''):'';
+    const list=n?fresh:collectNews(false).slice(0,4);
+    const head=n?(sv?`Nytt sedan ${when}`:`New since ${when}`):(VISIT.prev?(sv?'Inget nytt sedan ditt senaste besök':'Nothing new since your last visit'):(sv?'Senaste uppdateringarna':'Latest updates'));
+    const subHead=n?(sv?`${n} ${n===1?'uppdatering':'uppdateringar'} på sidan`:`${n} ${n===1?'update':'updates'} on the page`):(VISIT.prev?(sv?'Här är de senaste uppdateringarna:':'Here are the latest updates:'):(sv?'Nästa gång du kommer tillbaka visas det som är nytt här.':'Next time you visit, what is new will show up here.'));
+    const items=list.map((x,i)=>`<li class="nw-item">
+        <span class="nw-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${NEWS_ICON[x.type]||TL_ICON.company}</svg></span>
+        <div class="nw-body"><div class="nw-meta">${x.when?`<span>${x.when}</span><span class="dot">·</span>`:''}<span>${x.label}</span></div>
+          <div class="nw-title">${x.title}</div>${x.sub?`<div class="nw-sub">${x.sub}</div>`:''}
+          <div class="nw-act"><button type="button" class="jump-a nw-go" data-go="${i}">${sv?'Visa på sidan':'Show on page'} <span aria-hidden="true">↓</span></button>${x.href?srcA(x.href,sv?'Källa':'Source',`${sv?'Källa':'Source'}: ${String(x.title)}`):''}</div>
+          ${x.also?`<div class="nw-also"><span>${sv?'Även uppdaterat:':'Also updated:'}</span>${x.also.map((y,k)=>`<button type="button" class="jump-a nw-go" data-go="${i}" data-also="${k}">${y.kind==='cat'?(sv?'Katalysatorer':'Catalysts'):(sv?'Pipeline':'Pipeline')} <span aria-hidden="true">↓</span></button>`).join('')}</div>`:''}</div></li>`).join('');
+    pan.innerHTML=`<div class="nw-head"><div><div class="nw-h" id="newsHead">${head}</div><div class="nw-s">${subHead}</div></div>
+        <button type="button" class="nw-x" aria-label="${sv?'Stäng':'Close'}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+      <ul class="nw-list">${items}</ul>
+      ${n?`<div class="nw-foot"><button type="button" class="nw-read">${sv?'Markera som läst':'Mark as read'}</button></div>`:''}`;
+    pan._items=list;
+  }
+  function newsOpen(open){
+    const btn=document.getElementById('newsBtn'), pan=document.getElementById('newsPanel'); if(!pan) return;
+    pan.hidden=!open; btn.setAttribute('aria-expanded',String(open));
+    if(open){ const f=pan.querySelector('.nw-go,.nw-x'); f&&f.focus({preventScroll:true}); }
+  }
+  function newsGo(x){
+    newsOpen(false); let el=null;
+    if(x.kind==='tl'){ el=document.querySelector(`#tlList [data-nk~="${x.nk}"]`);
+      if(el&&el.hidden){ const i=+el.dataset.i; tlShown=Math.max(tlShown,Math.ceil((i+1)/TL_STEP)*TL_STEP); applyTl(); }
+      if(!el){ const arch=[...document.querySelectorAll('#tlArchive details')]; arch.forEach(d=>d.open=true); el=document.getElementById('tlArchive'); } }
+    else if(x.kind==='cat') el=document.querySelector(`#catList [data-nk="${x.nk}"]`);
+    else if(x.kind==='pl'){ const it=document.getElementById('plb-'+x.key); if(it&&!it.closest('.pl-item').classList.contains('open')) togglePl(x.key); el=document.getElementById('plb-'+x.key); }
+    if(!el) return;
+    const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+    const card=el.closest('.tlx-item,.cat-item,.pl-item')||el; card.classList.remove('nw-flash'); void card.offsetWidth; card.classList.add('nw-flash');
+  }
+  document.addEventListener('click',e=>{
+    const pan=document.getElementById('newsPanel'); if(!pan) return;
+    if(e.target.closest('#newsBtn')){ newsOpen(pan.hidden); return; }
+    const go=e.target.closest('.nw-go'); if(go){ const x=pan._items[+go.dataset.go]; newsGo(go.dataset.also!=null?x.also[+go.dataset.also]:x); return; }
+    if(e.target.closest('.nw-x')){ newsOpen(false); document.getElementById('newsBtn').focus(); return; }
+    if(e.target.closest('.nw-read')){ try{ localStorage.setItem('si:prev',String(Date.now())); }catch(_){} VISIT.prev=Date.now(); render(); newsOpen(true); return; }
+    if(!pan.hidden&&!e.target.closest('#newsPanel')) newsOpen(false);
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ const pan=document.getElementById('newsPanel'); if(pan&&!pan.hidden){ newsOpen(false); document.getElementById('newsBtn').focus(); } } });
+
 
   // ---- add report dates to the calendar (.ics, generated from the report data) ----
   function stockholmUtc(iso,hm){ // local Stockholm time -> UTC string for iCalendar
@@ -2676,13 +2798,13 @@
           :(lang==='sv'?`${list[0].trade.side==='sell'?'Insynsförsäljning':'Insynsköp'}: ${list[0].trade.person}, ${tr(list[0].trade.role)}`:`Insider ${list[0].trade.side==='sell'?'sale':'purchase'}: ${list[0].trade.person}, ${tr(list[0].trade.role)}`);
         const rows=list.map(e=>{const t=e.trade;
           return `<a class="tlx-trade" href="${e.href}" target="_blank" rel="noopener"><span class="who"><span class="nm">${t.person}</span> <span class="rl">${tr(t.role)}${t.via?`, via ${t.via}`:''}</span></span><span class="amt">${t.side==='sell'?(lang==='sv'?'Sålde ':'Sold '):''}${nf.format(t.shares)} ${lang==='sv'?'st':'sh'} · ${lang==='sv'?price(t.price)+' kr':'SEK '+price(t.price)} <span class="ar">↗</span></span></a>`;}).join('');
-        html+=`<div class="tlx-item" data-i="${idx}">${icon('insider')}<div class="tlx-card">
+        html+=`<div class="tlx-item" data-i="${idx}" data-nk="${list.map(newsKey).join(' ')}">${icon('insider')}<div class="tlx-card">
           <div class="tlx-meta">${range}<span class="dot">·</span><span>${tr(TL_TYPE.insider)}</span><span class="tlx-tag">${cnt}</span>${list.some(e=>isNewIso(isoDate(e.date.sv)))?newBadge():''}</div>
           <div class="tlx-title">${title}</div><div class="tlx-trades">${rows}</div></div></div>`;
         return;
       }
       const facts=(it.facts||[]).map(f=>`<span class="tlx-fact">${tr(f)}</span>`).join('');
-      html+=`<div class="tlx-item" data-i="${idx}">${icon(it.type)}<div class="tlx-card">
+      html+=`<div class="tlx-item" data-i="${idx}" data-nk="${newsKey(it)}">${icon(it.type)}<div class="tlx-card">
         <div class="tlx-meta">${timeTag(it.date)}<span class="dot">·</span><span>${tr(TL_TYPE[it.type]||TL_TYPE.company)}</span>${it.period?`<span class="tlx-tag">${tr(it.period)}</span>`:''}${chip(it.key)}${isNewIso(isoDate(it.date.sv))?newBadge():''}</div>
         <div class="tlx-title">${tr(it.title)}</div>
         ${facts?`<div class="tlx-facts">${facts}</div>`:''}
@@ -2718,7 +2840,7 @@
       const src = c.src ? (c.srcHref
         ? `${srcLine(c.srcHref,tr(c.src),`${tr(L.source)}: ${tr(c.src)} (${String(tr(c.t))})`,'cat-src')}`
         : `<span class="cat-src no">${tr(L.source)}: ${tr(c.src)}</span>`) : '';
-      return `<div class="cat-item" style="--cat-c:${col}">
+      return `<div class="cat-item" style="--cat-c:${col}" data-nk="${catKey(c)}">
         <div class="cat-top"><span class="cat-when">${tr(c.when)}</span>${chips.join('')}</div>
         <h3 class="cat-t">${tr(c.t)}</h3>
         <div class="cat-d">${tr(c.d)}</div>
