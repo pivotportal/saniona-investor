@@ -194,4 +194,16 @@ DTEND;TZID=Europe/Stockholm:20270225T083000
 SUMMARY:Saniona: year-end report 2026
 DESCRIPTION:Date per Saniona’s financial calendar.
 END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-20-nahc@sanionainvestor.vercel.app
+DTSTAMP:20270520T000000Z
+DTSTART;TZID=Europe/Stockholm:20270520T210000
+DTEND;TZID=Europe/Stockholm:20270520T212000
+SUMMARY:Saniona presents at the Nordic-American Healthcare Conference
+LOCATION:New York\, NY (Main Room)
+DESCRIPTION:CEO Thomas Feldthus presents at 3:00–3:20 pm local time in Ne
+ w York. Saniona also holds one-on-one and group meetings with investors\, 
+ together with CFO Johnny Stilou. The conference is hosted by DNB Carnegie 
+ and runs May 19–20\, 2027.
+END:VEVENT
 END:VCALENDAR
