@@ -194,4 +194,16 @@ DTEND;TZID=Europe/Stockholm:20270225T083000
 SUMMARY:Saniona: bokslutskommuniké 2026
 DESCRIPTION:Datum enligt Sanionas finansiella kalender.
 END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-20-nahc@sanionainvestor.vercel.app
+DTSTAMP:20270520T000000Z
+DTSTART;TZID=Europe/Stockholm:20270520T210000
+DTEND;TZID=Europe/Stockholm:20270520T212000
+SUMMARY:Saniona presenterar på Nordic-American Healthcare Conference
+LOCATION:New York (Main Room)
+DESCRIPTION:VD Thomas Feldthus presenterar kl. 15.00–15.20 lokal tid i Ne
+ w York (21.00–21.20 svensk tid). Saniona har även individuella möten o
+ ch gruppmöten med investerare\, tillsammans med CFO Johnny Stilou. Konfer
+ ensen arrangeras av DNB Carnegie och pågår 19–20 maj 2027.
+END:VEVENT
 END:VCALENDAR
