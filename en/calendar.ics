@@ -58,11 +58,13 @@ DTSTART;TZID=Europe/Stockholm:20261102T110000
 DTEND;TZID=Europe/Stockholm:20261102T120000
 SUMMARY:Saniona: extraordinary general meeting
 LOCATION:Ascente Law\, Stortorget 23\, Malmö\, Sweden
-DESCRIPTION:Votes on a share issue authorization (up to ~20%) and Employee 
- Option Program 2026. End time is an estimate.\nhttps://mfn.se/a/saniona/ka
- llelse-till-extra-bolagsstamma-i-saniona-ab-1
-URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
- 1
+DESCRIPTION:The meeting resolved on an authorization for up to about 10% ne
+ w shares until the next AGM. The employee option program proposal was with
+ drawn.\nhttps://storage.mfn.se/284cacce-1f83-4f5d-b5f0-446b0eca5492/bullet
+ in-from-the-saniona-ab-extraordinary-shareholders-meeting-on-november-2-20
+ 26.pdf
+URL:https://storage.mfn.se/284cacce-1f83-4f5d-b5f0-446b0eca5492/bulletin-fr
+ om-the-saniona-ab-extraordinary-shareholders-meeting-on-november-2-2026.pdf
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-biostock@sanionainvestor.vercel.app
