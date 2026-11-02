@@ -58,11 +58,13 @@ DTSTART;TZID=Europe/Stockholm:20261102T110000
 DTEND;TZID=Europe/Stockholm:20261102T120000
 SUMMARY:Saniona: extra bolagsstämma
 LOCATION:Ascente Law\, Stortorget 23\, Malmö
-DESCRIPTION:Röstning om emissionsbemyndigande (högst ca 20 %) och Persona
- loptionsprogram 2026. Sluttid är uppskattad.\nhttps://mfn.se/a/saniona/ka
- llelse-till-extra-bolagsstamma-i-saniona-ab-1
-URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
- 1
+DESCRIPTION:Stämman beslutade om bemyndigande för högst cirka 10 % nya a
+ ktier fram till nästa årsstämma. Förslaget om personaloptionsprogram d
+ rogs tillbaka.\nhttps://storage.mfn.se/284cacce-1f83-4f5d-b5f0-446b0eca549
+ 2/bulletin-from-the-saniona-ab-extraordinary-shareholders-meeting-on-novem
+ ber-2-2026.pdf
+URL:https://storage.mfn.se/284cacce-1f83-4f5d-b5f0-446b0eca5492/bulletin-fr
+ om-the-saniona-ab-extraordinary-shareholders-meeting-on-november-2-2026.pdf
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-biostock@sanionainvestor.vercel.app
