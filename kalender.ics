@@ -208,4 +208,19 @@ DESCRIPTION:VD Thomas Feldthus presenterar kl. 15.00–15.20 lokal tid i Ne
  ch gruppmöten med investerare\, tillsammans med CFO Johnny Stilou. Konfer
  ensen arrangeras av DNB Carnegie och pågår 19–20 maj 2027.
 END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-24-agm@sanionainvestor.vercel.app
+DTSTAMP:20270524T000000Z
+DTSTART;VALUE=DATE:20270524
+DTEND;VALUE=DATE:20270525
+TRANSP:TRANSPARENT
+SUMMARY:Årsstämma 2027
+LOCATION:Malmö
+DESCRIPTION:Valberedningens förslag presenteras i kallelsen och på bolage
+ ts webbplats. Tid och lokal meddelas i kallelsen.\nhttps://storage.mfn.se/
+ faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona-abs-nomination-committee-for-
+ the-annual-general-meeting-2027.pdf
+URL:https://storage.mfn.se/faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona-abs
+ -nomination-committee-for-the-annual-general-meeting-2027.pdf
+END:VEVENT
 END:VCALENDAR
