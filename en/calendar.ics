@@ -208,4 +208,19 @@ DESCRIPTION:CEO Thomas Feldthus presents at 3:00–3:20 pm local time in Ne
  together with CFO Johnny Stilou. The conference is hosted by DNB Carnegie 
  and runs May 19–20\, 2027.
 END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-24-agm@sanionainvestor.vercel.app
+DTSTAMP:20270524T000000Z
+DTSTART;VALUE=DATE:20270524
+DTEND;VALUE=DATE:20270525
+TRANSP:TRANSPARENT
+SUMMARY:Annual general meeting 2027
+LOCATION:Malmö\, Sweden
+DESCRIPTION:The Nomination Committee’s proposals will be presented in the
+  notice and on the company website. Time and venue will be given in the no
+ tice.\nhttps://storage.mfn.se/faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona
+ -abs-nomination-committee-for-the-annual-general-meeting-2027.pdf
+URL:https://storage.mfn.se/faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona-abs
+ -nomination-committee-for-the-annual-general-meeting-2027.pdf
+END:VEVENT
 END:VCALENDAR
