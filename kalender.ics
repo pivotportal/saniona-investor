@@ -197,6 +197,20 @@ SUMMARY:Saniona: bokslutskommuniké 2026
 DESCRIPTION:Datum enligt Sanionas finansiella kalender.
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-03-16-rare-epilepsy-summit@sanionainvestor.vercel.app
+DTSTAMP:20270316T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270319
+TRANSP:TRANSPARENT
+SUMMARY:Saniona talar på Rare Epilepsy & DEE Drug Development Summit
+LOCATION:Boston
+DESCRIPTION:Medicinska chefen Pierandrea Muglia finns med bland talarna. Ko
+ nferensen om läkemedelsutveckling för sällsynta epilepsier och DEE arra
+ ngeras av Hanson Wade på Wyndham Boston Beacon Hill. Tid för Sanionas me
+ dverkan anges inte.\nhttps://rare-epilepsy-drug-development.com/speakers/
+URL:https://rare-epilepsy-drug-development.com/speakers/
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-05-20-nahc@sanionainvestor.vercel.app
 DTSTAMP:20270520T000000Z
 DTSTART;TZID=Europe/Stockholm:20270520T210000
