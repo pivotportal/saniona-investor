@@ -197,6 +197,21 @@ SUMMARY:Saniona: year-end report 2026
 DESCRIPTION:Date per Saniona’s financial calendar.
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-03-16-rare-epilepsy-summit@sanionainvestor.vercel.app
+DTSTAMP:20270316T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270319
+TRANSP:TRANSPARENT
+SUMMARY:Saniona speaks at the Rare Epilepsy & DEE Drug Development Summit
+LOCATION:Boston\, MA
+DESCRIPTION:Chief Medical Officer Pierandrea Muglia is among the speakers. 
+ The conference on drug development for rare epilepsies and DEEs is organiz
+ ed by Hanson Wade at the Wyndham Boston Beacon Hill. The time of Saniona
+ ’s session is not stated.\nhttps://rare-epilepsy-drug-development.com/sp
+ eakers/
+URL:https://rare-epilepsy-drug-development.com/speakers/
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-05-20-nahc@sanionainvestor.vercel.app
 DTSTAMP:20270520T000000Z
 DTSTART;TZID=Europe/Stockholm:20270520T210000
