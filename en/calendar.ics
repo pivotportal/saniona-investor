@@ -161,6 +161,19 @@ DESCRIPTION:Date per Saniona’s financial calendar.\nhttps://saniona.com/i
 URL:https://saniona.com/investors/financial-calendar/
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-26-q3-call@sanionainvestor.vercel.app
+DTSTAMP:20261126T000000Z
+DTSTART;TZID=Europe/Stockholm:20261126T150000
+DTEND;TZID=Europe/Stockholm:20261126T160000
+SUMMARY:Q3 investor call with Q&A (webcast)
+LOCATION:Online via Redeye
+DESCRIPTION:Management presents the results and a company update. Questions
+  can be asked online in the Q&A at the end. A replay will be available at 
+ saniona.com and redeye.se. The end time is an estimate.\nhttps://www.redey
+ e.se/events/1143633/live-q-saniona-7
+URL:https://www.redeye.se/events/1143633/live-q-saniona-7
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-12-04-aes@sanionainvestor.vercel.app
 DTSTAMP:20261204T000000Z
 DTSTART;VALUE=DATE:20261204
