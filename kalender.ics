@@ -164,13 +164,13 @@ BEGIN:VEVENT
 UID:2026-11-26-q3-call@sanionainvestor.vercel.app
 DTSTAMP:20261126T000000Z
 DTSTART;TZID=Europe/Stockholm:20261126T150000
-DTEND;TZID=Europe/Stockholm:20261126T160000
+DTEND;TZID=Europe/Stockholm:20261126T154500
 SUMMARY:Q3-presentation med frågestund (webbsändning)
 LOCATION:Online via Redeye
-DESCRIPTION:Ledningen presenterar resultatet och en uppdatering om bolaget.
-  Frågor kan ställas online under frågestunden i slutet. Repris läggs u
- t på saniona.com och redeye.se. Sluttiden är uppskattad.\nhttps://www.re
- deye.se/events/1143633/live-q-saniona-7
+DESCRIPTION:Vd Thomas Feldthus och CFO Johnny Stilou presenterar kvartalsra
+ pporten\, följt av frågor från investerare som Redeyes analytiker stäl
+ ler. Frågor kan skickas in under sändningen. Repris läggs ut på sanion
+ a.com och redeye.se.\nhttps://www.redeye.se/events/1143633/live-q-saniona-7
 URL:https://www.redeye.se/events/1143633/live-q-saniona-7
 END:VEVENT
 BEGIN:VEVENT
