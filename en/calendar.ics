@@ -164,13 +164,14 @@ BEGIN:VEVENT
 UID:2026-11-26-q3-call@sanionainvestor.vercel.app
 DTSTAMP:20261126T000000Z
 DTSTART;TZID=Europe/Stockholm:20261126T150000
-DTEND;TZID=Europe/Stockholm:20261126T160000
+DTEND;TZID=Europe/Stockholm:20261126T154500
 SUMMARY:Q3 investor call with Q&A (webcast)
 LOCATION:Online via Redeye
-DESCRIPTION:Management presents the results and a company update. Questions
-  can be asked online in the Q&A at the end. A replay will be available at 
- saniona.com and redeye.se. The end time is an estimate.\nhttps://www.redey
- e.se/events/1143633/live-q-saniona-7
+DESCRIPTION:CEO Thomas Feldthus and CFO Johnny Stilou present the quarterly
+  report\, followed by investor questions put by Redeye’s analyst. Questi
+ ons can be sent in during the broadcast. A replay will be available at san
+ iona.com and redeye.se.\nhttps://www.redeye.se/events/1143633/live-q-sanio
+ na-7
 URL:https://www.redeye.se/events/1143633/live-q-saniona-7
 END:VEVENT
 BEGIN:VEVENT
