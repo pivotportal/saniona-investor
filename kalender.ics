@@ -151,16 +151,6 @@ URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
  rences-in-2026
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-26-report@sanionainvestor.vercel.app
-DTSTAMP:20261126T000000Z
-DTSTART;TZID=Europe/Stockholm:20261126T080000
-DTEND;TZID=Europe/Stockholm:20261126T083000
-SUMMARY:Saniona: delårsrapport Q3 2026
-DESCRIPTION:Datum enligt Sanionas finansiella kalender.\nhttps://saniona.co
- m/investors/financial-calendar/
-URL:https://saniona.com/investors/financial-calendar/
-END:VEVENT
-BEGIN:VEVENT
 UID:2026-11-26-q3-call@sanionainvestor.vercel.app
 DTSTAMP:20261126T000000Z
 DTSTART;TZID=Europe/Stockholm:20261126T150000
@@ -207,7 +197,9 @@ DTSTAMP:20270225T000000Z
 DTSTART;TZID=Europe/Stockholm:20270225T080000
 DTEND;TZID=Europe/Stockholm:20270225T083000
 SUMMARY:Saniona: bokslutskommuniké 2026
-DESCRIPTION:Datum enligt Sanionas finansiella kalender.
+DESCRIPTION:Datum enligt Sanionas finansiella kalender.\nhttps://saniona.co
+ m/investors/financial-calendar/
+URL:https://saniona.com/investors/financial-calendar/
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-03-16-rare-epilepsy-summit@sanionainvestor.vercel.app
@@ -236,18 +228,61 @@ DESCRIPTION:VD Thomas Feldthus presenterar kl. 15.00–15.20 lokal tid i Ne
  ensen arrangeras av DNB Carnegie och pågår 19–20 maj 2027.
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-05-24-agm@sanionainvestor.vercel.app
-DTSTAMP:20270524T000000Z
-DTSTART;VALUE=DATE:20270524
-DTEND;VALUE=DATE:20270525
-TRANSP:TRANSPARENT
+UID:2027-05-27-report@sanionainvestor.vercel.app
+DTSTAMP:20270527T000000Z
+DTSTART;TZID=Europe/Stockholm:20270527T080000
+DTEND;TZID=Europe/Stockholm:20270527T083000
+SUMMARY:Saniona: delårsrapport Q1 2027
+DESCRIPTION:Datum enligt Sanionas finansiella kalender.
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-27-agm@sanionainvestor.vercel.app
+DTSTAMP:20270527T000000Z
+DTSTART;TZID=Europe/Stockholm:20270527T163000
+DTEND;TZID=Europe/Stockholm:20270527T180000
 SUMMARY:Årsstämma 2027
 LOCATION:Malmö
-DESCRIPTION:Valberedningens förslag presenteras i kallelsen och på bolage
- ts webbplats. Tid och lokal meddelas i kallelsen.\nhttps://storage.mfn.se/
- faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona-abs-nomination-committee-for-
- the-annual-general-meeting-2027.pdf
-URL:https://storage.mfn.se/faf6fd2e-8f87-4d95-9b6c-9e74575eee16/saniona-abs
- -nomination-committee-for-the-annual-general-meeting-2027.pdf
+DESCRIPTION:Kl. 16.30 enligt den finansiella kalendern i Q3-rapporten. Valb
+ eredningens pressmeddelande 3 november angav måndag 24 maj\; Q3-rapporten
+  är nyare. Sluttiden är uppskattad.\nhttps://storage.mfn.se/afe05293-1f6
+ 0-40fe-bb17-750818314ccb/saniona-q3-2026-se.pdf
+URL:https://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-
+ 2026-se.pdf
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-26-report@sanionainvestor.vercel.app
+DTSTAMP:20270826T000000Z
+DTSTART;TZID=Europe/Stockholm:20270826T080000
+DTEND;TZID=Europe/Stockholm:20270826T083000
+SUMMARY:Delårsrapport Q2 2027
+DESCRIPTION:Datum enligt Sanionas finansiella kalender (Q3-rapporten 2026).
+ \nhttps://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-2
+ 026-se.pdf
+URL:https://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-
+ 2026-se.pdf
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-11-25-report@sanionainvestor.vercel.app
+DTSTAMP:20271125T000000Z
+DTSTART;TZID=Europe/Stockholm:20271125T080000
+DTEND;TZID=Europe/Stockholm:20271125T083000
+SUMMARY:Delårsrapport Q3 2027
+DESCRIPTION:Datum enligt Sanionas finansiella kalender (Q3-rapporten 2026).
+ \nhttps://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-2
+ 026-se.pdf
+URL:https://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-
+ 2026-se.pdf
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-02-24-report@sanionainvestor.vercel.app
+DTSTAMP:20280224T000000Z
+DTSTART;TZID=Europe/Stockholm:20280224T080000
+DTEND;TZID=Europe/Stockholm:20280224T083000
+SUMMARY:Bokslutskommuniké 2027
+DESCRIPTION:Datum enligt Sanionas finansiella kalender (Q3-rapporten 2026).
+ \nhttps://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-2
+ 026-se.pdf
+URL:https://storage.mfn.se/afe05293-1f60-40fe-bb17-750818314ccb/saniona-q3-
+ 2026-se.pdf
 END:VEVENT
 END:VCALENDAR
