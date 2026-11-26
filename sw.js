@@ -1,6 +1,6 @@
 // Saniona Investor service worker: network first, cache only as offline fallback.
-// v4: pages and data are always fetched past the browser cache, so an installed app shows the latest version.
-const CACHE = 'saniona-investor-v4';
+// v5 (new app icons): pages and data are always fetched past the browser cache, so an installed app shows the latest version.
+const CACHE = 'saniona-investor-v5';
 self.addEventListener('install', e => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(
   caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
