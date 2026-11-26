@@ -144,11 +144,10 @@ DTEND;VALUE=DATE:20261125
 TRANSP:TRANSPARENT
 SUMMARY:Saniona på Aktieinfo
 LOCATION:Kolding
-DESCRIPTION:Saniona deltar enligt pressmeddelandet 8 oktober 2026.\nhttps:/
- /mfn.se/a/saniona/saniona-to-attend-and-present-at-several-conferences-in-
- 2026
-URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
- rences-in-2026
+DESCRIPTION:Presentationen finns som video (på danska)\, med kapitel och s
+ ammanfattning under Video på sidan.\nhttps://www.youtube.com/watch?v=wJoQ
+ 1O092Mo
+URL:https://www.youtube.com/watch?v=wJoQ1O092Mo
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-26-q3-call@sanionainvestor.vercel.app
