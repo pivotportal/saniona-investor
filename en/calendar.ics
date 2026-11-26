@@ -144,11 +144,10 @@ DTEND;VALUE=DATE:20261125
 TRANSP:TRANSPARENT
 SUMMARY:Saniona at Aktieinfo
 LOCATION:Kolding\, Denmark
-DESCRIPTION:Saniona attends according to the press release of October 8\, 2
- 026.\nhttps://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-co
- nferences-in-2026
-URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
- rences-in-2026
+DESCRIPTION:The presentation is available as a video (in Danish)\, with cha
+ pters and a summary in the Video section of the site.\nhttps://www.youtube
+ .com/watch?v=wJoQ1O092Mo
+URL:https://www.youtube.com/watch?v=wJoQ1O092Mo
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-26-q3-call@sanionainvestor.vercel.app
