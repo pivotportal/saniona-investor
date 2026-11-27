@@ -192,6 +192,36 @@ URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
  rences-in-2026
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-12-16-egm-reg@sanionainvestor.vercel.app
+DTSTAMP:20261216T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+TRANSP:TRANSPARENT
+SUMMARY:Last day to register for the EGM
+DESCRIPTION:Register with Saniona by post or e-mail (clo@saniona.com). Hold
+ ers of nominee-registered shares must have them voting-registered with the
+ ir nominee by the same day. Record date December 14.\nhttps://mfn.se/a/san
+ iona/kallelse-till-extra-bolagsstamma-i-saniona-ab-2
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 2
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-22-egm@sanionainvestor.vercel.app
+DTSTAMP:20261222T000000Z
+DTSTART;TZID=Europe/Stockholm:20261222T170000
+DTEND;TZID=Europe/Stockholm:20261222T180000
+SUMMARY:Extraordinary general meeting
+LOCATION:Ascente Law\, Stortorget 23\, Malmö\, Sweden
+DESCRIPTION:Decision on Employee Option Program 2026: up to 2\,510\,000 emp
+ loyee options (about 1.8% dilution)\, exercise price 120% of the average s
+ hare price over ten trading days before the meeting\, vesting after three 
+ years. The decision requires a nine-tenths majority. The end time is an es
+ timate.\nhttps://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-sanio
+ na-ab-2
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 2
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-02-25-report@sanionainvestor.vercel.app
 DTSTAMP:20270225T000000Z
 DTSTART;TZID=Europe/Stockholm:20270225T080000
