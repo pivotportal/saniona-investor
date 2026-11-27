@@ -1537,6 +1537,19 @@
   .su-act .jump-a{margin:0;color:var(--su)}
   .su-ok{border:0;cursor:pointer;font:600 13px 'Inter',system-ui,sans-serif;color:#fff;background:var(--su);padding:7px 14px;border-radius:999px}
   .su-ok:focus-visible{outline:2px solid var(--su);outline-offset:2px}
+
+  /* completed catalysts: a green check and a green "Genomförd" pill */
+  :root{--ok:#2E9D6A;--ok-bg:color-mix(in srgb,#2E9D6A 12%,var(--nm-bg))}
+  [data-theme="dark"]{--ok:#5FB59C;--ok-bg:color-mix(in srgb,#5FB59C 14%,var(--nm-bg))}
+  .done-list li{grid-template-columns:24px 86px minmax(0,1fr) !important;align-items:start}
+  .done-list .dl-ok{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ok);color:#fff;margin-top:1px}
+  .done-list .dl-o{grid-column:3}
+  .done-list .dl-pill{display:inline-block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);background:var(--ok-bg);padding:3px 9px;border-radius:999px;margin-right:6px}
+  @media (max-width:520px){.done-list li{grid-template-columns:24px minmax(0,1fr) !important}.done-list .dl-w,.done-list .dl-t,.done-list .dl-o{grid-column:2}}
+
+  :root{--ok-text:#1C6646}
+  [data-theme="dark"]{--ok-text:#7FD0B4}
+  .done-list .dl-pill{color:var(--ok-text)}
 </style>
 </head>
 <body>
@@ -2055,7 +2068,7 @@
         <div class="src-line">Source: <a class="src-a" href="https://www.redeye.se/events/1143633/live-q-saniona-7" target="_blank" rel="noopener" aria-label="Source: Q3 call Nov 26, 2026 (New clinical candidate from the platform)">Q3 call Nov&nbsp;26,&nbsp;2026 <span aria-hidden="true">↗</span></a></div>
       </div></div>
       <div class="cat-done" id="catDone"><h3 class="arch-h hx">Completed <span>(2)</span></h3>
-      <ul class="done-list"><li><span class="dl-w">Nov&nbsp;16,&nbsp;2026</span><span class="dl-t">SAN2465: FDA cleared the IND<em>Planned: after submission on Oct&nbsp;20,&nbsp;2026</em></span><span class="dl-o">Completed <a class="src-a" href="https://storage.mfn.se/272184e9-40c7-49cc-b14e-cd2879172547/saniona-receives-fda-clearance-to-initiate-phase-1-of-san2465.pdf" target="_blank" rel="noopener" aria-label="Source: SAN2465: FDA cleared the IND">Source <span aria-hidden="true">↗</span></a></span></li><li><span class="dl-w">Oct&nbsp;20,&nbsp;2026</span><span class="dl-t">SAN2465: IND submitted to the FDA<em>Planned: by the end of October&nbsp;2026</em></span><span class="dl-o">Completed <a class="src-a" href="https://storage.mfn.se/0f1b0fb9-ca83-4d71-91cf-f78a8f8ebe1b/saniona-submits-ind-application-for-san2465-for-major-depressive-disorder.pdf" target="_blank" rel="noopener" aria-label="Source: SAN2465: IND submitted to the FDA">Source <span aria-hidden="true">↗</span></a></span></li></ul></div>
+      <ul class="done-list"><li><span class="dl-ok" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="dl-w">Nov&nbsp;16,&nbsp;2026</span><span class="dl-t">SAN2465: FDA cleared the IND<em>Planned: after submission on Oct&nbsp;20,&nbsp;2026</em></span><span class="dl-o"><span class="dl-pill">Completed</span> <a class="src-a" href="https://storage.mfn.se/272184e9-40c7-49cc-b14e-cd2879172547/saniona-receives-fda-clearance-to-initiate-phase-1-of-san2465.pdf" target="_blank" rel="noopener" aria-label="Source: SAN2465: FDA cleared the IND">Source <span aria-hidden="true">↗</span></a></span></li><li><span class="dl-ok" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="dl-w">Oct&nbsp;20,&nbsp;2026</span><span class="dl-t">SAN2465: IND submitted to the FDA<em>Planned: by the end of October&nbsp;2026</em></span><span class="dl-o"><span class="dl-pill">Completed</span> <a class="src-a" href="https://storage.mfn.se/0f1b0fb9-ca83-4d71-91cf-f78a8f8ebe1b/saniona-submits-ind-application-for-san2465-for-major-depressive-disorder.pdf" target="_blank" rel="noopener" aria-label="Source: SAN2465: IND submitted to the FDA">Source <span aria-hidden="true">↗</span></a></span></li></ul></div>
     </section>
     <section class="content-sec" id="video" aria-labelledby="vidSecHead">
       <h2 class="co-head" id="vidSecHead">Video</h2>
@@ -3232,7 +3245,7 @@
     const done=[...(cat.done||[]),...doneAuto].filter(d=>!d.date||new Date(d.date+'T00:00:00')>=yearAgo).sort((x,y)=>(y.date||'').localeCompare(x.date||''));
     const sv=lang==='sv';
     document.getElementById('catDone').innerHTML=done.length?`<h3 class="arch-h hx">${sv?'Genomförda':'Completed'} <span>(${done.length})</span></h3>
-      <ul class="done-list">${done.map(d=>`<li><span class="dl-w">${tr(d.when)}</span><span class="dl-t">${tr(d.t)}${d.planned?`<em>${sv?'Planerat':'Planned'}: ${tr(d.planned)}</em>`:''}</span><span class="dl-o">${tr(d.outcome)}${d.srcHref?' '+srcA(d.srcHref,sv?'Källa':'Source',`${sv?'Källa':'Source'}: ${String(tr(d.t))}`):''}</span></li>`).join('')}</ul>`:'';
+      <ul class="done-list">${done.map(d=>`<li><span class="dl-ok" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="dl-w">${tr(d.when)}</span><span class="dl-t">${tr(d.t)}${d.planned?`<em>${sv?'Planerat':'Planned'}: ${tr(d.planned)}</em>`:''}</span><span class="dl-o"><span class="dl-pill">${tr(d.outcome)}</span>${d.srcHref?' '+srcA(d.srcHref,sv?'Källa':'Source',`${sv?'Källa':'Source'}: ${String(tr(d.t))}`):''}</span></li>`).join('')}</ul>`:'';
     const kinds=[...new Set(active.map(catKind))];
     const legend=document.getElementById('catLegend'); if(legend) legend.innerHTML=Object.keys(CAT_KIND).filter(k=>kinds.includes(k)).map(k=>`<span class="cl-i">${catIco(k,'var(--nm-accent-2)')}${tr(CAT_KIND[k])}</span>`).join('');
     document.getElementById('catList').innerHTML=active.map(c=>{
