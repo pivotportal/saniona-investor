@@ -191,6 +191,35 @@ URL:https://mfn.se/a/saniona/saniona-to-attend-and-present-at-several-confe
  rences-in-2026
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-12-16-egm-reg@sanionainvestor.vercel.app
+DTSTAMP:20261216T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+TRANSP:TRANSPARENT
+SUMMARY:Sista dag att anmäla sig till extrastämman
+DESCRIPTION:Anmälan till Saniona per post eller e-post (clo@saniona.com). 
+ Den som har förvaltarregistrerade aktier behöver rösträttsregistrera d
+ em hos förvaltaren senast samma dag. Avstämningsdag 14 december.\nhttps:
+ //mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-2
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 2
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-22-egm@sanionainvestor.vercel.app
+DTSTAMP:20261222T000000Z
+DTSTART;TZID=Europe/Stockholm:20261222T170000
+DTEND;TZID=Europe/Stockholm:20261222T180000
+SUMMARY:Extra bolagsstämma
+LOCATION:Ascente Law\, Stortorget 23\, Malmö
+DESCRIPTION:Beslut om Personaloptionsprogram 2026: högst 2 510 000 persona
+ loptioner (cirka 1\,8 % utspädning)\, lösenpris 120 % av den genomsnittl
+ iga kursen tio handelsdagar före stämman\, intjäning efter tre år. Bes
+ lutet kräver nio tiondelars majoritet. Sluttiden är uppskattad.\nhttps:/
+ /mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-2
+URL:https://mfn.se/a/saniona/kallelse-till-extra-bolagsstamma-i-saniona-ab-
+ 2
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-02-25-report@sanionainvestor.vercel.app
 DTSTAMP:20270225T000000Z
 DTSTART;TZID=Europe/Stockholm:20270225T080000
